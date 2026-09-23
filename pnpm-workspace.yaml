@@ -1,0 +1,33 @@
+packages:
+  - apps/*
+  - packages/*
+
+# Keep optional framework peers from pulling in unused native modules.
+autoInstallPeers: false
+
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - '@typescript-eslint/eslint-plugin@8.70.1'
+  - '@typescript-eslint/parser@8.70.1'
+  - '@typescript-eslint/project-service@8.70.1'
+  - '@typescript-eslint/scope-manager@8.70.1'
+  - '@typescript-eslint/tsconfig-utils@8.70.1'
+  - '@typescript-eslint/type-utils@8.70.1'
+  - '@typescript-eslint/types@8.70.1'
+  - '@typescript-eslint/typescript-estree@8.70.1'
+  - '@typescript-eslint/utils@8.70.1'
+  - '@typescript-eslint/visitor-keys@8.70.1'
+  - typescript-eslint@8.70.1
+
+
+# Expo Router includes drawer support, but this app does not use a drawer.
+packageExtensions:
+  react-native-drawer-layout@4.2.10:
+    peerDependenciesMeta:
+      react-native-gesture-handler:
+        optional: true
+      react-native-reanimated:
+        optional: true

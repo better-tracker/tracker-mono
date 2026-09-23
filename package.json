@@ -1,0 +1,23 @@
+{
+  "name": "project-tracker",
+  "private": true,
+  "packageManager": "pnpm@12.5.1",
+  "engines": {
+    "node": ">=22.13.0 <23 || >=24 <25"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @project-tracker/web --filter @project-tracker/api dev",
+    "dev:web": "pnpm --filter @project-tracker/web dev",
+    "dev:api": "pnpm --filter @project-tracker/api dev",
+    "dev:mobile": "pnpm --filter @project-tracker/mobile start",
+    "build": "pnpm -r --if-present build",
+    "lint": "pnpm -r --if-present lint",
+    "typecheck": "pnpm -r typecheck",
+    "check": "pnpm lint && pnpm typecheck && pnpm build"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "eslint": "9.39.5",
+    "typescript-eslint": "8.70.1"
+  }
+}

@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output and caches
+dist/
+out/
+.next/
+.expo/
+*.tsbuildinfo
+coverage/
+
+# Local environment files (keep the documented example)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Expo-generated native projects
+apps/mobile/android/
+apps/mobile/ios/
