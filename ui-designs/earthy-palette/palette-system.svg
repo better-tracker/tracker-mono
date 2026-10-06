@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — earthy colour system — earthy palette</title>
+<desc id="desc">Eight colour swatches from the supplied reference, their exact hex values and assigned UI roles. Slate blue uses white for small text; cream is used on teal and deep plum. Colour is paired with text labels. Cream surfaces, teal actions, plum headings, sage context, slate status labels, terracotta alerts, mustard focus panels and dusty rose profile identity.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#252728}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="1600" height="1100" fill="#252728"/>
+<rect x="7" y="20" width="3" height="1060" fill="#F2E9D8"/>
+<rect x="16" y="20" width="5" height="186" fill="#F2E9D8"/>
+<rect x="23" y="20" width="2" height="1060" fill="#F2E9D8"/>
+<rect x="33" y="20" width="7" height="402" fill="#F2E9D8"/>
+<rect x="45" y="20" width="3" height="1060" fill="#F2E9D8"/>
+<rect x="55" y="20" width="6" height="178" fill="#F2E9D8"/>
+<rect x="12" y="380" width="3" height="310" fill="#F2E9D8"/>
+<rect x="31" y="520" width="4" height="560" fill="#F2E9D8"/>
+<rect x="53" y="668" width="6" height="412" fill="#F2E9D8"/>
+<rect x="64" y="18" width="1518" height="1064" fill="#F2E9D8"/>
+<text x="104" y="57" font-size="14" class="label" text-anchor="start" style="fill:#252728">PROJECT TRACKER / 001</text>
+<text x="1540" y="57" font-size="14" class="label" text-anchor="end" style="fill:#252728">YOUR WORK. IN ORDER.</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#252728" stroke-width="2"/>
+<text x="96" y="198" font-size="116" class="display" text-anchor="start" style="fill:#5B3A62">THE COLOUR SYSTEM.</text>
+<text x="104" y="235" font-size="14" class="label" text-anchor="start" style="fill:#252728">PALETTE BRANCH / EARTHY TONES / SAME DESIGN LANGUAGE</text>
+<rect x="104" y="260" width="1436" height="22" fill="#5B3A62"/>
+<rect x="104" y="326" width="340" height="165" fill="#F2E9D8" stroke="#D6CDBE" stroke-width="1"/>
+<text x="122" y="368" font-size="26" class="display" text-anchor="start" style="fill:#252728">Cream</text>
+<text x="122" y="457" font-size="18" class="label" text-anchor="start" style="fill:#252728">#F2E9D8</text>
+<text x="104" y="527" font-size="18" class="body" text-anchor="start" style="fill:#252728">Page and input surfaces</text>
+<text x="104" y="556" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">01 / FUNCTIONAL COLOUR</text>
+<rect x="468" y="326" width="340" height="165" fill="#59718A"/>
+<text x="486" y="368" font-size="26" class="display" text-anchor="start" style="fill:#FFFFFF">Slate Blue</text>
+<text x="486" y="457" font-size="18" class="label" text-anchor="start" style="fill:#FFFFFF">#59718A</text>
+<text x="468" y="527" font-size="18" class="body" text-anchor="start" style="fill:#252728">In-progress status labels</text>
+<text x="468" y="556" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">02 / FUNCTIONAL COLOUR</text>
+<rect x="832" y="326" width="340" height="165" fill="#2F6F6D"/>
+<text x="850" y="368" font-size="26" class="display" text-anchor="start" style="fill:#F2E9D8">Teal</text>
+<text x="850" y="457" font-size="18" class="label" text-anchor="start" style="fill:#F2E9D8">#2F6F6D</text>
+<text x="832" y="527" font-size="18" class="body" text-anchor="start" style="fill:#252728">Primary actions and progress</text>
+<text x="832" y="556" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">03 / FUNCTIONAL COLOUR</text>
+<rect x="1196" y="326" width="340" height="165" fill="#E07A47"/>
+<text x="1214" y="368" font-size="26" class="display" text-anchor="start" style="fill:#252728">Terracotta</text>
+<text x="1214" y="457" font-size="18" class="label" text-anchor="start" style="fill:#252728">#E07A47</text>
+<text x="1196" y="527" font-size="18" class="body" text-anchor="start" style="fill:#252728">Overdue and deadline alerts</text>
+<text x="1196" y="556" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">04 / FUNCTIONAL COLOUR</text>
+<rect x="104" y="609" width="340" height="165" fill="#D4A72C"/>
+<text x="122" y="651" font-size="26" class="display" text-anchor="start" style="fill:#252728">Mustard</text>
+<text x="122" y="740" font-size="18" class="label" text-anchor="start" style="fill:#252728">#D4A72C</text>
+<text x="104" y="810" font-size="18" class="body" text-anchor="start" style="fill:#252728">Next-task focus panels</text>
+<text x="104" y="839" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">05 / FUNCTIONAL COLOUR</text>
+<rect x="468" y="609" width="340" height="165" fill="#8FA68F"/>
+<text x="486" y="651" font-size="26" class="display" text-anchor="start" style="fill:#252728">Sage Green</text>
+<text x="486" y="740" font-size="18" class="label" text-anchor="start" style="fill:#252728">#8FA68F</text>
+<text x="468" y="810" font-size="18" class="body" text-anchor="start" style="fill:#252728">Project and parent context</text>
+<text x="468" y="839" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">06 / FUNCTIONAL COLOUR</text>
+<rect x="832" y="609" width="340" height="165" fill="#C47C8A"/>
+<text x="850" y="651" font-size="26" class="display" text-anchor="start" style="fill:#252728">Dusty Rose</text>
+<text x="850" y="740" font-size="18" class="label" text-anchor="start" style="fill:#252728">#C47C8A</text>
+<text x="832" y="810" font-size="18" class="body" text-anchor="start" style="fill:#252728">Profile and avatar identity</text>
+<text x="832" y="839" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">07 / FUNCTIONAL COLOUR</text>
+<rect x="1196" y="609" width="340" height="165" fill="#5B3A62"/>
+<text x="1214" y="651" font-size="26" class="display" text-anchor="start" style="fill:#F2E9D8">Deep Plum</text>
+<text x="1214" y="740" font-size="18" class="label" text-anchor="start" style="fill:#F2E9D8">#5B3A62</text>
+<text x="1196" y="810" font-size="18" class="body" text-anchor="start" style="fill:#252728">Display headings and dividers</text>
+<text x="1196" y="839" font-size="12" class="label" text-anchor="start" style="fill:#4E5650">08 / FUNCTIONAL COLOUR</text>
+<line x1="104" y1="928" x2="1540" y2="928" stroke="#252728" stroke-width="2"/>
+<text x="104" y="962" font-size="14" class="label" text-anchor="start" style="fill:#252728">CONTRAST FIRST</text>
+<text x="354" y="962" font-size="19" class="body" text-anchor="start" style="fill:#252728">Cream on teal and plum. Charcoal on warm accents. White on slate blue for small text.</text>
+<text x="104" y="996" font-size="19" class="body" text-anchor="start" style="fill:#252728">Colour supports hierarchy; every deadline and status also has a written label.</text>
+<line x1="104" y1="1030" x2="1540" y2="1030" stroke="#252728" stroke-width="2"/>
+<text x="104" y="1062" font-size="13" class="label" text-anchor="start" style="fill:#252728">DESIGN SYSTEM / 08 REFERENCE COLOURS</text>
+<text x="1540" y="1062" font-size="13" class="label" text-anchor="end" style="fill:#252728">WEB + MOBILE / SVG ONLY</text>
+</svg>

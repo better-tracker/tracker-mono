@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="1670" viewBox="0 0 430 1670" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — mobile profile update — earthy palette</title>
+<desc id="desc">Single-column mobile account profile editor. Avatar, labeled personal fields, timezone and notification preferences lead to save and cancel actions. Bottom navigation indicates the current profile section. Cream surfaces, teal actions, plum headings, sage context, slate status labels, terracotta alerts, mustard focus panels and dusty rose profile identity.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#252728}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="430" height="1670" fill="#252728"/>
+<rect x="4" y="12" width="2" height="1646" fill="#F2E9D8"/>
+<rect x="9" y="12" width="3" height="174" fill="#F2E9D8"/>
+<rect x="14" y="12" width="2" height="1646" fill="#F2E9D8"/>
+<rect x="9" y="340" width="3" height="1316" fill="#F2E9D8"/>
+<rect x="18" y="10" width="402" height="1650" fill="#F2E9D8"/>
+<text x="40" y="43" font-size="13" class="label" text-anchor="start" style="fill:#252728">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" class="label" text-anchor="end" style="fill:#252728">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#252728" stroke-width="2"/>
+<text x="40" y="98" font-size="13" class="label" text-anchor="start" style="fill:#252728">← TODAY</text>
+<text x="38" y="165" font-size="60" class="display" text-anchor="start" style="fill:#5B3A62">PROFILE.</text>
+<text x="40" y="201" font-size="13" class="label" text-anchor="start" style="fill:#252728">ACCOUNT / YOUR DETAILS</text>
+<rect x="40" y="224" width="358" height="16" fill="#5B3A62"/>
+<rect x="40" y="270" width="90" height="90" fill="#C47C8A"/>
+<text x="85" y="332" font-size="46" class="display" text-anchor="middle" style="fill:#252728">BM</text>
+<text x="150" y="302" font-size="26" class="body" text-anchor="start" style="fill:#252728">Ben Morgan</text>
+<rect x="150" y="318" width="248" height="48" fill="#F2E9D8" stroke="#2F6F6D" stroke-width="1.5"/>
+<text x="274.0" y="347.0" font-size="12" class="label" text-anchor="middle" style="fill:#252728">EDIT AVATAR ↗</text>
+<text x="40" y="416" font-size="13" class="label" text-anchor="start" style="fill:#252728">01 / PERSONAL DETAILS</text>
+<text x="40" y="458" font-size="14" class="label" text-anchor="start" style="fill:#252728">FIRST NAME *</text>
+<rect x="40" y="472" width="358" height="56" fill="#F2E9D8" stroke="#252728" stroke-width="1.5"/>
+<text x="56" y="506.0" font-size="19" class="body" text-anchor="start" style="fill:#252728">Ben</text>
+<text x="40" y="574" font-size="14" class="label" text-anchor="start" style="fill:#252728">LAST NAME *</text>
+<rect x="40" y="588" width="358" height="56" fill="#F2E9D8" stroke="#252728" stroke-width="1.5"/>
+<text x="56" y="622.0" font-size="19" class="body" text-anchor="start" style="fill:#252728">Morgan</text>
+<text x="40" y="690" font-size="14" class="label" text-anchor="start" style="fill:#252728">EMAIL ADDRESS *</text>
+<rect x="40" y="704" width="358" height="56" fill="#F2E9D8" stroke="#252728" stroke-width="1.5"/>
+<text x="56" y="738.0" font-size="19" class="body" text-anchor="start" style="fill:#252728">ben@example.com</text>
+<text x="40" y="788" font-size="16" class="body" text-anchor="start" style="fill:#4E5650">Used for sign-in and account updates.</text>
+<text x="40" y="834" font-size="14" class="label" text-anchor="start" style="fill:#252728">BIO</text>
+<rect x="40" y="848" width="358" height="90" fill="#F2E9D8" stroke="#252728" stroke-width="1.5"/>
+<text x="56" y="880" font-size="19" class="body" text-anchor="start" style="fill:#252728">Building useful things,</text>
+<text x="56" y="906" font-size="18" class="body" text-anchor="start" style="fill:#252728">one small task at a time.</text>
+<text x="40" y="978" font-size="13" class="label" text-anchor="start" style="fill:#252728">02 / PREFERENCES</text>
+<line x1="40" y1="996" x2="398" y2="996" stroke="#252728" stroke-width="2"/>
+<text x="40" y="1038" font-size="14" class="label" text-anchor="start" style="fill:#252728">TIMEZONE</text>
+<rect x="40" y="1052" width="358" height="56" fill="#F2E9D8" stroke="#252728" stroke-width="1.5"/>
+<text x="56" y="1086.0" font-size="19" class="body" text-anchor="start" style="fill:#252728">Australia / Melbourne</text>
+<path d="M 366 1077.0 l 7 7 l 7 -7" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="40" y="1154" font-size="14" class="label" text-anchor="start" style="fill:#252728">WEEK STARTS ON</text>
+<rect x="40" y="1168" width="358" height="56" fill="#F2E9D8" stroke="#252728" stroke-width="1.5"/>
+<text x="56" y="1202.0" font-size="19" class="body" text-anchor="start" style="fill:#252728">Monday</text>
+<path d="M 366 1193.0 l 7 7 l 7 -7" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<rect x="40" y="1265" width="22" height="22" fill="#2F6F6D" stroke="#2F6F6D" stroke-width="1.5"/>
+<path d="M 45 1276 l 5 5 l 8 -10" fill="none" stroke="#F2E9D8" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="76" y="1281" font-size="18" class="body" text-anchor="start" style="fill:#252728">Task assignment emails</text>
+<rect x="40" y="1320" width="22" height="22" fill="#2F6F6D" stroke="#2F6F6D" stroke-width="1.5"/>
+<path d="M 45 1331 l 5 5 l 8 -10" fill="none" stroke="#F2E9D8" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="76" y="1336" font-size="18" class="body" text-anchor="start" style="fill:#252728">Daily deadline summary</text>
+<rect x="40" y="1390" width="358" height="60" fill="#2F6F6D" stroke="#2F6F6D" stroke-width="1.5"/>
+<text x="219.0" y="1425.0" font-size="14" class="label" text-anchor="middle" style="fill:#F2E9D8">SAVE CHANGES →</text>
+<rect x="40" y="1466" width="358" height="56" fill="#F2E9D8" stroke="#2F6F6D" stroke-width="1.5"/>
+<text x="219.0" y="1499.0" font-size="14" class="label" text-anchor="middle" style="fill:#252728">CANCEL</text>
+<rect x="18" y="1568" width="402" height="92" fill="#F2E9D8"/>
+<line x1="40" y1="1568" x2="398" y2="1568" stroke="#252728" stroke-width="2"/>
+<text x="84.75" y="1613" font-size="11.5" class="label" text-anchor="middle" style="fill:#252728">TODAY</text>
+<text x="174.25" y="1613" font-size="11.5" class="label" text-anchor="middle" style="fill:#252728">PROJECTS</text>
+<text x="263.75" y="1613" font-size="11.5" class="label" text-anchor="middle" style="fill:#252728">TASKS</text>
+<rect x="308.5" y="1580" width="89.5" height="56" fill="#2F6F6D"/>
+<text x="353.25" y="1613" font-size="11.5" class="label" text-anchor="middle" style="fill:#F2E9D8">PROFILE</text>
+</svg>
