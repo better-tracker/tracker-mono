@@ -1,4 +1,5 @@
 import { buildApp } from './app.js';
+import { env } from './config/env.js';
 
 const app = buildApp();
 let shuttingDown = false;
@@ -6,7 +7,9 @@ let shuttingDown = false;
 async function shutdown(signal: string) {
   if (shuttingDown) return;
   shuttingDown = true;
+
   app.log.info({ signal }, 'Shutting down');
+
   try {
     await app.close();
   } catch (error) {
@@ -15,15 +18,19 @@ async function shutdown(signal: string) {
   }
 }
 
-process.once('SIGINT', () => { void shutdown('SIGINT'); });
-process.once('SIGTERM', () => { void shutdown('SIGTERM'); });
+process.once('SIGINT', () => {
+  void shutdown('SIGINT');
+});
+
+process.once('SIGTERM', () => {
+  void shutdown('SIGTERM');
+});
 
 try {
-  const port = Number(process.env.PORT ?? 3001);
-  if (!Number.isInteger(port) || port < 1 || port > 65535) {
-    throw new Error('PORT must be an integer between 1 and 65535');
-  }
-  await app.listen({ port, host: '0.0.0.0' });
+  await app.listen({
+    port: env.port,
+    host: '0.0.0.0',
+  });
 } catch (error) {
   app.log.error(error);
   await app.close();
