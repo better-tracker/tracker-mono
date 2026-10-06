@@ -1,75 +1,75 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1130" viewBox="0 0 1600 1130" role="img" aria-labelledby="title desc">
-<title id="title">Project Tracker — screen and interaction map — earthy palette</title>
-<desc id="desc">Design map connecting login, today dashboard, task creation, subtask creation and profile editing. Desktop uses full-screen pages and columns; mobile uses a single reading sequence. Includes contrast, touch-target and interaction intent notes. Cream surfaces, teal actions, plum headings, sage context, slate status labels, terracotta alerts, mustard focus panels and dusty rose profile identity.</desc>
-<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#252728}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
-<rect x="0" y="0" width="1600" height="1130" fill="#252728"/>
-<rect x="7" y="20" width="3" height="1090" fill="#F2E9D8"/>
-<rect x="16" y="20" width="5" height="186" fill="#F2E9D8"/>
-<rect x="23" y="20" width="2" height="1090" fill="#F2E9D8"/>
-<rect x="33" y="20" width="7" height="402" fill="#F2E9D8"/>
-<rect x="45" y="20" width="3" height="1090" fill="#F2E9D8"/>
-<rect x="55" y="20" width="6" height="178" fill="#F2E9D8"/>
-<rect x="12" y="380" width="3" height="310" fill="#F2E9D8"/>
-<rect x="31" y="520" width="4" height="590" fill="#F2E9D8"/>
-<rect x="53" y="668" width="6" height="442" fill="#F2E9D8"/>
-<rect x="64" y="18" width="1518" height="1094" fill="#F2E9D8"/>
-<text x="104" y="57" font-size="14" class="label" text-anchor="start" style="fill:#252728">PROJECT TRACKER / 001</text>
-<text x="1540" y="57" font-size="14" class="label" text-anchor="end" style="fill:#252728">YOUR WORK. IN ORDER.</text>
-<line x1="104" y1="78" x2="1540" y2="78" stroke="#252728" stroke-width="2"/>
-<text x="96" y="198" font-size="116" class="display" text-anchor="start" style="fill:#5B3A62">THE DAILY FLOW.</text>
-<text x="104" y="235" font-size="14" class="label" text-anchor="start" style="fill:#252728">DESIGN MAP / FULL-SCREEN PAGES / WEB + MOBILE</text>
-<rect x="104" y="260" width="1436" height="22" fill="#5B3A62"/>
-<path d="M 420 454 H 510" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<path d="M 498 447 L 510 454 L 498 461" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<text x="465" y="426" font-size="11" class="label" text-anchor="middle" style="fill:#252728">SIGN IN</text>
-<path d="M 920 420 H 1020" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<path d="M 1008 413 L 1020 420 L 1008 427" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<text x="970" y="392" font-size="11" class="label" text-anchor="middle" style="fill:#252728">+ TASK</text>
-<path d="M 1225 532 V 608" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<path d="M 1218 596 L 1225 608 L 1232 596" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<text x="1244" y="573" font-size="11" class="label" text-anchor="start" style="fill:#252728">+ STEP</text>
-<path d="M 715 582 V 624" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<path d="M 708 612 L 715 624 L 722 612" fill="none" stroke="#252728" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-<rect x="104" y="344" width="316" height="222" fill="#F2E9D8" stroke="#252728" stroke-width="2"/>
-<text x="124" y="376" font-size="13" class="label" text-anchor="start" style="fill:#252728">01 / ACCOUNT</text>
-<text x="119" y="428" font-size="40" class="display" text-anchor="start" style="fill:#252728">LOGIN</text>
-<text x="124" y="470" font-size="18" class="body" text-anchor="start" style="fill:#252728">Email + password</text>
-<text x="124" y="498" font-size="18" class="body" text-anchor="start" style="fill:#252728">Visibility + recovery</text>
-<text x="124" y="526" font-size="18" class="body" text-anchor="start" style="fill:#252728">A direct route into today</text>
-<rect x="510" y="344" width="410" height="238" fill="#D4A72C" stroke="#252728" stroke-width="2"/>
-<text x="530" y="376" font-size="13" class="label" text-anchor="start" style="fill:#252728">02 / PRIORITY</text>
-<text x="525" y="428" font-size="40" class="display" text-anchor="start" style="fill:#252728">TODAY</text>
-<text x="530" y="470" font-size="18" class="body" text-anchor="start" style="fill:#252728">Due today + overdue</text>
-<text x="530" y="498" font-size="18" class="body" text-anchor="start" style="fill:#252728">A deadline-ordered task ledger</text>
-<text x="530" y="526" font-size="18" class="body" text-anchor="start" style="fill:#252728">One next task to move forward</text>
-<rect x="1020" y="320" width="450" height="212" fill="#8FA68F" stroke="#252728" stroke-width="2"/>
-<text x="1040" y="352" font-size="13" class="label" text-anchor="start" style="fill:#252728">03 / ACTION</text>
-<text x="1035" y="404" font-size="40" class="display" text-anchor="start" style="fill:#252728">NEW TASK</text>
-<text x="1040" y="446" font-size="18" class="body" text-anchor="start" style="fill:#252728">Task → project → deadline</text>
-<text x="1040" y="474" font-size="18" class="body" text-anchor="start" style="fill:#252728">Subtask drafts, saved together</text>
-<rect x="1020" y="608" width="450" height="212" fill="#8FA68F" stroke="#252728" stroke-width="2"/>
-<text x="1040" y="640" font-size="13" class="label" text-anchor="start" style="fill:#252728">04 / SMALLER STEP</text>
-<text x="1035" y="692" font-size="40" class="display" text-anchor="start" style="fill:#252728">SUBTASK</text>
-<text x="1040" y="734" font-size="18" class="body" text-anchor="start" style="fill:#252728">Keep the parent visible</text>
-<text x="1040" y="762" font-size="18" class="body" text-anchor="start" style="fill:#252728">Inherit project; set own deadline</text>
-<rect x="510" y="624" width="410" height="196" fill="#F2E9D8" stroke="#252728" stroke-width="2"/>
-<text x="530" y="656" font-size="13" class="label" text-anchor="start" style="fill:#252728">05 / ACCOUNT</text>
-<text x="525" y="708" font-size="40" class="display" text-anchor="start" style="fill:#252728">PROFILE</text>
-<text x="530" y="750" font-size="18" class="body" text-anchor="start" style="fill:#252728">Personal details + preferences</text>
-<text x="530" y="778" font-size="18" class="body" text-anchor="start" style="fill:#252728">An explicit save action</text>
-<line x1="104" y1="866" x2="1540" y2="866" stroke="#252728" stroke-width="2"/>
-<text x="104" y="901" font-size="14" class="label" text-anchor="start" style="fill:#252728">WEB / SPACE TO COMPARE</text>
-<text x="104" y="937" font-size="19" class="body" text-anchor="start" style="fill:#252728">Forms beside task context.</text>
-<text x="104" y="965" font-size="19" class="body" text-anchor="start" style="fill:#252728">Today’s deadlines beside the next action.</text>
-<text x="620" y="901" font-size="14" class="label" text-anchor="start" style="fill:#252728">MOBILE / ONE READING ORDER</text>
-<text x="620" y="937" font-size="19" class="body" text-anchor="start" style="fill:#252728">Urgency first; detail follows.</text>
-<text x="620" y="965" font-size="19" class="body" text-anchor="start" style="fill:#252728">Full-width actions and stacked inputs.</text>
-<text x="1120" y="901" font-size="14" class="label" text-anchor="start" style="fill:#252728">CONSISTENT / ACCESSIBLE</text>
-<text x="1120" y="937" font-size="19" class="body" text-anchor="start" style="fill:#252728">Visible labels; 44px+ action areas.</text>
-<text x="1120" y="965" font-size="19" class="body" text-anchor="start" style="fill:#252728">Colour always paired with words.</text>
-<text x="104" y="1023" font-size="12" class="label" text-anchor="start" style="fill:#252728">INTERACTION INTENT</text>
-<text x="310" y="1023" font-size="16" class="body" text-anchor="start" style="fill:#252728">Focus: clear teal outline. Errors: inline message. Save: confirmation. Motion: brief; respects reduced motion.</text>
-<line x1="104" y1="1060" x2="1540" y2="1060" stroke="#252728" stroke-width="2"/>
-<text x="104" y="1092" font-size="13" class="label" text-anchor="start" style="fill:#252728">SYSTEM / 05 FLOWS / 10 SCREEN DESIGNS</text>
-<text x="1540" y="1092" font-size="13" class="label" text-anchor="end" style="fill:#252728">CREAM FOUNDATION / EARTHY COLOUR</text>
+<title id="title">Project Tracker — screen and interaction map — minimal brutalist palette</title>
+<desc id="desc">Design map connecting login, today dashboard, task creation, subtask creation and profile editing. Desktop uses full-screen pages and columns; mobile uses a single reading sequence. Includes contrast, touch-target and interaction intent notes. Black text and neutral surfaces throughout. Terracotta marks urgency, sage marks completion, slate blue marks work in progress, and a small mustard marker identifies the next-task section. No decorative colour fills.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="1600" height="1130" fill="#000000"/>
+<rect x="7" y="20" width="3" height="1090" fill="#FCFCFA"/>
+<rect x="16" y="20" width="5" height="186" fill="#FCFCFA"/>
+<rect x="23" y="20" width="2" height="1090" fill="#FCFCFA"/>
+<rect x="33" y="20" width="7" height="402" fill="#FCFCFA"/>
+<rect x="45" y="20" width="3" height="1090" fill="#FCFCFA"/>
+<rect x="55" y="20" width="6" height="178" fill="#FCFCFA"/>
+<rect x="12" y="380" width="3" height="310" fill="#FCFCFA"/>
+<rect x="31" y="520" width="4" height="590" fill="#FCFCFA"/>
+<rect x="53" y="668" width="6" height="442" fill="#FCFCFA"/>
+<rect x="64" y="18" width="1518" height="1094" fill="#FCFCFA"/>
+<text x="104" y="57" font-size="14" class="label" text-anchor="start" style="fill:#000000">PROJECT TRACKER / 001</text>
+<text x="1540" y="57" font-size="14" class="label" text-anchor="end" style="fill:#000000">YOUR WORK. IN ORDER.</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#000000" stroke-width="2"/>
+<text x="96" y="198" font-size="116" class="display" text-anchor="start" style="fill:#000000">THE DAILY FLOW.</text>
+<text x="104" y="235" font-size="14" class="label" text-anchor="start" style="fill:#000000">DESIGN MAP / FULL-SCREEN PAGES / WEB + MOBILE</text>
+<rect x="104" y="260" width="1436" height="22" fill="#000000"/>
+<path d="M 420 454 H 510" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<path d="M 498 447 L 510 454 L 498 461" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="465" y="426" font-size="11" class="label" text-anchor="middle" style="fill:#000000">SIGN IN</text>
+<path d="M 920 420 H 1020" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<path d="M 1008 413 L 1020 420 L 1008 427" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="970" y="392" font-size="11" class="label" text-anchor="middle" style="fill:#000000">+ TASK</text>
+<path d="M 1225 532 V 608" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<path d="M 1218 596 L 1225 608 L 1232 596" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="1244" y="573" font-size="11" class="label" text-anchor="start" style="fill:#000000">+ STEP</text>
+<path d="M 715 582 V 624" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<path d="M 708 612 L 715 624 L 722 612" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<rect x="104" y="344" width="316" height="222" fill="#FCFCFA" stroke="#000000" stroke-width="2"/>
+<text x="124" y="376" font-size="13" class="label" text-anchor="start" style="fill:#000000">01 / ACCOUNT</text>
+<text x="119" y="428" font-size="40" class="display" text-anchor="start" style="fill:#000000">LOGIN</text>
+<text x="124" y="470" font-size="18" class="body" text-anchor="start" style="fill:#000000">Email + password</text>
+<text x="124" y="498" font-size="18" class="body" text-anchor="start" style="fill:#000000">Visibility + recovery</text>
+<text x="124" y="526" font-size="18" class="body" text-anchor="start" style="fill:#000000">A direct route into today</text>
+<rect x="510" y="344" width="410" height="238" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="530" y="376" font-size="13" class="label" text-anchor="start" style="fill:#000000">02 / PRIORITY</text>
+<text x="525" y="428" font-size="40" class="display" text-anchor="start" style="fill:#000000">TODAY</text>
+<text x="530" y="470" font-size="18" class="body" text-anchor="start" style="fill:#000000">Due today + overdue</text>
+<text x="530" y="498" font-size="18" class="body" text-anchor="start" style="fill:#000000">A deadline-ordered task ledger</text>
+<text x="530" y="526" font-size="18" class="body" text-anchor="start" style="fill:#000000">One next task to move forward</text>
+<rect x="1020" y="320" width="450" height="212" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="1040" y="352" font-size="13" class="label" text-anchor="start" style="fill:#000000">03 / ACTION</text>
+<text x="1035" y="404" font-size="40" class="display" text-anchor="start" style="fill:#000000">NEW TASK</text>
+<text x="1040" y="446" font-size="18" class="body" text-anchor="start" style="fill:#000000">Task → project → deadline</text>
+<text x="1040" y="474" font-size="18" class="body" text-anchor="start" style="fill:#000000">Subtask drafts, saved together</text>
+<rect x="1020" y="608" width="450" height="212" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="1040" y="640" font-size="13" class="label" text-anchor="start" style="fill:#000000">04 / SMALLER STEP</text>
+<text x="1035" y="692" font-size="40" class="display" text-anchor="start" style="fill:#000000">SUBTASK</text>
+<text x="1040" y="734" font-size="18" class="body" text-anchor="start" style="fill:#000000">Keep the parent visible</text>
+<text x="1040" y="762" font-size="18" class="body" text-anchor="start" style="fill:#000000">Inherit project; set own deadline</text>
+<rect x="510" y="624" width="410" height="196" fill="#FCFCFA" stroke="#000000" stroke-width="2"/>
+<text x="530" y="656" font-size="13" class="label" text-anchor="start" style="fill:#000000">05 / ACCOUNT</text>
+<text x="525" y="708" font-size="40" class="display" text-anchor="start" style="fill:#000000">PROFILE</text>
+<text x="530" y="750" font-size="18" class="body" text-anchor="start" style="fill:#000000">Personal details + preferences</text>
+<text x="530" y="778" font-size="18" class="body" text-anchor="start" style="fill:#000000">An explicit save action</text>
+<line x1="104" y1="866" x2="1540" y2="866" stroke="#000000" stroke-width="2"/>
+<text x="104" y="901" font-size="14" class="label" text-anchor="start" style="fill:#000000">WEB / SPACE TO COMPARE</text>
+<text x="104" y="937" font-size="19" class="body" text-anchor="start" style="fill:#000000">Forms beside task context.</text>
+<text x="104" y="965" font-size="19" class="body" text-anchor="start" style="fill:#000000">Today’s deadlines beside the next action.</text>
+<text x="620" y="901" font-size="14" class="label" text-anchor="start" style="fill:#000000">MOBILE / ONE READING ORDER</text>
+<text x="620" y="937" font-size="19" class="body" text-anchor="start" style="fill:#000000">Urgency first; detail follows.</text>
+<text x="620" y="965" font-size="19" class="body" text-anchor="start" style="fill:#000000">Full-width actions and stacked inputs.</text>
+<text x="1120" y="901" font-size="14" class="label" text-anchor="start" style="fill:#000000">CONSISTENT / ACCESSIBLE</text>
+<text x="1120" y="937" font-size="19" class="body" text-anchor="start" style="fill:#000000">Visible labels; 44px+ action areas.</text>
+<text x="1120" y="965" font-size="19" class="body" text-anchor="start" style="fill:#000000">Colour always paired with words.</text>
+<text x="104" y="1023" font-size="12" class="label" text-anchor="start" style="fill:#000000">INTERACTION INTENT</text>
+<text x="310" y="1023" font-size="16" class="body" text-anchor="start" style="fill:#000000">Focus: clear black outline. Errors: inline message. Save: confirmation. Motion: brief; respects reduced motion.</text>
+<line x1="104" y1="1060" x2="1540" y2="1060" stroke="#000000" stroke-width="2"/>
+<text x="104" y="1092" font-size="13" class="label" text-anchor="start" style="fill:#000000">SYSTEM / 05 FLOWS / 10 SCREEN DESIGNS</text>
+<text x="1540" y="1092" font-size="13" class="label" text-anchor="end" style="fill:#000000">BLACK TYPE / NEUTRAL SURFACES / COLOUR AS SIGNAL</text>
 </svg>
