@@ -180,6 +180,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@project-tracker/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       fastify:
         specifier: 5.12.5
         version: 5.12.5
@@ -224,7 +227,11 @@ importers:
 
   packages/api-client: {}
 
-  packages/contracts: {}
+  packages/contracts:
+    dependencies:
+      zod:
+        specifier: ^4.6.5
+        version: 4.6.5
 
   packages/database:
     dependencies:
