@@ -7,9 +7,10 @@
 */
 
 import { z } from 'zod';
+import { subtaskDescriptionSchema } from './subtasks.js';
 
 export const projectIdSchema = z.uuid();
-const utcDateSchema = z.iso.datetime();
+const utcDateSchema = z.iso.datetime({ offset: false, local: false });
 
 export const projectNameSchema = z
   .string()
@@ -36,7 +37,7 @@ export const projectUpdateSchema = z.object({
 export const projectSubtaskSchema = z.object({
   id: z.uuid(),
   completed: z.boolean(),
-  description: z.string(),
+  description: subtaskDescriptionSchema,
   createdAt: utcDateSchema,
   updatedAt: utcDateSchema,
 });
