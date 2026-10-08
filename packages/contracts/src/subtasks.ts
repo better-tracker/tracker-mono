@@ -5,7 +5,7 @@
 import { z } from 'zod';
 
 export const subtaskIdSchema = z.uuid();
-const utcDateSchema = z.iso.datetime();
+const utcDateSchema = z.iso.datetime({ offset: false, local: false });
 
 export const subtaskDescriptionSchema = z
   .string()
