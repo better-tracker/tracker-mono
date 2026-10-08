@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="1470" viewBox="0 0 430 1470" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — mobile subtask creation — minimal brutalist palette</title>
+<desc id="desc">Single-column full-screen creation flow with labeled inputs and bottom actions. Parent context remains visible above the subtask form; the project is inherited from the parent. Black text and neutral surfaces throughout. Terracotta marks urgency, sage marks completion, slate blue marks work in progress, and a small mustard marker identifies the next-task section. No decorative colour fills.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="430" height="1470" fill="#000000"/>
+<rect x="4" y="12" width="2" height="1446" fill="#FCFCFA"/>
+<rect x="9" y="12" width="3" height="174" fill="#FCFCFA"/>
+<rect x="14" y="12" width="2" height="1446" fill="#FCFCFA"/>
+<rect x="9" y="340" width="3" height="1116" fill="#FCFCFA"/>
+<rect x="18" y="10" width="402" height="1450" fill="#FCFCFA"/>
+<text x="40" y="43" font-size="13" class="label" text-anchor="start" style="fill:#000000">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" class="label" text-anchor="end" style="fill:#000000">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2"/>
+<text x="40" y="98" font-size="13" class="label" text-anchor="start" style="fill:#000000">← TASKS</text>
+<text x="38" y="165" font-size="60" class="display" text-anchor="start" style="fill:#000000">SUBTASK.</text>
+<text x="40" y="201" font-size="13" class="label" text-anchor="start" style="fill:#000000">INTERFACE SYSTEM / CREATE</text>
+<rect x="40" y="224" width="358" height="16" fill="#000000"/>
+<rect x="40" y="268" width="358" height="148" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="56" y="300" font-size="13" class="label" text-anchor="start" style="fill:#000000">PARENT TASK</text>
+<text x="56" y="338" font-size="28" class="display" text-anchor="start" style="fill:#000000">Review dashboard</text>
+<text x="56" y="369" font-size="28" class="display" text-anchor="start" style="fill:#000000">wireframes</text>
+<text x="56" y="397" font-size="13" class="label" text-anchor="start" style="fill:#000000">DUE TODAY / 11:00</text>
+<text x="40" y="470" font-size="14" class="label" text-anchor="start" style="fill:#000000">SUBTASK TITLE *</text>
+<rect x="40" y="484" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="56" y="518.0" font-size="19" class="body" text-anchor="start" style="fill:#000000">Check mobile spacing</text>
+<text x="40" y="586" font-size="14" class="label" text-anchor="start" style="fill:#000000">NOTES</text>
+<rect x="40" y="600" width="358" height="96" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="56" y="632" font-size="19" class="body" text-anchor="start" style="fill:#000000">Check spacing and tap targets.</text>
+<text x="56" y="657" font-size="18" class="body" text-anchor="start" style="fill:#000000">Include narrow-screen states.</text>
+<text x="40" y="746" font-size="14" class="label" text-anchor="start" style="fill:#000000">ASSIGNED TO</text>
+<rect x="40" y="760" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="56" y="794.0" font-size="19" class="body" text-anchor="start" style="fill:#000000">Ben Morgan</text>
+<path d="M 366 785.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="40" y="862" font-size="14" class="label" text-anchor="start" style="fill:#000000">PRIORITY</text>
+<rect x="40" y="876" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<rect x="56" y="900.0" width="8" height="8" fill="#E07A47"/>
+<text x="74" y="910.0" font-size="19" class="body" text-anchor="start" style="fill:#000000">High</text>
+<path d="M 366 901.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="40" y="978" font-size="14" class="label" text-anchor="start" style="fill:#000000">DUE DATE</text>
+<rect x="40" y="992" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="56" y="1026.0" font-size="19" class="body" text-anchor="start" style="fill:#000000">06 Oct 2026</text>
+<path d="M 366 1017.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="40" y="1094" font-size="14" class="label" text-anchor="start" style="fill:#000000">DUE TIME</text>
+<rect x="40" y="1108" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="56" y="1142.0" font-size="19" class="body" text-anchor="start" style="fill:#000000">10:30</text>
+<path d="M 366 1133.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="40" y="1206" font-size="16" class="body" text-anchor="start" style="fill:#000000">Finish before the parent deadline:</text>
+<text x="40" y="1230" font-size="16" class="body" text-anchor="start" style="fill:#000000">today, 11:00.</text>
+<rect x="40" y="1280" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="3"/>
+<text x="219.0" y="1315.0" font-size="14" class="label" text-anchor="middle" style="fill:#000000">CREATE SUBTASK →</text>
+<rect x="40" y="1356" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="219.0" y="1389.0" font-size="14" class="label" text-anchor="middle" style="fill:#000000">CANCEL</text>
+</svg>

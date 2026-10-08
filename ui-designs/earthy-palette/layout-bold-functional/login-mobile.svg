@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1034" viewBox="0 0 390 1034" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — bold functional login-mobile</title>
+<desc id="desc">Centered full-screen login with black text, labeled fields and no decorative left rail. Functional palette sampled from the provided reference: Dawn urgent/overdue, Greenery complete, Sea in progress, Sand next deadline. Login and profile are monochrome. Colours never style generic actions or decorative form sections. Oversized bold Helvetica Neue headlines, editorial chapter numbers, heavy horizontal black divider bands, stronger borders and restrained hard-offset primary actions. The rail-free layout and task-only colour semantics remain.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="390" height="1034" fill="#FCFCFA" />
+<g id="functional-task-states" /><text x="24" y="42" font-size="12" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">PROJECT TRACKER</text>
+<text x="366" y="42" font-size="12" class="label" text-anchor="end" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">001</text>
+<line x1="24" y1="64" x2="366" y2="64" stroke="#000000" stroke-width="3" />
+<text x="24" y="116" font-size="11.5" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.69" style="font-weight:600;letter-spacing:0.69px">01 / YOUR ACCOUNT</text>
+<text x="21" y="188" font-size="70.7" class="display" text-anchor="start" fill="#000000" font-weight="600" style="font-weight:600">WELCOME</text>
+<text x="21" y="264" font-size="86" class="display" text-anchor="start" fill="#000000" font-weight="600" style="font-weight:600">BACK.</text>
+<text x="24" y="325.0" font-size="20" class="body" text-anchor="start" fill="#000000">Your work, in order.</text>
+<rect id="editorial-divider" x="24.0" y="355" width="342.0" height="12" fill="#000000" /><text x="24" y="411.0" font-size="12" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">EMAIL ADDRESS</text>
+<rect x="24" y="427.0" width="342" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="40" y="458.0" font-size="18" class="body" text-anchor="start" fill="#000000">ben@example.com</text>
+<text x="24" y="525.0" font-size="12" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">PASSWORD</text>
+<rect x="24" y="541.0" width="342" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="40" y="572.0" font-size="18" class="body" text-anchor="start" fill="#000000">••••••••••••</text>
+<rect x="281" y="543.0" width="83" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="322.5" y="574.0" font-size="12" class="label" text-anchor="middle" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">SHOW</text>
+<rect x="24" y="623.0" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="60" y="640.0" font-size="17" class="body" text-anchor="start" fill="#000000">Keep me signed in</text>
+<text x="24" y="699.0" font-size="18" class="body" text-anchor="start" fill="#000000">Forgot password?</text>
+<line x1="24" y1="706.0" x2="169" y2="706.0" stroke="#000000" stroke-width="1.25" />
+<rect id="primary-action-offset" x="28.0" y="751.0" width="342" height="60" fill="#000000" /><rect x="24" y="747.0" width="342" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="3.5" />
+<text x="195.0" y="782.0" font-size="12" class="label" text-anchor="middle" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">SIGN IN →</text>
+<text x="24" y="858.0" font-size="17" class="body" text-anchor="start" fill="#000000">New to Project Tracker?</text>
+<text x="24" y="893.0" font-size="18" class="body" text-anchor="start" fill="#000000">Create account ↗</text>
+<line x1="24" y1="900.0" x2="175" y2="900.0" stroke="#000000" stroke-width="1.25" />
+<line x1="24" y1="955.0" x2="366" y2="955.0" stroke="#000000" stroke-width="1.25" />
+<text x="24" y="991.0" font-size="11.5" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.69" style="font-weight:600;letter-spacing:0.69px">PLAN SMALL. FINISH WELL.</text>
+</svg>
