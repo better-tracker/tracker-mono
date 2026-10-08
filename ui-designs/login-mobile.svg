@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="1020" viewBox="0 0 430 1020" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — mobile login</title>
+<desc id="desc">Full-screen mobile sign-in page with persistent field labels, password visibility, remember-me, password recovery, and a full-width sign-in button. The barcode rail is reduced to preserve form space.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#0A0A0A}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="430" height="1020" fill="#0A0A0A"/>
+<rect x="4" y="12" width="2" height="996" fill="#FCFCFA"/>
+<rect x="9" y="12" width="3" height="174" fill="#FCFCFA"/>
+<rect x="14" y="12" width="2" height="996" fill="#FCFCFA"/>
+<rect x="9" y="340" width="3" height="666" fill="#FCFCFA"/>
+<rect x="18" y="10" width="402" height="1000" fill="#FCFCFA"/>
+<text x="40" y="43" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" class="label" text-anchor="end" style="fill:#0A0A0A">001</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#0A0A0A" stroke-width="2"/>
+<text x="40" y="98" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">01 / YOUR ACCOUNT</text>
+<text x="37" y="179" font-size="66" class="display" text-anchor="start" style="fill:#0A0A0A">WELCOME</text>
+<text x="37" y="244" font-size="66" class="display" text-anchor="start" style="fill:#0A0A0A">BACK.</text>
+<text x="40" y="285" font-size="20" class="body" text-anchor="start" style="fill:#0A0A0A">A clearer next step starts here.</text>
+<rect x="40" y="316" width="358" height="16" fill="#0A0A0A"/>
+<text x="40" y="379" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">EMAIL ADDRESS</text>
+<rect x="40" y="393" width="358" height="56" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="1.5"/>
+<text x="56" y="427.0" font-size="19" class="body" text-anchor="start" style="fill:#0A0A0A">ben@example.com</text>
+<text x="40" y="495" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">PASSWORD</text>
+<rect x="40" y="509" width="358" height="56" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="1.5"/>
+<text x="56" y="543.0" font-size="19" class="body" text-anchor="start" style="fill:#0A0A0A">••••••••••</text>
+<rect x="298" y="510" width="99" height="54" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="1.5"/>
+<text x="347.5" y="542.0" font-size="12" class="label" text-anchor="middle" style="fill:#0A0A0A">SHOW</text>
+<rect x="40" y="596" width="22" height="22" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="1.5"/>
+<path d="M 45 607 l 5 5 l 8 -10" fill="none" stroke="#FCFCFA" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+<text x="77" y="613" font-size="18" class="body" text-anchor="start" style="fill:#0A0A0A">Keep me signed in</text>
+<text x="40" y="666" font-size="18" class="body" text-anchor="start" style="fill:#0A0A0A">Forgot password?</text>
+<line x1="40" y1="674" x2="187" y2="674" stroke="#0A0A0A" stroke-width="1"/>
+<rect x="40" y="711" width="358" height="60" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="1.5"/>
+<text x="219.0" y="746.0" font-size="15" class="label" text-anchor="middle" style="fill:#FCFCFA">SIGN IN →</text>
+<text x="40" y="814" font-size="18" class="body" text-anchor="start" style="fill:#0A0A0A">New here?</text>
+<text x="398" y="814" font-size="18" class="body" text-anchor="end" style="fill:#0A0A0A">Create account ↗</text>
+<rect x="40" y="858" width="358" height="96" fill="#DFFF00"/>
+<text x="56" y="890" font-size="16" class="label" text-anchor="start" style="fill:#0A0A0A">MAKE ROOM FOR WORK.</text>
+<text x="56" y="926" font-size="19" class="body" text-anchor="start" style="fill:#0A0A0A">Plan small. Finish well.</text>
+</svg>

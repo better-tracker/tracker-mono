@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1300" viewBox="0 0 1440 1300" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — alternate profile update web</title>
+<desc id="desc">Horizontal identity header and grouped personal details and preferences. Persistent field labels, explicit save and no left rail.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="1440" height="1300" fill="#FCFCFA"/>
+<text x="56" y="49" font-size="14" class="label" text-anchor="start" fill="#000000">PROJECT TRACKER</text>
+<text x="900" y="49" font-size="12" class="label" text-anchor="start" fill="#000000">TODAY</text>
+<text x="1010" y="49" font-size="12" class="label" text-anchor="start" fill="#000000">PROJECTS</text>
+<text x="1150" y="49" font-size="12" class="label" text-anchor="start" fill="#000000">TASKS</text>
+<text x="1260" y="49" font-size="12" class="label" text-anchor="start" fill="#000000">PROFILE</text>
+<line x1="1260" y1="60" x2="1316" y2="60" stroke="#000000" stroke-width="2"/>
+<line x1="56" y1="78" x2="1384" y2="78" stroke="#000000" stroke-width="2"/>
+<text x="56" y="129" font-size="12" class="label" text-anchor="start" fill="#000000">ACCOUNT / YOUR DETAILS</text>
+<text x="53" y="226" font-size="92" class="display" text-anchor="start" fill="#000000">PROFILE.</text>
+<line x1="56" y1="264" x2="1384" y2="264" stroke="#000000" stroke-width="2"/>
+<g id="identity-horizontal">
+<rect x="56" y="308" width="92" height="92" fill="#FCFCFA" stroke="#000000" stroke-width="2"/>
+<text x="102" y="365" font-size="31" class="label" text-anchor="middle" fill="#000000">BM</text>
+<text x="180" y="343" font-size="40" class="display" text-anchor="start" fill="#000000">Ben Morgan</text>
+<text x="182" y="379" font-size="12" class="label" text-anchor="start" fill="#000000">PRODUCT DESIGNER / BEN@EXAMPLE.COM</text>
+<rect x="972" y="325" width="220" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="1082.0" y="356.0" font-size="13" class="label" text-anchor="middle" fill="#000000">CHANGE PHOTO</text>
+<rect x="1214" y="325" width="170" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="1299.0" y="356.0" font-size="13" class="label" text-anchor="middle" fill="#000000">REMOVE</text>
+<line x1="56" y1="440" x2="1384" y2="440" stroke="#000000" stroke-width="2"/>
+</g>
+<g id="personal-details-left">
+<text x="56" y="489" font-size="12" class="label" text-anchor="start" fill="#000000">01 / PERSONAL DETAILS</text>
+<text x="56" y="544" font-size="12" class="label" text-anchor="start" fill="#000000">FULL NAME</text>
+<rect x="56" y="560" width="634" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="72" y="591" font-size="18" class="body" text-anchor="start" fill="#000000">Ben Morgan</text>
+<text x="56" y="658" font-size="12" class="label" text-anchor="start" fill="#000000">EMAIL ADDRESS</text>
+<rect x="56" y="674" width="634" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="72" y="705" font-size="18" class="body" text-anchor="start" fill="#000000">ben@example.com</text>
+<text x="56" y="751" font-size="17" class="body" text-anchor="start" fill="#000000">Used for sign-in and task notifications.</text>
+<text x="56" y="804" font-size="12" class="label" text-anchor="start" fill="#000000">ROLE / TITLE</text>
+<rect x="56" y="820" width="634" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="72" y="851" font-size="18" class="body" text-anchor="start" fill="#000000">Product designer</text>
+<text x="56" y="918" font-size="12" class="label" text-anchor="start" fill="#000000">BIO</text>
+<rect x="56" y="934" width="634" height="108" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="72" y="965" font-size="18" class="body" text-anchor="start" fill="#000000">Making complex work feel clearer.</text>
+</g>
+<g id="preferences-right">
+<text x="762" y="489" font-size="12" class="label" text-anchor="start" fill="#000000">02 / PREFERENCES</text>
+<text x="762" y="544" font-size="12" class="label" text-anchor="start" fill="#000000">TIMEZONE</text>
+<rect x="762" y="560" width="622" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="778" y="591" font-size="18" class="body" text-anchor="start" fill="#000000">Australia / Melbourne</text>
+<text x="1364" y="591" font-size="20" class="body" text-anchor="end" fill="#000000">⌄</text>
+<text x="762" y="658" font-size="12" class="label" text-anchor="start" fill="#000000">WEEK STARTS ON</text>
+<rect x="762" y="674" width="622" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="778" y="705" font-size="18" class="body" text-anchor="start" fill="#000000">Monday</text>
+<text x="1364" y="705" font-size="20" class="body" text-anchor="end" fill="#000000">⌄</text>
+<text x="762" y="815" font-size="12" class="label" text-anchor="start" fill="#000000">EMAIL NOTIFICATIONS</text>
+<rect x="762" y="847" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="798" y="864" font-size="20" class="body" text-anchor="start" fill="#000000">Task assignment emails</text>
+<rect x="762" y="904" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="798" y="921" font-size="20" class="body" text-anchor="start" fill="#000000">Daily deadline summary</text>
+<path d="M767 858 l5 5 l8 -10" fill="none" stroke="#000000" stroke-width="2"/>
+<path d="M767 915 l5 5 l8 -10" fill="none" stroke="#000000" stroke-width="2"/>
+<text x="762" y="1001" font-size="20" class="body" text-anchor="start" fill="#000000">A small daily summary keeps</text>
+<text x="762" y="1029" font-size="20" class="body" text-anchor="start" fill="#000000">upcoming deadlines in view.</text>
+</g>
+<line x1="56" y1="1105" x2="1384" y2="1105" stroke="#000000" stroke-width="2"/>
+<text x="56" y="1158" font-size="20" class="body" text-anchor="start" fill="#000000">Changes apply after you save.</text>
+<rect x="944" y="1134" width="158" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="1.5"/>
+<text x="1023.0" y="1169.0" font-size="13" class="label" text-anchor="middle" fill="#000000">CANCEL</text>
+<rect x="1132" y="1134" width="252" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="3"/>
+<text x="1258.0" y="1169.0" font-size="13" class="label" text-anchor="middle" fill="#000000">SAVE CHANGES →</text>
+<line x1="56" y1="1225" x2="1384" y2="1225" stroke="#000000" stroke-width="2"/>
+<text x="56" y="1259" font-size="12" class="label" text-anchor="start" fill="#000000">ACCOUNT / UPDATE PROFILE</text>
+<text x="1384" y="1259" font-size="12" class="label" text-anchor="end" fill="#000000">PLAN SMALL. FINISH WELL.</text>
+</svg>
