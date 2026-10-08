@@ -1,5 +1,15 @@
 import base from '../../eslint.config.mjs';
-import next from 'eslint-config-next/core-web-vitals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
-const config = [...next.filter((entry) => entry.name !== 'next/typescript'), ...base];
-export default config;
+export default [
+  ...base,
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      ...reactRefresh.configs.vite.rules,
+    },
+  },
+];
