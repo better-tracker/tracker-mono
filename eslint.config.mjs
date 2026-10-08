@@ -1,7 +1,7 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist/**', '**/.next/**', '**/.expo/**', '**/node_modules/**', '**/next-env.d.ts', '**/expo-env.d.ts'] },
+  { ignores: ['**/dist/**', '**/.expo/**', '**/node_modules/**', '**/expo-env.d.ts'] },
   ...tseslint.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],

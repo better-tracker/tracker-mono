@@ -1,11 +1,10 @@
 # Dependencies
-node_modules/
+**/node_modules/
 .pnpm-store/
 
 # Build output and caches
 dist/
 out/
-.next/
 .expo/
 *.tsbuildinfo
 coverage/

@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Project Tracker",
+    "slug": "project-tracker",
+    "version": "1.0.0",
+    "scheme": "project-tracker",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "expo-router"
+    ],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
