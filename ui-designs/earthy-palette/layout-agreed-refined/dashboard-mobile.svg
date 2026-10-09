@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="1860" viewBox="0 0 430 1860" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — refined agreed design — dashboard-mobile</title>
+<desc id="desc">A restrained revision of the first agreed design group. Original split web layouts, lighter editorial headings, square controls and ample space. No decorative left rail. Task-only colour: Dawn urgency, Greenery completion, Sea progress and Sand next deadline. Account screens remain monochrome.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="430" height="1860" fill="#FCFCFA" /><text x="40" y="43" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" class="label" text-anchor="end" style="fill:#000000" fill="#000000">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2" />
+<text x="37" y="151" font-size="72" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">TODAY.</text>
+<text x="40" y="190" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">TUE / 06 OCT 2026</text>
+<text x="398" y="190" font-size="13" class="label" text-anchor="end" style="fill:#000000" fill="#000000">W41</text>
+<rect x="40" y="220.0" width="358" height="4" fill="#000000" />
+<text x="40" y="270" font-size="11.5" class="label" text-anchor="start" style="fill:#000000" fill="#000000">DUE TODAY</text>
+<text x="40" y="328" font-size="56.0" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">03</text>
+<text x="165" y="270" font-size="11.5" class="label" text-anchor="start" style="fill:#000000" fill="#000000">OVERDUE</text>
+<text x="165" y="328" font-size="56.0" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">02</text>
+<text x="288" y="270" font-size="11.5" class="label" text-anchor="start" style="fill:#000000" fill="#000000">DONE TODAY</text>
+<text x="288" y="328" font-size="56.0" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">01</text>
+<rect x="40" y="361" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="396.0" font-size="15" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">+ NEW TASK</text>
+<rect x="40" y="447" width="358" height="169" fill="#E0A36D" stroke="#000000" stroke-width="1.5" fill-opacity="0.12" />
+<text x="56" y="478" font-size="12" class="label" text-anchor="start" style="fill:#000000" fill="#000000">02 OVERDUE / NEEDS ATTENTION</text>
+<text x="56" y="515" font-size="18" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Publish API documentation</text>
+<text x="56" y="539" font-size="12" class="label" text-anchor="start" style="fill:#000000" fill="#000000">05 OCT / TASK TRACKER ↗</text>
+<line x1="56" y1="553" x2="382" y2="553" stroke="#000000" stroke-width="1" />
+<text x="56" y="580" font-size="18" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Resolve auth edge cases</text>
+<text x="56" y="604" font-size="12" class="label" text-anchor="start" style="fill:#000000" fill="#000000">04 OCT / TASK TRACKER ↗</text>
+<text x="40" y="662" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">01 / TODAY’S DEADLINES</text>
+<line x1="40" y1="680" x2="398" y2="680" stroke="#000000" stroke-width="2" />
+<rect x="40" y="702" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="78" y="721" font-size="21" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Review wireframes</text>
+<text x="78" y="750" font-size="11.5" class="label" text-anchor="start" style="fill:#000000" fill="#000000">INTERFACE SYSTEM</text>
+<rect x="78" y="768" width="147" height="28" fill="#FCFCFA" />
+<rect x="78" y="773" width="4" height="18" fill="#BACDD1" />
+<text x="88" y="787" font-size="12" class="label" text-anchor="start" style="fill:#000000" fill="#000000">IN PROGRESS</text>
+<text x="398" y="788" font-size="25.0" class="display" text-anchor="end" style="fill:#000000" font-weight="400" fill="#000000">11:00</text>
+<line x1="40" y1="813" x2="398" y2="813" stroke="#E3E3DF" stroke-width="1" />
+<rect x="40" y="828" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="78" y="847" font-size="21" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Send progress report</text>
+<text x="78" y="876" font-size="11.5" class="label" text-anchor="start" style="fill:#000000" fill="#000000">BOOTCAMP PORTFOLIO</text>
+<rect x="78" y="894" width="76" height="28" fill="#FCFCFA" />
+<text x="88" y="913" font-size="12" class="label" text-anchor="start" style="fill:#000000" fill="#000000">TO DO</text>
+<text x="398" y="914" font-size="25.0" class="display" text-anchor="end" style="fill:#000000" font-weight="400" fill="#000000">14:30</text>
+<line x1="40" y1="939" x2="398" y2="939" stroke="#E3E3DF" stroke-width="1" />
+<rect x="40" y="954" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="78" y="973" font-size="21" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Finalize onboarding copy</text>
+<text x="78" y="1002" font-size="11.5" class="label" text-anchor="start" style="fill:#000000" fill="#000000">APPLICATION REDESIGN</text>
+<rect x="78" y="1020" width="76" height="28" fill="#FCFCFA" />
+<text x="88" y="1039" font-size="12" class="label" text-anchor="start" style="fill:#000000" fill="#000000">TO DO</text>
+<text x="398" y="1040" font-size="25.0" class="display" text-anchor="end" style="fill:#000000" font-weight="400" fill="#000000">16:00</text>
+<line x1="40" y1="1065" x2="398" y2="1065" stroke="#E3E3DF" stroke-width="1" />
+<rect x="40" y="1094" width="358" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1125.0" font-size="14" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">VIEW ALL TASKS ↗</text>
+<text x="40" y="1190" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">02 / START HERE</text>
+<rect x="40" y="1212" width="358" height="276" fill="#FED07B" stroke="#000000" stroke-width="1.5" fill-opacity="0.12" />
+<rect x="368" y="1178" width="30" height="4" fill="#FED07B" />
+<text x="56" y="1244" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">11:00 / HIGH PRIORITY</text>
+<text x="54" y="1287" font-size="35.0" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">Review dashboard</text>
+<text x="54" y="1326" font-size="35.0" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">wireframes</text>
+<text x="56" y="1361" font-size="12" class="label" text-anchor="start" style="fill:#000000" fill="#000000">INTERFACE SYSTEM</text>
+<rect x="56" y="1390" width="8" height="8" fill="#AEB884" />
+<text x="74" y="1400" font-size="18" class="body" text-anchor="start" style="fill:#000000" fill="#000000">1 of 2 subtasks complete</text>
+<rect x="56" y="1420" width="326" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="1451.0" font-size="14" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">OPEN TASK →</text>
+<text x="40" y="1538" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">03 / PROJECTS IN MOTION</text>
+<line x1="40" y1="1556" x2="398" y2="1556" stroke="#000000" stroke-width="2" />
+<text x="40" y="1594" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Interface system</text>
+<text x="398" y="1594" font-size="19" class="body" text-anchor="end" style="fill:#000000" fill="#000000">74%</text>
+<rect x="40" y="1611" width="358" height="8" fill="#E3E3DF" />
+<rect x="40" y="1611" width="264.92" height="8" fill="#AEB884" />
+<text x="40" y="1672" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Bootcamp portfolio</text>
+<text x="398" y="1672" font-size="19" class="body" text-anchor="end" style="fill:#000000" fill="#000000">48%</text>
+<rect x="40" y="1689" width="358" height="8" fill="#E3E3DF" />
+<rect x="40" y="1689" width="171.84" height="8" fill="#AEB884" />
+<rect x="18" y="1758" width="402" height="92" fill="#FCFCFA" />
+<line x1="40" y1="1758" x2="398" y2="1758" stroke="#000000" stroke-width="2" />
+<rect x="40.0" y="1770" width="89.5" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2.5" />
+<text x="84.75" y="1803" font-size="11.5" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">TODAY</text>
+<text x="174.25" y="1803" font-size="11.5" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">PROJECTS</text>
+<text x="263.75" y="1803" font-size="11.5" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">TASKS</text>
+<text x="353.25" y="1803" font-size="11.5" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">PROFILE</text>
+</svg>

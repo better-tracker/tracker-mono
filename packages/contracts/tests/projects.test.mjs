@@ -28,7 +28,7 @@ import {
     projectResponseSchema,
     projectUpdateSchema,
     projectListResponseSchema
-} from '../dist/projects.js';
+} from '@project-tracker/contracts';
 
 test('accepts valid project data', () => {
     const result = projectCreateSchema.safeParse({

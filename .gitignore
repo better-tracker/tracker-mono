@@ -1,14 +1,16 @@
 # Dependencies
-node_modules/
+**/node_modules/
 .pnpm-store/
 
 # Build output and caches
 dist/
 out/
-.next/
 .expo/
 *.tsbuildinfo
 coverage/
+.vitest/
+playwright-report/
+test-results/
 
 # Local environment files (keep the documented example)
 .env

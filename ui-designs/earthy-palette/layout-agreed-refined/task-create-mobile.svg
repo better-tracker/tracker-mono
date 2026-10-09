@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="1670" viewBox="0 0 430 1670" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — refined agreed design — task-create-mobile</title>
+<desc id="desc">A restrained revision of the first agreed design group. Original split web layouts, lighter editorial headings, square controls and ample space. No decorative left rail. Task-only colour: Dawn urgency, Greenery completion, Sea progress and Sand next deadline. Account screens remain monochrome.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="430" height="1670" fill="#FCFCFA" /><text x="40" y="43" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" class="label" text-anchor="end" style="fill:#000000" fill="#000000">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2" />
+<text x="40" y="98" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">← TASKS</text>
+<text x="38" y="165" font-size="56" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">NEW TASK.</text>
+<text x="40" y="201" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">INTERFACE SYSTEM / CREATE</text>
+<rect x="40" y="230.0" width="358" height="4" fill="#000000" />
+<text x="40" y="278" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">01 / TASK DETAILS</text>
+<text x="398" y="278" font-size="12" class="label" text-anchor="end" style="fill:#000000" fill="#000000">* REQUIRED</text>
+<text x="40" y="321" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">TASK TITLE *</text>
+<rect x="40" y="335" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="369.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Review dashboard wireframes</text>
+<text x="40" y="437" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">PROJECT *</text>
+<rect x="40" y="451" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="485.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Interface system</text>
+<path d="M 366 476.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="553" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">ASSIGNED TO</text>
+<rect x="40" y="567" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="601.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Ben Morgan</text>
+<path d="M 366 592.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="669" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">DESCRIPTION</text>
+<rect x="40" y="683" width="358" height="96" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="715" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Review layout and hierarchy.</text>
+<text x="56" y="740" font-size="18" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Check accessibility on all devices.</text>
+<text x="40" y="829" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">PRIORITY</text>
+<rect x="40" y="843" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<rect x="56" y="867.0" width="8" height="8" fill="#E0A36D" />
+<text x="74" y="877.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">High</text>
+<path d="M 366 868.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="945" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">DUE DATE</text>
+<rect x="40" y="959" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="993.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">06 Oct 2026</text>
+<path d="M 366 984.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="1061" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">DUE TIME</text>
+<rect x="40" y="1075" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="1109.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">11:00</text>
+<path d="M 366 1100.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="1186" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">SUBTASKS / 02 DRAFTS</text>
+<rect x="40" y="1208" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1" />
+<text x="54" y="1243" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">01</text>
+<text x="91" y="1243" font-size="18" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Audit desktop layout</text>
+<text x="375" y="1244" font-size="24" class="body" text-anchor="middle" style="fill:#000000" fill="#000000">×</text>
+<rect x="40" y="1270" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1" />
+<text x="54" y="1305" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">02</text>
+<text x="91" y="1305" font-size="18" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Review empty states</text>
+<text x="375" y="1306" font-size="24" class="body" text-anchor="middle" style="fill:#000000" fill="#000000">×</text>
+<rect x="40" y="1346" width="358" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1377.0" font-size="14" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">+ ADD SUBTASK</text>
+<text x="40" y="1432" font-size="17" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Save once. Keep every step together.</text>
+<rect x="40" y="1476" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="1511.0" font-size="15" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">CREATE TASK →</text>
+<rect x="40" y="1552" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1585.0" font-size="14" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">CANCEL</text>
+</svg>

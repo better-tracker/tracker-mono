@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": [
+      "jest",
+      "node"
+    ],
+    "allowJs": true,
+    "checkJs": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "jest.config.cjs",
+    "babel.config.cjs"
+  ]
+}

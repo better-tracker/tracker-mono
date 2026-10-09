@@ -14,11 +14,16 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "lint": "eslint src",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "pnpm run build && node --test tests/*.test.mjs"
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
+    "test": "pnpm run build && node --test tests/*.test.mjs",
+    "test:watch": "node scripts/watch.mjs",
+    "test:coverage": "pnpm run build && node scripts/coverage.mjs"
   },
   "dependencies": {
     "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.4"
   }
 }

@@ -14,14 +14,22 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "lint": "eslint src",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "migrate": "npm run build && node --env-file=../../.env dist/migrate.js"
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
+    "migrate": "npm run build && node --env-file=../../.env dist/migrate.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "vitest run"
   },
   "dependencies": {
     "pg": "^8.23.0"
   },
   "devDependencies": {
-    "@types/pg": "^8.23.1"
+    "@testcontainers/postgresql": "12.2.0",
+    "@types/node": "22.20.4",
+    "@types/pg": "^8.23.1",
+    "@vitest/coverage-v8": "5.0.3",
+    "vitest": "5.0.3"
   }
 }
