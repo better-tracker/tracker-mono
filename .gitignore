@@ -8,6 +8,9 @@ out/
 .expo/
 *.tsbuildinfo
 coverage/
+.vitest/
+playwright-report/
+test-results/
 
 # Local environment files (keep the documented example)
 .env

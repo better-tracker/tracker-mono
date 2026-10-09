@@ -19,3 +19,31 @@ jobs:
       - run: pnpm lint
       - run: pnpm build
       - run: pnpm typecheck
+      - run: pnpm test:coverage
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fast-test-coverage
+          path: |
+            apps/*/coverage/
+            packages/*/coverage/
+          if-no-files-found: warn
+  database-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Testcontainers owns the database; do not start the development Compose stack.
+      - run: pnpm --filter @project-tracker/database run test:coverage
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: database-test-coverage
+          path: packages/database/coverage/
+          if-no-files-found: warn

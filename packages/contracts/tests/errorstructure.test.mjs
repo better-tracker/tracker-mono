@@ -9,7 +9,7 @@ test currently checked:
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { errorResponseSchema } from '../dist/errorstructure.js';
+import { errorResponseSchema } from '@project-tracker/contracts';
 
 test('accepst a valid error response', () => {
     const result = errorResponseSchema.safeParse({
