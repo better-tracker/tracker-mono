@@ -27,7 +27,7 @@ import {
     subtaskUpdateSchema,
     subtaskResponseSchema,
     subtaskListResponseSchema
-} from '../dist/subtasks.js';
+} from '@project-tracker/contracts';
 
 test('accepts valid subtask data', () => {
     const result = subtaskCreateSchema.safeParse({

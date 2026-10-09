@@ -13,7 +13,7 @@ pnpm --filter @project-tracker/contracts test
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { userCreateSchema } from '../dist/users.js';
+import { userCreateSchema } from '@project-tracker/contracts';
 
 test('accepts valid user data', () => {
     const result = userCreateSchema.safeParse({
