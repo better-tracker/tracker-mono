@@ -1,59 +1,80 @@
 # Database — packages/database
 
-Purpose: permanently store projects and subtasks using PostgreSQL.
+Purpose: store projects, subtasks, and users in PostgreSQL. Read the
+[status conventions](README.md) and [issue map](github-issues.md) first.
 
-## HBNB comparison: persistence layer
-- [PlaceRepository](/Users/ben/holberton-bootcamp/holbertonschool-hbnb/app/persistence/place_repository.py) reads/writes places; our project repository will read/write projects.
-- HBNB app/models/place.py defines SQLAlchemy columns and relationships.
-- Our SQL migrations will define tables and relationships; no ORM is chosen yet.
-- HBNB app/seeds/ supplies example records, just as our seed script will.
-- Services call repositories; repositories handle storage, not HTTP responses.
+## Implemented
 
-## 1. Start the database and create tables
-Requirements:
-- [ ] Start PostgreSQL using the existing compose.yml (command below).
-- [ ] Create a projects table and a subtasks table. A table stores rows of data.
-- [ ] Give every row a UUID: a unique ID such as the ones in the contracts example.
-- [ ] Give each subtask a project_id that points to an existing project.
-- [ ] Decide which fields are required and what their default values should be.
-- [ ] Decide whether deleting a project also deletes its subtasks or is blocked.
-- [ ] Add indexes (database lookup helpers) where needed, such as on project_id.
-- [ ] Store dates with time zones so the API can return unambiguous dates.
-- [ ] Add migrations: numbered SQL files that create or change tables.
-- [ ] Add a command that applies new migrations and remembers which have already run.
-- [ ] Keep the ORM decision for later; begin with SQL.
+- [x] Define projects, subtasks, and users tables in numbered SQL migrations —
+  [#9](https://github.com/better-tracker/tracker-mono/issues/9) (closed).
+  Evidence: [001](../packages/database/migrations/001_create_projects_and_subtasks.sql)
+  and [002](../packages/database/migrations/002_create_users.sql).
+- [x] Generate UUIDs in PostgreSQL, default subtasks to incomplete, and store
+  project/subtask timestamps as `TIMESTAMPTZ`.
+- [x] Require an existing project for each subtask, cascade project deletion to its
+  subtasks, and index `subtasks.project_id`.
+- [x] Require unique usernames/emails; allow nullable profile pictures. The users
+  table requires a password value, but does not itself implement hashing.
+- [x] Apply pending migrations in filename order, record applied files, skip
+  reruns, and roll back failed migrations —
+  [#10](https://github.com/better-tracker/tracker-mono/issues/10) (closed).
+  Evidence: [migrate.ts](../packages/database/src/migrate.ts) and the `migrate`
+  command in [package.json](../packages/database/package.json).
+- [x] Close migration-runner connections and keep migration imports free of
+  automatic connections/settings reads.
+- [x] Use SQL/pg without an ORM and keep database imports out of client apps.
+- [x] Provide local PostgreSQL in [compose.yml](../compose.yml) and integration
+  tests in [migrations.test.ts](../packages/database/tests/integration/migrations.test.ts).
+  All 6 tests passed in this audit; this does not verify the development Compose
+  instance is running or healthy.
 
-Suggested fields (this is a plan, not executable SQL):
-```text
-projects: id, name, description, created_at
-subtasks: id, project_id, completed, description, created_at, updated_at
-completed is true or false; its default is false.
-```
-Start PostgreSQL from the project root:
-```sh
-docker compose up -d postgres
-```
-Acceptance criteria (how to check it works):
-- [ ] PostgreSQL is healthy and reachable on localhost:5432.
-- [ ] Migrations create tables in a new database without repeating finished changes.
-- [ ] A subtask cannot refer to a missing project; project deletion follows our agreed rule.
+## Partial implementation
 
-## 2. Connect to the database and add example data
-Requirements:
-- [ ] Add src/client.ts to open reusable connections using the DATABASE_URL setting.
-- [ ] Add src/repositories/projects.repository.ts and subtasks.repository.ts.
-- [ ] Put functions for creating, reading, updating, and deleting records there.
-- [ ] Pass user values as SQL parameters; never join user text into SQL commands.
-- [ ] Use a transaction when several writes must all succeed or all be undone.
-- [ ] Add src/seed.ts: a script that inserts one project and two example subtasks.
-- [ ] Make one example subtask complete and the other incomplete.
-- [ ] Only server code may use this package; web and mobile must call the API.
+- [ ] Provide a reusable API database connection via `DATABASE_URL` —
+  [#11](https://github.com/better-tracker/tracker-mono/issues/11) is **closed**, but
+  only the migration runner opens a pool. There is no `src/client.ts`, the package
+  entry point is `export {}`, and the API has no database dependency.
+  Reconcile the ticket with this checkout before treating it as complete.
+- [ ] Apply agreed field constraints consistently. SQL permits a null subtask
+  description and has no text-length/nonblank checks; the shared schemas require
+  nonblank descriptions up to 2000 characters and names up to 255 characters.
+  No matching follow-up ticket found; related table work is #9.
 
-Acceptance criteria:
-- [ ] Running the seed script twice does not create duplicate example records.
-- [ ] Tests use a test database to check saving, reading, and table relationships.
-- [ ] Database connections close when the API shuts down.
+## Remaining work
+
+- [ ] Add user database functions/repository —
+  [#12](https://github.com/better-tracker/tracker-mono/issues/12) (closed; code missing).
+- [ ] Add project CRUD/list repository functions —
+  [#13](https://github.com/better-tracker/tracker-mono/issues/13) (closed; code missing).
+- [ ] Add subtask CRUD/list functions scoped to their project —
+  [#14](https://github.com/better-tracker/tracker-mono/issues/14) (closed; code missing).
+- [ ] Parameterize user values in repository SQL. Parameterized migration queries
+  and test inserts exist, but product repository queries do not.
+- [ ] Use transactions when related product writes must succeed or fail together.
+  Migration transactions are already implemented under #10.
+- [ ] Add idempotent seed data: one project and two subtasks, one complete and one
+  incomplete — [#15](https://github.com/better-tracker/tracker-mono/issues/15)
+  (closed; no seed file or command exists).
+- [ ] Ensure subtask edits update `updated_at`. SQL only sets its creation default;
+  no update repository or trigger exists. Related: #14 and
+  [#22](https://github.com/better-tracker/tracker-mono/issues/22).
+- [ ] Implement password hashing before saving user passwords; never persist
+  plaintext. Related: #12 and
+  [#20](https://github.com/better-tracker/tracker-mono/issues/20).
+- [ ] Close the reusable pool when the API shuts down. Migration pool cleanup does
+  not implement API pool cleanup. Related: #11 and
+  [#19](https://github.com/better-tracker/tracker-mono/issues/19).
+
+## Acceptance checks still needed
+
+- [ ] Start local PostgreSQL with `docker compose up -d postgres` and verify it is
+  healthy/reachable on `localhost:5432`.
+- [ ] Test repository saving, reading, updating, deletion, and project scoping
+  against an isolated test database. Existing tests cover migrations/constraints.
+- [ ] Run seeding twice without duplicate examples.
+- [ ] Verify API persistence across restart and connection cleanup on shutdown.
 
 ## Technical documentation — NO AI Allowed
+
 - [ ] Write packages/database/README.md manually. Explain tables, relationships,
   setup, migration and seed commands, and how to reset local data.
