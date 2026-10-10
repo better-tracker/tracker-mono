@@ -1,49 +1,53 @@
 # Web application — apps/web
 
-Purpose: let users manage projects and subtasks in a browser.
+Purpose: manage projects and subtasks in a browser. The current app is
+**React with Vite**, replacing the older Next.js plan. Product screens are absent;
+[App.tsx](../apps/web/src/App.tsx) only shows “Web application is running.”
 
-## HBNB comparison: browser presentation layer
-- HBNB client/ HTML pages and JavaScript display data and handle user input.
-- [places-page.js](/Users/ben/holberton-bootcamp/holbertonschool-hbnb/client/js/core/pages/places-page.js) builds place cards; our React screens will display projects.
-- HBNB screens call places-api.js; our screens will call packages/api-client.
-- React components will update the page instead of manually creating HTML elements.
-- The screen shows results; server services enforce rules and repositories save data.
+No matching web feature issue was found among the repository's 20 issues.
+The API/client tickets below are dependencies, not web implementation tickets.
 
-## Build the first screens
-Requirements:
-- [ ] Use packages/contracts for data rules and packages/api-client for server calls.
-- [ ] Read the API address from NEXT_PUBLIC_API_URL for browser-side calls.
-  This setting is public: never put passwords or secret keys in it.
-- [ ] Show a project list, a form to create projects, and a project details page.
-- [ ] Allow editing and deleting projects; ask for confirmation before deleting.
-- [ ] Show subtasks and let users add, edit, complete, and delete them.
-- [ ] When using PUT, send all editable fields, not just the changed field.
-- [ ] Show a loading message while waiting and an empty message when no records exist.
-- [ ] Show success messages and clear errors for invalid input or failed requests.
-- [ ] Label form fields and make controls usable with a keyboard.
-- [ ] Prevent repeated clicks from saving twice; refresh displayed data after saving.
+## Implemented scaffolding
 
-Suggested pages:
-```text
-/                Project list and create action
-/projects/[id]   One project and its subtasks; [id] is the project's ID
-```
-Example values from a create-project form:
-```ts
-const values = {
-  name: 'Build project tracker',
-  description: 'First working feature',
-};
-```
-The server adds the new project's ID and creation date.
+- [x] Configure the React/Vite entry point and static production build in
+  [package.json](../apps/web/package.json) and [vite.config.ts](../apps/web/vite.config.ts).
+  The production build passed during this audit.
+- [x] Declare dependencies on contracts and the shared API client.
+- [x] Provide a public `VITE_API_URL` example in
+  [.env.example](../apps/web/.env.example). It is currently unused; future browser
+  code should read `import.meta.env.VITE_API_URL`. Never put secrets in `VITE_*`.
+- [x] Configure Vitest/Testing Library/MSW and Playwright. No unit or browser
+  workflow test files exist yet.
 
-Acceptance criteria (how to check it works):
-- [ ] Create a project, refresh the page, and confirm it still appears.
-- [ ] Complete a subtask, reload the page, and confirm it stays complete.
-- [ ] Invalid input explains what to fix; a failed request lets the user try again.
-- [ ] Add a browser test that creates a project and completes a subtask.
-- [ ] The production build serves the page and its JavaScript, styles, and images.
+## Remaining work — no matching feature ticket
+
+- [ ] Use the shared client/contracts in actual screens. Depends on
+  [#23](https://github.com/better-tracker/tracker-mono/issues/23),
+  [#25](https://github.com/better-tracker/tracker-mono/issues/25),
+  [#26](https://github.com/better-tracker/tracker-mono/issues/26), and
+  [#27](https://github.com/better-tracker/tracker-mono/issues/27).
+- [ ] Read the app-local API URL and configure browser access with API CORS
+  ([#19](https://github.com/better-tracker/tracker-mono/issues/19)).
+- [ ] Build the project list/create workflow at `/` and detail/subtask workflow at
+  `/projects/:id`; choose routing suitable for Vite rather than Next.js `page.tsx`.
+- [ ] Allow project editing/deletion with deletion confirmation.
+- [ ] Show subtasks and allow adding, editing, completing, and deleting them.
+- [ ] Send all editable fields on PUT, including unchanged fields.
+- [ ] Show loading, empty, success, invalid-input, and connection-error states.
+- [ ] Label fields and make controls usable with a keyboard.
+- [ ] Prevent duplicate submissions, refresh saved data, and preserve input for retry.
+
+## Acceptance checks still needed
+
+- [ ] Create a project, refresh, and confirm it remains saved.
+- [ ] Complete a subtask, reload, and confirm it stays complete.
+- [ ] Verify actionable validation messages and retry after failed requests.
+- [ ] Add a browser test that creates a project and completes a subtask; run
+  `pnpm test:e2e`. Persistent API behavior is required first.
+- [ ] Verify the production preview serves the workflow and its JavaScript, styles,
+  and images. Building the starter is verified; the product workflow is not.
 
 ## Technical documentation — NO AI Allowed
+
 - [ ] Write apps/web/README.md manually. Explain startup, settings, pages,
   how screens call the API, and how to run the browser tests.

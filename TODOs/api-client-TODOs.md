@@ -1,55 +1,46 @@
 # API client — packages/api-client
 
-Purpose: reusable functions that let web and mobile call the Fastify server.
-This is different from a database client: it sends HTTP requests, not SQL.
+Purpose: share HTTP calls between web and mobile. This calls Fastify rather than
+PostgreSQL. The [entry point](../packages/api-client/src/index.ts) is `export {}`;
+none of the request functions are implemented.
 
-## HBNB comparison: calling the server from a screen
-- [places-api.js](/Users/ben/holberton-bootcamp/holbertonschool-hbnb/client/js/core/api/places-api.js) has getPlace(id); our client will have getProjectById(...).
-- HBNB client/js/core/api/client.js sends fetch requests and handles errors.
-- This package will share that kind of code between web and mobile.
-- It is not HBnBFacade: the client calls the server; the facade runs inside the server.
+## Implemented scaffolding
 
-## Build functions that call the API
-Requirements:
-- [ ] Add @project-tracker/contracts as a workspace:* dependency in package.json.
-  workspace:* means use the package from this repository.
-- [ ] Accept the server address from the app, such as http://localhost:3001.
-- [ ] Add functions to list, create, read, update, and delete projects and subtasks.
-- [ ] Encode IDs in URLs and set Content-Type: application/json when sending JSON.
-- [ ] Check response status and data shape; return helpful errors when calls fail.
-- [ ] Do not read JSON from a 204 response because that response has no body.
-- [ ] Allow an app to cancel a request it no longer needs.
-- [ ] Keep database and platform-specific code out so both apps can use this package.
+- [x] Provide a cross-platform package boundary without database/platform imports.
+- [x] Configure Vitest and MSW in [package.json](../packages/api-client/package.json),
+  [vitest.config.ts](../packages/api-client/vitest.config.ts), and
+  [tests/setup.ts](../packages/api-client/tests/setup.ts). No feature tests exist.
 
-Example function (a guide, not ready-to-run code):
-```ts
-import { ProjectSchema, type Project } from '@project-tracker/contracts';
+## Remaining work linked to tickets
 
-async function getProjectById(baseUrl: string, id: string): Promise<Project> {
-  const url = new URL(`/v1/projects/${encodeURIComponent(id)}`, baseUrl);
-  const response = await fetch(url); // Send a GET request to Fastify.
-  if (!response.ok) {
-    throw new Error(`Could not load project: HTTP ${response.status}`);
-  }
-  const data = await response.json(); // Read the response data.
-  return ProjectSchema.parse(data); // Check its shape before returning it.
-}
-```
-Project and ProjectSchema must first be created in packages/contracts.
-The parse method is an example; use the method from our chosen validation tool.
-Promise<Project> means the function eventually returns project data or throws an error.
+- [ ] Set up the shared HTTP client —
+  [#23](https://github.com/better-tracker/tracker-mono/issues/23) (open).
+  Add `@project-tracker/contracts` as a `workspace:*` dependency; accept the app's
+  API base URL, encode IDs in URLs, and set JSON Content-Type for JSON bodies.
+- [ ] Implement user list/create/read/update/delete calls —
+  [#24](https://github.com/better-tracker/tracker-mono/issues/24) (open).
+- [ ] Implement project list/create/read/update/delete calls —
+  [#25](https://github.com/better-tracker/tracker-mono/issues/25) (open).
+- [ ] Implement nested subtask list/create/read/update/delete/completion calls —
+  [#26](https://github.com/better-tracker/tracker-mono/issues/26) (open).
+  Completion updates must send both fields required by the subtask PUT schema.
+- [ ] Check HTTP status and response schemas; provide useful server/network errors —
+  [#27](https://github.com/better-tracker/tracker-mono/issues/27) (open).
+- [ ] Treat 204 as success without attempting to read JSON. Related: #23 and #27.
+- [ ] Accept request cancellation signals and propagate cancellation predictably.
+  Related client foundation: #23; the ticket body does not explicitly mention
+  cancellation, so confirm that detail when implementing it.
+- [ ] Keep the completed client free of database and platform-specific dependencies.
 
-Example call, using a real project ID saved in the database:
-```ts
-const project = await getProjectById('http://localhost:3001', id);
-```
+## Acceptance checks still needed
 
-Acceptance criteria (how to check it works):
-- [ ] Web and mobile use the same functions, each supplying its server address.
-- [ ] Tests cover successful calls, wrong response data, server errors, and failed connections.
-- [ ] A delete returning 204 succeeds without trying to read JSON.
-- [ ] Cancelled requests stop and are handled without crashing the app.
+- [ ] Have both apps use the same client functions with their own API addresses.
+- [ ] Add tests for valid responses, invalid data, non-success statuses, and failed
+  connections. Related: #24–#27.
+- [ ] Verify bodyless 204 deletion and cancellation handling without app crashes.
+- [ ] Verify complete PUT payloads and encoded URL IDs.
 
 ## Technical documentation — NO AI Allowed
+
 - [ ] Write packages/api-client/README.md manually. Explain setup, function inputs,
   returned data, errors, cancellation, and examples for web and mobile.

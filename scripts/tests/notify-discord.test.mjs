@@ -36,7 +36,7 @@ test('includes the PR link, repository, author, actor, and branches without allo
 });
 
 test('supports every configured action and distinguishes merges, closures, and drafts', () => {
-  for (const action of ['opened', 'reopened', 'synchronize', 'edited', 'ready_for_review', 'converted_to_draft', 'closed']) {
+  for (const action of ['opened', 'reopened', 'edited', 'ready_for_review', 'converted_to_draft', 'closed']) {
     assert.ok(buildDiscordMessage(event(action)));
   }
   assert.equal(buildDiscordMessage(event('closed', { merged: true, state: 'closed' })).embeds[0].description,
@@ -45,9 +45,9 @@ test('supports every configured action and distinguishes merges, closures, and d
   assert.equal(buildDiscordMessage(event('opened', { draft: true })).embeds[0].fields[3].value, 'Draft');
 });
 
-test('ignores other target branches, unrelated events, and unsupported actions', async () => {
+test('ignores new commits, other target branches, unrelated events, and unsupported actions', async () => {
   const fetchImpl = () => { throw new Error('Must not send'); };
-  for (const input of [event('opened', { base: { ref: 'develop' } }), event('labeled'), event('toString'), { action: 'ping' }]) {
+  for (const input of [event('synchronize'), event('opened', { base: { ref: 'develop' } }), event('labeled'), event('toString'), { action: 'ping' }]) {
     assert.equal(buildDiscordMessage(input), null);
     assert.equal(await notifyDiscord(input, undefined, { fetchImpl }), false);
   }

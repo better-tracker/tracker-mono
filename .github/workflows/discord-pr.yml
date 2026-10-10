@@ -3,7 +3,7 @@ name: Discord pull request notifications
 on:
   pull_request_target:
     branches: [main]
-    types: [opened, reopened, synchronize, edited, ready_for_review, converted_to_draft, closed]
+    types: [opened, reopened, edited, ready_for_review, converted_to_draft, closed]
 
 permissions:
   contents: read
@@ -21,6 +21,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 24
+          # This job runs a dependency-free Node script; pnpm is not installed.
+          package-manager-cache: false
       - name: Send pull request notification
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
