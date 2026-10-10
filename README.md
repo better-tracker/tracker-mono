@@ -98,37 +98,3 @@ empty. The database package is reserved for server code; lint disallows importin
 it from web, mobile, or shared client packages. No ORM, authentication, tables,
 placeholder tests, deployment configuration, or cloud resources are included.
 GitHub Actions installs with the frozen root lockfile and runs all three checks.
-
-## Discord pull request notifications
-
-`.github/workflows/discord-pr.yml` sends Discord webhook messages for every PR
-targeting `main`, including fork PRs. It notifies on opening, reopening, new
-commits, title/body/base edits, becoming ready for review, conversion to draft,
-and closing. Merged PRs are reported as **merged**, separately from closed PRs.
-Each message includes the PR title/link, repository, author, actor, and branches.
-Mentions are disabled so PR text cannot ping Discord users or roles.
-
-1. In the destination Discord channel, create a webhook under **Edit Channel →
-   Integrations → Webhooks**, then copy its URL.
-2. In `better-tracker/tracker-mono`, open **Settings → Secrets and variables →
-   Actions → New repository secret**. Set `DISCORD_WEBHOOK_URL` to that URL.
-3. Merge the workflow and notification script into the repository's default
-   branch. Open or update a PR targeting `main` and check the Discord channel
-   and the **Discord pull request notifications** Actions run.
-
-The workflow uses `pull_request_target` to access the webhook secret for fork
-PRs. It checks out only the trusted default branch and never executes PR code.
-GitHub Actions event policies must allow `pull_request_target` for this workflow;
-see [GitHub's event policy guidance](https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target).
-The webhook URL belongs only in the Actions secret, never in committed files or
-public application environment variables. No API deployment or GitHub repository
-webhook configuration is needed.
-
-Missing/invalid secrets and failed Discord requests fail the notification job.
-Rate limits up to 60 seconds and server errors receive up to three attempts;
-longer rate limits require rerunning the failed workflow later. Requests have a
-10-second timeout and wait for Discord to confirm delivery. Manually rerunning a
-successful notification can send a duplicate message.
-
-Run the notification tests with `node --test scripts/tests/notify-discord.test.mjs`.
-They also run with `pnpm test` and `pnpm check`, using mocked Discord requests.
