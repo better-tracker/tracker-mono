@@ -4,7 +4,6 @@ import { setTimeout as delay } from 'node:timers/promises';
 const actions = {
   opened: 'opened',
   reopened: 'reopened',
-  synchronize: 'updated with new commits',
   edited: 'edited',
   ready_for_review: 'ready for review',
   converted_to_draft: 'converted to draft',

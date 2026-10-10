@@ -3,7 +3,7 @@ name: Discord pull request notifications
 on:
   pull_request_target:
     branches: [main]
-    types: [opened, reopened, synchronize, edited, ready_for_review, converted_to_draft, closed]
+    types: [opened, reopened, edited, ready_for_review, converted_to_draft, closed]
 
 permissions:
   contents: read
