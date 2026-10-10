@@ -13,11 +13,13 @@ const suites = [
 ];
 
 /** @param {string[]} args */
-function run(args) {
-  const result = spawnSync('pnpm', args, { cwd: root, stdio: 'inherit' });
+function run(args, command = 'pnpm') {
+  const result = spawnSync(command, args, { cwd: root, stdio: 'inherit' });
   if (result.error) throw result.error;
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
+
+run(['--test', 'scripts/tests/notify-discord.test.mjs'], process.execPath);
 
 run(['--filter', '@project-tracker/contracts', '--filter', '@project-tracker/api-client', 'run', 'build']);
 
