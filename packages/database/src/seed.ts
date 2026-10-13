@@ -6,7 +6,7 @@ import { createSubtask } from "./repositories/subtaskRepo.js";
 async function seed() {
   try {
     // Create a user
-    const user = await createUser({
+    await createUser({
       user_name: "Lachlan",
       email: "lachlan@example.com",
       passwordHash: "hashed_password_here",
