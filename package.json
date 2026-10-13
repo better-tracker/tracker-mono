@@ -11,9 +11,13 @@
     "dev:api": "pnpm --filter @project-tracker/api dev",
     "dev:mobile": "pnpm --filter @project-tracker/mobile start",
     "build": "pnpm -r --if-present build",
-    "lint": "pnpm -r --if-present lint",
+    "lint": "eslint eslint.config.mjs scripts && pnpm -r --if-present lint",
     "typecheck": "pnpm -r typecheck",
-    "check": "pnpm lint && pnpm typecheck && pnpm build"
+    "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test",
+    "test": "node scripts/test.mjs",
+    "test:coverage": "node scripts/test.mjs --coverage",
+    "test:integration": "pnpm --filter @project-tracker/database run test:integration",
+    "test:e2e": "pnpm --filter @project-tracker/web run test:e2e"
   },
   "devDependencies": {
     "typescript": "6.0.3",

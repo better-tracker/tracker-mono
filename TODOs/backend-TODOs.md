@@ -1,59 +1,90 @@
 # Backend — apps/api
 
-Purpose: receive requests from apps, work with stored data, and send responses.
-Fastify is the library that runs this HTTP server.
+Purpose: handle HTTP requests, apply rules, and return stored records. Route
+registration and temporary responses are implemented; persistent CRUD is not.
 
-## HBNB comparison: presentation and business logic
-- [places.py](/Users/ben/holberton-bootcamp/holbertonschool-hbnb/app/api/v1/places.py) receives HTTP requests; our routes/controllers will do that presentation-layer work.
-- HBnBFacade coordinates rules and repositories; projects.service.ts will serve a similar role.
-- HBNB also puts rules in models; keep our business rules in server code, not only in forms.
-- Fastify is the HTTP framework, like Flask; it is not itself the facade.
+## Implemented
 
-## 1. Keep the server easy to run and test
-Requirements:
-- [ ] Keep app.ts for setting up Fastify and server.ts for starting it.
-- [ ] Keep existing JSON logs, 0.0.0.0 listening, and clean shutdown behaviour.
-  0.0.0.0 lets devices reach the server; clean shutdown closes resources on exit.
-- [ ] Add src/config/env.ts to check settings such as DATABASE_URL when needed.
-- [ ] Use port 3001 by default; PORT=6969 selects the earlier example's port.
-- [ ] If the browser calls the API directly, allow its address with CORS settings.
-  CORS controls which other website addresses a browser can make calls from.
-- [ ] Return helpful errors without exposing passwords or internal server details.
+- [x] Separate [app.ts](../apps/api/src/app.ts) setup from
+  [server.ts](../apps/api/src/server.ts) startup.
+- [x] Keep JSON logs, listen on `0.0.0.0`, and close Fastify on SIGINT/SIGTERM.
+- [x] Validate PORT in [env.ts](../apps/api/src/config/env.ts); default to 3001 and
+  accept overrides such as 6969. Tests instantiate the app without a live port.
+- [x] Register project, subtask, and user routes with controllers. Related:
+  [#21](https://github.com/better-tracker/tracker-mono/issues/21),
+  [#22](https://github.com/better-tracker/tracker-mono/issues/22),
+  [#20](https://github.com/better-tracker/tracker-mono/issues/20).
+- [x] Provide Fastify `inject()` routing/lifecycle tests and PORT tests in
+  [tests/unit](../apps/api/tests/unit). All 24 passed during this audit.
+  Registered handlers use 200/201/204, and DELETE returns no body.
 
-Acceptance criteria (how to check it works):
-- [ ] Bad settings produce a clear error; tests can create the app without a live port.
+Registered URLs (all currently backed by temporary controllers):
 
-## 2. Add URLs for projects and subtasks
-Requirements:
-- [ ] Register projects.routes.ts in app.ts and check input using shared schemas.
-- [ ] Use repository functions to read/write the database; start with simple handlers.
-- [ ] Use the controller and service files when separating the work helps readability.
-- [ ] Check a subtask belongs to the project in the URL before reading or changing it.
-- [ ] Set createdAt on creation; change a subtask's updatedAt whenever it is edited.
+| Resource | Collection methods | Item methods |
+| --- | --- | --- |
+| `/v1/projects` | GET, POST | GET, PUT, DELETE at `/:id` |
+| `/v1/projects/:projectId/subtasks` | GET, POST | GET, PUT, DELETE at `/:id` |
+| `/v1/users` | GET, POST | GET, PUT, DELETE at `/:id` |
 
-Proposed routes (:id and :projectId are replaced with real IDs):
-```text
-GET    /v1/projects                         List projects
-POST   /v1/projects                         Create a project
-GET    /v1/projects/:id                     Read one project
-PUT    /v1/projects/:id                     Replace editable project fields
-DELETE /v1/projects/:id                     Delete a project
-GET    /v1/projects/:projectId/subtasks      List a project's subtasks
-POST   /v1/projects/:projectId/subtasks      Create a subtask
-GET    /v1/projects/:projectId/subtasks/:id   Read a subtask
-PUT    /v1/projects/:projectId/subtasks/:id   Replace editable subtask fields
-DELETE /v1/projects/:projectId/subtasks/:id   Delete a subtask
-```
-Acceptance criteria:
-- [ ] Reading/updating returns 200 (success); creating returns 201 (created).
-- [ ] Deleting returns 204 (success with no response body).
-- [ ] Invalid input returns 400; missing records return 404; unexpected errors return 500.
-- [ ] PUT requires all editable fields agreed in the contracts checklist.
-- [ ] Use Fastify's inject() to test requests without starting a live server.
-- [ ] Test valid requests, bad input, missing IDs, and subtasks under the wrong project.
-- [ ] Test with a database and confirm saved changes remain after API restart.
+## Partial implementation
+
+- [ ] Finish configuration —
+  [#19](https://github.com/better-tracker/tracker-mono/issues/19) (open).
+  PORT validation exists; `DATABASE_URL` validation, a database pool, CORS, and
+  a shared safe error handler do not.
+- [ ] Finish persistent project CRUD —
+  [#21](https://github.com/better-tracker/tracker-mono/issues/21) (open).
+  [Controllers](../apps/api/src/modules/projects/projects.controller.ts) return
+  empty lists or fixed/echoed values; creates use `temporary-id`; writes save nothing.
+- [ ] Finish persistent subtask CRUD/completion —
+  [#22](https://github.com/better-tracker/tracker-mono/issues/22) (open).
+  [Controllers](../apps/api/src/modules/subtasks/subtasks.controller.ts) return
+  temporary data and do not verify the URL's project/subtask relationship.
+- [ ] Finish persistent user CRUD —
+  [#20](https://github.com/better-tracker/tracker-mono/issues/20) (open).
+  [Controllers](../apps/api/src/modules/users/users.controller.ts) generate a UUID
+  on create but save nothing; reads return a temporary user.
+- [ ] Finish runtime validation —
+  [#30](https://github.com/better-tracker/tracker-mono/issues/30) (open).
+  All POST/PUT routes now call shared Zod body schemas in `preValidation`, so the
+  ticket's original claim of no runtime schemas is stale. However, parsed output
+  is discarded, UUID parameters are unchecked, and Zod failures have no 400 mapping.
+  Project/subtask controllers also duplicate body types instead of shared DTOs.
+
+## Remaining work
+
+- [ ] Connect controllers/services to database repositories. Service files contain
+  only comments. Related: #20–#22; database dependencies are in
+  [#11–#14](database-TODOs.md).
+- [ ] Return server-generated IDs/dates and schema-valid responses, including
+  project detail subtasks. Related: #21 and #22.
+- [ ] Update subtask `updatedAt` on every edit; check project membership before
+  reading, updating, or deleting a subtask. Related: #22.
+- [ ] Return 400 for invalid bodies/IDs, 404 for missing records, and a safe shared
+  500 error for unexpected failures. Related: #19, #20–#22, #30.
+- [ ] Require all agreed editable PUT fields and pass parsed/normalized data into
+  handlers. Body schemas require fields already; correct error handling and
+  normalization are still needed. Related: #30 and #20.
+- [ ] Configure allowed browser origins and clean up the database pool on shutdown.
+  Related: #19 and #11.
+- [ ] Implement safe user password storage before persistent user creation.
+  Related: #20 and #12; user CRUD alone does not add login or authorization.
+
+## Acceptance checks still needed
+
+- [ ] Test invalid/missing/wrong-type bodies and malformed UUIDs with `inject()`.
+- [ ] Test missing IDs and subtasks addressed under another project.
+- [ ] Test persistent CRUD with PostgreSQL and verify data after API restart.
+- [ ] Test response schema conformity, safe error details, and CORS behavior.
+- [ ] Keep success statuses 200/201 and bodyless 204 after persistence is added.
+
+Audit probes reproduced invalid project creation returning **500**, malformed
+project IDs returning **200**, accepted names retaining surrounding whitespace,
+and a created project not appearing in the following list request. Existing
+routing tests pass because they exercise the temporary handlers.
 
 ## Technical documentation — NO AI Allowed
+
 - [ ] Write apps/api/README.md manually: startup, settings, and how requests are handled.
 - [ ] Write apps/api/docs/endpoints.md manually: URLs, input/output examples,
   response status codes, and instructions for trying requests locally.

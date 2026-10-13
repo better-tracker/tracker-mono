@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker dashboard — web</title>
+<desc id="desc">Brutalist task analytics dashboard with weekly metrics, activity heatmap, proportional project map, and upcoming task ledger.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#0A0A0A}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.105em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="1600" height="1040" fill="#0A0A0A"/>
+<rect x="0" y="0" width="64" height="1040" fill="#0A0A0A"/>
+<rect x="7" y="20" width="3" height="1000" fill="white"/>
+<rect x="16" y="20" width="5" height="186" fill="white"/>
+<rect x="23" y="20" width="2" height="1000" fill="white"/>
+<rect x="33" y="20" width="7" height="402" fill="white"/>
+<rect x="45" y="20" width="3" height="1000" fill="white"/>
+<rect x="55" y="20" width="6" height="178" fill="white"/>
+<rect x="12" y="380" width="3" height="310" fill="white"/>
+<rect x="31" y="520" width="4" height="500" fill="white"/>
+<rect x="53" y="668" width="6" height="352" fill="white"/>
+<rect x="64" y="18" width="1518" height="1004" fill="#FCFCFA"/>
+<text x="104" y="57" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">PROJECT TRACKER / 001</text>
+<text x="1095" y="57" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">OVERVIEW</text>
+<text x="1245" y="57" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">PROJECTS</text>
+<text x="1378" y="57" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">TASKS</text>
+<text x="1540" y="57" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">30.09.26</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#0A0A0A" stroke-width="2"/>
+<text x="94" y="190" font-size="124" class="display" text-anchor="start" style="fill:#0A0A0A">OVERVIEW.</text>
+<text x="1540" y="179" font-size="113" class="display" text-anchor="end" style="fill:#0A0A0A">W39</text>
+<text x="104" y="225" font-size="15" class="label" text-anchor="start" style="fill:#0A0A0A">YOUR WORK / THIS WEEK / 30 SEPTEMBER 2026</text>
+<rect x="104" y="252" width="1436" height="26" fill="#0A0A0A"/>
+<line x1="794" y1="305" x2="794" y2="969" stroke="#0A0A0A" stroke-width="2"/>
+<text x="104" y="314" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">01 / WEEKLY SIGNAL</text>
+<text x="777" y="314" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">LAST 7 DAYS</text>
+<line x1="104" y1="327" x2="777" y2="327" stroke="#0A0A0A" stroke-width="2"/>
+<text x="104" y="358" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">COMPLETED</text>
+<text x="104" y="420" font-size="60" class="display" text-anchor="start" style="fill:#0A0A0A">43</text>
+<text x="104" y="448" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">↑ 12%</text>
+<line x1="258" y1="345" x2="258" y2="456" stroke="#B7B7B4" stroke-width="1"/>
+<text x="273" y="358" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">IN PROGRESS</text>
+<text x="273" y="420" font-size="60" class="display" text-anchor="start" style="fill:#0A0A0A">08</text>
+<text x="273" y="448" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">ACTIVE</text>
+<line x1="427" y1="345" x2="427" y2="456" stroke="#B7B7B4" stroke-width="1"/>
+<text x="442" y="358" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">OVERDUE</text>
+<text x="442" y="420" font-size="60" class="display" text-anchor="start" style="fill:#0A0A0A">02</text>
+<text x="442" y="448" font-size="13" class="label" text-anchor="start" style="fill:#FF6645">NEEDS ACTION</text>
+<line x1="596" y1="345" x2="596" y2="456" stroke="#B7B7B4" stroke-width="1"/>
+<text x="611" y="358" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">FOCUS TIME</text>
+<text x="611" y="420" font-size="60" class="display" text-anchor="start" style="fill:#0A0A0A">13.5</text>
+<text x="611" y="448" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">HOURS</text>
+<line x1="104" y1="477" x2="777" y2="477" stroke="#0A0A0A" stroke-width="2"/>
+<text x="104" y="526" font-size="52" class="display" text-anchor="start" style="fill:#0A0A0A">ACTIVITY</text>
+<text x="104" y="551" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">TASKS COMPLETED / LAST 25 WEEKS</text>
+<text x="104" y="574" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">APR</text>
+<text x="218" y="574" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">MAY</text>
+<text x="332" y="574" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">JUN</text>
+<text x="446" y="574" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">JUL</text>
+<text x="560" y="574" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">AUG</text>
+<rect x="104" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="104" y="609" width="16" height="16" fill="#989894"/>
+<rect x="104" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="104" y="647" width="16" height="16" fill="#989894"/>
+<rect x="104" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="104" y="685" width="16" height="16" fill="#989894"/>
+<rect x="104" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="123" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="123" y="609" width="16" height="16" fill="#0A0A0A"/>
+<rect x="123" y="628" width="16" height="16" fill="#989894"/>
+<rect x="123" y="647" width="16" height="16" fill="#D2D2CE"/>
+<rect x="123" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="123" y="685" width="16" height="16" fill="#0A0A0A"/>
+<rect x="123" y="704" width="16" height="16" fill="#989894"/>
+<rect x="142" y="590" width="16" height="16" fill="#989894"/>
+<rect x="142" y="609" width="16" height="16" fill="#0A0A0A"/>
+<rect x="142" y="628" width="16" height="16" fill="#0A0A0A"/>
+<rect x="142" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="142" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="142" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="142" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="161" y="590" width="16" height="16" fill="#D2D2CE"/>
+<rect x="161" y="609" width="16" height="16" fill="#0A0A0A"/>
+<rect x="161" y="628" width="16" height="16" fill="#FF6645"/>
+<rect x="161" y="647" width="16" height="16" fill="#989894"/>
+<rect x="161" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="161" y="685" width="16" height="16" fill="#D2D2CE"/>
+<rect x="161" y="704" width="16" height="16" fill="#0A0A0A"/>
+<rect x="180" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="180" y="609" width="16" height="16" fill="#0A0A0A"/>
+<rect x="180" y="628" width="16" height="16" fill="#989894"/>
+<rect x="180" y="647" width="16" height="16" fill="#D2D2CE"/>
+<rect x="180" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="180" y="685" width="16" height="16" fill="#989894"/>
+<rect x="180" y="704" width="16" height="16" fill="#D2D2CE"/>
+<rect x="199" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="199" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="199" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="199" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="199" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="199" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="199" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="218" y="590" width="16" height="16" fill="#989894"/>
+<rect x="218" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="218" y="628" width="16" height="16" fill="#D2D2CE"/>
+<rect x="218" y="647" width="16" height="16" fill="#989894"/>
+<rect x="218" y="666" width="16" height="16" fill="#0A0A0A"/>
+<rect x="218" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="218" y="704" width="16" height="16" fill="#D2D2CE"/>
+<rect x="237" y="590" width="16" height="16" fill="#D2D2CE"/>
+<rect x="237" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="237" y="628" width="16" height="16" fill="#989894"/>
+<rect x="237" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="237" y="666" width="16" height="16" fill="#0A0A0A"/>
+<rect x="237" y="685" width="16" height="16" fill="#D2D2CE"/>
+<rect x="237" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="256" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="256" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="256" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="256" y="647" width="16" height="16" fill="#0A0A0A"/>
+<rect x="256" y="666" width="16" height="16" fill="#0A0A0A"/>
+<rect x="256" y="685" width="16" height="16" fill="#989894"/>
+<rect x="256" y="704" width="16" height="16" fill="#989894"/>
+<rect x="275" y="590" width="16" height="16" fill="#0A0A0A"/>
+<rect x="275" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="275" y="628" width="16" height="16" fill="#D2D2CE"/>
+<rect x="275" y="647" width="16" height="16" fill="#989894"/>
+<rect x="275" y="666" width="16" height="16" fill="#0A0A0A"/>
+<rect x="275" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="275" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="294" y="590" width="16" height="16" fill="#989894"/>
+<rect x="294" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="294" y="628" width="16" height="16" fill="#989894"/>
+<rect x="294" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="294" y="666" width="16" height="16" fill="#989894"/>
+<rect x="294" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="294" y="704" width="16" height="16" fill="#0A0A0A"/>
+<rect x="313" y="590" width="16" height="16" fill="#D2D2CE"/>
+<rect x="313" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="313" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="313" y="647" width="16" height="16" fill="#0A0A0A"/>
+<rect x="313" y="666" width="16" height="16" fill="#989894"/>
+<rect x="313" y="685" width="16" height="16" fill="#FF6645"/>
+<rect x="313" y="704" width="16" height="16" fill="#D2D2CE"/>
+<rect x="332" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="332" y="609" width="16" height="16" fill="#E8E8E5"/>
+<rect x="332" y="628" width="16" height="16" fill="#D2D2CE"/>
+<rect x="332" y="647" width="16" height="16" fill="#D2D2CE"/>
+<rect x="332" y="666" width="16" height="16" fill="#989894"/>
+<rect x="332" y="685" width="16" height="16" fill="#0A0A0A"/>
+<rect x="332" y="704" width="16" height="16" fill="#0A0A0A"/>
+<rect x="351" y="590" width="16" height="16" fill="#0A0A0A"/>
+<rect x="351" y="609" width="16" height="16" fill="#D2D2CE"/>
+<rect x="351" y="628" width="16" height="16" fill="#989894"/>
+<rect x="351" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="351" y="666" width="16" height="16" fill="#989894"/>
+<rect x="351" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="351" y="704" width="16" height="16" fill="#D2D2CE"/>
+<rect x="370" y="590" width="16" height="16" fill="#989894"/>
+<rect x="370" y="609" width="16" height="16" fill="#D2D2CE"/>
+<rect x="370" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="370" y="647" width="16" height="16" fill="#0A0A0A"/>
+<rect x="370" y="666" width="16" height="16" fill="#989894"/>
+<rect x="370" y="685" width="16" height="16" fill="#D2D2CE"/>
+<rect x="370" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="389" y="590" width="16" height="16" fill="#D2D2CE"/>
+<rect x="389" y="609" width="16" height="16" fill="#D2D2CE"/>
+<rect x="389" y="628" width="16" height="16" fill="#D2D2CE"/>
+<rect x="389" y="647" width="16" height="16" fill="#D2D2CE"/>
+<rect x="389" y="666" width="16" height="16" fill="#D2D2CE"/>
+<rect x="389" y="685" width="16" height="16" fill="#989894"/>
+<rect x="389" y="704" width="16" height="16" fill="#989894"/>
+<rect x="408" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="408" y="609" width="16" height="16" fill="#D2D2CE"/>
+<rect x="408" y="628" width="16" height="16" fill="#0A0A0A"/>
+<rect x="408" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="408" y="666" width="16" height="16" fill="#D2D2CE"/>
+<rect x="408" y="685" width="16" height="16" fill="#0A0A0A"/>
+<rect x="408" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="427" y="590" width="16" height="16" fill="#0A0A0A"/>
+<rect x="427" y="609" width="16" height="16" fill="#D2D2CE"/>
+<rect x="427" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="427" y="647" width="16" height="16" fill="#0A0A0A"/>
+<rect x="427" y="666" width="16" height="16" fill="#D2D2CE"/>
+<rect x="427" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="427" y="704" width="16" height="16" fill="#989894"/>
+<rect x="446" y="590" width="16" height="16" fill="#989894"/>
+<rect x="446" y="609" width="16" height="16" fill="#D2D2CE"/>
+<rect x="446" y="628" width="16" height="16" fill="#D2D2CE"/>
+<rect x="446" y="647" width="16" height="16" fill="#D2D2CE"/>
+<rect x="446" y="666" width="16" height="16" fill="#D2D2CE"/>
+<rect x="446" y="685" width="16" height="16" fill="#D2D2CE"/>
+<rect x="446" y="704" width="16" height="16" fill="#D2D2CE"/>
+<rect x="465" y="590" width="16" height="16" fill="#D2D2CE"/>
+<rect x="465" y="609" width="16" height="16" fill="#989894"/>
+<rect x="465" y="628" width="16" height="16" fill="#0A0A0A"/>
+<rect x="465" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="465" y="666" width="16" height="16" fill="#D2D2CE"/>
+<rect x="465" y="685" width="16" height="16" fill="#989894"/>
+<rect x="465" y="704" width="16" height="16" fill="#0A0A0A"/>
+<rect x="484" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="484" y="609" width="16" height="16" fill="#989894"/>
+<rect x="484" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="484" y="647" width="16" height="16" fill="#989894"/>
+<rect x="484" y="666" width="16" height="16" fill="#D2D2CE"/>
+<rect x="484" y="685" width="16" height="16" fill="#0A0A0A"/>
+<rect x="484" y="704" width="16" height="16" fill="#D2D2CE"/>
+<rect x="503" y="590" width="16" height="16" fill="#0A0A0A"/>
+<rect x="503" y="609" width="16" height="16" fill="#989894"/>
+<rect x="503" y="628" width="16" height="16" fill="#D2D2CE"/>
+<rect x="503" y="647" width="16" height="16" fill="#DFFF00"/>
+<rect x="503" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="503" y="685" width="16" height="16" fill="#E8E8E5"/>
+<rect x="503" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="522" y="590" width="16" height="16" fill="#D2D2CE"/>
+<rect x="522" y="609" width="16" height="16" fill="#989894"/>
+<rect x="522" y="628" width="16" height="16" fill="#0A0A0A"/>
+<rect x="522" y="647" width="16" height="16" fill="#E8E8E5"/>
+<rect x="522" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="522" y="685" width="16" height="16" fill="#D2D2CE"/>
+<rect x="522" y="704" width="16" height="16" fill="#989894"/>
+<rect x="541" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="541" y="609" width="16" height="16" fill="#989894"/>
+<rect x="541" y="628" width="16" height="16" fill="#E8E8E5"/>
+<rect x="541" y="647" width="16" height="16" fill="#989894"/>
+<rect x="541" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="541" y="685" width="16" height="16" fill="#989894"/>
+<rect x="541" y="704" width="16" height="16" fill="#E8E8E5"/>
+<rect x="560" y="590" width="16" height="16" fill="#E8E8E5"/>
+<rect x="560" y="609" width="16" height="16" fill="#0A0A0A"/>
+<rect x="560" y="628" width="16" height="16" fill="#989894"/>
+<rect x="560" y="647" width="16" height="16" fill="#D2D2CE"/>
+<rect x="560" y="666" width="16" height="16" fill="#E8E8E5"/>
+<rect x="560" y="685" width="16" height="16" fill="#0A0A0A"/>
+<rect x="560" y="704" width="16" height="16" fill="#989894"/>
+<text x="626" y="628" font-size="72" class="display" text-anchor="start" style="fill:#0A0A0A">38</text>
+<text x="627" y="649" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">ACTIVE DAYS</text>
+<text x="626" y="715" font-size="64" class="display" text-anchor="start" style="fill:#0A0A0A">09</text>
+<text x="627" y="735" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">CURRENT STREAK</text>
+<line x1="104" y1="752" x2="777" y2="752" stroke="#0A0A0A" stroke-width="2"/>
+<text x="104" y="798" font-size="49" class="display" text-anchor="start" style="fill:#0A0A0A">UP NEXT</text>
+<text x="777" y="797" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">03 / PRIORITIZED</text>
+<line x1="104" y1="811" x2="777" y2="811" stroke="#0A0A0A" stroke-width="2"/>
+<text x="104" y="842" font-size="17" class="body" text-anchor="start" style="fill:#0A0A0A">01</text>
+<text x="149" y="842" font-size="20" class="body" text-anchor="start" style="fill:#0A0A0A">Finalize dashboard states</text>
+<text x="149" y="862" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">TASK TRACKER</text>
+<text x="777" y="842" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">TODAY 16:00</text>
+<line x1="104" y1="871" x2="777" y2="871" stroke="#E8E8E5" stroke-width="1"/>
+<text x="104" y="900" font-size="17" class="body" text-anchor="start" style="fill:#0A0A0A">02</text>
+<text x="149" y="900" font-size="20" class="body" text-anchor="start" style="fill:#0A0A0A">Review sprint notes</text>
+<text x="149" y="920" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">PORTFOLIO</text>
+<text x="777" y="900" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">THU 10:00</text>
+<line x1="104" y1="929" x2="777" y2="929" stroke="#E8E8E5" stroke-width="1"/>
+<text x="104" y="958" font-size="17" class="body" text-anchor="start" style="fill:#0A0A0A">03</text>
+<text x="149" y="958" font-size="20" class="body" text-anchor="start" style="fill:#0A0A0A">Prepare project demo</text>
+<text x="149" y="978" font-size="12" class="label" text-anchor="start" style="fill:#0A0A0A">INTERFACE SYSTEM</text>
+<text x="777" y="958" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">FRI 14:00</text>
+<line x1="104" y1="987" x2="777" y2="987" stroke="#E8E8E5" stroke-width="1"/>
+<text x="819" y="314" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">02 / PROJECT LOAD</text>
+<text x="1540" y="314" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">43 OPEN TASKS</text>
+<line x1="819" y1="327" x2="1540" y2="327" stroke="#0A0A0A" stroke-width="2"/>
+<text x="819" y="378" font-size="49" class="display" text-anchor="start" style="fill:#0A0A0A">WORK BY PROJECT</text>
+<text x="819" y="401" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">SHARE OF ACTIVE TASKS / THIS WEEK</text>
+<rect x="819" y="418" width="303" height="395" fill="#DFFF00"/>
+<rect x="1130" y="418" width="410" height="190" fill="#B9EAF6"/>
+<rect x="1130" y="616" width="223" height="197" fill="#D5F3FA"/>
+<rect x="1361" y="616" width="179" height="121" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="2"/>
+<rect x="1361" y="745" width="179" height="68" fill="#FF6645"/>
+<text x="840" y="454" font-size="22" class="label" text-anchor="start" style="fill:#0A0A0A">TASK TRACKER</text>
+<text x="840" y="781" font-size="77" class="display" text-anchor="start" style="fill:#0A0A0A">18</text>
+<text x="1088" y="784" font-size="18" class="label" text-anchor="end" style="fill:#0A0A0A">42%</text>
+<text x="1150" y="454" font-size="21" class="label" text-anchor="start" style="fill:#0A0A0A">PORTFOLIO</text>
+<text x="1150" y="586" font-size="57" class="display" text-anchor="start" style="fill:#0A0A0A">12</text>
+<text x="1518" y="586" font-size="17" class="label" text-anchor="end" style="fill:#0A0A0A">28%</text>
+<text x="1148" y="651" font-size="18" class="label" text-anchor="start" style="fill:#0A0A0A">INTERFACE</text>
+<text x="1148" y="789" font-size="52" class="display" text-anchor="start" style="fill:#0A0A0A">07</text>
+<text x="1332" y="790" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">16%</text>
+<text x="1376" y="647" font-size="17" class="label" text-anchor="start" style="fill:#0A0A0A">DOCS</text>
+<text x="1376" y="718" font-size="36" class="display" text-anchor="start" style="fill:#0A0A0A">04</text>
+<text x="1525" y="718" font-size="13" class="label" text-anchor="end" style="fill:#0A0A0A">09%</text>
+<text x="1376" y="772" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">OVERDUE</text>
+<text x="1523" y="796" font-size="28" class="display" text-anchor="end" style="fill:#0A0A0A">02</text>
+<line x1="819" y1="843" x2="1540" y2="843" stroke="#0A0A0A" stroke-width="2"/>
+<text x="819" y="879" font-size="40" class="display" text-anchor="start" style="fill:#0A0A0A">42%</text>
+<text x="922" y="878" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">OF OPEN WORK IS IN TASK TRACKER</text>
+<text x="819" y="920" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">PRIORITY VIEW</text>
+<text x="1540" y="920" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">PROJECTS / 04    •    OVERDUE / 02</text>
+<line x1="104" y1="986" x2="1540" y2="986" stroke="#0A0A0A" stroke-width="2"/>
+<text x="104" y="1009" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">OVERVIEW / 01</text>
+<text x="1540" y="1009" font-size="13" class="label" text-anchor="end" style="fill:#0A0A0A">SCAN THE WEEK  →  CHOOSE THE NEXT TASK</text>
+</svg>

@@ -3,7 +3,7 @@
 Minimal TypeScript workspace. No product functionality is implemented.
 
 ```text
-apps/web          Next.js App Router (standalone production output)
+apps/web          React + TypeScript with Vite (static production output)
 apps/api          Fastify server (no routes)
 apps/mobile       Expo SDK 57 + Expo Router, iOS and Android
 packages/contracts   Empty shared API schemas/types boundary
@@ -44,12 +44,17 @@ The mobile project also supports native development builds through Expo; no nati
 projects or custom native modules are included.
 
 `.env.example` documents the future integration settings. For Compose, copy it to
-root `.env`. Export `PORT` in your shell to override the API port. Next.js loads
-app-local `.env.local` in `apps/web`; Expo loads app-local `.env` in `apps/mobile`.
+root `.env`. Export `PORT` in your shell to override the API port. For web settings,
+copy `apps/web/.env.example` to `apps/web/.env.local`; Vite loads app-local `.env`
+and `.env.local`. Expo loads app-local `.env` in `apps/mobile`.
 The application commands do not automatically load the root `.env`.
 Public API URLs are reserved and currently unused. For a physical mobile device,
 use your computer's LAN IP; for the Android emulator use `10.0.2.2` instead of
-`localhost`. Never put secrets in `NEXT_PUBLIC_*` or `EXPO_PUBLIC_*` values.
+`localhost`. Never put secrets in `VITE_*` or `EXPO_PUBLIC_*` values. Future web
+code reads `import.meta.env.VITE_API_URL`; Vite embeds public values at build time,
+so rebuild the web app when changing production settings.
+
+The web dev and preview servers use port 3000 and fail if it is already occupied.
 
 ```sh
 cp .env.example .env
@@ -83,10 +88,10 @@ pnpm --filter @project-tracker/mobile exec expo export --platform all
 ```
 
 After building, `pnpm --filter @project-tracker/api start` runs the compiled API.
-`pnpm --filter @project-tracker/web start` runs the standalone Next.js server.
-The build copies static assets (and `public` if later added) into
-`.next/standalone/apps/web` for future container use. The tracing root covers the
-entire monorepo; deploy the entire `.next/standalone` tree.
+`pnpm --filter @project-tracker/web preview` serves the built web app locally at
+`http://localhost:3000`; `start` is an alias for that local preview.
+The web build produces static files in `apps/web/dist`. Deploy that directory
+with a static host; Vite preview is only for local verification.
 
 Contracts, API client, database integration, and API routes are intentionally
 empty. The database package is reserved for server code; lint disallows importing

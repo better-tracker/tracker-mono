@@ -1,56 +1,65 @@
 # Shared data rules — packages/contracts
 
-Purpose: make the API, web, and mobile agree on what data looks like.
-A schema checks actual values. A DTO type tells TypeScript the expected shape.
+Purpose: agree on actual API values and their TypeScript types. Schemas describe
+requests/responses; database tables and server access rules remain separate.
 
-## HBNB comparison: request and response schemas
-- [schemas/place.py](/Users/ben/holberton-bootcamp/holbertonschool-hbnb/app/api/v1/schemas/place.py) defines fields received and returned by the HBNB API.
-- Our shared schemas will do similar checks and provide TypeScript types to both apps.
-- These are API data shapes, not database models like HBNB app/models/place.py.
-- Example: check a name is text here; check who may edit a project in server business logic.
-- HBNB's PUT allows partial fields; our proposed PUT requires all editable fields instead.
+## Implemented
 
-## Define request and response data
-Requirements:
-- [ ] Add src/projects.ts and src/subtasks.ts, and export their schemas and types.
-- [ ] Choose a validation tool; derive TypeScript types from its schemas if possible.
-- [ ] Define data for creating, reading, updating, and listing projects and subtasks.
-- [ ] Require a project name and subtask description; reject blank or overly long text.
-- [ ] Check that IDs are valid UUIDs; use UTC date strings as shown below.
-- [ ] Let the server create IDs and dates; do not ask users to supply them.
-- [ ] List the editable fields. For PUT, require all fields used to replace that data.
-- [ ] Use one error shape, such as { error: { code, message } }.
-- [ ] Keep database and screen code out of this package.
+- [x] Use Zod and infer TypeScript DTOs from exported runtime schemas.
+- [x] Define create, update, detail, and list project data —
+  [#17](https://github.com/better-tracker/tracker-mono/issues/17) (closed).
+  Evidence: [projects.ts](../packages/contracts/src/projects.ts).
+- [x] Define create, update, detail, and list subtask data —
+  [#18](https://github.com/better-tracker/tracker-mono/issues/18) (closed).
+  Evidence: [subtasks.ts](../packages/contracts/src/subtasks.ts).
+- [x] Define user schemas/types —
+  [#16](https://github.com/better-tracker/tracker-mono/issues/16) (closed).
+  Evidence: [users.ts](../packages/contracts/src/users.ts).
+- [x] Trim and require nonblank project names (1–255 characters) and subtask
+  descriptions (1–2000). Project descriptions are nullable, optional on create,
+  and limited to 2000 characters.
+- [x] Validate UUID IDs and UTC project/subtask date strings. Create schemas do not
+  require client-supplied IDs/dates. User responses omit passwords and dates.
+- [x] Require both editable fields on project PUT (`name`, `description`) and
+  subtask PUT (`description`, `completed`). Subtask creation defaults to incomplete.
+- [x] Define `{ error: { code, message } }` in
+  [errorstructure.ts](../packages/contracts/src/errorstructure.ts).
+- [x] Export schemas/types through [index.ts](../packages/contracts/src/index.ts)
+  without database or screen dependencies.
+- [x] Test valid/invalid values, boundaries, lists, dates, and exports. All 67
+  [contract tests](../packages/contracts/tests) passed during this audit.
 
-Acceptance criteria (how to check it works):
-- [ ] Tests accept valid data and reject wrong values, such as an empty name.
-- [ ] Apps reuse these definitions instead of writing their own copies.
-- [ ] It is clear which fields each request needs and each response returns.
+## Partial implementation and remaining adoption
 
-Example response when reading a project (proposed):
-```json
-{
-  "id": "11111111-1111-4111-8111-111111111111",
-  "name": "Build project tracker",
-  "description": "First working feature",
-  "subtasks": [
-    {
-      "id": "22222222-2222-4222-8222-222222222222",
-      "completed": false,
-      "description": "Create database tables",
-      "createdAt": "2024-06-01T00:00:00.000Z",
-      "updatedAt": "2024-06-01T00:00:00.000Z"
-    }
-  ],
-  "createdAt": "2024-06-01T00:00:00.000Z"
-}
-```
-Example request to add a subtask; the project ID goes in the URL:
-```json
-{ "completed": false, "description": "Create database tables" }
-```
-The Z at the end of a date means UTC, a shared time reference.
+- [ ] Use the schemas' **parsed output** in API handlers, and consistently return
+  validation errors as 400. POST/PUT hooks parse bodies but discard the result;
+  path IDs are unchecked. Related:
+  [#30](https://github.com/better-tracker/tracker-mono/issues/30),
+  [#20](https://github.com/better-tracker/tracker-mono/issues/20).
+- [ ] Return API responses matching these schemas. Temporary project/subtask
+  responses lack dates, project detail lacks `subtasks`, and creation uses
+  `temporary-id`. Related:
+  [#21](https://github.com/better-tracker/tracker-mono/issues/21),
+  [#22](https://github.com/better-tracker/tracker-mono/issues/22).
+- [ ] Reuse contracts in the client and app flows. Dependencies exist in both
+  apps, but client implementation/screens do not. Related:
+  [#23](https://github.com/better-tracker/tracker-mono/issues/23),
+  [#24](https://github.com/better-tracker/tracker-mono/issues/24),
+  [#25](https://github.com/better-tracker/tracker-mono/issues/25),
+  [#26](https://github.com/better-tracker/tracker-mono/issues/26).
+- [ ] Adopt the shared error shape across API/client. Defining a schema does not
+  make Fastify emit it. Related:
+  [#19](https://github.com/better-tracker/tracker-mono/issues/19),
+  [#27](https://github.com/better-tracker/tracker-mono/issues/27).
+- [ ] Align SQL subtask description constraints with the contracts. No matching
+  follow-up ticket found; see [database checklist](database-TODOs.md).
+
+## Acceptance checks still needed
+
+- [ ] Verify API responses pass their shared response schemas.
+- [ ] Verify API/client/apps reuse agreed definitions throughout real workflows.
 
 ## Technical documentation — NO AI Allowed
+
 - [ ] Write packages/contracts/README.md manually. Explain each request and response,
   required fields, data checks, error messages, and date format.

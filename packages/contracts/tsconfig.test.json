@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "noEmit": true,
+    "types": [
+      "node"
+    ],
+    "allowJs": true,
+    "checkJs": true,
+    "paths": {
+      "@project-tracker/contracts": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "tests/**/*.mjs",
+    "scripts/**/*.mjs"
+  ]
+}
