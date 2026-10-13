@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1312" viewBox="0 0 1440 1312" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — bold functional task-create-web</title>
+<desc id="desc">Full-screen creation with top context, persistent input labels and explicit save. Desktop task and subtask drafts share columns; mobile stacks steps. No left rail. Functional palette sampled from the provided reference: Dawn urgent/overdue, Greenery complete, Sea in progress, Sand next deadline. Login and profile are monochrome. Colours never style generic actions or decorative form sections. Oversized bold Helvetica Neue headlines, editorial chapter numbers, heavy horizontal black divider bands, stronger borders and restrained hard-offset primary actions. The rail-free layout and task-only colour semantics remain.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="1440" height="1312" fill="#FCFCFA" />
+<g id="functional-task-states"><rect id="dawn-high-priority" x="479" y="940.0" width="80" height="29" fill="#E0A36D" fill-opacity="0.36" /></g><text x="56" y="49" font-size="14" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.84" style="font-weight:600;letter-spacing:0.84px">PROJECT TRACKER</text>
+<text x="900" y="49" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">TODAY</text>
+<text x="1010" y="49" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">PROJECTS</text>
+<text x="1150" y="49" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">TASKS</text>
+<line x1="1150" y1="60" x2="1190" y2="60" stroke="#000000" stroke-width="3" />
+<text x="1260" y="49" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">PROFILE</text>
+<line x1="56" y1="78" x2="1384" y2="78" stroke="#000000" stroke-width="3" />
+<text x="56" y="129" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">← TASKS / CREATE</text>
+<text x="53" y="254" font-size="128" class="display" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="-7.68" style="font-weight:600;letter-spacing:-7.68px">NEW TASK.</text>
+<rect id="editorial-divider" x="56.0" y="306" width="1328.0" height="18" fill="#000000" /><g id="top-context-strip">
+<text x="56" y="381.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">PROJECT *</text>
+<rect x="56" y="397.0" width="480" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="72" y="428.0" font-size="18" class="body" text-anchor="start" fill="#000000">Interface system</text>
+<text x="516" y="428.0" font-size="20" class="body" text-anchor="end" fill="#000000">⌄</text>
+<text x="572" y="381.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">DUE DATE</text>
+<rect x="572" y="397.0" width="388" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="588" y="428.0" font-size="18" class="body" text-anchor="start" fill="#000000">06 Oct 2026</text>
+<text x="940" y="428.0" font-size="20" class="body" text-anchor="end" fill="#000000">⌄</text>
+<text x="996" y="381.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">DUE TIME</text>
+<rect x="996" y="397.0" width="388" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1012" y="428.0" font-size="18" class="body" text-anchor="start" fill="#000000">11:00</text>
+<text x="1364" y="428.0" font-size="20" class="body" text-anchor="end" fill="#000000">⌄</text>
+<line x1="56" y1="490.0" x2="1384" y2="490.0" stroke="#000000" stroke-width="3" />
+</g>
+<g id="main-form-left">
+<text x="56" y="538.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">01 / TASK DETAILS</text>
+<text x="838" y="538.0" font-size="12.0" class="label" text-anchor="end" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">* REQUIRED</text>
+<text x="56" y="589.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">TASK TITLE *</text>
+<rect x="56" y="605.0" width="782" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="72" y="636.0" font-size="18" class="body" text-anchor="start" fill="#000000">Review dashboard wireframes</text>
+<text x="56" y="708.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">DESCRIPTION</text>
+<rect x="56" y="724.0" width="782" height="140" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="72" y="755.0" font-size="18" class="body" text-anchor="start" fill="#000000">Review layout, hierarchy and accessibility across devices.</text>
+<text x="56" y="913.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">ASSIGNED TO</text>
+<rect x="56" y="929.0" width="369" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="72" y="960.0" font-size="18" class="body" text-anchor="start" fill="#000000">Ben Morgan</text>
+<text x="405" y="960.0" font-size="20" class="body" text-anchor="end" fill="#000000">⌄</text>
+<text x="469" y="913.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">PRIORITY</text>
+<rect x="469" y="929.0" width="369" height="56" fill="none" stroke="#000000" stroke-width="2" />
+<text x="485" y="960.0" font-size="18" class="body" text-anchor="start" fill="#000000">High</text>
+<text x="818" y="960.0" font-size="20" class="body" text-anchor="end" fill="#000000">⌄</text>
+<rect x="538" y="951.0" width="7" height="7" fill="#E0A36D" />
+</g>
+<g id="steps-right">
+<text x="906" y="538.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">02 / SMALLER STEPS</text>
+<line x1="906" y1="559.0" x2="1384" y2="559.0" stroke="#000000" stroke-width="3" />
+<text x="906" y="604.0" font-size="12.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.72" style="font-weight:600;letter-spacing:0.72px">02 DRAFTS / OPTIONAL</text>
+<rect x="906" y="639.0" width="478" height="68" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="924" y="679.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">01</text>
+<text x="969" y="679.0" font-size="21" class="body" text-anchor="start" fill="#000000">Audit desktop layout</text>
+<text x="1363" y="680.0" font-size="25" class="body" text-anchor="end" fill="#000000">×</text>
+<rect x="906" y="727.0" width="478" height="68" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="924" y="767.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">02</text>
+<text x="969" y="767.0" font-size="21" class="body" text-anchor="start" fill="#000000">Review empty states</text>
+<text x="1363" y="768.0" font-size="25" class="body" text-anchor="end" fill="#000000">×</text>
+<rect x="906" y="833.0" width="478" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1145.0" y="866.0" font-size="14" class="label" text-anchor="middle" fill="#000000" font-weight="600" letter-spacing="0.84" style="font-weight:600;letter-spacing:0.84px">+ ADD SUBTASK</text>
+<text x="906" y="949.0" font-size="20" class="body" text-anchor="start" fill="#000000">Small steps make the work clearer.</text>
+<text x="906" y="977.0" font-size="20" class="body" text-anchor="start" fill="#000000">Each draft is saved with this task.</text>
+</g>
+<line x1="56" y1="1073.0" x2="1384" y2="1073.0" stroke="#000000" stroke-width="3" />
+<text x="56" y="1124.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">INTERFACE SYSTEM / BEN MORGAN</text>
+<text x="56" y="1162.0" font-size="20" class="body" text-anchor="start" fill="#000000">Project context stays with every step.</text>
+<rect x="930" y="1102.0" width="158" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1009.0" y="1137.0" font-size="14" class="label" text-anchor="middle" fill="#000000" font-weight="600" letter-spacing="0.84" style="font-weight:600;letter-spacing:0.84px">CANCEL</text>
+<rect id="primary-action-offset" x="1126.0" y="1106.0" width="262" height="60" fill="#000000" /><rect x="1122" y="1102.0" width="262" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="3.5" />
+<text x="1253.0" y="1137.0" font-size="14" class="label" text-anchor="middle" fill="#000000" font-weight="600" letter-spacing="0.84" style="font-weight:600;letter-spacing:0.84px">CREATE TASK →</text>
+<line x1="56" y1="1237.0" x2="1384" y2="1237.0" stroke="#000000" stroke-width="3" />
+<text x="56" y="1271.0" font-size="13.0" class="label" text-anchor="start" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">TASKS / CREATE TASK</text>
+<text x="1384" y="1271.0" font-size="13.0" class="label" text-anchor="end" fill="#000000" font-weight="600" letter-spacing="0.78" style="font-weight:600;letter-spacing:0.78px">PLAN SMALL. FINISH WELL.</text>
+<text id="editorial-chapter" x="1384" y="249" font-size="106" class="display" font-weight="400" text-anchor="end" fill="#000000" style="font-weight:400">03</text></svg>

@@ -6,7 +6,13 @@ packages:
 autoInstallPeers: false
 
 allowBuilds:
+  # Optional native SSH accelerators are not used by local Docker tests.
+  cpu-features: false
   esbuild: true
+  # Tests use MSW's Node server, not generated browser worker assets.
+  msw: false
+  protobufjs: false
+  ssh2: false
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
@@ -25,7 +31,7 @@ minimumReleaseAgeExclude:
 
 # Expo Router includes drawer support, but this app does not use a drawer.
 packageExtensions:
-  react-native-drawer-layout@4.2.10:
+  react-native-drawer-layout@4.2.*:
     peerDependenciesMeta:
       react-native-gesture-handler:
         optional: true

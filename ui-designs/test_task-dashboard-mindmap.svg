@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker dashboard — content map</title>
+<desc id="desc">Information hierarchy showing weekly signal, activity, project distribution, and next actions across web and mobile.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#0A0A0A}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.105em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="1400" height="900" fill="#0A0A0A"/>
+<rect x="0" y="0" width="70" height="900" fill="#0A0A0A"/>
+<rect x="7" y="20" width="3" height="860" fill="white"/>
+<rect x="16" y="20" width="5" height="186" fill="white"/>
+<rect x="23" y="20" width="2" height="860" fill="white"/>
+<rect x="33" y="20" width="7" height="402" fill="white"/>
+<rect x="45" y="20" width="3" height="860" fill="white"/>
+<rect x="55" y="20" width="6" height="178" fill="white"/>
+<rect x="12" y="380" width="3" height="310" fill="white"/>
+<rect x="31" y="520" width="4" height="360" fill="white"/>
+<rect x="53" y="668" width="6" height="212" fill="white"/>
+<rect x="72" y="18" width="1310" height="864" fill="#FCFCFA"/>
+<text x="110" y="58" font-size="14" class="label" text-anchor="start" style="fill:#0A0A0A">PROJECT TRACKER / DESIGN MAP 002</text>
+<text x="1340" y="58" font-size="14" class="label" text-anchor="end" style="fill:#0A0A0A">DASHBOARD ONLY / WEB + MOBILE</text>
+<line x1="110" y1="78" x2="1340" y2="78" stroke="#0A0A0A" stroke-width="2"/>
+<text x="101" y="164" font-size="81" class="display" text-anchor="start" style="fill:#0A0A0A">THE DASHBOARD.</text>
+<text x="110" y="202" font-size="22" class="body" text-anchor="start" style="fill:#0A0A0A">Read the week → locate the work → take the next action.</text>
+<rect x="110" y="228" width="1230" height="23" fill="#0A0A0A"/>
+<line x1="430" y1="379" x2="566" y2="430" stroke="#0A0A0A" stroke-width="2"/>
+<line x1="970" y1="379" x2="834" y2="430" stroke="#0A0A0A" stroke-width="2"/>
+<line x1="430" y1="674" x2="566" y2="488" stroke="#0A0A0A" stroke-width="2"/>
+<line x1="970" y1="674" x2="834" y2="488" stroke="#0A0A0A" stroke-width="2"/>
+<rect x="110" y="283" width="320" height="191" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="2"/>
+<text x="128" y="311" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">01 / WEEKLY COUNTS</text>
+<text x="128" y="362" font-size="47" class="display" text-anchor="start" style="fill:#0A0A0A">SIGNAL</text>
+<line x1="128" y1="377" x2="412" y2="377" stroke="#0A0A0A" stroke-width="2"/>
+<text x="128" y="404" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Completed / In progress</text>
+<text x="128" y="425" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Overdue / Focus time</text>
+<text x="128" y="446" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Fast numerical scan</text>
+<rect x="970" y="283" width="320" height="191" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="2"/>
+<text x="988" y="311" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">02 / TIME PATTERN</text>
+<text x="988" y="362" font-size="47" class="display" text-anchor="start" style="fill:#0A0A0A">ACTIVITY</text>
+<line x1="988" y1="377" x2="1272" y2="377" stroke="#0A0A0A" stroke-width="2"/>
+<text x="988" y="404" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Completion heatmap</text>
+<text x="988" y="425" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Active days and streak</text>
+<text x="988" y="446" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Exceptions in orange</text>
+<rect x="110" y="578" width="320" height="191" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="2"/>
+<text x="128" y="606" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">03 / WORK DISTRIBUTION</text>
+<text x="128" y="657" font-size="47" class="display" text-anchor="start" style="fill:#0A0A0A">PROJECTS</text>
+<line x1="128" y1="672" x2="412" y2="672" stroke="#0A0A0A" stroke-width="2"/>
+<text x="128" y="699" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Proportional treemap</text>
+<text x="128" y="720" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Largest commitment first</text>
+<text x="128" y="741" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Status accents with meaning</text>
+<rect x="970" y="578" width="320" height="191" fill="#FCFCFA" stroke="#0A0A0A" stroke-width="2"/>
+<text x="988" y="606" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">04 / ACTION LEDGER</text>
+<text x="988" y="657" font-size="47" class="display" text-anchor="start" style="fill:#0A0A0A">UP NEXT</text>
+<line x1="988" y1="672" x2="1272" y2="672" stroke="#0A0A0A" stroke-width="2"/>
+<text x="988" y="699" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Ranked upcoming tasks</text>
+<text x="988" y="720" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Project and deadline</text>
+<text x="988" y="741" font-size="16" class="body" text-anchor="start" style="fill:#0A0A0A">Direct route into task</text>
+<rect x="566" y="383" width="268" height="165" fill="#0A0A0A"/>
+<text x="700" y="426" font-size="14" class="label" text-anchor="middle" style="fill:#FCFCFA">CORE DECISION</text>
+<text x="700" y="487" font-size="64" class="display" text-anchor="middle" style="fill:#FCFCFA">TODAY</text>
+<text x="700" y="520" font-size="13" class="label" text-anchor="middle" style="fill:#FCFCFA">SCAN → CHOOSE → ACT</text>
+<text x="700" y="648" font-size="14" class="label" text-anchor="middle" style="fill:#0A0A0A">WEB / TWO COLUMNS</text>
+<text x="700" y="679" font-size="14" class="label" text-anchor="middle" style="fill:#0A0A0A">MOBILE / ONE SEQUENCE</text>
+<line x1="110" y1="817" x2="1340" y2="817" stroke="#0A0A0A" stroke-width="2"/>
+<text x="110" y="849" font-size="13" class="label" text-anchor="start" style="fill:#0A0A0A">MONOCHROME BASE / FUNCTIONAL COLOUR</text>
+<text x="1340" y="849" font-size="13" class="label" text-anchor="end" style="fill:#0A0A0A">HIGH CONTRAST / LARGE TARGETS</text>
+</svg>

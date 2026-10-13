@@ -1,0 +1,606 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8760" height="4050" viewBox="0 0 8760 4050"><rect width="8760" height="4050" fill="#F4F4F0" /><text x="80" y="110" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="72" font-weight="400" fill="#000000">PROJECT TRACKER / AGREED, REFINED</text><text x="80" y="167" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#000000">FIRST-GROUP COMPOSITION · LIGHT EDITORIAL TYPE · RESTRAINED RULES · TASK-ONLY COLOUR</text><text x="80" y="231" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#000000">WEB</text><text x="80" y="1780" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#000000">MOBILE</text><g id="login-web" data-name="01 / Login — Web" transform="translate(80 330)"><rect x="0" y="0" width="1600" height="1040" fill="#FCFCFA" /><text x="104" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECT TRACKER / 001</text>
+<text x="1540" y="57" font-size="14" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">YOUR WORK. IN ORDER.</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#000000" stroke-width="2" />
+<g id="login-web-brand-panel">
+<text x="104" y="127" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">01 / A LITTLE SPACE TO FOCUS</text>
+<text x="93" y="280" font-size="102" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.12">MAKE</text>
+<text x="93" y="405" font-size="102" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.12">ROOM FOR</text>
+<text x="93" y="530" font-size="102" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.12">WORK.</text>
+<text x="104" y="594" font-size="28" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.56">Less noise. A clearer next step.</text>
+<rect x="104" y="640" width="684" height="232" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="128" y="674" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">THE DAILY ROUTINE</text>
+<text x="128" y="725" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.52">01</text>
+<text x="184" y="725" font-size="24" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.48">Find what matters.</text>
+<line x1="128" y1="742" x2="764" y2="742" stroke="#000000" stroke-width="1" />
+<text x="128" y="779" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.52">02</text>
+<text x="184" y="779" font-size="24" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.48">Break it into smaller steps.</text>
+<line x1="128" y1="796" x2="764" y2="796" stroke="#000000" stroke-width="1" />
+<text x="128" y="833" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.52">03</text>
+<text x="184" y="833" font-size="24" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.48">Move one thing forward.</text>
+</g>
+<line x1="848" y1="118" x2="848" y2="888" stroke="#E3E3DF" stroke-width="1" />
+<g id="login-web-sign-in-form">
+<text x="924" y="151" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">02 / YOUR ACCOUNT</text>
+<text x="917" y="249" font-size="68" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-4.08">WELCOME</text>
+<text x="917" y="326" font-size="68" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-4.08">BACK.</text>
+<text x="924" y="373" font-size="21" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">Sign in to pick up where you left off.</text>
+<text x="924" y="424" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">EMAIL ADDRESS</text>
+<rect x="924" y="438" width="548" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="940" y="472.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">ben@example.com</text>
+<text x="924" y="540" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PASSWORD</text>
+<rect x="924" y="554" width="548" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="940" y="588.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">••••••••••••</text>
+<rect x="1372" y="555" width="99" height="54" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1421.5" y="587.0" font-size="12" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">SHOW</text>
+<rect x="924" y="644" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<path d="M 929 655 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="960" y="661" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Keep me signed in</text>
+<text x="1472" y="661" font-size="18" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Forgot password?</text>
+<line x1="1325" y1="668" x2="1472" y2="668" stroke="#000000" stroke-width="1" />
+<rect x="924" y="712" width="548" height="64" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1198.0" y="749.0" font-size="16" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.28">SIGN IN →</text>
+<text x="924" y="827" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">New to Project Tracker?</text>
+<text x="1472" y="827" font-size="19" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Create account ↗</text>
+<line x1="1330" y1="834" x2="1472" y2="834" stroke="#000000" stroke-width="1" />
+</g>
+<line x1="104" y1="970" x2="1540" y2="970" stroke="#000000" stroke-width="2" />
+<text x="104" y="1002" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">ACCOUNT / SIGN IN</text>
+<text x="1540" y="1002" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PLAN SMALL. FINISH WELL.</text>
+</g><text x="80" y="306" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">01 / Login — Web</text><g id="login-mobile" data-name="01 / Login — Mobile" transform="translate(80 1860)"><rect x="0" y="0" width="430" height="1020" fill="#FCFCFA" /><text x="40" y="43" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">001</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2" />
+<text x="40" y="98" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">01 / YOUR ACCOUNT</text>
+<text x="37" y="179" font-size="60" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.6">WELCOME</text>
+<text x="37" y="244" font-size="60" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.6">BACK.</text>
+<text x="40" y="285" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">A clearer next step starts here.</text>
+<rect x="40" y="322.0" width="358" height="4" fill="#000000" />
+<text x="40" y="379" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">EMAIL ADDRESS</text>
+<rect x="40" y="393" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="427.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">ben@example.com</text>
+<text x="40" y="495" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PASSWORD</text>
+<rect x="40" y="509" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="543.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">••••••••••</text>
+<rect x="298" y="510" width="99" height="54" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="347.5" y="542.0" font-size="12" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">SHOW</text>
+<rect x="40" y="596" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<path d="M 45 607 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="77" y="613" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Keep me signed in</text>
+<text x="40" y="666" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Forgot password?</text>
+<line x1="40" y1="674" x2="187" y2="674" stroke="#000000" stroke-width="1" />
+<rect x="40" y="711" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="746.0" font-size="15" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.2">SIGN IN →</text>
+<text x="40" y="814" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">New here?</text>
+<text x="398" y="814" font-size="18" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Create account ↗</text>
+<rect x="40" y="858" width="358" height="96" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="890" font-size="16" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.28">MAKE ROOM FOR WORK.</text>
+<text x="56" y="926" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Plan small. Finish well.</text>
+</g><text x="80" y="1836" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">01 / Login — Mobile</text><g id="dashboard-web" data-name="02 / Today dashboard — Web" transform="translate(1820 330)"><rect x="0" y="0" width="1600" height="1160" fill="#FCFCFA" /><text x="104" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECT TRACKER / 001</text>
+<text x="1020" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TODAY</text>
+<line x1="1020" y1="66" x2="1065" y2="66" stroke="#000000" stroke-width="3" />
+<text x="1140" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECTS</text>
+<text x="1290" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASKS</text>
+<text x="1430" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROFILE</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#000000" stroke-width="2" />
+<text x="96" y="203" font-size="112" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.72">TODAY.</text>
+<text x="1540" y="195" font-size="82" text-anchor="end" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-4.92">W41</text>
+<text x="104" y="243" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TUESDAY / 06 OCTOBER 2026</text>
+<text x="1540" y="243" font-size="14" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">GOOD MORNING, BEN.</text>
+<rect x="104" y="277.0" width="1436" height="6" fill="#000000" />
+<g id="dashboard-web-today-signal">
+<text x="104" y="329" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE TODAY</text>
+<text x="104" y="397" font-size="66.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.96">03</text>
+<text x="345" y="329" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">OVERDUE</text>
+<text x="345" y="397" font-size="66.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.96">02</text>
+<rect x="442" y="355" width="8" height="38" fill="#E0A36D" />
+<text x="586" y="329" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DONE TODAY</text>
+<text x="586" y="397" font-size="66.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.96">01</text>
+<rect x="1040" y="335" width="500" height="64" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1290.0" y="372.0" font-size="16" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.28">+ NEW TASK</text>
+</g>
+<line x1="104" y1="428" x2="1540" y2="428" stroke="#000000" stroke-width="2" />
+<line x1="991" y1="455" x2="991" y2="1048" stroke="#E3E3DF" stroke-width="1" />
+<g id="dashboard-web-deadline-ledger">
+<rect x="104" y="456" width="844" height="116" fill="#E0A36D" stroke="#000000" stroke-width="1.5" fill-opacity="0.12" />
+<text x="124" y="486" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">02 OVERDUE / NEEDS ATTENTION</text>
+<text x="124" y="519" font-size="22" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.44">Publish API documentation</text>
+<text x="928" y="519" font-size="14" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">05 OCT ↗</text>
+<text x="124" y="549" font-size="22" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.44">Resolve authentication edge cases</text>
+<text x="928" y="549" font-size="14" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">04 OCT ↗</text>
+<text x="104" y="617" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">01 / TODAY’S DEADLINES</text>
+<text x="948" y="617" font-size="14" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">03 TASKS</text>
+<line x1="104" y1="636" x2="948" y2="636" stroke="#000000" stroke-width="2" />
+<rect x="104" y="666" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="145" y="687" font-size="27" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.54">Review dashboard wireframes</text>
+<text x="145" y="719" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">INTERFACE SYSTEM</text>
+<text x="948" y="687" font-size="30.0" text-anchor="end" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.8">11:00</text>
+<rect x="145" y="735" width="147" height="28" fill="#FCFCFA" />
+<rect x="145" y="740" width="4" height="18" fill="#BACDD1" />
+<text x="155" y="754" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">IN PROGRESS</text>
+<line x1="104" y1="775" x2="948" y2="775" stroke="#E3E3DF" stroke-width="1" />
+<rect x="104" y="778" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="145" y="799" font-size="27" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.54">Send weekly progress report</text>
+<text x="145" y="831" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">BOOTCAMP PORTFOLIO</text>
+<text x="948" y="799" font-size="30.0" text-anchor="end" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.8">14:30</text>
+<rect x="145" y="847" width="76" height="28" fill="#FCFCFA" />
+<text x="155" y="866" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">TO DO</text>
+<line x1="104" y1="887" x2="948" y2="887" stroke="#E3E3DF" stroke-width="1" />
+<rect x="104" y="890" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="145" y="911" font-size="27" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.54">Finalize onboarding copy</text>
+<text x="145" y="943" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">APPLICATION REDESIGN</text>
+<text x="948" y="911" font-size="30.0" text-anchor="end" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.8">16:00</text>
+<rect x="145" y="959" width="76" height="28" fill="#FCFCFA" />
+<text x="155" y="978" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">TO DO</text>
+<line x1="104" y1="999" x2="948" y2="999" stroke="#E3E3DF" stroke-width="1" />
+<text x="104" y="1035" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">VIEW ALL TASKS ↗</text>
+</g>
+<g id="dashboard-web-next-action">
+<text x="1040" y="482" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">02 / START HERE</text>
+<text x="1540" y="482" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">NEXT DEADLINE</text>
+<rect x="1040" y="502" width="500" height="339" fill="#FED07B" stroke="#000000" stroke-width="1.5" fill-opacity="0.12" />
+<rect x="1508" y="470" width="32" height="4" fill="#FED07B" />
+<text x="1060" y="541" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">11:00 / HIGH PRIORITY</text>
+<text x="1055" y="591" font-size="43.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.58">Review dashboard</text>
+<text x="1055" y="638" font-size="43.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.58">wireframes</text>
+<text x="1060" y="676" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">INTERFACE SYSTEM / 1 OF 2 STEPS DONE</text>
+<rect x="1060" y="698" width="22" height="22" fill="#AEB884" stroke="#000000" stroke-width="1.5" />
+<path d="M 1065 709 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="1097" y="716" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Audit desktop layout</text>
+<rect x="1060" y="738" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1097" y="756" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Review empty states</text>
+<rect x="1060" y="778" width="460" height="44" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1290.0" y="805.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">OPEN TASK →</text>
+<text x="1040" y="895" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">03 / PROJECTS IN MOTION</text>
+<line x1="1040" y1="914" x2="1540" y2="914" stroke="#000000" stroke-width="2" />
+<text x="1040" y="952" font-size="21" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">Interface system</text>
+<text x="1540" y="952" font-size="21" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">74%</text>
+<rect x="1040" y="968" width="500" height="8" fill="#E3E3DF" />
+<rect x="1040" y="968" width="370" height="8" fill="#AEB884" />
+<text x="1040" y="1019" font-size="21" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">Bootcamp portfolio</text>
+<text x="1540" y="1019" font-size="21" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">48%</text>
+<rect x="1040" y="1035" width="500" height="8" fill="#E3E3DF" />
+<rect x="1040" y="1035" width="240" height="8" fill="#AEB884" />
+</g>
+<line x1="104" y1="1090" x2="1540" y2="1090" stroke="#000000" stroke-width="2" />
+<text x="104" y="1122" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">TODAY / 03 DUE / 02 OVERDUE</text>
+<text x="1540" y="1122" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">SCAN THE DAY → CHOOSE A TASK → MOVE IT FORWARD</text>
+</g><text x="1820" y="306" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">02 / Today dashboard — Web</text><g id="dashboard-mobile" data-name="02 / Today dashboard — Mobile" transform="translate(1820 1860)"><rect x="0" y="0" width="430" height="1860" fill="#FCFCFA" /><text x="40" y="43" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2" />
+<text x="37" y="151" font-size="72" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-4.32">TODAY.</text>
+<text x="40" y="190" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">TUE / 06 OCT 2026</text>
+<text x="398" y="190" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">W41</text>
+<rect x="40" y="220.0" width="358" height="4" fill="#000000" />
+<text x="40" y="270" font-size="11.5" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">DUE TODAY</text>
+<text x="40" y="328" font-size="56.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">03</text>
+<text x="165" y="270" font-size="11.5" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">OVERDUE</text>
+<text x="165" y="328" font-size="56.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">02</text>
+<text x="288" y="270" font-size="11.5" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">DONE TODAY</text>
+<text x="288" y="328" font-size="56.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">01</text>
+<rect x="40" y="361" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="396.0" font-size="15" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.2">+ NEW TASK</text>
+<rect x="40" y="447" width="358" height="169" fill="#E0A36D" stroke="#000000" stroke-width="1.5" fill-opacity="0.12" />
+<text x="56" y="478" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">02 OVERDUE / NEEDS ATTENTION</text>
+<text x="56" y="515" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Publish API documentation</text>
+<text x="56" y="539" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">05 OCT / TASK TRACKER ↗</text>
+<line x1="56" y1="553" x2="382" y2="553" stroke="#000000" stroke-width="1" />
+<text x="56" y="580" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Resolve auth edge cases</text>
+<text x="56" y="604" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">04 OCT / TASK TRACKER ↗</text>
+<text x="40" y="662" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">01 / TODAY’S DEADLINES</text>
+<line x1="40" y1="680" x2="398" y2="680" stroke="#000000" stroke-width="2" />
+<rect x="40" y="702" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="78" y="721" font-size="21" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">Review wireframes</text>
+<text x="78" y="750" font-size="11.5" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">INTERFACE SYSTEM</text>
+<rect x="78" y="768" width="147" height="28" fill="#FCFCFA" />
+<rect x="78" y="773" width="4" height="18" fill="#BACDD1" />
+<text x="88" y="787" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">IN PROGRESS</text>
+<text x="398" y="788" font-size="25.0" text-anchor="end" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.5">11:00</text>
+<line x1="40" y1="813" x2="398" y2="813" stroke="#E3E3DF" stroke-width="1" />
+<rect x="40" y="828" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="78" y="847" font-size="21" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">Send progress report</text>
+<text x="78" y="876" font-size="11.5" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">BOOTCAMP PORTFOLIO</text>
+<rect x="78" y="894" width="76" height="28" fill="#FCFCFA" />
+<text x="88" y="913" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">TO DO</text>
+<text x="398" y="914" font-size="25.0" text-anchor="end" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.5">14:30</text>
+<line x1="40" y1="939" x2="398" y2="939" stroke="#E3E3DF" stroke-width="1" />
+<rect x="40" y="954" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="78" y="973" font-size="21" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">Finalize onboarding copy</text>
+<text x="78" y="1002" font-size="11.5" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">APPLICATION REDESIGN</text>
+<rect x="78" y="1020" width="76" height="28" fill="#FCFCFA" />
+<text x="88" y="1039" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">TO DO</text>
+<text x="398" y="1040" font-size="25.0" text-anchor="end" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.5">16:00</text>
+<line x1="40" y1="1065" x2="398" y2="1065" stroke="#E3E3DF" stroke-width="1" />
+<rect x="40" y="1094" width="358" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1125.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">VIEW ALL TASKS ↗</text>
+<text x="40" y="1190" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">02 / START HERE</text>
+<rect x="40" y="1212" width="358" height="276" fill="#FED07B" stroke="#000000" stroke-width="1.5" fill-opacity="0.12" />
+<rect x="368" y="1178" width="30" height="4" fill="#FED07B" />
+<text x="56" y="1244" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">11:00 / HIGH PRIORITY</text>
+<text x="54" y="1287" font-size="35.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.1">Review dashboard</text>
+<text x="54" y="1326" font-size="35.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.1">wireframes</text>
+<text x="56" y="1361" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">INTERFACE SYSTEM</text>
+<rect x="56" y="1390" width="8" height="8" fill="#AEB884" />
+<text x="74" y="1400" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">1 of 2 subtasks complete</text>
+<rect x="56" y="1420" width="326" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="1451.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">OPEN TASK →</text>
+<text x="40" y="1538" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">03 / PROJECTS IN MOTION</text>
+<line x1="40" y1="1556" x2="398" y2="1556" stroke="#000000" stroke-width="2" />
+<text x="40" y="1594" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Interface system</text>
+<text x="398" y="1594" font-size="19" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">74%</text>
+<rect x="40" y="1611" width="358" height="8" fill="#E3E3DF" />
+<rect x="40" y="1611" width="264.92" height="8" fill="#AEB884" />
+<text x="40" y="1672" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Bootcamp portfolio</text>
+<text x="398" y="1672" font-size="19" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">48%</text>
+<rect x="40" y="1689" width="358" height="8" fill="#E3E3DF" />
+<rect x="40" y="1689" width="171.84" height="8" fill="#AEB884" />
+<rect x="18" y="1758" width="402" height="92" fill="#FCFCFA" />
+<line x1="40" y1="1758" x2="398" y2="1758" stroke="#000000" stroke-width="2" />
+<rect x="40.0" y="1770" width="89.5" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2.5" />
+<text x="84.75" y="1803" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">TODAY</text>
+<text x="174.25" y="1803" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">PROJECTS</text>
+<text x="263.75" y="1803" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">TASKS</text>
+<text x="353.25" y="1803" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">PROFILE</text>
+</g><text x="1820" y="1836" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">02 / Today dashboard — Mobile</text><g id="task-create-web" data-name="03 / Task creation — Web" transform="translate(3560 330)"><rect x="0" y="0" width="1600" height="1300" fill="#FCFCFA" /><text x="104" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECT TRACKER / 001</text>
+<text x="1020" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TODAY</text>
+<text x="1140" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECTS</text>
+<text x="1290" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASKS</text>
+<line x1="1290" y1="66" x2="1335" y2="66" stroke="#000000" stroke-width="3" />
+<text x="1430" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROFILE</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#000000" stroke-width="2" />
+<text x="96" y="198" font-size="100" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.0">NEW TASK.</text>
+<text x="104" y="235" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASKS / INTERFACE SYSTEM / CREATE A CLEAR NEXT ACTION</text>
+<rect x="104" y="268.0" width="1436" height="6" fill="#000000" />
+<line x1="1044" y1="320" x2="1044" y2="1144" stroke="#E3E3DF" stroke-width="1" />
+<text x="104" y="331" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">01 / TASK DETAILS</text>
+<text x="992" y="331" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">* REQUIRED</text>
+<text x="104" y="379" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASK TITLE *</text>
+<rect x="104" y="393" width="888" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="120" y="427.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Review dashboard wireframes</text>
+<text x="104" y="493" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECT *</text>
+<rect x="104" y="507" width="424" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="120" y="541.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Interface system</text>
+<path d="M 496 532.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="568" y="493" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">ASSIGNED TO</text>
+<rect x="568" y="507" width="424" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="584" y="541.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Ben Morgan</text>
+<path d="M 960 532.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="104" y="609" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DESCRIPTION</text>
+<rect x="104" y="623" width="888" height="90" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="120" y="655" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Review layout, hierarchy and accessibility across devices.</text>
+<text x="104" y="763" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PRIORITY</text>
+<rect x="104" y="777" width="264" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<rect x="120" y="801.0" width="8" height="8" fill="#E0A36D" />
+<text x="138" y="811.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">High</text>
+<path d="M 336 802.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="408" y="763" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE DATE</text>
+<rect x="408" y="777" width="280" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="424" y="811.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">06 Oct 2026</text>
+<path d="M 656 802.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="728" y="763" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE TIME</text>
+<rect x="728" y="777" width="264" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="744" y="811.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">11:00</text>
+<path d="M 960 802.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="104" y="870" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">SUBTASKS / 02 DRAFTS</text>
+<text x="992" y="870" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">OPTIONAL</text>
+<rect x="104" y="889" width="888" height="54" fill="#FCFCFA" stroke="#000000" stroke-width="1" />
+<text x="120" y="923" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">01</text>
+<text x="168" y="924" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">Audit desktop layout</text>
+<text x="965" y="924" font-size="24" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.48">×</text>
+<rect x="104" y="949" width="888" height="54" fill="#FCFCFA" stroke="#000000" stroke-width="1" />
+<text x="120" y="983" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">02</text>
+<text x="168" y="984" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">Review empty states</text>
+<text x="965" y="984" font-size="24" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.48">×</text>
+<rect x="104" y="1020" width="246" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="227.0" y="1051.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">+ ADD SUBTASK</text>
+<text x="380" y="1052" font-size="16" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.32">Subtasks will be created with this task.</text>
+<line x1="104" y1="1103" x2="992" y2="1103" stroke="#E3E3DF" stroke-width="1" />
+<rect x="104" y="1130" width="178" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="193.0" y="1163.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CANCEL</text>
+<rect x="726" y="1130" width="266" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="859.0" y="1163.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CREATE TASK →</text>
+<text x="1090" y="350" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">02 / TASK AT A GLANCE</text>
+<line x1="1090" y1="366" x2="1540" y2="366" stroke="#000000" stroke-width="2" />
+<rect x="1090" y="392" width="450" height="126" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1110" y="425" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PROJECT</text>
+<text x="1110" y="461" font-size="32.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.92">Interface system</text>
+<text x="1110" y="492" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Design / dashboard</text>
+<text x="1090" y="570" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">THE NEXT STEP</text>
+<text x="1090" y="608" font-size="38.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.28">Review dashboard</text>
+<text x="1090" y="650" font-size="38.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.28">wireframes</text>
+<text x="1090" y="725" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">DUE</text>
+<text x="1540" y="725" font-size="16" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.28">TODAY / 11:00</text>
+<line x1="1090" y1="745" x2="1540" y2="745" stroke="#E3E3DF" stroke-width="1" />
+<text x="1090" y="779" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PRIORITY</text>
+<text x="1540" y="779" font-size="16" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.28">HIGH</text>
+<line x1="1090" y1="799" x2="1540" y2="799" stroke="#E3E3DF" stroke-width="1" />
+<text x="1090" y="833" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">ASSIGNED TO</text>
+<text x="1540" y="833" font-size="16" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.28">BEN MORGAN</text>
+<rect x="1090" y="873" width="450" height="106" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1110" y="906" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">SMALLER STEPS. CLEARER WORK.</text>
+<text x="1110" y="938" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Add subtasks to give this task</text>
+<text x="1110" y="963" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">a clear path to done.</text>
+<text x="1090" y="1052" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Save once. Keep every step together.</text>
+<line x1="104" y1="1230" x2="1540" y2="1230" stroke="#000000" stroke-width="2" />
+<text x="104" y="1262" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">TASKS / CREATE TASK</text>
+<text x="1540" y="1262" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">INTERFACE SYSTEM / BEN MORGAN</text>
+</g><text x="3560" y="306" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">03 / Task creation — Web</text><g id="task-create-mobile" data-name="03 / Task creation — Mobile" transform="translate(3560 1860)"><rect x="0" y="0" width="430" height="1670" fill="#FCFCFA" /><text x="40" y="43" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2" />
+<text x="40" y="98" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">← TASKS</text>
+<text x="38" y="165" font-size="56" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">NEW TASK.</text>
+<text x="40" y="201" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">INTERFACE SYSTEM / CREATE</text>
+<rect x="40" y="230.0" width="358" height="4" fill="#000000" />
+<text x="40" y="278" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">01 / TASK DETAILS</text>
+<text x="398" y="278" font-size="12" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">* REQUIRED</text>
+<text x="40" y="321" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASK TITLE *</text>
+<rect x="40" y="335" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="369.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Review dashboard wireframes</text>
+<text x="40" y="437" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECT *</text>
+<rect x="40" y="451" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="485.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Interface system</text>
+<path d="M 366 476.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="553" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">ASSIGNED TO</text>
+<rect x="40" y="567" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="601.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Ben Morgan</text>
+<path d="M 366 592.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="669" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DESCRIPTION</text>
+<rect x="40" y="683" width="358" height="96" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="715" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Review layout and hierarchy.</text>
+<text x="56" y="740" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Check accessibility on all devices.</text>
+<text x="40" y="829" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PRIORITY</text>
+<rect x="40" y="843" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<rect x="56" y="867.0" width="8" height="8" fill="#E0A36D" />
+<text x="74" y="877.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">High</text>
+<path d="M 366 868.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="945" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE DATE</text>
+<rect x="40" y="959" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="993.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">06 Oct 2026</text>
+<path d="M 366 984.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="1061" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE TIME</text>
+<rect x="40" y="1075" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="1109.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">11:00</text>
+<path d="M 366 1100.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="1186" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">SUBTASKS / 02 DRAFTS</text>
+<rect x="40" y="1208" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1" />
+<text x="54" y="1243" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">01</text>
+<text x="91" y="1243" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Audit desktop layout</text>
+<text x="375" y="1244" font-size="24" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.48">×</text>
+<rect x="40" y="1270" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1" />
+<text x="54" y="1305" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">02</text>
+<text x="91" y="1305" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Review empty states</text>
+<text x="375" y="1306" font-size="24" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.48">×</text>
+<rect x="40" y="1346" width="358" height="52" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1377.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">+ ADD SUBTASK</text>
+<text x="40" y="1432" font-size="17" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.34">Save once. Keep every step together.</text>
+<rect x="40" y="1476" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="1511.0" font-size="15" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.2">CREATE TASK →</text>
+<rect x="40" y="1552" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1585.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CANCEL</text>
+</g><text x="3560" y="1836" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">03 / Task creation — Mobile</text><g id="subtask-create-web" data-name="04 / Subtask creation — Web" transform="translate(5300 330)"><rect x="0" y="0" width="1600" height="1170" fill="#FCFCFA" /><text x="104" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECT TRACKER / 001</text>
+<text x="1020" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TODAY</text>
+<text x="1140" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECTS</text>
+<text x="1290" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASKS</text>
+<line x1="1290" y1="66" x2="1335" y2="66" stroke="#000000" stroke-width="3" />
+<text x="1430" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROFILE</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#000000" stroke-width="2" />
+<text x="96" y="198" font-size="100" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.0">SUBTASK.</text>
+<text x="104" y="235" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASKS / INTERFACE SYSTEM / ADD A SMALLER STEP</text>
+<rect x="104" y="268.0" width="1436" height="6" fill="#000000" />
+<line x1="1044" y1="320" x2="1044" y2="1014" stroke="#E3E3DF" stroke-width="1" />
+<rect x="104" y="320" width="888" height="112" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="124" y="352" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PARENT TASK / INTERFACE SYSTEM</text>
+<text x="124" y="394" font-size="34.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.04">Review dashboard wireframes</text>
+<text x="972" y="417" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">DUE TODAY / 11:00</text>
+<text x="104" y="485" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">SUBTASK TITLE *</text>
+<rect x="104" y="499" width="888" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="120" y="533.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Check mobile spacing</text>
+<text x="104" y="605" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">NOTES</text>
+<rect x="104" y="619" width="888" height="90" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="120" y="651" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Check spacing and tap targets on narrow screens.</text>
+<text x="104" y="761" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">ASSIGNED TO</text>
+<rect x="104" y="775" width="424" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="120" y="809.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Ben Morgan</text>
+<path d="M 496 800.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="568" y="761" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PRIORITY</text>
+<rect x="568" y="775" width="424" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<rect x="584" y="799.0" width="8" height="8" fill="#E0A36D" />
+<text x="602" y="809.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">High</text>
+<path d="M 960 800.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="104" y="879" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE DATE</text>
+<rect x="104" y="893" width="424" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="120" y="927.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">06 Oct 2026</text>
+<path d="M 496 918.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="568" y="879" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE TIME</text>
+<rect x="568" y="893" width="424" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="584" y="927.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">10:30</text>
+<path d="M 960 918.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="104" y="985" font-size="16" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.32">Finish before the parent deadline: today, 11:00.</text>
+<rect x="104" y="1024" width="178" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="193.0" y="1057.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CANCEL</text>
+<rect x="726" y="1024" width="266" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="859.0" y="1057.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CREATE SUBTASK →</text>
+<text x="1090" y="354" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">02 / PARENT CONTEXT</text>
+<line x1="1090" y1="370" x2="1540" y2="370" stroke="#000000" stroke-width="2" />
+<text x="1086" y="436" font-size="56.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">ONE TASK.</text>
+<text x="1086" y="491" font-size="56.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">SMALL STEPS.</text>
+<text x="1090" y="549" font-size="26" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.52">Review dashboard wireframes</text>
+<text x="1090" y="583" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Interface system / design</text>
+<rect x="1090" y="610" width="147" height="28" fill="#FCFCFA" />
+<rect x="1090" y="615" width="4" height="18" fill="#BACDD1" />
+<text x="1100" y="629" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">IN PROGRESS</text>
+<text x="1090" y="694" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CURRENT SUBTASKS</text>
+<rect x="1090" y="722" width="22" height="22" fill="#AEB884" stroke="#000000" stroke-width="1.5" />
+<path d="M 1095 733 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="1126" y="740" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">Audit desktop layout</text>
+<line x1="1090" y1="764" x2="1540" y2="764" stroke="#E3E3DF" stroke-width="1" />
+<rect x="1090" y="780" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1126" y="798" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">Review empty states</text>
+<line x1="1090" y1="822" x2="1540" y2="822" stroke="#E3E3DF" stroke-width="1" />
+<rect x="1090" y="862" width="450" height="108" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1110" y="897" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">LINKED TO THE PARENT</text>
+<text x="1110" y="928" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Project stays the same.</text>
+<text x="1110" y="953" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Assignee and deadline can differ.</text>
+<line x1="104" y1="1100" x2="1540" y2="1100" stroke="#000000" stroke-width="2" />
+<text x="104" y="1132" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">TASKS / CREATE SUBTASK</text>
+<text x="1540" y="1132" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">INTERFACE SYSTEM / BEN MORGAN</text>
+</g><text x="5300" y="306" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">04 / Subtask creation — Web</text><g id="subtask-create-mobile" data-name="04 / Subtask creation — Mobile" transform="translate(5300 1860)"><rect x="0" y="0" width="430" height="1470" fill="#FCFCFA" /><text x="40" y="43" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2" />
+<text x="40" y="98" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">← TASKS</text>
+<text x="38" y="165" font-size="56" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">SUBTASK.</text>
+<text x="40" y="201" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">INTERFACE SYSTEM / CREATE</text>
+<rect x="40" y="230.0" width="358" height="4" fill="#000000" />
+<rect x="40" y="268" width="358" height="148" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="300" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PARENT TASK</text>
+<text x="56" y="338" font-size="28.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.68">Review dashboard</text>
+<text x="56" y="369" font-size="28.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-1.68">wireframes</text>
+<text x="56" y="397" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">DUE TODAY / 11:00</text>
+<text x="40" y="470" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">SUBTASK TITLE *</text>
+<rect x="40" y="484" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="518.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Check mobile spacing</text>
+<text x="40" y="586" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">NOTES</text>
+<rect x="40" y="600" width="358" height="96" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="632" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Check spacing and tap targets.</text>
+<text x="56" y="657" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Include narrow-screen states.</text>
+<text x="40" y="746" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">ASSIGNED TO</text>
+<rect x="40" y="760" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="794.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Ben Morgan</text>
+<path d="M 366 785.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="862" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PRIORITY</text>
+<rect x="40" y="876" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<rect x="56" y="900.0" width="8" height="8" fill="#E0A36D" />
+<text x="74" y="910.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">High</text>
+<path d="M 366 901.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="978" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE DATE</text>
+<rect x="40" y="992" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="1026.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">06 Oct 2026</text>
+<path d="M 366 1017.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="1094" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">DUE TIME</text>
+<rect x="40" y="1108" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="1142.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">10:30</text>
+<path d="M 366 1133.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="1206" font-size="16" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.32">Finish before the parent deadline:</text>
+<text x="40" y="1230" font-size="16" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.32">today, 11:00.</text>
+<rect x="40" y="1280" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="1315.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CREATE SUBTASK →</text>
+<rect x="40" y="1356" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1389.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CANCEL</text>
+</g><text x="5300" y="1836" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">04 / Subtask creation — Mobile</text><g id="profile-update-web" data-name="05 / Profile update — Web" transform="translate(7040 330)"><rect x="0" y="0" width="1600" height="1240" fill="#FCFCFA" /><text x="104" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECT TRACKER / 001</text>
+<text x="1020" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TODAY</text>
+<text x="1140" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROJECTS</text>
+<text x="1290" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TASKS</text>
+<text x="1430" y="57" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PROFILE</text>
+<line x1="1430" y1="66" x2="1493" y2="66" stroke="#000000" stroke-width="3" />
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#000000" stroke-width="2" />
+<text x="96" y="198" font-size="100" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.0">YOUR PROFILE.</text>
+<text x="104" y="235" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">ACCOUNT / PROFILE &amp; PREFERENCES</text>
+<rect x="104" y="268.0" width="1436" height="6" fill="#000000" />
+<rect x="104" y="328" width="396" height="172" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="125" y="450" font-size="112.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-6.72">BM</text>
+<text x="478" y="472" font-size="12" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">EDIT AVATAR ↗</text>
+<text x="104" y="556" font-size="41.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.46">Ben Morgan</text>
+<text x="104" y="592" font-size="21" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.42">ben@example.com</text>
+<rect x="104" y="622" width="186" height="28" fill="#FCFCFA" />
+<text x="114" y="641" font-size="12" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">PERSONAL ACCOUNT</text>
+<line x1="104" y1="698" x2="500" y2="698" stroke="#000000" stroke-width="2" />
+<rect x="104" y="724" width="396" height="58" fill="#FCFCFA" stroke="#000000" stroke-width="2.5" />
+<text x="124" y="760" font-size="15" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.2">01 / PROFILE</text>
+<text x="124" y="824" font-size="15" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.2">02 / PREFERENCES</text>
+<text x="124" y="884" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">PASSWORD &amp; SECURITY ↗</text>
+<text x="104" y="985" font-size="36.0" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.16">MAKE IT YOURS.</text>
+<text x="104" y="1024" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">Your details keep your work</text>
+<text x="104" y="1052" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">recognizable and on time.</text>
+<line x1="558" y1="326" x2="558" y2="1090" stroke="#E3E3DF" stroke-width="1" />
+<text x="616" y="339" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">01 / PERSONAL DETAILS</text>
+<text x="1540" y="339" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">* REQUIRED</text>
+<text x="616" y="387" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">FIRST NAME *</text>
+<rect x="616" y="401" width="442" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="632" y="435.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Ben</text>
+<text x="1098" y="387" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">LAST NAME *</text>
+<rect x="1098" y="401" width="442" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1114" y="435.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Morgan</text>
+<text x="616" y="507" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">EMAIL ADDRESS *</text>
+<rect x="616" y="521" width="924" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="632" y="555.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">ben@example.com</text>
+<text x="616" y="601" font-size="15" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.3">Used to sign in and receive account updates.</text>
+<text x="616" y="650" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">BIO</text>
+<rect x="616" y="664" width="924" height="88" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="632" y="696" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Building useful things, one small task at a time.</text>
+<text x="616" y="798" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">02 / PREFERENCES</text>
+<line x1="616" y1="816" x2="1540" y2="816" stroke="#000000" stroke-width="2" />
+<text x="616" y="855" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TIMEZONE</text>
+<rect x="616" y="869" width="442" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="632" y="903.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Australia / Melbourne</text>
+<path d="M 1026 894.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="1098" y="855" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">WEEK STARTS ON</text>
+<rect x="1098" y="869" width="442" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1114" y="903.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Monday</text>
+<path d="M 1508 894.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<rect x="616" y="971" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<path d="M 621 982 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="654" y="989" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">Email me when a task is assigned to me</text>
+<rect x="616" y="1018" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<path d="M 621 1029 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="654" y="1036" font-size="20" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.4">Send a daily deadline summary</text>
+<line x1="616" y1="1070" x2="1540" y2="1070" stroke="#E3E3DF" stroke-width="1" />
+<rect x="616" y="1094" width="178" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="705.0" y="1127.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CANCEL</text>
+<rect x="1250" y="1094" width="290" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1395.0" y="1127.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">SAVE CHANGES →</text>
+<line x1="104" y1="1170" x2="1540" y2="1170" stroke="#000000" stroke-width="2" />
+<text x="104" y="1202" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">ACCOUNT / PROFILE</text>
+<text x="1540" y="1202" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">YOUR DETAILS / YOUR PREFERENCES</text>
+</g><text x="7040" y="306" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">05 / Profile update — Web</text><g id="profile-update-mobile" data-name="05 / Profile update — Mobile" transform="translate(7040 1860)"><rect x="0" y="0" width="430" height="1670" fill="#FCFCFA" /><text x="40" y="43" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">PROJECT TRACKER</text>
+<text x="398" y="43" font-size="13" text-anchor="end" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">BM</text>
+<line x1="40" y1="61" x2="398" y2="61" stroke="#000000" stroke-width="2" />
+<text x="40" y="98" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">← TODAY</text>
+<text x="38" y="165" font-size="56" text-anchor="start" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-3.36">PROFILE.</text>
+<text x="40" y="201" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">ACCOUNT / YOUR DETAILS</text>
+<rect x="40" y="230.0" width="358" height="4" fill="#000000" />
+<rect x="40" y="270" width="90" height="90" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="85" y="332" font-size="46.0" text-anchor="middle" font-weight="400" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="-2.76">BM</text>
+<text x="150" y="302" font-size="26" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.52">Ben Morgan</text>
+<rect x="150" y="318" width="248" height="48" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="274.0" y="347.0" font-size="12" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.96">EDIT AVATAR ↗</text>
+<text x="40" y="416" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">01 / PERSONAL DETAILS</text>
+<text x="40" y="458" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">FIRST NAME *</text>
+<rect x="40" y="472" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="506.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Ben</text>
+<text x="40" y="574" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">LAST NAME *</text>
+<rect x="40" y="588" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="622.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Morgan</text>
+<text x="40" y="690" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">EMAIL ADDRESS *</text>
+<rect x="40" y="704" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="738.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">ben@example.com</text>
+<text x="40" y="788" font-size="16" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.32">Used for sign-in and account updates.</text>
+<text x="40" y="834" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">BIO</text>
+<rect x="40" y="848" width="358" height="90" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="880" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Building useful things,</text>
+<text x="56" y="906" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">one small task at a time.</text>
+<text x="40" y="978" font-size="13" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.04">02 / PREFERENCES</text>
+<line x1="40" y1="996" x2="398" y2="996" stroke="#000000" stroke-width="2" />
+<text x="40" y="1038" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">TIMEZONE</text>
+<rect x="40" y="1052" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="1086.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Australia / Melbourne</text>
+<path d="M 366 1077.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="40" y="1154" font-size="14" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">WEEK STARTS ON</text>
+<rect x="40" y="1168" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="56" y="1202.0" font-size="19" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.38">Monday</text>
+<path d="M 366 1193.0 l 7 7 l 7 -7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<rect x="40" y="1265" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<path d="M 45 1276 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="76" y="1281" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Task assignment emails</text>
+<rect x="40" y="1320" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<path d="M 45 1331 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="76" y="1336" font-size="18" text-anchor="start" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" letter-spacing="-0.36">Daily deadline summary</text>
+<rect x="40" y="1390" width="358" height="60" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="219.0" y="1425.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">SAVE CHANGES →</text>
+<rect x="40" y="1466" width="358" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="219.0" y="1499.0" font-size="14" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="1.12">CANCEL</text>
+<rect x="18" y="1568" width="402" height="92" fill="#FCFCFA" />
+<line x1="40" y1="1568" x2="398" y2="1568" stroke="#000000" stroke-width="2" />
+<text x="84.75" y="1613" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">TODAY</text>
+<text x="174.25" y="1613" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">PROJECTS</text>
+<text x="263.75" y="1613" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">TASKS</text>
+<rect x="308.5" y="1580" width="89.5" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="2.5" />
+<text x="353.25" y="1613" font-size="11.5" text-anchor="middle" fill="#000000" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" letter-spacing="0.92">PROFILE</text>
+</g><text x="7040" y="1836" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#000000">05 / Profile update — Mobile</text></svg>

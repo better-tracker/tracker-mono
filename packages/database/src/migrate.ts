@@ -22,20 +22,10 @@ In this file:
 import { Pool } from "pg";
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 
-const databaseUrl = process.env.DATABASE_URL;
-
-if (!databaseUrl) {
-    throw new Error('DATABASE_URL is not set');
-}
-
-const pool = new Pool({
-    connectionString:  databaseUrl,
-});
-
-const migrationsDir = join(process.cwd(), 'migrations');
-
-async function migrate() {
+/** Apply pending SQL migrations atomically. The caller owns the pool. */
+export async function migrate(pool: Pool, migrationsDir: string): Promise<void> {
     const client = await pool.connect();
 
     try {
@@ -86,11 +76,22 @@ async function migrate() {
     }
 }
 
-migrate()
-    .catch((error) => {
+async function main(): Promise<void> {
+    const databaseUrl = process.env.DATABASE_URL;
+    if (!databaseUrl) throw new Error('DATABASE_URL is not set');
+
+    const pool = new Pool({ connectionString: databaseUrl });
+    try {
+        await migrate(pool, join(process.cwd(), 'migrations'));
+    } finally {
+        await pool.end();
+    }
+}
+
+// Imports must not read settings or connect to PostgreSQL.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+    main().catch((error: unknown) => {
         console.error('Migration failed:', error);
         process.exitCode = 1;
-    })
-    .finally(async () => {
-        await pool.end();
     });
+}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+<title id="title">Project Tracker — refined agreed design — login-web</title>
+<desc id="desc">A restrained revision of the first agreed design group. Original split web layouts, lighter editorial headings, square controls and ample space. No decorative left rail. Task-only colour: Dawn urgency, Greenery completion, Sea progress and Sand next deadline. Account screens remain monochrome.</desc>
+<style>text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;fill:#000000}.display{font-weight:400;letter-spacing:-.06em}.label{font-weight:600;letter-spacing:.08em}.body{font-weight:400;letter-spacing:-.02em}</style>
+<rect x="0" y="0" width="1600" height="1040" fill="#FCFCFA" /><text x="104" y="57" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">PROJECT TRACKER / 001</text>
+<text x="1540" y="57" font-size="14" class="label" text-anchor="end" style="fill:#000000" fill="#000000">YOUR WORK. IN ORDER.</text>
+<line x1="104" y1="78" x2="1540" y2="78" stroke="#000000" stroke-width="2" />
+<g id="brand-panel">
+<text x="104" y="127" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">01 / A LITTLE SPACE TO FOCUS</text>
+<text x="93" y="280" font-size="102" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">MAKE</text>
+<text x="93" y="405" font-size="102" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">ROOM FOR</text>
+<text x="93" y="530" font-size="102" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">WORK.</text>
+<text x="104" y="594" font-size="28" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Less noise. A clearer next step.</text>
+<rect x="104" y="640" width="684" height="232" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="128" y="674" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">THE DAILY ROUTINE</text>
+<text x="128" y="725" font-size="19" class="label" text-anchor="start" style="fill:#000000" fill="#000000">01</text>
+<text x="184" y="725" font-size="24" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Find what matters.</text>
+<line x1="128" y1="742" x2="764" y2="742" stroke="#000000" stroke-width="1" />
+<text x="128" y="779" font-size="19" class="label" text-anchor="start" style="fill:#000000" fill="#000000">02</text>
+<text x="184" y="779" font-size="24" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Break it into smaller steps.</text>
+<line x1="128" y1="796" x2="764" y2="796" stroke="#000000" stroke-width="1" />
+<text x="128" y="833" font-size="19" class="label" text-anchor="start" style="fill:#000000" fill="#000000">03</text>
+<text x="184" y="833" font-size="24" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Move one thing forward.</text>
+</g>
+<line x1="848" y1="118" x2="848" y2="888" stroke="#E3E3DF" stroke-width="1" />
+<g id="sign-in-form">
+<text x="924" y="151" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">02 / YOUR ACCOUNT</text>
+<text x="917" y="249" font-size="68" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">WELCOME</text>
+<text x="917" y="326" font-size="68" class="display" text-anchor="start" style="fill:#000000" font-weight="400" fill="#000000">BACK.</text>
+<text x="924" y="373" font-size="21" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Sign in to pick up where you left off.</text>
+<text x="924" y="424" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">EMAIL ADDRESS</text>
+<rect x="924" y="438" width="548" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="940" y="472.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">ben@example.com</text>
+<text x="924" y="540" font-size="14" class="label" text-anchor="start" style="fill:#000000" fill="#000000">PASSWORD</text>
+<rect x="924" y="554" width="548" height="56" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="940" y="588.0" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">••••••••••••</text>
+<rect x="1372" y="555" width="99" height="54" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<text x="1421.5" y="587.0" font-size="12" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">SHOW</text>
+<rect x="924" y="644" width="22" height="22" fill="#FCFCFA" stroke="#000000" stroke-width="1.5" />
+<path d="M 929 655 l 5 5 l 8 -10" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" />
+<text x="960" y="661" font-size="18" class="body" text-anchor="start" style="fill:#000000" fill="#000000">Keep me signed in</text>
+<text x="1472" y="661" font-size="18" class="body" text-anchor="end" style="fill:#000000" fill="#000000">Forgot password?</text>
+<line x1="1325" y1="668" x2="1472" y2="668" stroke="#000000" stroke-width="1" />
+<rect x="924" y="712" width="548" height="64" fill="#FCFCFA" stroke="#000000" stroke-width="2" />
+<text x="1198.0" y="749.0" font-size="16" class="label" text-anchor="middle" style="fill:#000000" fill="#000000">SIGN IN →</text>
+<text x="924" y="827" font-size="19" class="body" text-anchor="start" style="fill:#000000" fill="#000000">New to Project Tracker?</text>
+<text x="1472" y="827" font-size="19" class="body" text-anchor="end" style="fill:#000000" fill="#000000">Create account ↗</text>
+<line x1="1330" y1="834" x2="1472" y2="834" stroke="#000000" stroke-width="1" />
+</g>
+<line x1="104" y1="970" x2="1540" y2="970" stroke="#000000" stroke-width="2" />
+<text x="104" y="1002" font-size="13" class="label" text-anchor="start" style="fill:#000000" fill="#000000">ACCOUNT / SIGN IN</text>
+<text x="1540" y="1002" font-size="13" class="label" text-anchor="end" style="fill:#000000" fill="#000000">PLAN SMALL. FINISH WELL.</text>
+</svg>
