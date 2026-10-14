@@ -1,3 +1,87 @@
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from 'react-router';
+import { Shell } from './components/Shell';
+import { Missing } from './components/UI';
+import { createLocalDataSource } from './data/local-source';
+import { hasSession } from './data/session';
+import type { FrontendDataSource } from './data/types';
+import { WorkspaceProvider } from './features/WorkspaceProvider';
+import { Login } from './pages/Login';
+import { Profile } from './pages/Profile';
+import { Projects } from './pages/Projects';
+import { SubtaskForm } from './pages/SubtaskForm';
+import { TaskForm } from './pages/TaskForm';
+import { TaskDetail, Tasks } from './pages/Tasks';
+import { Today } from './pages/Today';
+import './styles/app.css';
+
+const source = createLocalDataSource({
+  getItem: (key) => window.localStorage.getItem(key),
+  setItem: (key, value) => window.localStorage.setItem(key, value),
+});
+
+function Protected({ source }: { source: FrontendDataSource }) {
+  const location = useLocation();
+  return hasSession() ? (
+    <WorkspaceProvider source={source}>
+      <Outlet />
+    </WorkspaceProvider>
+  ) : (
+    <Navigate
+      to="/login"
+      replace
+      state={{ from: location.pathname + location.search }}
+    />
+  );
+}
+
+function TaskEditor() {
+  const { id } = useParams();
+  return <TaskForm key={id ?? 'new'} />;
+}
+
+function SubtaskEditor() {
+  const { id, subtaskId } = useParams();
+  return <SubtaskForm key={`${id}:${subtaskId ?? 'new'}`} />;
+}
+
+export function AppRoutes({ source }: { source: FrontendDataSource }) {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route element={<Protected source={source} />}>
+        <Route element={<Shell />}>
+          <Route index element={<Today />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="projects/:id" element={<Projects />} />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="tasks/new" element={<TaskEditor />} />
+          <Route path="tasks/:id" element={<TaskDetail />} />
+          <Route path="tasks/:id/edit" element={<TaskEditor />} />
+          <Route path="tasks/:id/subtasks/new" element={<SubtaskEditor />} />
+          <Route
+            path="tasks/:id/subtasks/:subtaskId/edit"
+            element={<SubtaskEditor />}
+          />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<Missing />} />
+        </Route>
+      </Route>
+    </Routes>
+  );
+}
+
 export default function App() {
-  return <main>Web application is running.</main>;
+  return (
+    <BrowserRouter>
+      <AppRoutes source={source} />
+    </BrowserRouter>
+  );
 }

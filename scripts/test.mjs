@@ -8,7 +8,7 @@ const suites = [
   { name: 'contracts', path: 'packages/contracts', pattern: 'tests/*.test.mjs', deferred: false },
   { name: 'api', path: 'apps/api', pattern: 'tests/unit/**/*.test.ts', deferred: false },
   { name: 'api-client', path: 'packages/api-client', pattern: 'tests/unit/**/*.test.ts', deferred: true },
-  { name: 'web', path: 'apps/web', pattern: 'tests/unit/**/*.test.{ts,tsx}', deferred: true },
+  { name: 'web', path: 'apps/web', pattern: 'tests/unit/**/*.test.{ts,tsx}', deferred: false },
   { name: 'mobile', path: 'apps/mobile', pattern: 'tests/unit/**/*.test.{ts,tsx,js,jsx}', deferred: true },
 ];
 
@@ -34,4 +34,4 @@ for (const suite of suites) {
 }
 
 console.log('Database integration tests run separately with pnpm test:integration.');
-console.log('Web browser tests are deferred until product workflows exist (pnpm test:e2e).');
+console.log('Web browser tests run separately with pnpm test:e2e (also required by CI).');
