@@ -7,10 +7,16 @@ export {
 export {
     createProject,
     getProjectById,
+    listProjects,
+    updateProject,
+    deleteProject,
 } from "./repositories/projectsRepo.js";
 export {
     createSubtask,
     getSubtaskById,
+    listSubtasksByProject,
+    updateSubtask,
+    deleteSubtask,
 } from "./repositories/subtaskRepo.js";
 export { pool } from "./client.js";
 export type { 
