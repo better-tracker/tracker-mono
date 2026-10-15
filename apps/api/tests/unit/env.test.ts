@@ -1,8 +1,21 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('PORT configuration', () => {
-  beforeEach(() => { vi.resetModules(); });
+  beforeEach(() => {
+    vi.resetModules();
+    vi.stubEnv(
+      'DATABASE_URL',
+      'postgresql://test:test@localhost:5432/test_db'
+    );
+  });
   afterEach(() => { vi.unstubAllEnvs(); });
+  it('rejects a missing DATABASE_URL', async () => {
+    vi.stubEnv('DATABASE_URL', undefined);
+
+    await expect(
+      import('../../src/config/env.js')
+    ).rejects.toThrow('DATABASE_URL is required');
+  });
 
   it('defaults to 3001 when PORT is absent', async () => {
     vi.stubEnv('PORT', undefined);
