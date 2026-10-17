@@ -14,19 +14,28 @@ import {
   deleteSubtask,
 } from './subtasks.controller.js';
 
+import { paginationQuerySchema, uuidParamsSchema } from '../../shared/request-schemas.js';
+
+const collectionParams = uuidParamsSchema('projectId');
+const itemParams = uuidParamsSchema('projectId', 'id');
+
 export const subtaskRoutes = async (app: FastifyInstance) => {
-  app.get('/v1/projects/:projectId/subtasks', getSubtasks);
+  app.get('/v1/projects/:projectId/subtasks', {
+    schema: { params: collectionParams, querystring: paginationQuerySchema },
+  }, getSubtasks);
 
   app.post('/v1/projects/:projectId/subtasks', {
+    schema: { params: collectionParams },
     preValidation: async (request) => {
       subtaskCreateSchema.parse(request.body);
     },
     handler: createSubtask,
   });
 
-  app.get('/v1/projects/:projectId/subtasks/:id', getSubtask);
+  app.get('/v1/projects/:projectId/subtasks/:id', { schema: { params: itemParams } }, getSubtask);
 
   app.put('/v1/projects/:projectId/subtasks/:id', {
+    schema: { params: itemParams },
     preValidation: async (request) => {
       subtaskUpdateSchema.parse(request.body);
     },
@@ -35,6 +44,7 @@ export const subtaskRoutes = async (app: FastifyInstance) => {
 
   app.delete(
     '/v1/projects/:projectId/subtasks/:id',
+    { schema: { params: itemParams } },
     deleteSubtask,
   );
 };

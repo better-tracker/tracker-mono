@@ -18,24 +18,20 @@ import {
   deleteProject as deleteProjectService,
 } from './projects.service.js';
 
+import type { PaginationQuery } from '../../shared/request-schemas.js';
+import { toProjectListItem, toProjectResponse } from '../../shared/responses.js';
+
 type ProjectParams = {
   id: string;
 };
 
 export const getProjects = async (
-  _request: FastifyRequest,
+  request: FastifyRequest<{ Querystring: PaginationQuery }>,
   reply: FastifyReply,
 ) => {
-  const projects = await getAllProjects();
+  const projects = await getAllProjects(request.query.limit, request.query.offset);
 
-  return reply.code(200).send(
-    projects.map((project) => ({
-      id: project.id,
-      name: project.name,
-      description: project.description,
-      createdAt: project.created_at.toISOString(),
-    })),
-  );
+  return reply.code(200).send(projects.map(toProjectListItem));
 };
 
 export const getProject = async (
@@ -55,13 +51,7 @@ export const getProject = async (
     });
   }
 
-  return reply.code(200).send({
-    id: project.id,
-    name: project.name,
-    description: project.description,
-    createdAt: project.created_at.toISOString(),
-    subtasks: [],
-  });
+  return reply.code(200).send(toProjectResponse(project, project.subtasks));
 };
 
 export const createProject = async (
@@ -70,12 +60,7 @@ export const createProject = async (
 ) => {
   const project = await createProjectService(request.body);
 
-  return reply.code(201).send({
-    id: project.id,
-    name: project.name,
-    description: project.description,
-    createdAt: project.created_at.toISOString(),
-  });
+  return reply.code(201).send(toProjectResponse(project));
 };
 
 export const updateProject = async (
@@ -98,12 +83,7 @@ export const updateProject = async (
     });
   }
 
-  return reply.code(200).send({
-    id: project.id,
-    name: project.name,
-    description: project.description,
-    createdAt: project.created_at.toISOString(),
-  });
+  return reply.code(200).send(toProjectResponse(project, project.subtasks));
 };
 
 export const deleteProject = async (

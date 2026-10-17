@@ -18,8 +18,12 @@ import {
   deleteProject,
 } from './projects.controller.js';
 
+import { paginationQuerySchema, uuidParamsSchema } from '../../shared/request-schemas.js';
+
+const params = uuidParamsSchema('id');
+
 export const projectRoutes = async (app: FastifyInstance) => {
-  app.get('/v1/projects', getProjects);
+  app.get('/v1/projects', { schema: { querystring: paginationQuerySchema } }, getProjects);
 
   app.post('/v1/projects', {
     preValidation: async (request) => {
@@ -28,14 +32,15 @@ export const projectRoutes = async (app: FastifyInstance) => {
     handler: createProject,
   });
 
-  app.get('/v1/projects/:id', getProject);
+  app.get('/v1/projects/:id', { schema: { params } }, getProject);
 
   app.put('/v1/projects/:id', {
+    schema: { params },
     preValidation: async (request) => {
       projectUpdateSchema.parse(request.body);
     },
     handler: updateProject,
   });
 
-  app.delete('/v1/projects/:id', deleteProject);
+  app.delete('/v1/projects/:id', { schema: { params } }, deleteProject);
 };

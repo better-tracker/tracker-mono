@@ -16,34 +16,30 @@ import {
   deleteSubtask as deleteSubtaskService,
 } from './subtasks.service.js';
 
+import type { PaginationQuery } from '../../shared/request-schemas.js';
+import { toSubtaskResponse as toResponse } from '../../shared/responses.js';
+
 type SubtaskParams = {
   projectId: string;
   id: string;
 };
 
-const toResponse = (subtask: {
-  id: string;
-  completed: boolean;
-  description: string | null;
-  created_at: Date;
-  updated_at: Date;
-}) => ({
-  id: subtask.id,
-  completed: subtask.completed,
-  description: subtask.description,
-  createdAt: subtask.created_at.toISOString(),
-  updatedAt: subtask.updated_at.toISOString(),
-});
-
 export const getSubtasks = async (
   request: FastifyRequest<{
     Params: Pick<SubtaskParams, 'projectId'>;
+    Querystring: PaginationQuery;
   }>,
   reply: FastifyReply,
 ) => {
   const subtasks = await getSubtasksForProject(
     request.params.projectId,
+    request.query.limit,
+    request.query.offset,
   );
+
+  if (!subtasks) {
+    return reply.code(404).send({ error: { code: 'NOT_FOUND', message: 'Project not found' } });
+  }
 
   return reply.code(200).send(subtasks.map(toResponse));
 };
@@ -60,6 +56,10 @@ export const createSubtask = async (
     request.body,
   );
 
+  if (!subtask) {
+    return reply.code(404).send({ error: { code: 'NOT_FOUND', message: 'Project not found' } });
+  }
+
   return reply.code(201).send(toResponse(subtask));
 };
 
@@ -71,7 +71,7 @@ export const getSubtask = async (
 ) => {
   const subtask = await getSubtaskService(request.params.id);
 
-  if (!subtask || subtask.project_id !== request.params.projectId) {
+  if (!subtask || subtask.project_id !== request.params.projectId.toLowerCase()) {
     return reply.code(404).send({
       error: {
         code: 'NOT_FOUND',
@@ -94,7 +94,7 @@ export const updateSubtask = async (
 
   if (
     !existing ||
-    existing.project_id !== request.params.projectId
+    existing.project_id !== request.params.projectId.toLowerCase()
   ) {
     return reply.code(404).send({
       error: {
@@ -131,7 +131,7 @@ export const deleteSubtask = async (
 
   if (
     !existing ||
-    existing.project_id !== request.params.projectId
+    existing.project_id !== request.params.projectId.toLowerCase()
   ) {
     return reply.code(404).send({
       error: {
