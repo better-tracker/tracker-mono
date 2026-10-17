@@ -8,6 +8,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
@@ -27,6 +28,35 @@ jobs:
           path: |
             apps/*/coverage/
             packages/*/coverage/
+          if-no-files-found: warn
+  web-browser-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build shared web dependencies
+        run: pnpm --filter @project-tracker/web^... run build
+      - name: Install Chromium and system dependencies
+        run: pnpm --filter @project-tracker/web exec playwright install --with-deps chromium
+      - name: Test web workflows and responsive layouts
+        run: pnpm test:e2e
+      - name: Upload browser reports, screenshots, and traces
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: web-browser-test-results
+          path: |
+            apps/web/playwright-report/
+            apps/web/test-results/
+          retention-days: 14
           if-no-files-found: warn
   database-tests:
     runs-on: ubuntu-latest
