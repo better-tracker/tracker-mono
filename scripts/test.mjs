@@ -21,7 +21,7 @@ function run(args, command = 'pnpm') {
 
 run(['--test', 'scripts/tests/notify-discord.test.mjs'], process.execPath);
 
-run(['--filter', '@project-tracker/contracts', '--filter', '@project-tracker/api-client', 'run', 'build']);
+run(['--filter', '@project-tracker/contracts', '--filter', '@project-tracker/api-client', '--filter', '@project-tracker/database', 'run', 'build']);
 
 for (const suite of suites) {
   const files = globSync(`${suite.path}/${suite.pattern}`, { cwd: root });

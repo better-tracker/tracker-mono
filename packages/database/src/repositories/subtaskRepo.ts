@@ -40,7 +40,8 @@ export async function getSubtaskById(id: string): Promise<Subtask | null> {
 
 export async function listSubtasksByProject(
   projectId: string,
-  limit = 40,
+  // NULL removes the limit for the unpaginated project detail response.
+  limit: number | null = 40,
   offset = 0
 ): Promise<Subtask[]> {
   const result = await pool.query<Subtask>(
