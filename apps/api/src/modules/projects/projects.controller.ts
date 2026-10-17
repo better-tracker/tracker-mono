@@ -1,30 +1,41 @@
 // Handle project HTTP requests, pass validated input to the project service,
 // and translate results into HTTP responses.
 
-/* Set up where the routes get from. Bare bones atm
+/*
     Routes are now wired and work
 */
 import type { FastifyReply, FastifyRequest } from 'fastify';
+import type {
+  ProjectCreate,
+  ProjectUpdate,
+} from '@project-tracker/contracts';
+
+import {
+  getAllProjects,
+  getProject as getProjectService,
+  createProject as createProjectService,
+  updateProject as updateProjectService,
+  deleteProject as deleteProjectService,
+} from './projects.service.js';
 
 type ProjectParams = {
   id: string;
-};
-
-type CreateProjectBody = {
-  name: string;
-  description?: string;
-};
-
-type UpdateProjectBody = {
-  name: string;
-  description?: string;
 };
 
 export const getProjects = async (
   _request: FastifyRequest,
   reply: FastifyReply,
 ) => {
-  return reply.code(200).send([]);
+  const projects = await getAllProjects();
+
+  return reply.code(200).send(
+    projects.map((project) => ({
+      id: project.id,
+      name: project.name,
+      description: project.description,
+      createdAt: project.created_at.toISOString(),
+    })),
+  );
 };
 
 export const getProject = async (
@@ -33,46 +44,82 @@ export const getProject = async (
 ) => {
   const { id } = request.params;
 
+  const project = await getProjectService(id);
+
+  if (!project) {
+    return reply.code(404).send({
+      error: {
+        code: 'NOT_FOUND',
+        message: 'Project not found',
+      },
+    });
+  }
+
   return reply.code(200).send({
-    id,
-    name: 'Example project',
-    description: 'Temporary response',
+    id: project.id,
+    name: project.name,
+    description: project.description,
+    createdAt: project.created_at.toISOString(),
+    subtasks: [],
   });
 };
 
 export const createProject = async (
-  request: FastifyRequest<{ Body: CreateProjectBody }>,
+  request: FastifyRequest<{ Body: ProjectCreate }>,
   reply: FastifyReply,
 ) => {
-  const { name, description } = request.body;
+  const project = await createProjectService(request.body);
 
   return reply.code(201).send({
-    id: 'temporary-id',
-    name,
-    description: description ?? null,
+    id: project.id,
+    name: project.name,
+    description: project.description,
+    createdAt: project.created_at.toISOString(),
   });
 };
 
 export const updateProject = async (
   request: FastifyRequest<{
     Params: ProjectParams;
-    Body: UpdateProjectBody;
+    Body: ProjectUpdate;
   }>,
   reply: FastifyReply,
 ) => {
   const { id } = request.params;
-  const { name, description } = request.body;
+
+  const project = await updateProjectService(id, request.body);
+
+  if (!project) {
+    return reply.code(404).send({
+      error: {
+        code: 'NOT_FOUND',
+        message: 'Project not found',
+      },
+    });
+  }
 
   return reply.code(200).send({
-    id,
-    name,
-    description: description ?? null,
+    id: project.id,
+    name: project.name,
+    description: project.description,
+    createdAt: project.created_at.toISOString(),
   });
 };
 
 export const deleteProject = async (
-  _request: FastifyRequest<{ Params: ProjectParams }>,
+  request: FastifyRequest<{ Params: ProjectParams }>,
   reply: FastifyReply,
 ) => {
+  const deleted = await deleteProjectService(request.params.id);
+
+  if (!deleted) {
+    return reply.code(404).send({
+      error: {
+        code: 'NOT_FOUND',
+        message: 'Project not found',
+      },
+    });
+  }
+
   return reply.code(204).send();
 };

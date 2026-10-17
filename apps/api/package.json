@@ -16,6 +16,7 @@
   "dependencies": {
     "@fastify/cors": "^11.3.1",
     "@project-tracker/contracts": "workspace:*",
+    "@project-tracker/database": "workspace:*",
     "fastify": "5.12.5"
   },
   "devDependencies": {
