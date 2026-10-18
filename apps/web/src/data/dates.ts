@@ -1,4 +1,5 @@
 import type { Deadline, DemoTask, Workspace } from './types';
+import { MILLISECONDS_PER_DAY } from './constants';
 
 export function localClock(now: Date, timezone: string) {
   const parts = new Intl.DateTimeFormat('en-GB', {
@@ -43,13 +44,16 @@ export function weekNumber(date: string, weekStartsOn: 'Monday' | 'Sunday') {
   if (weekStartsOn === 'Sunday') {
     const first = new Date(Date.UTC(day.getUTCFullYear(), 0, 1, 12));
     return Math.ceil(
-      ((day.getTime() - first.getTime()) / 86400000 + first.getUTCDay() + 1) /
+      ((day.getTime() - first.getTime()) / MILLISECONDS_PER_DAY +
+        first.getUTCDay() + 1) /
         7,
     );
   }
   day.setUTCDate(day.getUTCDate() + 4 - (day.getUTCDay() || 7));
   const first = new Date(Date.UTC(day.getUTCFullYear(), 0, 1, 12));
-  return Math.ceil(((day.getTime() - first.getTime()) / 86400000 + 1) / 7);
+  return Math.ceil(
+    ((day.getTime() - first.getTime()) / MILLISECONDS_PER_DAY + 1) / 7,
+  );
 }
 
 export function dashboard(workspace: Workspace, now: Date) {

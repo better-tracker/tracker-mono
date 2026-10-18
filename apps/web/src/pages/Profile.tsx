@@ -2,6 +2,13 @@ import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { Dialog, Field, Heading } from '../components/UI';
+import {
+  ALLOWED_AVATAR_TYPES,
+  MAX_AVATAR_SIZE_BYTES,
+  MAX_AVATAR_SIZE_MB,
+  MAX_PROFILE_BIO_LENGTH,
+  MAX_PROFILE_NAME_LENGTH,
+} from '../data/constants';
 import { signOut } from '../data/session';
 import type { DemoProfile } from '../data/types';
 import { validateProfile } from '../data/validation';
@@ -53,10 +60,12 @@ export function Profile() {
   async function avatar(selected?: File) {
     if (!selected) return;
     if (
-      !['image/png', 'image/jpeg', 'image/webp'].includes(selected.type) ||
-      selected.size > 1024 * 1024
+      !ALLOWED_AVATAR_TYPES.some((type) => type === selected.type) ||
+      selected.size > MAX_AVATAR_SIZE_BYTES
     ) {
-      setError('Choose a PNG, JPEG or WebP image smaller than 1 MB.');
+      setError(
+        `Choose a PNG, JPEG or WebP image smaller than ${MAX_AVATAR_SIZE_MB} MB.`,
+      );
       return;
     }
     try {
@@ -116,7 +125,7 @@ export function Profile() {
           <input
             ref={file}
             type="file"
-            accept="image/png,image/jpeg,image/webp"
+            accept={ALLOWED_AVATAR_TYPES.join(',')}
             aria-label="Choose avatar"
             hidden
             onChange={(event) => {
@@ -161,7 +170,7 @@ export function Profile() {
             <Field label="First name" required>
               <input
                 required
-                maxLength={100}
+                maxLength={MAX_PROFILE_NAME_LENGTH}
                 autoComplete="given-name"
                 value={form.firstName}
                 onChange={(event) => patch({ firstName: event.target.value })}
@@ -170,7 +179,7 @@ export function Profile() {
             <Field label="Last name" required>
               <input
                 required
-                maxLength={100}
+                maxLength={MAX_PROFILE_NAME_LENGTH}
                 autoComplete="family-name"
                 value={form.lastName}
                 onChange={(event) => patch({ lastName: event.target.value })}
@@ -193,7 +202,7 @@ export function Profile() {
           <Field label="Bio">
             <textarea
               rows={3}
-              maxLength={2000}
+              maxLength={MAX_PROFILE_BIO_LENGTH}
               value={form.bio}
               onChange={(event) => patch({ bio: event.target.value })}
             />

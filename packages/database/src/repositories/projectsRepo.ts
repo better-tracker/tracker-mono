@@ -1,4 +1,5 @@
 import { pool } from "../client.js";
+import { DEFAULT_PAGE_SIZE } from '../constants.js';
 
 export interface Project {
   id: string;
@@ -35,7 +36,7 @@ export async function getProjectById(id: string): Promise<Project | null> {
   return result.rows[0] || null;
 }
 
-export async function listProjects(limit = 40, offset = 0): Promise<Project[]> {
+export async function listProjects(limit = DEFAULT_PAGE_SIZE, offset = 0): Promise<Project[]> {
   const result = await pool.query<Project>(
     `SELECT id, name, description, created_at FROM projects ORDER BY created_at DESC, id DESC LIMIT $1 OFFSET $2`,
     [limit, offset]

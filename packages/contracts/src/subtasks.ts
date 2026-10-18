@@ -3,6 +3,7 @@
 */    
 
 import { z } from 'zod';
+import { MAX_SUBTASK_DESCRIPTION_LENGTH } from './constants.js';
 
 export const subtaskIdSchema = z.uuid();
 const utcDateSchema = z.iso.datetime({ offset: false, local: false });
@@ -11,7 +12,10 @@ export const subtaskDescriptionSchema = z
   .string()
   .trim()
   .min(1, 'Subtask description is required')
-  .max(2000, 'Subtask description must be 2000 characters or less');
+  .max(
+    MAX_SUBTASK_DESCRIPTION_LENGTH,
+    `Subtask description must be ${MAX_SUBTASK_DESCRIPTION_LENGTH} characters or less`,
+  );
 
 export const subtaskCreateSchema = z.object({
   completed: z.boolean().default(false),

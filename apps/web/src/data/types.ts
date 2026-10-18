@@ -1,5 +1,7 @@
-export type Priority = 'Low' | 'Medium' | 'High';
-export type TaskStatus = 'To do' | 'In progress' | 'Complete';
+import type { TASK_PRIORITIES, TASK_STATUSES } from './constants';
+
+export type Priority = (typeof TASK_PRIORITIES)[number];
+export type TaskStatus = (typeof TASK_STATUSES)[number];
 export interface Deadline {
   dueDate: string;
   dueTime: string;

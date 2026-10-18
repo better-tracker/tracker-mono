@@ -4,6 +4,10 @@ import {
   userEmailSchema,
 } from '@project-tracker/contracts';
 import { deadlineKey } from './dates';
+import {
+  MAX_SUBTASK_NOTES_LENGTH,
+  MAX_TASK_DESCRIPTION_LENGTH,
+} from './constants';
 import type {
   Deadline,
   DemoProfile,
@@ -46,14 +50,18 @@ export function validateProject(input: ProjectInput) {
 export function validateTask(input: TaskInput) {
   requiredTitle(input.title);
   if (!input.projectId) throw new Error('Choose a project for this task.');
-  if (input.description.length > 2000)
-    throw new Error('Description must be 2000 characters or less.');
+  if (input.description.length > MAX_TASK_DESCRIPTION_LENGTH)
+    throw new Error(
+      `Description must be ${MAX_TASK_DESCRIPTION_LENGTH} characters or less.`,
+    );
   validateDeadline(input);
 }
 export function validateSubtask(input: SubtaskInput, parent: Deadline) {
   requiredTitle(input.title);
-  if (input.notes.length > 2000)
-    throw new Error('Notes must be 2000 characters or less.');
+  if (input.notes.length > MAX_SUBTASK_NOTES_LENGTH)
+    throw new Error(
+      `Notes must be ${MAX_SUBTASK_NOTES_LENGTH} characters or less.`,
+    );
   validateDeadline(input, parent);
 }
 export function validateProfile(profile: DemoProfile) {
