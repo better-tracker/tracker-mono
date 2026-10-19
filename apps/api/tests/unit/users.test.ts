@@ -3,8 +3,40 @@ import {
   userResponseSchema,
 } from '@project-tracker/contracts';
 import type { FastifyInstance } from 'fastify';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildApp } from '../../src/app.js';
+
+vi.mock('@project-tracker/database', () => {
+  const makeUser = (over: Record<string, unknown> = {}) => ({
+    id: globalThis.crypto.randomUUID(),
+    user_name: 'alice',
+    email: 'alice@example.com',
+    profile_pic: null,
+    ...over,
+  });
+
+  return {
+    getUsers: vi.fn(async () => [makeUser()]),
+    createUser: vi.fn(async (u: any) =>
+      makeUser({
+        user_name: u.user_name,
+        email: u.email,
+        profile_pic: u.profile_pic ?? null,
+      }),
+    ),
+    getUserById: vi.fn(async (id: string) => makeUser({ id })),
+    updateUser: vi.fn(async (id: string, u: any) =>
+      makeUser({
+        id,
+        user_name: u.user_name,
+        email: u.email,
+        profile_pic: u.profile_pic ?? null,
+      }),
+    ),
+    deleteUser: vi.fn(async () => true),
+    getUserByEmailForAuth: vi.fn(),
+  };
+});
 
 const userId = '33333333-3333-4333-8333-333333333333';
 const users = '/v1/users';
