@@ -1,11 +1,3 @@
-/* user schemas to validate api requests and responses
-  - user ids must be valid uuids
-  - usernames arer required and limited to 25 characters
-  - emails must be valid addresses
-  - prof pics are optional and stored as url/path strings
-  - user timestamps not required per my discussion with supreme leader
-*/
-
 import { z } from 'zod';
 import { MAX_USERNAME_LENGTH } from './constants.js';
 

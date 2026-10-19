@@ -1,11 +1,3 @@
-/* Using Zod for schema validation and type inference
-    Projects must have a name and description
-    Name must be string and between 1 and 255 characters
-    Description limit to 2000 chars and not null
-    Trim removes whitespace
-    Also have subtasks schema to list them in the description
-*/
-
 import { z } from 'zod';
 import {
   MAX_PROJECT_DESCRIPTION_LENGTH,

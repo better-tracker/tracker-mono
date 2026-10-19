@@ -139,8 +139,8 @@ describe('HTTP validation errors', () => {
     const { method, url } = endpoint;
 
     describe(`${method} ${url}`, () => {
-      // Zod errors currently fall through to Fastify's default 500 response;
-      // enable these when validation failures use the shared safe 400 shape.
+      // Project and subtask body validation still returns 500 on Zod errors.
+      // Users already map validation failures to 400; this shared matrix remains skipped.
       it.skip('rejects a missing body [pending: validation error mapping]', async () => {
         await expectSafeValidationError({ method, url });
       });
@@ -187,7 +187,8 @@ describe('HTTP validation errors', () => {
   ];
 
   for (const method of ['GET', 'PUT', 'DELETE'] as const) {
-    // Path parameters currently bypass shared UUID validation altogether.
+    // Project and subtask IDs still lack UUID validation; user IDs are validated.
+    // This mixed-route matrix remains skipped.
     it.skip.each(invalidIdRoutes)(`${method} rejects malformed $label [pending: UUID validation]`, async ({ url, payload }) => {
       await expectSafeValidationError({
         method, url, ...(method === 'PUT' ? { payload } : {}),

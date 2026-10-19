@@ -1,6 +1,3 @@
-// Set up the exact same as regular tasks with the 'same' desired endpoints
-
-
 import type { FastifyInstance } from 'fastify';
 import {
   subtaskCreateSchema,

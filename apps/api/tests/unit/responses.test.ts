@@ -82,8 +82,7 @@ describe('project and subtask HTTP responses', () => {
     expect(response.body).toBe('');
   });
 
-  // Enable as temporary controllers adopt shared response contracts. These tests
-  // deliberately do not bless placeholder IDs or omit required response fields.
+  // Project and subtask placeholders still lack required response fields.
   it.skip.each([
     {
       method: 'POST', url: projects, payload: { name: 'New project' }, status: 201,
@@ -119,7 +118,8 @@ describe('project and subtask HTTP responses', () => {
     expect(schema.safeParse(response.json<unknown>()).success).toBe(true);
   });
 
-  // The request hooks currently discard Zod's normalized output.
+  // Project and subtask hooks discard parsed bodies; user hooks retain them.
+  // This mixed-route matrix remains skipped.
   it.skip.each([
     {
       method: 'POST', url: projects,

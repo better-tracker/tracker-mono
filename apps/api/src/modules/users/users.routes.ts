@@ -1,8 +1,3 @@
-/* Users module
-    Get all users, create a user, get a user by id, update a user by id, delete a user by id
-    Each route connected to controller
-*/
-
 import type { FastifyInstance } from 'fastify';
 import {
   userIdSchema,

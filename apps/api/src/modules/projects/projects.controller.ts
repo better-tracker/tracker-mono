@@ -1,9 +1,5 @@
-// Handle project HTTP requests, pass validated input to the project service,
-// and translate results into HTTP responses.
+// Placeholder responses; project persistence is not implemented.
 
-/* Set up where the routes get from. Bare bones atm
-    Routes are now wired and work
-*/
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
 type ProjectParams = {

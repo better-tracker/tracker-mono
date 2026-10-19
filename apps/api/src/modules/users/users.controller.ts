@@ -1,7 +1,3 @@
-/* Users controller
-    Set up where the routes get from
-*/
-
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import type {
   UserCreate,

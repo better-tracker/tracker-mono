@@ -1,5 +1,4 @@
-// Barebones set up again, same as projects
-// these are temporary responses just for testing
+// Placeholder responses; subtask persistence is not implemented.
 
 import type { FastifyReply, FastifyRequest } from 'fastify';
 

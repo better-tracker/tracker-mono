@@ -1,7 +1,3 @@
-/* Follows the same pattern as projects.ts but for subtasks
-    See projects for its description
-*/    
-
 import { z } from 'zod';
 import { MAX_SUBTASK_DESCRIPTION_LENGTH } from './constants.js';
 

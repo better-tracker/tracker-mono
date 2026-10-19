@@ -1,14 +1,6 @@
 /*
-Creates users table
-Soz made new file for this otherwise headaches
-
-team decisions:
-- user ids use automaticallyt generated uuids
-- usernames are required and must be unique
-- emails are required and must be uniuque
-- password stores a password hash, never plaintext password(to be completed later)
-- profile pics are optional and stored as text (url/path)
-- user timestamps not required (add later otherwise)
+The API service hashes passwords with salted scrypt before storing them here.
+The password column itself does not enforce the hash format.
 */
 
 CREATE TABLE users (
