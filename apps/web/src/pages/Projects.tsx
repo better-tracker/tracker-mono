@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import {
+  MAX_PROJECT_DESCRIPTION_LENGTH,
+  MAX_PROJECT_NAME_LENGTH,
+} from '@project-tracker/contracts';
 import { Link, useNavigate, useParams } from 'react-router';
 import {
   Confirm,
@@ -60,7 +64,7 @@ function ProjectDialog({
           <input
             data-autofocus
             required
-            maxLength={255}
+            maxLength={MAX_PROJECT_NAME_LENGTH}
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
@@ -68,7 +72,7 @@ function ProjectDialog({
         <Field label="Project description">
           <textarea
             rows={3}
-            maxLength={2000}
+            maxLength={MAX_PROJECT_DESCRIPTION_LENGTH}
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           />

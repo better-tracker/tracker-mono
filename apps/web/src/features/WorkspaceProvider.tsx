@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { WorkspaceContext } from './workspace-context';
+import { WORKSPACE_CLOCK_INTERVAL_MS } from '../data/constants';
 import type { FrontendDataSource, Workspace } from '../data/types';
 
 export function WorkspaceProvider({
@@ -61,7 +62,10 @@ export function WorkspaceProvider({
     };
   }, [source]);
   useEffect(() => {
-    const timer = window.setInterval(() => setNow(new Date()), 30000);
+    const timer = window.setInterval(
+      () => setNow(new Date()),
+      WORKSPACE_CLOCK_INTERVAL_MS,
+    );
     return () => window.clearInterval(timer);
   }, []);
   if (!workspace)

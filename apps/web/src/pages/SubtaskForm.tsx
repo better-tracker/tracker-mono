@@ -7,6 +7,10 @@ import {
   PriorityField,
 } from '../components/TaskFields';
 import { Field, Heading, Missing, Status } from '../components/UI';
+import {
+  MAX_SUBTASK_NOTES_LENGTH,
+  MAX_SUBTASK_TITLE_LENGTH,
+} from '../data/constants';
 import { dateLabel, deadlineKey } from '../data/dates';
 import type { SubtaskInput } from '../data/types';
 import { validateSubtask } from '../data/validation';
@@ -85,7 +89,7 @@ export function SubtaskForm() {
           <Field label="Subtask title" required>
             <input
               required
-              maxLength={255}
+              maxLength={MAX_SUBTASK_TITLE_LENGTH}
               placeholder="Check mobile spacing"
               value={form.title}
               onChange={(event) => patch({ title: event.target.value })}
@@ -93,7 +97,7 @@ export function SubtaskForm() {
           </Field>
           <Field label="Notes">
             <textarea
-              maxLength={2000}
+              maxLength={MAX_SUBTASK_NOTES_LENGTH}
               rows={3}
               placeholder="Check spacing and tap targets on narrow screens."
               value={form.notes}

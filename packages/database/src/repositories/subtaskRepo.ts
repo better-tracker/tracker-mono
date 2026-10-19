@@ -1,4 +1,5 @@
 import { pool } from "../client.js";
+import { DEFAULT_PAGE_SIZE } from '../constants.js';
 
 export interface Subtask {
   id: string;
@@ -40,7 +41,7 @@ export async function getSubtaskById(id: string): Promise<Subtask | null> {
 
 export async function listSubtasksByProject(
   projectId: string,
-  limit = 40,
+  limit = DEFAULT_PAGE_SIZE,
   offset = 0
 ): Promise<Subtask[]> {
   const result = await pool.query<Subtask>(

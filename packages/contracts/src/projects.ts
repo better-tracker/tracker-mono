@@ -7,6 +7,10 @@
 */
 
 import { z } from 'zod';
+import {
+  MAX_PROJECT_DESCRIPTION_LENGTH,
+  MAX_PROJECT_NAME_LENGTH,
+} from './constants.js';
 import { subtaskDescriptionSchema } from './subtasks.js';
 
 export const projectIdSchema = z.uuid();
@@ -16,12 +20,18 @@ export const projectNameSchema = z
   .string()
   .trim()
   .min(1, 'Project name is required')
-  .max(255, 'Project name must be 255 characters or less');
+  .max(
+    MAX_PROJECT_NAME_LENGTH,
+    `Project name must be ${MAX_PROJECT_NAME_LENGTH} characters or less`,
+  );
 
 export const projectDescriptionSchema = z
   .string()
   .trim()
-  .max(2000, 'Project description must be 2000 characters or less')
+  .max(
+    MAX_PROJECT_DESCRIPTION_LENGTH,
+    `Project description must be ${MAX_PROJECT_DESCRIPTION_LENGTH} characters or less`,
+  )
   .nullable();
 
 export const projectCreateSchema = z.object({

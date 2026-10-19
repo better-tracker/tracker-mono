@@ -1,4 +1,5 @@
 import { seedWorkspace } from './seed';
+import { TASK_PRIORITIES, TASK_STATUSES } from './constants';
 import {
   validateDeadline,
   validateProfile,
@@ -9,8 +10,6 @@ import {
 import type { FrontendDataSource, Workspace } from './types';
 
 export const WORKSPACE_KEY = 'project-tracker.workspace.v1';
-const priorities = ['Low', 'Medium', 'High'];
-const statuses = ['To do', 'In progress', 'Complete'];
 
 function readWorkspace(raw: string): Workspace {
   let value: unknown;
@@ -48,8 +47,8 @@ function readWorkspace(raw: string): Workspace {
           'dueDate',
           'dueTime',
         ]) &&
-        priorities.includes(String(v.priority)) &&
-        statuses.includes(String(v.status)) &&
+        TASK_PRIORITIES.some((priority) => priority === String(v.priority)) &&
+        TASK_STATUSES.some((status) => status === String(v.status)) &&
         (v.completedAt === null ||
           (typeof v.completedAt === 'string' &&
             !Number.isNaN(Date.parse(v.completedAt)))),
@@ -66,7 +65,7 @@ function readWorkspace(raw: string): Workspace {
           'dueDate',
           'dueTime',
         ]) &&
-        priorities.includes(String(v.priority)) &&
+        TASK_PRIORITIES.some((priority) => priority === String(v.priority)) &&
         typeof v.completed === 'boolean',
     ) ||
     !strings(value.profile, [

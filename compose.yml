@@ -1,4 +1,18 @@
 services:
+  redis:
+    image: redis:8
+    profiles: [redis]
+    ports:
+      - "127.0.0.1:6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   postgres:
     image: postgres:18
     environment:
@@ -16,4 +30,5 @@ services:
       retries: 10
 
 volumes:
+  redis_data:
   postgres_data:

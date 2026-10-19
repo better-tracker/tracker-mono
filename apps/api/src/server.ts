@@ -1,7 +1,9 @@
 import { buildApp } from './app.js';
 import { env } from './config/env.js';
+import { registerRedisLifecycle } from './lib/redis.js';
 
 const app = buildApp();
+if (env.redisUrl) registerRedisLifecycle(app);
 let shuttingDown = false;
 
 async function shutdown(signal: string) {

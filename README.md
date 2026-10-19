@@ -133,6 +133,76 @@ changing initialization credentials requires an appropriately migrated or fresh
 volume. Keep `DATABASE_URL` consistent with `POSTGRES_USER`, `POSTGRES_PASSWORD`,
 and `POSTGRES_DB` in `.env`. The API does not connect to the database yet.
 
+## Redis Bloom filters
+
+The API includes a shared typed `redis` client in `apps/api/src/lib/redis.ts` and a
+generic `createBloomFilter` helper in `apps/api/src/lib/bloom-filter.ts`. User
+registration does not use the helper yet. PostgreSQL's unique constraints remain
+authoritative for username and email uniqueness.
+
+Start the local Redis 8 service (includes Bloom commands):
+
+```sh
+docker compose --profile redis up -d --wait redis
+```
+
+Add `REDIS_URL=redis://127.0.0.1:6379` to the root `.env`, then restart the API.
+When `REDIS_URL` is absent or empty, the API does not connect to Redis. When enabled,
+it connects once at startup and closes the client during shutdown. Connection failures
+are logged without stopping the API. Offline commands reject rather than queue,
+and connection attempts and commands have a two-second timeout;
+restart the API after restoring Redis because automatic reconnect is disabled.
+Use `rediss://` for a remote Redis deployment requiring TLS.
+
+Provision each filter once, choosing a capacity and false-positive rate for that field:
+
+```sh
+docker compose exec redis redis-cli BF.RESERVE bloom:users:user_name:v1 0.001 1000000
+docker compose exec redis redis-cli BF.RESERVE bloom:users:email:v1 0.001 1000000
+```
+
+These commands fail if the filter already exists; do not run them on every request.
+The helper also exposes `reserve(namespace, capacity, errorRate = 0.001)` for provisioning.
+Redis data persists in the `redis_data` Compose volume.
+
+Services can import the shared client and inject it into the helper:
+
+```ts
+import { createBloomFilter } from './lib/bloom-filter.js';
+import { redis } from './lib/redis.js';
+
+const bloom = createBloomFilter(redis);
+
+// Each namespace has an independent filter. Values are used exactly as supplied.
+const usernameMightExist = await bloom.mightContain('users:user_name', userName);
+const emailMightExist = await bloom.mightContain('users:email', email);
+
+// Add identifiers only after the database transaction commits successfully.
+await bloom.add('users:user_name', userName);
+await bloom.add('users:email', email);
+```
+
+A `true` result is only a hint: confirm it with an exact database query. A `false`
+result means the value was not added to that filter, which may be missing or
+incomplete. Backfill every existing value and keep creates, updates, seeds, and
+other writers synchronized before using negative results to skip database lookups.
+Provisioning an empty filter alone does not make it ready. On Redis errors or while
+backfilling/rebuilding, fall back to database checks. Catch membership errors in
+the calling service; after a committed write, log and retry failed filter updates
+without turning the successful registration into an error. Always keep database
+uniqueness constraints to handle concurrent registrations and stale filters.
+
+Apply the same normalization policy in database writes, queries, and filter values.
+The current username/email unique constraints are case-sensitive. Old identifiers
+can remain after updates or deletion; database confirmation handles those positives,
+and a coordinated rebuild into a new version can remove stale entries.
+
+Run the focused tests without a Redis server:
+
+```sh
+pnpm --filter @project-tracker/api test
+```
+
 ## Checks and builds
 
 ```sh
