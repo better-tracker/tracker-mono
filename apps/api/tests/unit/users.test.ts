@@ -2,6 +2,7 @@ import {
   userListResponseSchema,
   userResponseSchema,
 } from '@project-tracker/contracts';
+import type { UserCreate, UserUpdate } from '@project-tracker/contracts';
 import type { FastifyInstance } from 'fastify';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildApp } from '../../src/app.js';
@@ -17,7 +18,7 @@ vi.mock('@project-tracker/database', () => {
 
   return {
     getUsers: vi.fn(async () => [makeUser()]),
-    createUser: vi.fn(async (u: any) =>
+    createUser: vi.fn(async (u: UserCreate) =>
       makeUser({
         user_name: u.user_name,
         email: u.email,
@@ -25,7 +26,7 @@ vi.mock('@project-tracker/database', () => {
       }),
     ),
     getUserById: vi.fn(async (id: string) => makeUser({ id })),
-    updateUser: vi.fn(async (id: string, u: any) =>
+    updateUser: vi.fn(async (id: string, u: UserUpdate) =>
       makeUser({
         id,
         user_name: u.user_name,
