@@ -82,34 +82,32 @@ describe('project and subtask HTTP responses', () => {
     expect(response.body).toBe('');
   });
 
-  // Enable as temporary controllers adopt shared response contracts. These tests
-  // deliberately do not bless placeholder IDs or omit required response fields.
-  it.skip.each([
+  it.each([
     {
       method: 'POST', url: projects, payload: { name: 'New project' }, status: 201,
-      schema: projectResponseSchema, reason: 'placeholder ID, missing dates and subtasks',
+      schema: projectResponseSchema,
     },
     {
       method: 'GET', url: project, status: 200,
-      schema: projectResponseSchema, reason: 'missing dates and subtasks',
+      schema: projectResponseSchema,
     },
     {
       method: 'PUT', url: project, payload: { name: 'Updated project', description: null }, status: 200,
-      schema: projectResponseSchema, reason: 'missing dates and subtasks',
+      schema: projectResponseSchema,
     },
     {
       method: 'POST', url: subtasks, payload: { description: 'New subtask' }, status: 201,
-      schema: subtaskResponseSchema, reason: 'placeholder ID and missing dates',
+      schema: subtaskResponseSchema,
     },
     {
       method: 'GET', url: subtask, status: 200,
-      schema: subtaskResponseSchema, reason: 'missing dates',
+      schema: subtaskResponseSchema,
     },
     {
       method: 'PUT', url: subtask, payload: { description: 'Updated subtask', completed: true }, status: 200,
-      schema: subtaskResponseSchema, reason: 'missing dates',
+      schema: subtaskResponseSchema,
     },
-  ] as const)('$method $url matches its response schema [pending: $reason]', async (testCase) => {
+  ] as const)('$method $url matches its response schema', async (testCase) => {
     const { schema, status, method, url } = testCase;
     const response = await app.inject({
       method, url, ...('payload' in testCase ? { payload: testCase.payload } : {}),
