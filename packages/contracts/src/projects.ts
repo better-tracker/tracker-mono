@@ -3,10 +3,11 @@ import {
   MAX_PROJECT_DESCRIPTION_LENGTH,
   MAX_PROJECT_NAME_LENGTH,
 } from './constants.js';
-import { subtaskDescriptionSchema } from './subtasks.js';
+import { subtaskResponseSchema } from './subtasks.js';
+import { utcDateSchema } from './dates.js';
 
 export const projectIdSchema = z.uuid();
-const utcDateSchema = z.iso.datetime({ offset: false, local: false });
+export const projectParamsSchema = z.object({ id: projectIdSchema });
 
 export const projectNameSchema = z
   .string()
@@ -36,13 +37,7 @@ export const projectUpdateSchema = z.object({
   description: projectDescriptionSchema,
 });
 
-export const projectSubtaskSchema = z.object({
-  id: z.uuid(),
-  completed: z.boolean(),
-  description: subtaskDescriptionSchema,
-  createdAt: utcDateSchema,
-  updatedAt: utcDateSchema,
-});
+export const projectSubtaskSchema = subtaskResponseSchema;
 
 export const projectResponseSchema = z.object({
   id: projectIdSchema,
@@ -60,6 +55,7 @@ export const projectListItemSchema = z.object({
 });
 
 export const projectListResponseSchema = z.array(projectListItemSchema,);
+export type ProjectParams = z.infer<typeof projectParamsSchema>;
 export type ProjectCreate = z.infer<typeof projectCreateSchema>;
 export type ProjectUpdate = z.infer<typeof projectUpdateSchema>;
 export type ProjectSubtask = z.infer<typeof projectSubtaskSchema>;

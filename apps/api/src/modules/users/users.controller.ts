@@ -2,13 +2,10 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 import type {
   UserCreate,
   UserUpdate,
+  UserParams,
 } from '@project-tracker/contracts';
 import * as usersService from './users.service.js';
 import type { UsersService } from './users.service.js';
-
-type UserParams = {
-  id: string;
-};
 
 export function createUserController(service: UsersService = usersService) {
   const getUsers = async (

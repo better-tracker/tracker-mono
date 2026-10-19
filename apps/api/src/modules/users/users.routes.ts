@@ -1,9 +1,10 @@
-import type { FastifyInstance } from 'fastify';
+import type { FastifyInstance, FastifyRequest } from 'fastify';
 import {
-  userIdSchema,
+  userParamsSchema,
   userCreateSchema,
   userUpdateSchema,
 } from '@project-tracker/contracts';
+import { parseRequest } from '../../lib/validation.js';
 import { createUserController } from './users.controller.js';
 import type { UsersService } from './users.service.js';
 
@@ -16,49 +17,29 @@ export const userRoutes = async (
 
   app.post('/v1/users', {
     preValidation: async (request) => {
-      const result = userCreateSchema.safeParse(request.body);
-      if (!result.success) {
-        throw Object.assign(new Error(result.error.issues[0]?.message ?? 'Invalid request body'), { statusCode: 400 });
-      }
-      request.body = result.data;
+      request.body = parseRequest(userCreateSchema, request.body);
     },
     handler: createUser,
   });
 
   app.get('/v1/users/:id', {
-    preValidation: async (request) => {
-      validateUserId(request.params);
-    },
+    preValidation: validateUserParams,
     handler: getUser,
   });
 
   app.put('/v1/users/:id', {
-    preValidation: async (request) => {
-      validateUserId(request.params);
-      const result = userUpdateSchema.safeParse(request.body);
-      if (!result.success) {
-        throw Object.assign(new Error(result.error.issues[0]?.message ?? 'Invalid request body'), { statusCode: 400 });
-      }
-      request.body = result.data;
-    },
+    preValidation: [validateUserParams, async (request) => {
+      request.body = parseRequest(userUpdateSchema, request.body);
+    }],
     handler: updateUser,
   });
 
   app.delete('/v1/users/:id', {
-    preValidation: async (request) => {
-      validateUserId(request.params);
-    },
+    preValidation: validateUserParams,
     handler: deleteUser,
   });
 };
 
-function validateUserId(params: unknown) {
-  const result = userIdSchema.safeParse(
-    typeof params === 'object' && params !== null && 'id' in params
-      ? params.id
-      : undefined,
-  );
-  if (!result.success) {
-    throw Object.assign(new Error('Invalid user ID'), { statusCode: 400 });
-  }
+async function validateUserParams(request: FastifyRequest) {
+  request.params = parseRequest(userParamsSchema, request.params, 'Invalid user ID');
 }

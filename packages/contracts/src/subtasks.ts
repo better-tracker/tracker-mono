@@ -1,8 +1,10 @@
 import { z } from 'zod';
 import { MAX_SUBTASK_DESCRIPTION_LENGTH } from './constants.js';
+import { utcDateSchema } from './dates.js';
 
 export const subtaskIdSchema = z.uuid();
-const utcDateSchema = z.iso.datetime({ offset: false, local: false });
+export const subtaskCollectionParamsSchema = z.object({ projectId: z.uuid() });
+export const subtaskParamsSchema = subtaskCollectionParamsSchema.extend({ id: subtaskIdSchema });
 
 export const subtaskDescriptionSchema = z
   .string()
@@ -35,6 +37,8 @@ export const subtaskListResponseSchema = z.array(
   subtaskResponseSchema,
 );
 
+export type SubtaskCollectionParams = z.infer<typeof subtaskCollectionParamsSchema>;
+export type SubtaskParams = z.infer<typeof subtaskParamsSchema>;
 export type SubtaskCreateInput = z.input<typeof subtaskCreateSchema>;
 export type SubtaskCreate = z.infer<typeof subtaskCreateSchema>;
 export type SubtaskUpdate = z.infer<typeof subtaskUpdateSchema>;

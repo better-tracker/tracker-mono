@@ -5,7 +5,7 @@ import {
   subtaskResponseSchema,
 } from '@project-tracker/contracts';
 import type { FastifyInstance } from 'fastify';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildApp } from '../../src/app.js';
 
 const projectId = '11111111-1111-4111-8111-111111111111';
@@ -15,10 +15,19 @@ const project = `${projects}/${projectId}`;
 const subtasks = `${project}/subtasks`;
 const subtask = `${subtasks}/${subtaskId}`;
 
-describe('project and subtask HTTP responses', () => {
+describe('HTTP responses', () => {
   let app: FastifyInstance;
 
-  beforeEach(() => { app = buildApp(); });
+  beforeEach(() => {
+    const query = vi.fn().mockImplementation(async (_sql: string, values: unknown[] = []) => ({
+      rows: [{
+        id: '33333333-3333-4333-8333-333333333333',
+        user_name: values[0], email: values[1], profile_pic: null,
+      }],
+      rowCount: 1,
+    }));
+    app = buildApp({ database: { query } });
+  });
   afterEach(async () => { await app.close(); });
 
   it.each([
@@ -82,6 +91,18 @@ describe('project and subtask HTTP responses', () => {
     expect(response.body).toBe('');
   });
 
+  it('retains parsed defaults and strips unknown fields before the subtask handler', async () => {
+    let observed: unknown;
+    app.addHook('preHandler', async (request) => { observed = request.body; });
+    const response = await app.inject({
+      method: 'POST', url: subtasks,
+      payload: { description: '  Normalized  ', extra: 'ignored' },
+    });
+    expect(response.statusCode).toBe(201);
+    expect(observed).toEqual({ description: 'Normalized', completed: false });
+    expect(response.json()).toMatchObject({ description: 'Normalized', completed: false });
+  });
+
   // Project and subtask placeholders still lack required response fields.
   it.skip.each([
     {
@@ -118,9 +139,7 @@ describe('project and subtask HTTP responses', () => {
     expect(schema.safeParse(response.json<unknown>()).success).toBe(true);
   });
 
-  // Project and subtask hooks discard parsed bodies; user hooks retain them.
-  // This mixed-route matrix remains skipped.
-  it.skip.each([
+  it.each([
     {
       method: 'POST', url: projects,
       payload: { name: '  New project  ', description: '  Description  ' },
@@ -149,7 +168,7 @@ describe('project and subtask HTTP responses', () => {
       payload: { user_name: '  updated  ', email: 'updated@example.com' },
       expected: { user_name: 'updated' }, status: 200,
     },
-  ] as const)('$method $url returns normalized text [pending: parsed body discarded]', async ({ expected, status, ...request }) => {
+  ] as const)('$method $url returns normalized text', async ({ expected, status, ...request }) => {
     const response = await app.inject(request);
 
     expect(response.statusCode).toBe(status);

@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { MAX_USERNAME_LENGTH } from './constants.js';
 
 export const userIdSchema = z.uuid();
+export const userParamsSchema = z.object({ id: userIdSchema });
 
 export const userNameSchema = z
   .string()
@@ -39,6 +40,7 @@ export const userResponseSchema = z.object({
 });
 
 export const userListResponseSchema = z.array(userResponseSchema);
+export type UserParams = z.infer<typeof userParamsSchema>;
 export type UserCreate = z.infer<typeof userCreateSchema>;
 export type UserUpdate = z.infer<typeof userUpdateSchema>;
 export type UserResponse = z.infer<typeof userResponseSchema>;

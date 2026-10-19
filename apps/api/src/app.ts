@@ -35,9 +35,11 @@ export function buildApp(options: { database?: DatabaseConnection } = {}) {
     const message =
       statusCode >= 500
         ? 'An unexpected error occurred.'
-        : error instanceof Error
-          ? error.message
-          : 'Invalid request';
+        : error instanceof Error && 'code' in error && error.code === 'FST_ERR_CTP_INVALID_JSON_BODY'
+          ? 'Invalid JSON body'
+          : error instanceof Error
+            ? error.message
+            : 'Invalid request';
 
     request.log.error(error);
 
