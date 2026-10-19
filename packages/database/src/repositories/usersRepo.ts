@@ -43,6 +43,13 @@ export async function getUserById(id: string): Promise<User | null> {
     return result.rows[0] || null;
 }
 
+export async function getUsers(): Promise<User[]> {
+    const result = await pool.query<User>(
+        `SELECT id, user_name, email, profile_pic FROM users ORDER BY user_name`
+    );
+    return result.rows;
+}
+
 export async function getUserByEmailForAuth(email: string): Promise<(User & { passwordHash: string }) | null> {
     const result = await pool.query<UserWithPassword>(
         `SELECT id, user_name, email, profile_pic, password FROM users WHERE email = $1`,
