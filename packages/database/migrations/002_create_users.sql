@@ -1,6 +1,5 @@
 /*
 Creates users table
-Soz made new file for this otherwise headaches
 
 team decisions:
 - user ids use automaticallyt generated uuids
