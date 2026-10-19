@@ -186,6 +186,9 @@ importers:
       '@project-tracker/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@project-tracker/database':
+        specifier: workspace:*
+        version: link:../../packages/database
       fastify:
         specifier: 5.12.5
         version: 5.12.5

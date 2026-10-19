@@ -1,8 +1,11 @@
 // Server-only PostgreSQL boundary; never import from web or mobile.
 export {
     createUser,
+    getUsers,
     getUserById,
     getUserByEmailForAuth,
+    updateUser,
+    deleteUser,
 } from "./repositories/usersRepo.js";
 export {
     createProject,
