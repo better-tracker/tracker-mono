@@ -4,15 +4,14 @@ import {
   userCreateSchema,
   userUpdateSchema,
 } from '@project-tracker/contracts';
-import {
-  getUsers,
-  createUser,
-  getUser,
-  updateUser,
-  deleteUser,
-} from './users.controller.js';
+import { createUserController } from './users.controller.js';
+import type { UsersService } from './users.service.js';
 
-export const userRoutes = async (app: FastifyInstance) => {
+export const userRoutes = async (
+  app: FastifyInstance,
+  options: { service?: UsersService },
+) => {
+  const { getUsers, createUser, getUser, updateUser, deleteUser } = createUserController(options.service);
   app.get('/v1/users', getUsers);
 
   app.post('/v1/users', {

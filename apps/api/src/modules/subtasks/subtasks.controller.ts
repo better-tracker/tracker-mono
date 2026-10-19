@@ -1,25 +1,19 @@
 // Placeholder responses; subtask persistence is not implemented.
 
 import type { FastifyReply, FastifyRequest } from 'fastify';
+import type { SubtaskCreateInput, SubtaskUpdate } from '@project-tracker/contracts';
 
-type SubtaskParams = {
+type SubtaskCollectionParams = {
   projectId: string;
-  id?: string;
 };
 
-type CreateSubtaskBody = {
-  description: string;
-  completed?: boolean;
-};
-
-type UpdateSubtaskBody = {
-  description: string;
-  completed: boolean;
+type SubtaskParams = SubtaskCollectionParams & {
+  id: string;
 };
 
 export const getSubtasks = async (
   _request: FastifyRequest<{
-    Params: SubtaskParams;
+    Params: SubtaskCollectionParams;
   }>,
   reply: FastifyReply,
 ) => {
@@ -28,8 +22,8 @@ export const getSubtasks = async (
 
 export const createSubtask = async (
   request: FastifyRequest<{
-    Params: SubtaskParams;
-    Body: CreateSubtaskBody;
+    Params: SubtaskCollectionParams;
+    Body: SubtaskCreateInput;
   }>,
   reply: FastifyReply,
 ) => {
@@ -63,7 +57,7 @@ export const getSubtask = async (
 export const updateSubtask = async (
   request: FastifyRequest<{
     Params: SubtaskParams;
-    Body: UpdateSubtaskBody;
+    Body: SubtaskUpdate;
   }>,
   reply: FastifyReply,
 ) => {

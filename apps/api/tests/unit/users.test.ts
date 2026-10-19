@@ -13,6 +13,9 @@ vi.mock('@project-tracker/database', () => {
     user_name: 'alice',
     email: 'alice@example.com',
     profile_pic: null,
+    password: 'stored-secret',
+    passwordHash: 'stored-secret-hash',
+    internalMetadata: 'not-public',
     ...over,
   });
 
@@ -65,6 +68,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(200);
     expect(userListResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userListResponseSchema.parse(body));
     expect(Array.isArray(body)).toBe(true);
     for (const item of body as unknown[]) {
       expect(item).not.toHaveProperty('password');
@@ -81,6 +85,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(201);
     expect(userResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userResponseSchema.parse(body));
     expect(body).toMatchObject({
       user_name: 'alice', email: 'alice@example.com', profile_pic: expected,
     });
@@ -115,6 +120,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(200);
     expect(userResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userResponseSchema.parse(body));
     expect(body).toMatchObject({ id: userId });
     expect(body).not.toHaveProperty('password');
   });
@@ -131,6 +137,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(200);
     expect(userResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userResponseSchema.parse(body));
     expect(body).toMatchObject({
       id: userId, user_name: 'updated', email: 'updated@example.com', profile_pic: expected,
     });

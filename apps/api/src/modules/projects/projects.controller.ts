@@ -1,19 +1,10 @@
 // Placeholder responses; project persistence is not implemented.
 
 import type { FastifyReply, FastifyRequest } from 'fastify';
+import type { ProjectCreate, ProjectUpdate } from '@project-tracker/contracts';
 
 type ProjectParams = {
   id: string;
-};
-
-type CreateProjectBody = {
-  name: string;
-  description?: string;
-};
-
-type UpdateProjectBody = {
-  name: string;
-  description?: string;
 };
 
 export const getProjects = async (
@@ -37,7 +28,7 @@ export const getProject = async (
 };
 
 export const createProject = async (
-  request: FastifyRequest<{ Body: CreateProjectBody }>,
+  request: FastifyRequest<{ Body: ProjectCreate }>,
   reply: FastifyReply,
 ) => {
   const { name, description } = request.body;
@@ -52,7 +43,7 @@ export const createProject = async (
 export const updateProject = async (
   request: FastifyRequest<{
     Params: ProjectParams;
-    Body: UpdateProjectBody;
+    Body: ProjectUpdate;
   }>,
   reply: FastifyReply,
 ) => {

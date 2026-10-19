@@ -35,6 +35,7 @@ export const subtaskListResponseSchema = z.array(
   subtaskResponseSchema,
 );
 
+export type SubtaskCreateInput = z.input<typeof subtaskCreateSchema>;
 export type SubtaskCreate = z.infer<typeof subtaskCreateSchema>;
 export type SubtaskUpdate = z.infer<typeof subtaskUpdateSchema>;
 export type SubtaskResponse = z.infer<typeof subtaskResponseSchema>;
