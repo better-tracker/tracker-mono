@@ -21,6 +21,8 @@ import { TaskForm } from './pages/TaskForm';
 import { TaskDetail, Tasks } from './pages/Tasks';
 import { Today } from './pages/Today';
 import './styles/app.css';
+import { ApiConnectionTest } from './components/ApiConnectionTest';
+import { ApiProjects } from './pages/ApiProjects';
 
 const source = createLocalDataSource({
   getItem: (key) => window.localStorage.getItem(key),
@@ -56,6 +58,8 @@ export function AppRoutes({ source }: { source: FrontendDataSource }) {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/api-test" element={<ApiConnectionTest />} />
+      <Route path="/api-projects" element={<ApiProjects />} />
       <Route element={<Protected source={source} />}>
         <Route element={<Shell />}>
           <Route index element={<Today />} />
