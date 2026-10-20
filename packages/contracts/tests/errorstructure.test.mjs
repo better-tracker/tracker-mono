@@ -1,12 +1,3 @@
-/*
-automated tests for error response contract
-- tests check that the api error responses follow expected strucuture
-
-test currently checked:
-- valid error responses are accepted
-- error responses missing required fields are rejected
-*/
-
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { errorResponseSchema } from '@project-tracker/contracts';

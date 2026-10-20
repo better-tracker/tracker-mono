@@ -1,8 +1,12 @@
+import { createPool } from '@project-tracker/database';
+import { registerDatabaseLifecycle } from './lib/database.js';
 import { buildApp } from './app.js';
 import { env } from './config/env.js';
 import { registerRedisLifecycle } from './lib/redis.js';
 
-const app = buildApp();
+const database = createPool(env.databaseUrl);
+const app = buildApp({ database });
+registerDatabaseLifecycle(app, database);
 if (env.redisUrl) registerRedisLifecycle(app);
 let shuttingDown = false;
 

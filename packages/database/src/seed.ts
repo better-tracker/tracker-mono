@@ -5,20 +5,18 @@ import { createSubtask } from "./repositories/subtaskRepo.js";
 
 async function seed() {
   try {
-    // Create a user
+    // Sample credential placeholder; this is not a generated password hash.
     await createUser({
       user_name: "Lachlan",
       email: "lachlan@example.com",
       passwordHash: "hashed_password_here",
     });
 
-    // Create a project for the user
     const project = await createProject({
       name: "Sample Project",
       description: "This is a sample project.",
     });
 
-    //List of subtasks to create for the project
     const subtasks = [
     "API design",
     "Create stuff",
@@ -26,7 +24,6 @@ async function seed() {
     "Read more about stuff",
   ];
 
-    // Create subtasks for the project
     for (const description of subtasks) {
       await createSubtask({
         project_id: project.id,

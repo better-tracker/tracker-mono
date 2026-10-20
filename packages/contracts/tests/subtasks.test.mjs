@@ -1,25 +1,3 @@
-/*
-automated tests for subtasks contract
-- tests use node.js's built in test runner to
-- make sure zod schemas validate subtask info correctly
-
-tests currently check:
-- valid subtasks data is accepted
-- empty descriptions are rejected
-- descriptions longer than 2000 characters are rejected
-- the completed field defaults to false
-- invalid completed values are rejected
-- valid subtasks updates are accepted
-- subtask updates require both completed and description
-- valid subtask responses are accepted
-- subtask responses reject invalid uuids
-- valid subtask lists are accepted
-- subtask lists containing invalid data are rejected
-
-run tests using:
-pnpm --filter @project-tracker/contracts test
-*/
-
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {

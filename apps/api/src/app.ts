@@ -1,13 +1,15 @@
-// Added subtask routes
-
 import Fastify from 'fastify';
 import { projectRoutes } from './modules/projects/projects.routes.js';
 import { subtaskRoutes } from './modules/subtasks/subtasks.routes.js';
 import { userRoutes } from './modules/users/users.routes.js';
 import cors from '@fastify/cors';
 import { env } from './config/env.js';
+import { createUserRepository } from '@project-tracker/database';
+import type { DatabaseConnection } from '@project-tracker/database';
+import { createUsersService } from './modules/users/users.service.js';
 
-export function buildApp() {
+/** An injected database is caller-owned and remains open when this app closes. */
+export function buildApp(options: { database?: DatabaseConnection } = {}) {
   const app = Fastify({ logger: true });
 
   app.register(cors, {
@@ -33,9 +35,11 @@ export function buildApp() {
     const message =
       statusCode >= 500
         ? 'An unexpected error occurred.'
-        : error instanceof Error
-          ? error.message
-          : 'Invalid request';
+        : error instanceof Error && 'code' in error && error.code === 'FST_ERR_CTP_INVALID_JSON_BODY'
+          ? 'Invalid JSON body'
+          : error instanceof Error
+            ? error.message
+            : 'Invalid request';
 
     request.log.error(error);
 
@@ -57,12 +61,12 @@ export function buildApp() {
   });
 
   app.register(projectRoutes);
-  app.register(userRoutes);
+  app.register(userRoutes, {
+    service: options.database
+      ? createUsersService(createUserRepository(options.database))
+      : undefined,
+  });
   app.register(subtaskRoutes);
 
   return app;
 }
-
-/* Creat and configure fastify.
-  Register routes before returning
-*/
