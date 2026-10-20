@@ -1,5 +1,5 @@
 // Cross-platform API client; keep this package platform-independent.
-export {};
+export * from './users.js';
 
 import {
   projectListItemSchema,
