@@ -1,3 +1,4 @@
+import type { DatabaseConnection } from '../client.js';
 import { pool } from "../client.js"
 
 export interface User {
@@ -25,8 +26,8 @@ export interface UserWithPassword extends User {
     password: string;
 }
 
-export async function createUser(user: CreateUser): Promise<User> {
-    const result = await pool.query<User>(
+export async function createUser(user: CreateUser, database: DatabaseConnection = pool): Promise<User> {
+    const result = await database.query<User>(
         `INSERT INTO users (user_name, email, profile_pic, password)
         VALUES ($1, $2, $3, $4)
         RETURNING id, user_name, email, profile_pic`,
@@ -35,23 +36,23 @@ export async function createUser(user: CreateUser): Promise<User> {
     return result.rows[0];  
 }
 
-export async function getUserById(id: string): Promise<User | null> {
-    const result = await pool.query<User>(
+export async function getUserById(id: string, database: DatabaseConnection = pool): Promise<User | null> {
+    const result = await database.query<User>(
         `SELECT id, user_name, email, profile_pic FROM users WHERE id = $1`,
         [id]
     );
     return result.rows[0] || null;
 }
 
-export async function getUsers(): Promise<User[]> {
-    const result = await pool.query<User>(
+export async function getUsers(database: DatabaseConnection = pool): Promise<User[]> {
+    const result = await database.query<User>(
         `SELECT id, user_name, email, profile_pic FROM users ORDER BY user_name`
     );
     return result.rows;
 }
 
-export async function getUserByEmailForAuth(email: string): Promise<(User & { passwordHash: string }) | null> {
-    const result = await pool.query<UserWithPassword>(
+export async function getUserByEmailForAuth(email: string, database: DatabaseConnection = pool): Promise<(User & { passwordHash: string }) | null> {
+    const result = await database.query<UserWithPassword>(
         `SELECT id, user_name, email, profile_pic, password FROM users WHERE email = $1`,
         [email]
     );
@@ -66,7 +67,7 @@ export async function getUserByEmailForAuth(email: string): Promise<(User & { pa
 }
 
 
-export async function updateUser(id: string, updates: UpdateUser): Promise<User | null> {
+export async function updateUser(id: string, updates: UpdateUser, database: DatabaseConnection = pool): Promise<User | null> {
     const fields: string[] = [];
     const values: unknown[] = [];
 
@@ -88,7 +89,7 @@ export async function updateUser(id: string, updates: UpdateUser): Promise<User 
     }
 
     if (fields.length === 0) {
-        return getUserById(id);
+        return getUserById(id, database);
     }
 
     values.push(id);
@@ -98,12 +99,30 @@ export async function updateUser(id: string, updates: UpdateUser): Promise<User 
         WHERE id = $${fields.length + 1}
         RETURNING id, user_name, email, profile_pic
     `;
-    const result = await pool.query<User>(query, values);
+    const result = await database.query<User>(query, values);
 
     return result.rows[0] || null;
 }
 
-export async function deleteUser(id: string): Promise<boolean> {
-  const result = await pool.query(`DELETE FROM users WHERE id = $1`, [id]);
+export async function deleteUser(id: string, database: DatabaseConnection = pool): Promise<boolean> {
+  const result = await database.query(`DELETE FROM users WHERE id = $1`, [id]);
   return (result.rowCount ?? 0) > 0;
+}
+
+export interface UserRepository {
+  getUsers(): Promise<User[]>;
+  createUser(user: CreateUser): Promise<User>;
+  getUserById(id: string): Promise<User | null>;
+  updateUser(id: string, updates: UpdateUser): Promise<User | null>;
+  deleteUser(id: string): Promise<boolean>;
+}
+
+export function createUserRepository(database: DatabaseConnection): UserRepository {
+  return {
+    getUsers: () => getUsers(database),
+    createUser: (user) => createUser(user, database),
+    getUserById: (id) => getUserById(id, database),
+    updateUser: (id, updates) => updateUser(id, updates, database),
+    deleteUser: (id) => deleteUser(id, database),
+  };
 }

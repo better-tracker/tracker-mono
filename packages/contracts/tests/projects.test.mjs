@@ -1,26 +1,3 @@
-/*
-automated tests for projects contract
-- tests use node.js built-in runner to check
-- that the zod schemas validate project info correctly
-
-tests currently check:
-- valid porject data is accepted
-- empty project names are rejected
-- project names longer than 255 char are rejected
-- projects can be created without description
-- project response dates must user UTC format
-- nested subtassks cannot have empty descriptions
-- valid project updates are accepted
-- project updates requireboth name and description
-- valid project responses are accepted
-- project responses reject invalid uuids
-- valid project lists are ccepted
-- project lists containing invalid data are rejected
-
-run tests using:
-pnpm --filter @project-tracker/contracts test
-*/
-
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { 

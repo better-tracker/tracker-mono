@@ -1,13 +1,7 @@
-// Define project endpoint URLs, HTTP methods, and request/response validation,
-// and connect each route to its controller handler. Register these routes in app.ts.
-
-// Developer Sam T here. Setting up the routes for projects. Imported fastifyinstance
-// simple set up here. API endpoints defined.
-// Each route is connected to its corresponding controller function
-
-import type { FastifyInstance } from 'fastify';
+import type { FastifyInstance, FastifyRequest } from 'fastify';
 import {
   projectCreateSchema,
+  projectParamsSchema,
   projectUpdateSchema,
 } from '@project-tracker/contracts';
 import {
@@ -18,24 +12,30 @@ import {
   deleteProject,
 } from './projects.controller.js';
 
+import { parseRequest } from '../../lib/validation.js';
+
+async function validateProjectParams(request: FastifyRequest) {
+  request.params = parseRequest(projectParamsSchema, request.params, 'Invalid project ID');
+}
+
 export const projectRoutes = async (app: FastifyInstance) => {
   app.get('/v1/projects', getProjects);
 
   app.post('/v1/projects', {
     preValidation: async (request) => {
-      projectCreateSchema.parse(request.body);
+      request.body = parseRequest(projectCreateSchema, request.body);
     },
     handler: createProject,
   });
 
-  app.get('/v1/projects/:id', getProject);
+  app.get('/v1/projects/:id', { preValidation: validateProjectParams, handler: getProject });
 
   app.put('/v1/projects/:id', {
-    preValidation: async (request) => {
-      projectUpdateSchema.parse(request.body);
-    },
+    preValidation: [validateProjectParams, async (request) => {
+      request.body = parseRequest(projectUpdateSchema, request.body);
+    }],
     handler: updateProject,
   });
 
-  app.delete('/v1/projects/:id', deleteProject);
+  app.delete('/v1/projects/:id', { preValidation: validateProjectParams, handler: deleteProject });
 };

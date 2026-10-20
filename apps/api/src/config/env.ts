@@ -1,4 +1,4 @@
-// This file means env can be used without touching the database
+// Load API settings without importing the database package.
 
 const port = Number(process.env.PORT ?? 3001);
 

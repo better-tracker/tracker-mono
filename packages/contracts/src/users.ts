@@ -1,15 +1,8 @@
-/* user schemas to validate api requests and responses
-  - user ids must be valid uuids
-  - usernames arer required and limited to 25 characters
-  - emails must be valid addresses
-  - prof pics are optional and stored as url/path strings
-  - user timestamps not required per my discussion with supreme leader
-*/
-
 import { z } from 'zod';
 import { MAX_USERNAME_LENGTH } from './constants.js';
 
 export const userIdSchema = z.uuid();
+export const userParamsSchema = z.object({ id: userIdSchema });
 
 export const userNameSchema = z
   .string()
@@ -47,6 +40,7 @@ export const userResponseSchema = z.object({
 });
 
 export const userListResponseSchema = z.array(userResponseSchema);
+export type UserParams = z.infer<typeof userParamsSchema>;
 export type UserCreate = z.infer<typeof userCreateSchema>;
 export type UserUpdate = z.infer<typeof userUpdateSchema>;
 export type UserResponse = z.infer<typeof userResponseSchema>;

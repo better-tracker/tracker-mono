@@ -1,6 +1,6 @@
 import { errorResponseSchema } from '@project-tracker/contracts';
 import type { FastifyInstance, InjectOptions } from 'fastify';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildApp } from '../../src/app.js';
 
 const projectId = '11111111-1111-4111-8111-111111111111';
@@ -116,9 +116,16 @@ const endpoints: Endpoint[] = [
 
 describe('HTTP validation errors', () => {
   let app: FastifyInstance;
+  const query = vi.fn();
 
-  beforeEach(() => { app = buildApp(); });
-  afterEach(async () => { await app.close(); });
+  beforeEach(() => {
+    query.mockReset().mockImplementation(() => { throw new Error('Validation must prevent database access'); });
+    app = buildApp({ database: { query } });
+  });
+  afterEach(async () => {
+    await app.close();
+    expect(query).not.toHaveBeenCalled();
+  });
 
   async function expectSafeValidationError(request: InjectOptions) {
     const response = await app.inject(request);
@@ -135,27 +142,33 @@ describe('HTTP validation errors', () => {
     expect(response.body).not.toMatch(/ZodError|node_modules|\bat \S+ \(/);
   }
 
+  it('does not echo malformed JSON input in the error message', async () => {
+    await expectSafeValidationError({
+      method: 'POST', url: projects,
+      payload: `{"password":"${password}","name": }`,
+      headers: { 'content-type': 'application/json' },
+    });
+  });
+
   for (const endpoint of endpoints) {
     const { method, url } = endpoint;
 
     describe(`${method} ${url}`, () => {
-      // Zod errors currently fall through to Fastify's default 500 response;
-      // enable these when validation failures use the shared safe 400 shape.
-      it.skip('rejects a missing body [pending: validation error mapping]', async () => {
+      it('rejects a missing body', async () => {
         await expectSafeValidationError({ method, url });
       });
 
-      it.skip.each([
+      it.each([
         { label: 'null', payload: 'null' },
         { label: 'array', payload: '[]' },
         { label: 'text', payload: '"invalid-body"' },
-      ])('rejects a $label body [pending: validation error mapping]', async ({ payload }) => {
+      ])('rejects a $label body', async ({ payload }) => {
         await expectSafeValidationError({
           method, url, payload, headers: { 'content-type': 'application/json' },
         });
       });
 
-      it.skip.each(endpoint.required)('rejects missing %s [pending: validation error mapping]', async (field) => {
+      it.each(endpoint.required)('rejects missing %s', async (field) => {
         const payload = { ...endpoint.payload };
         delete payload[field];
 
@@ -163,7 +176,7 @@ describe('HTTP validation errors', () => {
       });
 
       for (const { field, values } of endpoint.invalidFields) {
-        it.skip.each(values)(`rejects ${field} as $label [pending: validation error mapping]`, async ({ value }) => {
+        it.each(values)(`rejects ${field} as $label`, async ({ value }) => {
           await expectSafeValidationError({
             method, url, payload: { ...endpoint.payload, [field]: value },
           });
@@ -187,18 +200,17 @@ describe('HTTP validation errors', () => {
   ];
 
   for (const method of ['GET', 'PUT', 'DELETE'] as const) {
-    // Path parameters currently bypass shared UUID validation altogether.
-    it.skip.each(invalidIdRoutes)(`${method} rejects malformed $label [pending: UUID validation]`, async ({ url, payload }) => {
+    it.each(invalidIdRoutes)(`${method} rejects malformed $label`, async ({ url, payload }) => {
       await expectSafeValidationError({
         method, url, ...(method === 'PUT' ? { payload } : {}),
       });
     });
   }
 
-  it.skip.each([
+  it.each([
     { method: 'GET', url: `${projects}/not-a-uuid/subtasks` },
     { method: 'POST', url: `${projects}/not-a-uuid/subtasks`, payload: { description: 'New subtask' } },
-  ] as const)('$method rejects malformed parent IDs in subtask collections [pending: UUID validation]', async (request) => {
+  ] as const)('$method rejects malformed parent IDs in subtask collections', async (request) => {
     await expectSafeValidationError(request);
   });
 });

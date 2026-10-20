@@ -7,7 +7,15 @@ import {
   getUsers as listUsers,
   updateUser as saveUser,
 } from '@project-tracker/database';
-import type { UserCreate, UserUpdate } from '@project-tracker/contracts';
+import type { UserRepository } from '@project-tracker/database';
+import type {
+  UserCreate,
+  UserListResponse,
+  UserResponse,
+  UserUpdate,
+} from '@project-tracker/contracts';
+
+import { toUserResponse } from './users.mapper.js';
 
 const scrypt = promisify(scryptCallback);
 
@@ -34,40 +42,54 @@ function mapDatabaseError(error: unknown): never {
   throw error;
 }
 
-export async function getUsers() {
-  return listUsers();
-}
-
-export async function createUser(input: UserCreate) {
-  try {
-    return await insertUser({
-      user_name: input.user_name,
-      email: input.email,
-      profile_pic: input.profile_pic,
-      passwordHash: await hashPassword(input.password),
-    });
-  } catch (error) {
-    return mapDatabaseError(error);
+export function createUsersService(repository: UserRepository) {
+  async function getUsers(): Promise<UserListResponse> {
+    return (await repository.getUsers()).map(toUserResponse);
   }
-}
 
-export async function getUser(id: string) {
-  const user = await getUserById(id);
-  if (!user) throw new UserServiceError('User not found', 404);
-  return user;
-}
+  async function createUser(input: UserCreate): Promise<UserResponse> {
+    try {
+      return toUserResponse(await repository.createUser({
+        user_name: input.user_name,
+        email: input.email,
+        profile_pic: input.profile_pic,
+        passwordHash: await hashPassword(input.password),
+      }));
+    } catch (error) {
+      return mapDatabaseError(error);
+    }
+  }
 
-export async function updateUser(id: string, input: UserUpdate) {
-  try {
-    const user = await saveUser(id, input);
+  async function getUser(id: string): Promise<UserResponse> {
+    const user = await repository.getUserById(id);
     if (!user) throw new UserServiceError('User not found', 404);
-    return user;
-  } catch (error) {
-    return mapDatabaseError(error);
+    return toUserResponse(user);
   }
+
+  async function updateUser(id: string, input: UserUpdate): Promise<UserResponse> {
+    try {
+      const user = await repository.updateUser(id, input);
+      if (!user) throw new UserServiceError('User not found', 404);
+      return toUserResponse(user);
+    } catch (error) {
+      return mapDatabaseError(error);
+    }
+  }
+
+  async function deleteUser(id: string) {
+    const deleted = await repository.deleteUser(id);
+    if (!deleted) throw new UserServiceError('User not found', 404);
+  }
+
+  return { getUsers, createUser, getUser, updateUser, deleteUser };
 }
 
-export async function deleteUser(id: string) {
-  const deleted = await removeUser(id);
-  if (!deleted) throw new UserServiceError('User not found', 404);
-}
+export type UsersService = ReturnType<typeof createUsersService>;
+
+export const { getUsers, createUser, getUser, updateUser, deleteUser } = createUsersService({
+  getUsers: listUsers,
+  createUser: insertUser,
+  getUserById,
+  updateUser: saveUser,
+  deleteUser: removeUser,
+});
