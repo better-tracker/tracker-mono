@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 describe('PORT configuration', () => {
   beforeEach(() => {
     vi.resetModules();
+    vi.stubEnv('REDIS_URL', undefined);
     vi.stubEnv(
       'DATABASE_URL',
       'postgresql://test:test@localhost:5432/test_db'
@@ -20,6 +21,23 @@ describe('PORT configuration', () => {
   it('defaults to 3001 when PORT is absent', async () => {
     vi.stubEnv('PORT', undefined);
     expect((await import('../../src/config/env.js')).env.port).toBe(3001);
+  });
+
+  it.each([undefined, ''])('leaves Redis disabled for REDIS_URL=%s', async (value) => {
+    vi.stubEnv('REDIS_URL', value);
+    expect((await import('../../src/config/env.js')).env.redisUrl).toBeUndefined();
+  });
+
+  it.each(['redis://localhost:6379', 'rediss://cache.example.com:6379'])('accepts %s', async (url) => {
+    vi.stubEnv('REDIS_URL', url);
+    expect((await import('../../src/config/env.js')).env.redisUrl).toBe(url);
+  });
+
+  it.each(['http://localhost:6379', 'not-a-url', 'redis://'])('rejects invalid Redis URL %s', async (url) => {
+    vi.stubEnv('REDIS_URL', url);
+    await expect(import('../../src/config/env.js')).rejects.toThrow(
+      'REDIS_URL must be a valid redis:// or rediss:// URL',
+    );
   });
 
   it.each(['1', '3001', '6969', '65535'])('accepts %s', async (port) => {

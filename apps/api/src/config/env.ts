@@ -14,8 +14,22 @@ if (!databaseUrl) {
 
 const corsOrigin = process.env.CORS_ORIGIN ?? 'http://localhost:3000';
 
+const redisUrl = process.env.REDIS_URL || undefined;
+
+if (redisUrl) {
+  try {
+    const url = new URL(redisUrl);
+    if (!['redis:', 'rediss:'].includes(url.protocol) || !url.hostname) {
+      throw new Error('Invalid Redis URL');
+    }
+  } catch {
+    throw new Error('REDIS_URL must be a valid redis:// or rediss:// URL');
+  }
+}
+
 export const env = {
   port,
   databaseUrl,
   corsOrigin,
+  redisUrl,
 };

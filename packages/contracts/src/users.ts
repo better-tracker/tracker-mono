@@ -7,6 +7,7 @@
 */
 
 import { z } from 'zod';
+import { MAX_USERNAME_LENGTH } from './constants.js';
 
 export const userIdSchema = z.uuid();
 
@@ -14,7 +15,10 @@ export const userNameSchema = z
   .string()
   .trim()
   .min(1, 'Username is required')
-  .max(25, 'Username must be 25 characters or less');
+  .max(
+    MAX_USERNAME_LENGTH,
+    `Username must be ${MAX_USERNAME_LENGTH} characters or less`,
+  );
 
 export const userEmailSchema = z.email('Invalid email address');
 
