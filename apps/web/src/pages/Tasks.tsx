@@ -9,6 +9,7 @@ import {
   Status,
 } from '../components/UI';
 import { TaskRow } from '../components/TaskRow';
+import { TASK_PRIORITIES, TASK_STATUSES } from '../data/constants';
 import { dateLabel, deadlineKey } from '../data/dates';
 import type { DemoSubtask, TaskStatus } from '../data/types';
 import { useWorkspace } from '../features/workspace-context';
@@ -77,7 +78,7 @@ export function Tasks() {
             onChange={(event) => update('status', event.target.value)}
           >
             <option value="">All statuses</option>
-            {['To do', 'In progress', 'Complete'].map((item) => (
+            {TASK_STATUSES.map((item) => (
               <option key={item}>{item}</option>
             ))}
           </select>
@@ -88,7 +89,7 @@ export function Tasks() {
             onChange={(event) => update('priority', event.target.value)}
           >
             <option value="">All priorities</option>
-            {['Low', 'Medium', 'High'].map((item) => (
+            {TASK_PRIORITIES.map((item) => (
               <option key={item}>{item}</option>
             ))}
           </select>
@@ -252,7 +253,7 @@ export function TaskDetail() {
                 )
               }
             >
-              {['To do', 'In progress', 'Complete'].map((status) => (
+              {TASK_STATUSES.map((status) => (
                 <option key={status}>{status}</option>
               ))}
             </select>

@@ -1,4 +1,5 @@
 import { Field } from './UI';
+import { TASK_PRIORITIES } from '../data/constants';
 import type { Deadline, Priority } from '../data/types';
 
 export function Assignee({
@@ -37,7 +38,7 @@ export function PriorityField({
           value={value}
           onChange={(event) => onChange(event.target.value as Priority)}
         >
-          {['Low', 'Medium', 'High'].map((priority) => (
+          {TASK_PRIORITIES.map((priority) => (
             <option key={priority}>{priority}</option>
           ))}
         </select>

@@ -1,17 +1,19 @@
-/* Follows the same pattern as projects.ts but for subtasks
-    See projects for its description
-*/    
-
 import { z } from 'zod';
+import { MAX_SUBTASK_DESCRIPTION_LENGTH } from './constants.js';
+import { utcDateSchema } from './dates.js';
 
 export const subtaskIdSchema = z.uuid();
-const utcDateSchema = z.iso.datetime({ offset: false, local: false });
+export const subtaskCollectionParamsSchema = z.object({ projectId: z.uuid() });
+export const subtaskParamsSchema = subtaskCollectionParamsSchema.extend({ id: subtaskIdSchema });
 
 export const subtaskDescriptionSchema = z
   .string()
   .trim()
   .min(1, 'Subtask description is required')
-  .max(2000, 'Subtask description must be 2000 characters or less');
+  .max(
+    MAX_SUBTASK_DESCRIPTION_LENGTH,
+    `Subtask description must be ${MAX_SUBTASK_DESCRIPTION_LENGTH} characters or less`,
+  );
 
 export const subtaskCreateSchema = z.object({
   completed: z.boolean().default(false),
@@ -35,6 +37,9 @@ export const subtaskListResponseSchema = z.array(
   subtaskResponseSchema,
 );
 
+export type SubtaskCollectionParams = z.infer<typeof subtaskCollectionParamsSchema>;
+export type SubtaskParams = z.infer<typeof subtaskParamsSchema>;
+export type SubtaskCreateInput = z.input<typeof subtaskCreateSchema>;
 export type SubtaskCreate = z.infer<typeof subtaskCreateSchema>;
 export type SubtaskUpdate = z.infer<typeof subtaskUpdateSchema>;
 export type SubtaskResponse = z.infer<typeof subtaskResponseSchema>;

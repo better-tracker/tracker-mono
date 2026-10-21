@@ -1,0 +1,3 @@
+export const DEFAULT_BLOOM_ERROR_RATE = 0.001;
+export const REDIS_COMMAND_TIMEOUT_MS = 2000;
+export const REDIS_CONNECT_TIMEOUT_MS = 2000;

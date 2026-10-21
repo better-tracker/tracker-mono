@@ -2,9 +2,45 @@ import {
   userListResponseSchema,
   userResponseSchema,
 } from '@project-tracker/contracts';
+import type { UserCreate, UserUpdate } from '@project-tracker/contracts';
 import type { FastifyInstance } from 'fastify';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildApp } from '../../src/app.js';
+
+vi.mock('@project-tracker/database', () => {
+  const makeUser = (over: Record<string, unknown> = {}) => ({
+    id: globalThis.crypto.randomUUID(),
+    user_name: 'alice',
+    email: 'alice@example.com',
+    profile_pic: null,
+    password: 'stored-secret',
+    passwordHash: 'stored-secret-hash',
+    internalMetadata: 'not-public',
+    ...over,
+  });
+
+  return {
+    getUsers: vi.fn(async () => [makeUser()]),
+    createUser: vi.fn(async (u: UserCreate) =>
+      makeUser({
+        user_name: u.user_name,
+        email: u.email,
+        profile_pic: u.profile_pic ?? null,
+      }),
+    ),
+    getUserById: vi.fn(async (id: string) => makeUser({ id })),
+    updateUser: vi.fn(async (id: string, u: UserUpdate) =>
+      makeUser({
+        id,
+        user_name: u.user_name,
+        email: u.email,
+        profile_pic: u.profile_pic ?? null,
+      }),
+    ),
+    deleteUser: vi.fn(async () => true),
+    getUserByEmailForAuth: vi.fn(),
+  };
+});
 
 const userId = '33333333-3333-4333-8333-333333333333';
 const users = '/v1/users';
@@ -32,6 +68,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(200);
     expect(userListResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userListResponseSchema.parse(body));
     expect(Array.isArray(body)).toBe(true);
     for (const item of body as unknown[]) {
       expect(item).not.toHaveProperty('password');
@@ -48,6 +85,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(201);
     expect(userResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userResponseSchema.parse(body));
     expect(body).toMatchObject({
       user_name: 'alice', email: 'alice@example.com', profile_pic: expected,
     });
@@ -82,6 +120,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(200);
     expect(userResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userResponseSchema.parse(body));
     expect(body).toMatchObject({ id: userId });
     expect(body).not.toHaveProperty('password');
   });
@@ -98,6 +137,7 @@ describe('user HTTP responses', () => {
 
     expect(response.statusCode).toBe(200);
     expect(userResponseSchema.safeParse(body).success).toBe(true);
+    expect(body).toEqual(userResponseSchema.parse(body));
     expect(body).toMatchObject({
       id: userId, user_name: 'updated', email: 'updated@example.com', profile_pic: expected,
     });

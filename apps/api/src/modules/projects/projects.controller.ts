@@ -1,24 +1,7 @@
-// Handle project HTTP requests, pass validated input to the project service,
-// and translate results into HTTP responses.
+// Placeholder responses; project persistence is not implemented.
 
-/* Set up where the routes get from. Bare bones atm
-    Routes are now wired and work
-*/
 import type { FastifyReply, FastifyRequest } from 'fastify';
-
-type ProjectParams = {
-  id: string;
-};
-
-type CreateProjectBody = {
-  name: string;
-  description?: string;
-};
-
-type UpdateProjectBody = {
-  name: string;
-  description?: string;
-};
+import type { ProjectCreate, ProjectUpdate, ProjectParams } from '@project-tracker/contracts';
 
 export const getProjects = async (
   _request: FastifyRequest,
@@ -41,7 +24,7 @@ export const getProject = async (
 };
 
 export const createProject = async (
-  request: FastifyRequest<{ Body: CreateProjectBody }>,
+  request: FastifyRequest<{ Body: ProjectCreate }>,
   reply: FastifyReply,
 ) => {
   const { name, description } = request.body;
@@ -56,7 +39,7 @@ export const createProject = async (
 export const updateProject = async (
   request: FastifyRequest<{
     Params: ProjectParams;
-    Body: UpdateProjectBody;
+    Body: ProjectUpdate;
   }>,
   reply: FastifyReply,
 ) => {

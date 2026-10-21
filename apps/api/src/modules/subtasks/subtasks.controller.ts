@@ -1,26 +1,11 @@
-// Barebones set up again, same as projects
-// these are temporary responses just for testing
+// Placeholder responses; subtask persistence is not implemented.
 
 import type { FastifyReply, FastifyRequest } from 'fastify';
-
-type SubtaskParams = {
-  projectId: string;
-  id?: string;
-};
-
-type CreateSubtaskBody = {
-  description: string;
-  completed?: boolean;
-};
-
-type UpdateSubtaskBody = {
-  description: string;
-  completed: boolean;
-};
+import type { SubtaskCreate, SubtaskUpdate, SubtaskParams, SubtaskCollectionParams } from '@project-tracker/contracts';
 
 export const getSubtasks = async (
   _request: FastifyRequest<{
-    Params: SubtaskParams;
+    Params: SubtaskCollectionParams;
   }>,
   reply: FastifyReply,
 ) => {
@@ -29,8 +14,8 @@ export const getSubtasks = async (
 
 export const createSubtask = async (
   request: FastifyRequest<{
-    Params: SubtaskParams;
-    Body: CreateSubtaskBody;
+    Params: SubtaskCollectionParams;
+    Body: SubtaskCreate;
   }>,
   reply: FastifyReply,
 ) => {
@@ -64,7 +49,7 @@ export const getSubtask = async (
 export const updateSubtask = async (
   request: FastifyRequest<{
     Params: SubtaskParams;
-    Body: UpdateSubtaskBody;
+    Body: SubtaskUpdate;
   }>,
   reply: FastifyReply,
 ) => {

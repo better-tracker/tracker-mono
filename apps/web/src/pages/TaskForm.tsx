@@ -7,6 +7,11 @@ import {
   PriorityField,
 } from '../components/TaskFields';
 import { Empty, Field, Heading, Missing } from '../components/UI';
+import {
+  MAX_SUBTASK_TITLE_LENGTH,
+  MAX_TASK_DESCRIPTION_LENGTH,
+  MAX_TASK_TITLE_LENGTH,
+} from '../data/constants';
 import { dateLabel, localClock } from '../data/dates';
 import type { SubtaskInput, TaskInput } from '../data/types';
 import { validateTask } from '../data/validation';
@@ -103,7 +108,7 @@ export function TaskForm() {
             <Field label="Task title" required>
               <input
                 required
-                maxLength={255}
+                maxLength={MAX_TASK_TITLE_LENGTH}
                 placeholder="Review dashboard wireframes"
                 value={form.title}
                 onChange={(event) => patch({ title: event.target.value })}
@@ -131,7 +136,7 @@ export function TaskForm() {
             </div>
             <Field label="Description">
               <textarea
-                maxLength={2000}
+                maxLength={MAX_TASK_DESCRIPTION_LENGTH}
                 rows={3}
                 placeholder="Review layout, hierarchy and accessibility across devices."
                 value={form.description}
@@ -160,7 +165,7 @@ export function TaskForm() {
                     </span>
                     <input
                       aria-label={`Draft subtask ${index + 1}`}
-                      maxLength={255}
+                      maxLength={MAX_SUBTASK_TITLE_LENGTH}
                       placeholder="A smaller step"
                       value={draft.title}
                       onChange={(event) =>

@@ -180,15 +180,14 @@ describe('users and errors', () => {
 });
 
 it('exports every shared runtime schema through the public package entry point', () => {
-  /** @type {Array<keyof typeof contracts>} */
-  const names = [
+  const names = /** @type {const} */ ([
     'projectIdSchema', 'projectNameSchema', 'projectDescriptionSchema', 'projectCreateSchema',
     'projectUpdateSchema', 'projectSubtaskSchema', 'projectResponseSchema', 'projectListItemSchema',
     'projectListResponseSchema', 'subtaskIdSchema', 'subtaskDescriptionSchema', 'subtaskCreateSchema',
     'subtaskUpdateSchema', 'subtaskResponseSchema', 'subtaskListResponseSchema', 'userIdSchema',
     'userNameSchema', 'userEmailSchema', 'userPasswordSchema', 'userProfilePicSchema',
     'userCreateSchema', 'userUpdateSchema', 'userResponseSchema', 'userListResponseSchema', 'errorResponseSchema',
-  ];
+  ]);
   for (const name of names) {
     assert.equal(typeof contracts[name]?.safeParse, 'function', `${name} must be exported`);
   }

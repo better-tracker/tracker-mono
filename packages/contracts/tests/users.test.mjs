@@ -1,16 +1,3 @@
-/*
-Created file to automate tests for users contracct
-- these tests use node.js's built-in test runner
-- to ensure that zod schemas validate user info correctly
-
-tests currently check:
-- valid user data is accepted
-- invalid user data rejected
-
-run tests using:
-pnpm --filter @project-tracker/contracts test
-*/
-
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { userCreateSchema } from '@project-tracker/contracts';

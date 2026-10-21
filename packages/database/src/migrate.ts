@@ -1,30 +1,9 @@
-/*
-This file is the database migration runner.
-
-In this file:
-- connects to postgresql, using DATABASE_URL
-- finds all .sql files in migrations directory that I created
-- runs migration in filename order, hence 001...
-- creates migrations table to track completed migrations
-- skips migrations that have already been aplied
-- runs each new migration in a transaction
-- rolls back migration if error occurs
-- records successful migrations in migration table
-- releases and closes database connections when finished
-
-- please ensure migration files are numbered in order as stated above!
--Example:
-    - 001...
-    - 002...
-    - etc
-*/
-
 import { Pool } from "pg";
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
-/** Apply pending SQL migrations atomically. The caller owns the pool. */
+/** Apply pending SQL files in filename order, each in its own transaction. The caller owns the pool. */
 export async function migrate(pool: Pool, migrationsDir: string): Promise<void> {
     const client = await pool.connect();
 

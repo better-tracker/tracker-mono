@@ -1,5 +1,15 @@
 import { readFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
+import {
+  DISCORD_EMBED_DESCRIPTION_MAX_LENGTH,
+  DISCORD_EMBED_FIELD_VALUE_MAX_LENGTH,
+  DISCORD_EMBED_TITLE_MAX_LENGTH,
+  DISCORD_MAX_ATTEMPTS,
+  DISCORD_MAX_RETRY_AFTER_SECONDS,
+  DISCORD_REQUEST_TIMEOUT_MS,
+  DISCORD_RETRY_DELAY_MS,
+  MILLISECONDS_PER_SECOND,
+} from './discord.constants.mjs';
 
 const actions = {
   opened: 'opened',
@@ -25,14 +35,14 @@ export function buildDiscordMessage(event) {
     username: 'GitHub PR notifications',
     allowed_mentions: { parse: [] },
     embeds: [{
-      title: truncate(`#${pr.number}: ${pr.title}`, 256),
+      title: truncate(`#${pr.number}: ${pr.title}`, DISCORD_EMBED_TITLE_MAX_LENGTH),
       url: pr.html_url,
-      description: truncate(`Pull request ${action} by ${event.sender.login}.`, 4096),
+      description: truncate(`Pull request ${action} by ${event.sender.login}.`, DISCORD_EMBED_DESCRIPTION_MAX_LENGTH),
       color: merged ? 0x8250df : event.action === 'closed' ? 0xcf222e : 0x2da44e,
       fields: [
-        { name: 'Repository', value: truncate(event.repository.full_name, 1024) },
-        { name: 'Author', value: truncate(pr.user.login, 1024), inline: true },
-        { name: 'Branches', value: truncate(`${pr.head.ref} → ${pr.base.ref}`, 1024), inline: true },
+        { name: 'Repository', value: truncate(event.repository.full_name, DISCORD_EMBED_FIELD_VALUE_MAX_LENGTH) },
+        { name: 'Author', value: truncate(pr.user.login, DISCORD_EMBED_FIELD_VALUE_MAX_LENGTH), inline: true },
+        { name: 'Branches', value: truncate(`${pr.head.ref} → ${pr.base.ref}`, DISCORD_EMBED_FIELD_VALUE_MAX_LENGTH), inline: true },
         { name: 'Status', value: merged ? 'Merged' : pr.state === 'closed' ? 'Closed' : pr.draft ? 'Draft' : 'Open', inline: true },
       ],
     }],
@@ -58,14 +68,14 @@ export async function notifyDiscord(event, webhookUrl, { fetchImpl = fetch, slee
   }
   url.searchParams.set('wait', 'true');
 
-  for (let attempt = 0; attempt < 3; attempt++) {
+  for (let attempt = 0; attempt < DISCORD_MAX_ATTEMPTS; attempt++) {
     let response;
     try {
       response = await fetchImpl(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
-        signal: AbortSignal.timeout(10_000),
+        signal: AbortSignal.timeout(DISCORD_REQUEST_TIMEOUT_MS),
         redirect: 'error',
       });
     } catch {
@@ -74,15 +84,17 @@ export async function notifyDiscord(event, webhookUrl, { fetchImpl = fetch, slee
     }
     if (response.ok) return true;
 
-    if (attempt < 2 && (response.status === 429 || response.status >= 500)) {
-      let waitMs = 1000 * (attempt + 1);
+    if (attempt < DISCORD_MAX_ATTEMPTS - 1 && (response.status === 429 || response.status >= 500)) {
+      let waitMs = DISCORD_RETRY_DELAY_MS * (attempt + 1);
       if (response.status === 429) {
         const body = await response.json().catch(() => ({}));
         const retryAfter = Number(body.retry_after);
         if (Number.isFinite(retryAfter) && retryAfter > 0) {
           // Leave longer rate limits visible as failures instead of retrying too early.
-          if (retryAfter > 60) throw new Error('Discord webhook rate limited for over 60 seconds. Rerun the workflow later.');
-          waitMs = Math.ceil(retryAfter * 1000);
+          if (retryAfter > DISCORD_MAX_RETRY_AFTER_SECONDS) {
+            throw new Error(`Discord webhook rate limited for over ${DISCORD_MAX_RETRY_AFTER_SECONDS} seconds. Rerun the workflow later.`);
+          }
+          waitMs = Math.ceil(retryAfter * MILLISECONDS_PER_SECOND);
         }
       }
       await sleep(waitMs);
