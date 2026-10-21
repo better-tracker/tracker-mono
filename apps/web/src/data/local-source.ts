@@ -115,10 +115,14 @@ function readWorkspace(raw: string): Workspace {
 export function createLocalDataSource(
   storage: Pick<Storage, 'getItem' | 'setItem'>,
   now: () => Date = () => new Date(),
-): FrontendDataSource {
+  storageKey: string = WORKSPACE_KEY,
+  seed: (now: Date) => Workspace = seedWorkspace,
+): FrontendDataSource & {
+  syncProjects(projects: Workspace['projects']): Promise<Workspace>;
+} {
   const save = (workspace: Workspace) => {
     try {
-      storage.setItem(WORKSPACE_KEY, JSON.stringify(workspace));
+      storage.setItem(storageKey, JSON.stringify(workspace));
     } catch {
       throw new Error(
         'Your browser could not save this change. Free some storage or allow site storage, then retry.',
@@ -129,13 +133,13 @@ export function createLocalDataSource(
   const load = async () => {
     let raw: string | null;
     try {
-      raw = storage.getItem(WORKSPACE_KEY);
+      raw = storage.getItem(storageKey);
     } catch {
       throw new Error(
         'Your browser blocked demo storage. Allow site storage and retry.',
       );
     }
-    return raw === null ? save(seedWorkspace(now())) : readWorkspace(raw);
+    return raw === null ? save(seed(now())) : readWorkspace(raw);
   };
   let pending: Promise<unknown> = Promise.resolve();
   const enqueue = (operation: () => Promise<Workspace>) => {
@@ -149,6 +153,26 @@ export function createLocalDataSource(
       mutate(workspace);
       return save(workspace);
     });
+ const syncProjects = (projects: Workspace['projects']) =>
+  change((workspace) => {
+    const projectIds = new Set(
+      projects.map((project) => project.id),
+    );
+
+    const hasMissingProject = workspace.tasks.some(
+      (task) => !projectIds.has(task.projectId),
+    );
+
+    if (hasMissingProject) {
+      throw new Error(
+        'Some local tasks reference missing backend projects. ' +
+          'Synchronization stopped to protect your data.',
+      );
+    }
+
+    workspace.projects = projects;
+  });
+
   const find = <T extends { id: string }>(records: T[], id: string): T => {
     const value = records.find((item) => item.id === id);
     if (!value)
@@ -159,7 +183,8 @@ export function createLocalDataSource(
   };
   return {
     load,
-    reset: () => enqueue(async () => save(seedWorkspace(now()))),
+    syncProjects,
+    reset: () => enqueue(async () => save(seed(now()))),
     createProject: (input) =>
       change((w) => {
         validateProject(input);

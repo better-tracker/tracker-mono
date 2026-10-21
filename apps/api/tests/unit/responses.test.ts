@@ -18,16 +18,73 @@ const subtask = `${subtasks}/${subtaskId}`;
 describe('HTTP responses', () => {
   let app: FastifyInstance;
 
+
   beforeEach(() => {
-    const query = vi.fn().mockImplementation(async (_sql: string, values: unknown[] = []) => ({
-      rows: [{
-        id: '33333333-3333-4333-8333-333333333333',
-        user_name: values[0], email: values[1], profile_pic: null,
-      }],
-      rowCount: 1,
-    }));
+    const query = vi.fn().mockImplementation(
+      async (sql: string, values: unknown[] = []) => {
+        const now = new Date('2026-10-21T00:00:00.000Z');
+
+        if (/\b(?:FROM|INTO|UPDATE|DELETE FROM)\s+projects\b/i.test(sql)) {
+          const isInsert = /^\s*INSERT/i.test(sql);
+          const isUpdate = /^\s*UPDATE/i.test(sql);
+          const isDelete = /^\s*DELETE/i.test(sql);
+
+          if (isDelete) {
+            return { rows: [], rowCount: 1 };
+          }
+
+          return {
+            rows: [{
+              id: projectId,
+              name: isInsert ? values[0] : isUpdate ? values[0] : 'Test project',
+              description: isInsert || isUpdate ? values[1] ?? null : null,
+              created_at: now,
+            }],
+            rowCount: 1,
+          };
+        }
+
+        if (/\b(?:FROM|INTO|UPDATE|DELETE FROM)\s+subtasks\b/i.test(sql)) {
+          const isInsert = /^\s*INSERT/i.test(sql);
+          const isUpdate = /^\s*UPDATE/i.test(sql);
+          const isDelete = /^\s*DELETE/i.test(sql);
+
+          if (isDelete) {
+            return { rows: [], rowCount: 1 };
+          }
+
+          return {
+            rows: [{
+              id: subtaskId,
+              project_id: projectId,
+              description: isInsert
+                ? values[2]
+                : isUpdate ? values[0] : 'Test subtask',
+              completed: isInsert
+                ? values[1]
+                : isUpdate ? values[1] : false,
+              created_at: now,
+              updated_at: now,
+            }],
+            rowCount: 1,
+          };
+        }
+
+        return {
+          rows: [{
+            id: '33333333-3333-4333-8333-333333333333',
+            user_name: values[0],
+            email: values[1],
+            profile_pic: null,
+          }],
+          rowCount: 1,
+        };
+      },
+    );
+
     app = buildApp({ database: { query } });
   });
+
   afterEach(async () => { await app.close(); });
 
   it.each([
