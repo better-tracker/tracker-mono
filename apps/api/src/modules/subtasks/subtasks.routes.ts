@@ -5,14 +5,8 @@ import {
   subtaskParamsSchema,
   subtaskUpdateSchema,
 } from '@project-tracker/contracts';
-import {
-  getSubtasks,
-  createSubtask,
-  getSubtask,
-  updateSubtask,
-  deleteSubtask,
-} from './subtasks.controller.js';
-
+import { createSubtasksController } from './subtasks.controller.js';
+import type { SubtasksService } from './subtasks.service.js';
 import { parseRequest } from '../../lib/validation.js';
 
 async function validateCollectionParams(request: FastifyRequest) {
@@ -23,7 +17,18 @@ async function validateSubtaskParams(request: FastifyRequest) {
   request.params = parseRequest(subtaskParamsSchema, request.params, 'Invalid project or subtask ID');
 }
 
-export const subtaskRoutes = async (app: FastifyInstance) => {
+export const subtaskRoutes = async (
+  app: FastifyInstance,
+  options: { service?: SubtasksService } = {},
+) => {
+  const {
+    getSubtasks,
+    createSubtask,
+    getSubtask,
+    updateSubtask,
+    deleteSubtask,
+  } = createSubtasksController(options.service);
+
   app.get('/v1/projects/:projectId/subtasks', { preValidation: validateCollectionParams, handler: getSubtasks });
 
   app.post('/v1/projects/:projectId/subtasks', {

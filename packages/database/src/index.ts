@@ -41,3 +41,31 @@ export type {
     UpdateSubtask,
 } from "./repositories/subtaskRepo.js";
 export type { DatabaseConnection } from "./client.js";
+
+export {
+  createTask,
+  getTaskById,
+  listTasksByProject,
+  updateTask,
+  deleteTask,
+} from './repositories/tasksRepo.js';
+
+export type {
+  Task,
+  CreateTask,
+  UpdateTask,
+} from './repositories/tasksRepo.js';
+
+export {
+  createTaskSubtask,
+  getTaskSubtaskById,
+  listTaskSubtasksByTask,
+  updateTaskSubtask,
+  deleteTaskSubtask,
+} from './repositories/taskSubtasksRepo.js';
+
+export type {
+  TaskSubtask,
+  CreateTaskSubtask,
+  UpdateTaskSubtask,
+} from './repositories/taskSubtasksRepo.js';

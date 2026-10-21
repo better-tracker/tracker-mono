@@ -14,6 +14,17 @@ import {
   type SubtaskCreate,
   type SubtaskResponse,
   type SubtaskUpdate,
+  taskResponseSchema,
+  taskListResponseSchema,
+  taskSubtaskResponseSchema,
+  taskSubtaskListResponseSchema,
+  type TaskCreate,
+  type TaskUpdate,
+  type TaskListResponse,
+  type TaskSubtaskCreate,
+  type TaskSubtaskUpdate,
+  type TaskSubtaskResponse,
+  type TaskSubtaskListResponse,
 } from '@project-tracker/contracts';
 
 import { request } from './http_helper.js';
@@ -214,5 +225,172 @@ export const deleteSubtask = async (
     {
       method: 'DELETE',
     },
+  );
+};
+
+/* Tasks section */
+
+// List tasks belonging to a project.
+export const getTasks = async (
+  baseUrl: string,
+  projectId: string,
+): Promise<TaskListResponse> => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks`,
+  );
+
+  return taskListResponseSchema.parse(response);
+};
+
+// Get a single task.
+export const getTask = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+) => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`,
+  );
+
+  return taskResponseSchema.parse(response);
+};
+
+// Create a task.
+export const createTask = async (
+  baseUrl: string,
+  projectId: string,
+  data: TaskCreate,
+) => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    },
+  );
+
+  return taskResponseSchema.parse(response);
+};
+
+// Update a task.
+export const updateTask = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+  data: TaskUpdate,
+) => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`,
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    },
+  );
+
+  return taskResponseSchema.parse(response);
+};
+
+// Delete a task.
+export const deleteTask = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+): Promise<void> => {
+  await request<void>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`,
+    { method: 'DELETE' },
+  );
+};
+
+/* Task Subtasks section */
+
+// List subtasks belonging to a task.
+export const getTaskSubtasks = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+): Promise<TaskSubtaskListResponse> => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks`,
+  );
+
+  return taskSubtaskListResponseSchema.parse(response);
+};
+
+// Get one task subtask.
+export const getTaskSubtask = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+  subtaskId: string,
+): Promise<TaskSubtaskResponse> => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`,
+  );
+
+  return taskSubtaskResponseSchema.parse(response);
+};
+
+// Create a task subtask.
+export const createTaskSubtask = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+  data: TaskSubtaskCreate,
+): Promise<TaskSubtaskResponse> => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    },
+  );
+
+  return taskSubtaskResponseSchema.parse(response);
+};
+
+// Update a task subtask.
+export const updateTaskSubtask = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+  subtaskId: string,
+  data: TaskSubtaskUpdate,
+): Promise<TaskSubtaskResponse> => {
+  const response = await request<unknown>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`,
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    },
+  );
+
+  return taskSubtaskResponseSchema.parse(response);
+};
+
+// Delete a task subtask.
+export const deleteTaskSubtask = async (
+  baseUrl: string,
+  projectId: string,
+  taskId: string,
+  subtaskId: string,
+): Promise<void> => {
+  await request<void>(
+    baseUrl,
+    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`,
+    { method: 'DELETE' },
   );
 };
