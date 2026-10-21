@@ -53,7 +53,9 @@ describe('PostgreSQL migrations', () => {
     await migrate(pool!, migrationsDir);
     const applied = await pool!.query('SELECT name, applied_at FROM migrations ORDER BY id');
     expect(applied.rows.map((row) => row.name)).toEqual([
-      '001_create_projects_and_subtasks.sql', '002_create_users.sql',
+      '001_create_projects_and_subtasks.sql',
+      '002_create_users.sql',
+      '003_create_tasks_and_task_subtasks.sql',
     ]);
     expect(applied.rows.every((row) => row.applied_at instanceof Date)).toBe(true);
     const inserted = await pool!.query("INSERT INTO projects (name) VALUES ('Kept across reruns') RETURNING *");
