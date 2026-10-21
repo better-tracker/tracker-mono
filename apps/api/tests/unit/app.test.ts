@@ -12,7 +12,65 @@ const subtask = `${subtasks}/${subtaskId}`;
 describe('application lifecycle and routing', () => {
   let app: FastifyInstance;
 
-  beforeEach(() => { app = buildApp(); });
+
+  beforeEach(() => {
+    const now = new Date('2026-10-21T00:00:00.000Z');
+
+    const query = vi.fn().mockImplementation(
+      async (sql: string, values: unknown[] = []) => {
+        if (/\bprojects\b/i.test(sql)) {
+          if (/^\s*DELETE/i.test(sql)) {
+            return { rows: [], rowCount: 1 };
+          }
+
+          return {
+            rows: [{
+              id: projectId,
+              name: /^\s*(INSERT|UPDATE)/i.test(sql)
+                ? values[0]
+                : 'Test project',
+              description: /^\s*(INSERT|UPDATE)/i.test(sql)
+                ? values[1] ?? null
+                : null,
+              created_at: now,
+            }],
+            rowCount: 1,
+          };
+        }
+
+        if (/\bsubtasks\b/i.test(sql)) {
+          if (/^\s*DELETE/i.test(sql)) {
+            return { rows: [], rowCount: 1 };
+          }
+
+          return {
+            rows: [{
+              id: subtaskId,
+              project_id: projectId,
+              description: /^\s*INSERT/i.test(sql)
+                ? values[2]
+                : /^\s*UPDATE/i.test(sql)
+                  ? values[0]
+                  : 'Test subtask',
+              completed: /^\s*INSERT/i.test(sql)
+                ? values[1]
+                : /^\s*UPDATE/i.test(sql)
+                  ? values[1]
+                  : false,
+              created_at: now,
+              updated_at: now,
+            }],
+            rowCount: 1,
+          };
+        }
+
+        return { rows: [], rowCount: 0 };
+      },
+    );
+
+    app = buildApp({ database: { query } });
+  });
+
   afterEach(async () => { await app.close(); });
 
   it('boots and closes plugins without opening a listening socket', async () => {

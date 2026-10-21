@@ -19,6 +19,7 @@ import { projectProgress } from '../data/dates';
 import type { DemoProject } from '../data/types';
 import { validateProject } from '../data/validation';
 import { useWorkspace } from '../features/workspace-context';
+import { ProjectSubtasks } from '../components/ProjectSubtasks';
 
 function ProjectDialog({
   project,
@@ -148,7 +149,7 @@ export function Projects() {
             <Progress value={projectProgress(workspace, selected.id)} />
           </div>
           <div className="section-title">
-            <h2 className="eyebrow">01 / PROJECT TASKS</h2>
+            <h2 className="eyebrow">01 / LOCAL DEMO TASKS</h2>
           </div>
           {tasks.length ? (
             tasks.map((task) => <TaskRow key={task.id} task={task} showDate />)
@@ -160,6 +161,7 @@ export function Projects() {
               </Link>
             </Empty>
           )}
+          <ProjectSubtasks key={selected.id} projectId={selected.id} />
         </>
       ) : workspace.projects.length ? (
         <div className="project-grid">

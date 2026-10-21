@@ -9,7 +9,7 @@ import {
 } from 'react-router';
 import { Shell } from './components/Shell';
 import { Missing } from './components/UI';
-import { createLocalDataSource } from './data/local-source';
+import { createHybridDataSource } from './data/hybrid-source';
 import { hasSession } from './data/session';
 import type { FrontendDataSource } from './data/types';
 import { WorkspaceProvider } from './features/WorkspaceProvider';
@@ -21,11 +21,15 @@ import { TaskForm } from './pages/TaskForm';
 import { TaskDetail, Tasks } from './pages/Tasks';
 import { Today } from './pages/Today';
 import './styles/app.css';
+import { ApiConnectionTest } from './components/ApiConnectionTest';
+import { ApiProjects } from './pages/ApiProjects';
+import { ApiUsers } from './pages/ApiUsers';
+import { createLocalDataSource } from './data/local-source';
 
-const source = createLocalDataSource({
-  getItem: (key) => window.localStorage.getItem(key),
-  setItem: (key, value) => window.localStorage.setItem(key, value),
-});
+const source =
+  import.meta.env.VITE_DATA_MODE === 'demo'
+    ? createLocalDataSource(window.localStorage)
+    : createHybridDataSource();
 
 function Protected({ source }: { source: FrontendDataSource }) {
   const location = useLocation();
@@ -56,8 +60,11 @@ export function AppRoutes({ source }: { source: FrontendDataSource }) {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/api-test" element={<ApiConnectionTest />} />
+      <Route path="/api-projects" element={<ApiProjects />} />
       <Route element={<Protected source={source} />}>
         <Route element={<Shell />}>
+          <Route path="api-users" element={<ApiUsers />} />
           <Route index element={<Today />} />
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:id" element={<Projects />} />

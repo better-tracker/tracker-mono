@@ -75,3 +75,14 @@ export function seedWorkspace(now: Date): Workspace {
     },
   };
 }
+
+export function seedHybridWorkspace(now: Date): Workspace {
+  const workspace = seedWorkspace(now);
+
+  return {
+    ...workspace,
+    projects: [],
+    tasks: [],
+    subtasks: [],
+  };
+}

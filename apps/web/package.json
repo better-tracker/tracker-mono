@@ -13,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:e2e": "pnpm run build && playwright test"
+    "test:e2e": "VITE_DATA_MODE=demo pnpm run build && playwright test --grep-invert @api",
+    "test:e2e:api": "VITE_DATA_MODE=api VITE_API_URL=http://127.0.0.1:3001 pnpm run build && playwright test --grep @api"
   },
   "dependencies": {
     "@project-tracker/api-client": "workspace:*",
