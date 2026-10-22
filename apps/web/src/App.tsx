@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import {
   BrowserRouter,
   Navigate,
@@ -25,6 +26,8 @@ import { ApiConnectionTest } from './components/ApiConnectionTest';
 import { ApiProjects } from './pages/ApiProjects';
 import { ApiUsers } from './pages/ApiUsers';
 import { createLocalDataSource } from './data/local-source';
+
+const Graph = lazy(() => import('./pages/Graph'));
 
 const source =
   import.meta.env.VITE_DATA_MODE === 'demo'
@@ -69,6 +72,14 @@ export function AppRoutes({ source }: { source: FrontendDataSource }) {
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:id" element={<Projects />} />
           <Route path="tasks" element={<Tasks />} />
+          <Route
+            path="graph"
+            element={
+              <Suspense fallback={<p role="status">Loading the work graph…</p>}>
+                <Graph />
+              </Suspense>
+            }
+          />
           <Route path="tasks/new" element={<TaskEditor />} />
           <Route path="tasks/:id" element={<TaskDetail />} />
           <Route path="tasks/:id/edit" element={<TaskEditor />} />
