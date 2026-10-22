@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import { StatusCodes } from 'http-status-codes';
 import { projectRoutes } from './modules/projects/projects.routes.js';
 import { subtaskRoutes } from './modules/subtasks/subtasks.routes.js';
 import { userRoutes } from './modules/users/users.routes.js';
@@ -13,6 +14,7 @@ import { taskRoutes } from './modules/tasks/tasks.routes.js';
 import { createTasksService } from './modules/tasks/tasks.service.js';
 import { taskSubtaskRoutes } from './modules/task-subtasks/task-subtasks.routes.js';
 import { createTaskSubtasksService } from './modules/task-subtasks/task-subtasks.service.js';
+import { getErrorResponse, getErrorStatusCode } from './lib/http-errors.js';
 
 /** An injected database is caller-owned and remains open when this app closes. */
 export function buildApp(options: { database?: DatabaseConnection } = {}) {
@@ -45,38 +47,16 @@ export function buildApp(options: { database?: DatabaseConnection } = {}) {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   });
 
-
   app.setErrorHandler((error, request, reply) => {
-    const statusCode =
-      error instanceof Error &&
-        'statusCode' in error &&
-        typeof error.statusCode === 'number' &&
-        error.statusCode >= 400 &&
-        error.statusCode < 600
-        ? error.statusCode
-        : 500;
-
-    const message =
-      statusCode >= 500
-        ? 'An unexpected error occurred.'
-        : error instanceof Error && 'code' in error && error.code === 'FST_ERR_CTP_INVALID_JSON_BODY'
-          ? 'Invalid JSON body'
-          : error instanceof Error
-            ? error.message
-            : 'Invalid request';
+    const statusCode = getErrorStatusCode(error);
 
     request.log.error(error);
 
-    return reply.status(statusCode).send({
-      error: {
-        code: statusCode >= 500 ? 'INTERNAL_SERVER_ERROR' : 'REQUEST_ERROR',
-        message,
-      },
-    });
+    return reply.status(statusCode).send(getErrorResponse(error, statusCode));
   });
 
   app.setNotFoundHandler((request, reply) => {
-    return reply.status(404).send({
+    return reply.status(StatusCodes.NOT_FOUND).send({
       error: {
         code: 'NOT_FOUND',
         message: 'Route not found',

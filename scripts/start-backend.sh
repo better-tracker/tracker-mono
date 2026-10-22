@@ -47,7 +47,7 @@ fi
 
 docker compose up -d --wait postgres
 pnpm --filter @project-tracker/database migrate
-pnpm --filter @project-tracker/contracts build
+pnpm --filter @project-tracker/contracts --filter @project-tracker/utils build
 
 echo 'Starting the API (default: http://localhost:3001). Press Ctrl+C to stop it.'
 echo 'PostgreSQL stays running. Use docker compose down to stop it.'

@@ -1,4 +1,4 @@
-import type { Deadline, DemoTask, Workspace } from './types';
+import type { Deadline } from './types';
 import { MILLISECONDS_PER_DAY } from './constants';
 
 export function localClock(now: Date, timezone: string) {
@@ -20,7 +20,7 @@ export function localClock(now: Date, timezone: string) {
 }
 
 export function addDays(date: string, days: number) {
-  const value = new Date(`${date}T12:00:00Z`);
+  const value = dateOnlyToDate(date);
   value.setUTCDate(value.getUTCDate() + days);
   return value.toISOString().slice(0, 10);
 }
@@ -36,16 +36,17 @@ export function dateLabel(
   return new Intl.DateTimeFormat('en-AU', {
     ...options,
     timeZone: 'UTC',
-  }).format(new Date(`${date}T12:00:00Z`));
+  }).format(dateOnlyToDate(date));
 }
 
 export function weekNumber(date: string, weekStartsOn: 'Monday' | 'Sunday') {
-  const day = new Date(`${date}T12:00:00Z`);
+  const day = dateOnlyToDate(date);
   if (weekStartsOn === 'Sunday') {
     const first = new Date(Date.UTC(day.getUTCFullYear(), 0, 1, 12));
     return Math.ceil(
       ((day.getTime() - first.getTime()) / MILLISECONDS_PER_DAY +
-        first.getUTCDay() + 1) /
+        first.getUTCDay() +
+        1) /
         7,
     );
   }
@@ -56,49 +57,50 @@ export function weekNumber(date: string, weekStartsOn: 'Monday' | 'Sunday') {
   );
 }
 
-export function dashboard(workspace: Workspace, now: Date) {
-  const clock = localClock(now, workspace.profile.timezone);
-  const pending = workspace.tasks.filter((task) => task.status !== 'Complete');
-  const sort = (a: DemoTask, b: DemoTask) =>
-    deadlineKey(a).localeCompare(deadlineKey(b));
-  const today = pending
-    .filter((task) => task.dueDate === clock.date)
-    .sort(sort);
-  const overdue = pending
-    .filter(
-      (task) =>
-        deadlineKey(task) && deadlineKey(task) < `${clock.date}T${clock.time}`,
-    )
-    .sort(sort);
-  const upcoming = pending
-    .filter(
-      (task) =>
-        deadlineKey(task) && deadlineKey(task) >= `${clock.date}T${clock.time}`,
-    )
-    .sort(sort);
-  const done = workspace.tasks.filter(
-    (task) =>
-      task.status === 'Complete' &&
-      task.completedAt &&
-      localClock(new Date(task.completedAt), workspace.profile.timezone)
-        .date === clock.date,
-  );
-  return {
-    clock,
-    today,
-    overdue,
-    done,
-    next: upcoming[0] ?? overdue[0] ?? pending[0],
-  };
+function dateOnlyToDate(date: string): Date {
+  return new Date(`${date}T12:00:00Z`);
 }
 
-export function projectProgress(workspace: Workspace, projectId: string) {
-  const tasks = workspace.tasks.filter((task) => task.projectId === projectId);
-  return tasks.length
-    ? Math.round(
-        (tasks.filter((task) => task.status === 'Complete').length /
-          tasks.length) *
-          100,
-      )
-    : 0;
+export function isValidDateOnly(date: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+  const value = dateOnlyToDate(date);
+  return (
+    !Number.isNaN(value.getTime()) && value.toISOString().slice(0, 10) === date
+  );
+}
+
+export function isValidTime(time: string): boolean {
+  return /^([01]\d|2[0-3]):[0-5]\d$/.test(time);
+}
+
+export function compareDeadlines(a: Deadline, b: Deadline): number {
+  return (deadlineKey(a) || '9999').localeCompare(deadlineKey(b) || '9999');
+}
+
+type DeadlineLabelOptions = {
+  noDeadline?: string;
+  endOfDay?: string;
+};
+
+export function formatDeadlineTime(
+  value: Deadline,
+  {
+    noDeadline = 'No deadline',
+    endOfDay = 'End of day',
+  }: DeadlineLabelOptions = {},
+): string {
+  return value.dueTime || (value.dueDate ? endOfDay : noDeadline);
+}
+
+export function formatDeadline(
+  value: Deadline,
+  options: DeadlineLabelOptions & { today?: string; uppercase?: boolean } = {},
+): string {
+  let label = options.noDeadline ?? 'No deadline';
+  if (value.dueDate) {
+    const date =
+      value.dueDate === options.today ? 'Today' : dateLabel(value.dueDate);
+    label = `${date} / ${formatDeadlineTime(value, options)}`;
+  }
+  return options.uppercase ? label.toUpperCase() : label;
 }

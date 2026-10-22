@@ -1,4 +1,4 @@
-import type { FastifyInstance, FastifyRequest } from 'fastify';
+import type { FastifyInstance } from 'fastify';
 import {
   projectCreateSchema,
   projectParamsSchema,
@@ -8,11 +8,12 @@ import { createProjectsController } from './projects.controller.js';
 import type { ProjectsService } from './projects.service.js';
 import type { SubtasksService } from '../subtasks/subtasks.service.js';
 
-import { parseRequest } from '../../lib/validation.js';
+import { validateBody, validateParams } from '../../lib/validation.js';
 
-async function validateProjectParams(request: FastifyRequest) {
-  request.params = parseRequest(projectParamsSchema, request.params, 'Invalid project ID');
-}
+const validateProjectParams = validateParams(
+  projectParamsSchema,
+  'Invalid project ID',
+);
 
 export const projectRoutes = async (
   app: FastifyInstance,
@@ -35,20 +36,22 @@ export const projectRoutes = async (
   app.get('/v1/projects', getProjects);
 
   app.post('/v1/projects', {
-    preValidation: async (request) => {
-      request.body = parseRequest(projectCreateSchema, request.body);
-    },
+    preValidation: validateBody(projectCreateSchema),
     handler: createProject,
   });
 
-  app.get('/v1/projects/:id', { preValidation: validateProjectParams, handler: getProject });
+  app.get('/v1/projects/:id', {
+    preValidation: validateProjectParams,
+    handler: getProject,
+  });
 
   app.put('/v1/projects/:id', {
-    preValidation: [validateProjectParams, async (request) => {
-      request.body = parseRequest(projectUpdateSchema, request.body);
-    }],
+    preValidation: [validateProjectParams, validateBody(projectUpdateSchema)],
     handler: updateProject,
   });
 
-  app.delete('/v1/projects/:id', { preValidation: validateProjectParams, handler: deleteProject });
+  app.delete('/v1/projects/:id', {
+    preValidation: validateProjectParams,
+    handler: deleteProject,
+  });
 };

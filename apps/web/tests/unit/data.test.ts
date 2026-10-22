@@ -1,14 +1,13 @@
+import {
+  dashboard,
+  getProjectSummary,
+} from '../../src/data/workspace-selectors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   createLocalDataSource,
   WORKSPACE_KEY,
 } from '../../src/data/local-source';
-import {
-  dashboard,
-  localClock,
-  projectProgress,
-  weekNumber,
-} from '../../src/data/dates';
+import { localClock, weekNumber } from '../../src/data/dates';
 import { hasSession, signIn, signOut } from '../../src/data/session';
 import { validateDeadline } from '../../src/data/validation';
 import type { SubtaskInput, TaskInput } from '../../src/data/types';
@@ -71,7 +70,7 @@ describe('persistent demo workspace', () => {
     expect(summary.overdue).toHaveLength(2);
     expect(summary.done).toHaveLength(1);
     expect(summary.next?.title).toBe('Review dashboard wireframes');
-    expect(projectProgress(seeded, seeded.projects[0]!.id)).toBe(25);
+    expect(getProjectSummary(seeded, seeded.projects[0]!.id).progress).toBe(25);
     await source.createProject({
       name: '  My project  ',
       description: 'Saved',

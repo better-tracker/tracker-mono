@@ -10,6 +10,7 @@ apps/mobile       Expo SDK 57 + Expo Router, iOS and Android
 packages/contracts   Shared API schemas/types
 packages/api-client  Cross-platform API client
 packages/database    Server-only PostgreSQL repositories and migrations
+packages/utils       Shared utility functions
 ```
 
 ## Local setup
@@ -35,7 +36,7 @@ All direct dependencies use stable releases. Babel transitively requires
 Build shared packages before starting the web and API together:
 
 ```sh
-pnpm --filter @project-tracker/contracts --filter @project-tracker/api-client build
+pnpm --filter @project-tracker/contracts --filter @project-tracker/api-client --filter @project-tracker/utils build
 ```
 
 Prepare the root `.env` as described below before starting the API.
@@ -67,6 +68,16 @@ so rebuild the web app when changing production settings.
 
 The web dev and preview servers use port 3000 and fail if it is already occupied.
 
+Web styling uses Tailwind CSS and shared components in `apps/web/src/components/ui`.
+See the [styling guide](apps/web/src/components/ui/README.md) for component usage,
+theme tokens, and responsive conventions.
+
+Generic helpers live in `packages/utils`. Web workspace queries and stored-data
+validation live in `apps/web/src/data`; `useWorkspaceForm` handles shared form
+submission behavior in `apps/web/src/features`. API request-validation hooks stay
+in `apps/api/src/lib/validation.ts`, and SQL update helpers stay in the server-only
+database package.
+
 ## Run the backend
 
 Start Docker Desktop (or your Docker engine), select Node.js 24 with `nvm use`,
@@ -78,7 +89,7 @@ bash scripts/start-backend.sh
 
 The script installs dependencies using the frozen lockfile, creates `.env` from
 `.env.example` only if it is missing, starts PostgreSQL and waits for it to become
-healthy, applies pending migrations, builds the shared contracts, and starts the
+healthy, applies pending migrations, builds the shared contracts and utils, and starts the
 API with automatic reload. Existing `.env` settings are preserved. To see the
 script's prerequisites, run `bash scripts/start-backend.sh --help`.
 
@@ -98,7 +109,7 @@ To run the same steps manually after installing dependencies:
 if [ ! -e .env ]; then cp .env.example .env; fi
 docker compose up -d --wait postgres
 pnpm --filter @project-tracker/database migrate
-pnpm --filter @project-tracker/contracts build
+pnpm --filter @project-tracker/contracts --filter @project-tracker/utils build
 pnpm dev:api
 ```
 

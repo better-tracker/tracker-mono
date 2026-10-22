@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
+import { Button, Eyebrow, Feedback, SectionTitle } from './ui';
 import type { SubtaskResponse } from '@project-tracker/contracts';
 import {
     loadApiSubtasks,
@@ -173,9 +174,9 @@ export function ProjectSubtasks({ projectId }: Props) {
 
     return (
         <section aria-label="Server-saved project subtasks">
-            <div className="section-title">
-                <h2 className="eyebrow">02 / PROJECT SUBTASKS — SAVED TO SERVER</h2>
-            </div>
+            <SectionTitle>
+                <Eyebrow as="h2">02 / PROJECT SUBTASKS — SAVED TO SERVER</Eyebrow>
+            </SectionTitle>
 
             <p>These subtasks are saved in PostgreSQL.</p>
 
@@ -197,21 +198,21 @@ export function ProjectSubtasks({ projectId }: Props) {
                                 {subtask.description}
                             </label>
 
-                            <button
+                            <Button
                                 type="button"
                                 disabled={busy}
                                 onClick={() => startEditing(subtask)}
                             >
                                 Edit
-                            </button>
+                            </Button>
 
-                            <button
+                            <Button
                                 type="button"
                                 disabled={busy}
                                 onClick={() => void remove(subtask)}
                             >
                                 Delete
-                            </button>
+                            </Button>
                         </li>
                     ))}
                 </ul>
@@ -230,31 +231,31 @@ export function ProjectSubtasks({ projectId }: Props) {
                     onChange={(event) => setDescription(event.target.value)}
                 />
 
-                <button type="submit" disabled={busy}>
+                <Button type="submit" disabled={busy}>
                     {busy ? 'Saving...' : editingId ? 'Save Subtask' : 'Add Subtask'}
-                </button>
+                </Button>
 
                 {editingId && (
-                    <button
+                    <Button
                         type="button"
                         disabled={busy}
                         onClick={cancelEditing}
                     >
                         Cancel
-                    </button>
+                    </Button>
                 )}
             </form>
 
             {error && (
-                <p className="feedback error" role="alert">
+                <Feedback error role="alert">
                     {error}
-                </p>
+                </Feedback>
             )}
 
             {!loading && (
-                <button type="button" disabled={busy} onClick={() => void refresh()}>
+                <Button type="button" disabled={busy} onClick={() => void refresh()}>
                     Refresh Subtasks
-                </button>
+                </Button>
             )}
         </section>
     );

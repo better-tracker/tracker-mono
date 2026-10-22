@@ -1,27 +1,11 @@
+import { AppFrame, SiteHeader, SiteFooter } from './ui/AppFrame';
+import { Navigation } from './Navigation';
+import { Feedback } from './ui';
+import { cn } from './ui/classes';
 import { useEffect } from 'react';
-import { Link, NavLink, Outlet, useLocation } from 'react-router';
+import { Link, Outlet, useLocation } from 'react-router';
 import { useWorkspace } from '../features/workspace-context';
 
-const links = [
-  ['/', 'Today'],
-  ['/projects', 'Projects'],
-  ['/tasks', 'Tasks'],
-  ['/profile', 'Profile'],
-];
-function Navigation({ bottom = false }: { bottom?: boolean }) {
-  return (
-    <nav
-      aria-label={bottom ? 'Mobile navigation' : 'Main navigation'}
-      className={bottom ? 'bottom-nav' : 'top-nav'}
-    >
-      {links.map(([to, label]) => (
-        <NavLink key={to} to={to!} end={to === '/'}>
-          {label}
-        </NavLink>
-      ))}
-    </nav>
-  );
-}
 export function Shell() {
   const { workspace, error, notice } = useWorkspace();
   const location = useLocation();
@@ -32,47 +16,66 @@ export function Shell() {
     document.querySelector<HTMLElement>('main')?.focus();
   }, [location.pathname]);
   return (
-    <div className="app-shell">
-      <a className="skip-link" href="#content">
+    <AppFrame>
+      <a
+        className="skip-link fixed z-[20] left-6 top-[-100px] p-4 bg-paper border-[2px] border-solid border-black [&:focus]:top-4"
+        href="#content"
+      >
         Skip to content
       </a>
-      <header className="site-header">
-        <Link className="brand" to="/">
-          PROJECT TRACKER<span className="desktop-brand"> / 001</span>
+      <SiteHeader>
+        <Link
+          className="brand text-[14px] tracking-[0.08em] font-semibold leading-[1.4] uppercase max-desktop:text-[13px]"
+          to="/"
+        >
+          PROJECT TRACKER
+          <span className="desktop-brand max-desktop:hidden"> / 001</span>
         </Link>
         <Navigation />
         <Link
           to="/profile"
-          className="mobile-identity"
+          className="mobile-identity hidden max-desktop:block max-desktop:text-[13px] max-desktop:font-semibold max-desktop:tracking-[0.05em]"
           aria-label="Your profile"
         >
           {initials}
         </Link>
-      </header>
+      </SiteHeader>
       <main id="content" tabIndex={-1}>
         {formPage && (
-          <Link className="mobile-back eyebrow" to="/tasks">
+          <Link
+            className={cn(
+              'mobile-back eyebrow hidden',
+              'max-desktop:inline-block max-desktop:mt-[26px] max-desktop:mx-0 max-desktop:mb-[-10px]',
+              'max-desktop:text-[13px]',
+              'text-[14px] tracking-[0.08em] font-semibold leading-[1.4] uppercase',
+            )}
+            to="/tasks"
+          >
             ← TASKS
           </Link>
         )}
         {location.pathname === '/profile' && (
-          <Link className="mobile-back eyebrow" to="/">
+          <Link
+            className={cn(
+              'mobile-back eyebrow hidden',
+              'max-desktop:inline-block max-desktop:mt-[26px] max-desktop:mx-0 max-desktop:mb-[-10px]',
+              'max-desktop:text-[13px]',
+              'text-[14px] tracking-[0.08em] font-semibold leading-[1.4] uppercase',
+            )}
+            to="/"
+          >
             ← TODAY
           </Link>
         )}
         {error && (
-          <p className="feedback error" role="alert">
+          <Feedback error role="alert">
             {error}
-          </p>
+          </Feedback>
         )}
-        {notice && (
-          <p className="feedback" role="status">
-            {notice}
-          </p>
-        )}
+        {notice && <Feedback role="status">{notice}</Feedback>}
         <Outlet />
       </main>
-      <footer className="page-footer eyebrow">
+      <SiteFooter>
         <span>
           {location.pathname === '/'
             ? 'TODAY / YOUR WORK. IN ORDER.'
@@ -81,8 +84,8 @@ export function Shell() {
               : 'SMALLER STEPS. CLEARER WORK.'}
         </span>
         <span>SCAN THE DAY → CHOOSE A TASK → MOVE IT FORWARD</span>
-      </footer>
+      </SiteFooter>
       {!formPage && <Navigation bottom />}
-    </div>
+    </AppFrame>
   );
 }

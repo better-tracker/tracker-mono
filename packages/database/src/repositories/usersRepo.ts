@@ -1,5 +1,6 @@
+import { buildUpdateAssignments } from '../update-assignments.js';
 import type { DatabaseConnection } from '../client.js';
-import { pool } from "../client.js"
+import { pool } from '../client.js';
 
 export interface User {
   id: string;
@@ -9,102 +10,106 @@ export interface User {
 }
 
 export interface CreateUser {
-    user_name: string;
-    email: string;
-    profile_pic?: string | null;
-    passwordHash: string;
+  user_name: string;
+  email: string;
+  profile_pic?: string | null;
+  passwordHash: string;
 }
 
 export interface UpdateUser {
-    user_name?: string;
-    email?: string;
-    profile_pic?: string | null;
-    passwordHash?: string;
+  user_name?: string;
+  email?: string;
+  profile_pic?: string | null;
+  passwordHash?: string;
 }
 
 export interface UserWithPassword extends User {
-    password: string;
+  password: string;
 }
 
-export async function createUser(user: CreateUser, database: DatabaseConnection = pool): Promise<User> {
-    const result = await database.query<User>(
-        `INSERT INTO users (user_name, email, profile_pic, password)
+export async function createUser(
+  user: CreateUser,
+  database: DatabaseConnection = pool,
+): Promise<User> {
+  const result = await database.query<User>(
+    `INSERT INTO users (user_name, email, profile_pic, password)
         VALUES ($1, $2, $3, $4)
         RETURNING id, user_name, email, profile_pic`,
-        [user.user_name, user.email, user.profile_pic ?? null, user.passwordHash]
-    );
-    return result.rows[0];  
+    [user.user_name, user.email, user.profile_pic ?? null, user.passwordHash],
+  );
+  return result.rows[0];
 }
 
-export async function getUserById(id: string, database: DatabaseConnection = pool): Promise<User | null> {
-    const result = await database.query<User>(
-        `SELECT id, user_name, email, profile_pic FROM users WHERE id = $1`,
-        [id]
-    );
-    return result.rows[0] || null;
+export async function getUserById(
+  id: string,
+  database: DatabaseConnection = pool,
+): Promise<User | null> {
+  const result = await database.query<User>(
+    `SELECT id, user_name, email, profile_pic FROM users WHERE id = $1`,
+    [id],
+  );
+  return result.rows[0] || null;
 }
 
-export async function getUsers(database: DatabaseConnection = pool): Promise<User[]> {
-    const result = await database.query<User>(
-        `SELECT id, user_name, email, profile_pic FROM users ORDER BY user_name`
-    );
-    return result.rows;
+export async function getUsers(
+  database: DatabaseConnection = pool,
+): Promise<User[]> {
+  const result = await database.query<User>(
+    `SELECT id, user_name, email, profile_pic FROM users ORDER BY user_name`,
+  );
+  return result.rows;
 }
 
-export async function getUserByEmailForAuth(email: string, database: DatabaseConnection = pool): Promise<(User & { passwordHash: string }) | null> {
-    const result = await database.query<UserWithPassword>(
-        `SELECT id, user_name, email, profile_pic, password FROM users WHERE email = $1`,
-        [email]
-    );
-    const row = result.rows[0];
+export async function getUserByEmailForAuth(
+  email: string,
+  database: DatabaseConnection = pool,
+): Promise<(User & { passwordHash: string }) | null> {
+  const result = await database.query<UserWithPassword>(
+    `SELECT id, user_name, email, profile_pic, password FROM users WHERE email = $1`,
+    [email],
+  );
+  const row = result.rows[0];
 
-    if (!row) {
-        return null;
-    }
+  if (!row) {
+    return null;
+  }
 
-    const { password, ...user } = row;
-    return { ...user, passwordHash: password };
+  const { password, ...user } = row;
+  return { ...user, passwordHash: password };
 }
 
+export async function updateUser(
+  id: string,
+  updates: UpdateUser,
+  database: DatabaseConnection = pool,
+): Promise<User | null> {
+  const { fields, values } = buildUpdateAssignments(updates, {
+    user_name: 'user_name',
+    email: 'email',
+    profile_pic: 'profile_pic',
+    passwordHash: 'password',
+  });
 
-export async function updateUser(id: string, updates: UpdateUser, database: DatabaseConnection = pool): Promise<User | null> {
-    const fields: string[] = [];
-    const values: unknown[] = [];
+  if (fields.length === 0) {
+    return getUserById(id, database);
+  }
 
-    if (updates.user_name !== undefined) {
-        fields.push(`user_name = $${fields.length + 1}`);
-        values.push(updates.user_name);
-    }
-    if (updates.email !== undefined) {
-        fields.push(`email = $${fields.length + 1}`);
-        values.push(updates.email);
-    }
-    if (updates.profile_pic !== undefined) {
-        fields.push(`profile_pic = $${fields.length + 1}`);
-        values.push(updates.profile_pic);
-    }
-    if (updates.passwordHash !== undefined) {
-        fields.push(`password = $${fields.length + 1}`);
-        values.push(updates.passwordHash);
-    }
-
-    if (fields.length === 0) {
-        return getUserById(id, database);
-    }
-
-    values.push(id);
-    const query = `
+  values.push(id);
+  const query = `
         UPDATE users
         SET ${fields.join(', ')}
         WHERE id = $${fields.length + 1}
         RETURNING id, user_name, email, profile_pic
     `;
-    const result = await database.query<User>(query, values);
+  const result = await database.query<User>(query, values);
 
-    return result.rows[0] || null;
+  return result.rows[0] || null;
 }
 
-export async function deleteUser(id: string, database: DatabaseConnection = pool): Promise<boolean> {
+export async function deleteUser(
+  id: string,
+  database: DatabaseConnection = pool,
+): Promise<boolean> {
   const result = await database.query(`DELETE FROM users WHERE id = $1`, [id]);
   return (result.rowCount ?? 0) > 0;
 }
@@ -117,7 +122,9 @@ export interface UserRepository {
   deleteUser(id: string): Promise<boolean>;
 }
 
-export function createUserRepository(database: DatabaseConnection): UserRepository {
+export function createUserRepository(
+  database: DatabaseConnection,
+): UserRepository {
   return {
     getUsers: () => getUsers(database),
     createUser: (user) => createUser(user, database),

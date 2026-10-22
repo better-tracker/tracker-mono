@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { Button } from '../components/ui';
 import {
   loadApiProjects,
   createApiProject,
@@ -264,9 +265,9 @@ export function ApiProjects() {
           onChange={(event) => setDescription(event.target.value)}
         />
 
-        <button type="submit" disabled={busy}>
+        <Button type="submit" disabled={busy}>
           {busy ? 'Saving...' : editingId ? 'Update project' : 'Create project'}
-        </button>
+        </Button>
       </form>
 
       {loading ? (
@@ -278,7 +279,7 @@ export function ApiProjects() {
           {projects.map((project) => (
             <li key={project.id}>
               <strong>{project.name}</strong> — {project.description}
-              <button
+              <Button
                 type="button"
                 disabled={busy}
                 onClick={() => {
@@ -288,21 +289,21 @@ export function ApiProjects() {
                 }}
               >
                 Edit
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 disabled={busy}
                 onClick={() => void removeProject(project.id)}
               >
                 Delete
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 disabled={busy}
                 onClick={() => void showSubtasks(project.id)}
               >
                 View subtasks
-              </button>
+              </Button>
             </li>
           ))}
         </ul>
@@ -326,9 +327,9 @@ export function ApiProjects() {
               onChange={(event) => setSubtaskDescription(event.target.value)}
             />
 
-            <button type="submit" disabled={subtaskBusy}>
+            <Button type="submit" disabled={subtaskBusy}>
               {subtaskBusy ? 'Creating...' : 'Add subtask'}
-            </button>
+            </Button>
           </form>
 
           {subtaskError && <p role="alert">{subtaskError}</p>}
@@ -344,29 +345,29 @@ export function ApiProjects() {
                   {subtask.description}
                   {subtask.completed ? ' (Complete)' : '(Incomplete)'}
 
-                  <button
+                  <Button
                     type="button"
                     disabled={subtaskBusy}
                     onClick={() => void toggleSubtask(subtask)}
                   >
                     {subtask.completed ? 'Mark incomplete' : 'Mark complete'}
-                  </button>
+                  </Button>
 
-                  <button
+                  <Button
                     type="button"
                     disabled={subtaskBusy}
                     onClick={() => void editSubtask(subtask)}
                   >
                     Edit
-                  </button>
+                  </Button>
 
-                  <button
+                  <Button
                     type="button"
                     disabled={subtaskBusy}
                     onClick={() => void removeSubtask(subtask.id)}
                   >
                     Delete
-                  </button>
+                  </Button>
                 </li>
               ))}
             </ul>

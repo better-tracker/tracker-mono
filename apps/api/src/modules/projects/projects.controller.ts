@@ -1,4 +1,5 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
+import { StatusCodes } from 'http-status-codes';
 import type {
   ProjectCreate,
   ProjectUpdate,
@@ -30,7 +31,7 @@ export function createProjectsController(
       reply: FastifyReply,
     ) => {
       const projects = await service.getProjects();
-      return reply.code(200).send(projects.map(formatProject));
+      return reply.code(StatusCodes.OK).send(projects.map(formatProject));
     },
 
     getProject: async (
@@ -40,12 +41,12 @@ export function createProjectsController(
       const project = await service.getProject(request.params.id);
 
       if (!project) {
-        return reply.code(404).send({ message: 'Project not found' });
+        return reply.code(StatusCodes.NOT_FOUND).send({ message: 'Project not found' });
       }
 
       const subtasks = await subtaskService.getSubtasks(project.id);
 
-      return reply.code(200).send({
+      return reply.code(StatusCodes.OK).send({
         ...formatProject(project),
         subtasks: subtasks.map((subtask) => ({
           id: subtask.id,
@@ -63,7 +64,7 @@ export function createProjectsController(
     ) => {
       const project = await service.createProject(request.body);
 
-      return reply.code(201).send({
+      return reply.code(StatusCodes.CREATED).send({
         ...formatProject(project),
         subtasks: [],
       });
@@ -82,12 +83,12 @@ export function createProjectsController(
       );
 
       if (!project) {
-        return reply.code(404).send({ message: 'Project not found' });
+        return reply.code(StatusCodes.NOT_FOUND).send({ message: 'Project not found' });
       }
 
       const subtasks = await subtaskService.getSubtasks(project.id);
 
-      return reply.code(200).send({
+      return reply.code(StatusCodes.OK).send({
         ...formatProject(project),
         subtasks: subtasks.map((subtask) => ({
           id: subtask.id,
@@ -106,10 +107,10 @@ export function createProjectsController(
       const deleted = await service.deleteProject(request.params.id);
 
       if (!deleted) {
-        return reply.code(404).send({ message: 'Project not found' });
+        return reply.code(StatusCodes.NOT_FOUND).send({ message: 'Project not found' });
       }
 
-      return reply.code(204).send();
+      return reply.code(StatusCodes.NO_CONTENT).send();
     },
   };
 }

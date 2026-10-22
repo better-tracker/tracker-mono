@@ -19,12 +19,16 @@
   "dependencies": {
     "@project-tracker/api-client": "workspace:*",
     "@project-tracker/contracts": "workspace:*",
+    "@project-tracker/utils": "workspace:*",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "react-router": "8.4.0"
+    "react-router": "8.4.0",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
+    "@tailwindcss/vite": "^4.3.3",
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
@@ -38,6 +42,7 @@
     "eslint-plugin-react-refresh": "0.5.7",
     "jsdom": "30.1.2",
     "msw": "2.15.0",
+    "tailwindcss": "^4.3.3",
     "vite": "8.3.0",
     "vitest": "5.0.3"
   }

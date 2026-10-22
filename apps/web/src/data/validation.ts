@@ -3,7 +3,7 @@ import {
   projectDescriptionSchema,
   userEmailSchema,
 } from '@project-tracker/contracts';
-import { deadlineKey } from './dates';
+import { deadlineKey, isValidDateOnly, isValidTime } from './dates';
 import {
   MAX_SUBTASK_NOTES_LENGTH,
   MAX_TASK_DESCRIPTION_LENGTH,
@@ -21,26 +21,23 @@ function requiredTitle(title: string) {
   if (!result.success)
     throw new Error(result.error.issues[0]?.message ?? 'A title is required.');
 }
+
+function validateParentDeadline(value: Deadline, parent: Deadline): void {
+  const deadline = deadlineKey(value);
+  const parentDeadline = deadlineKey(parent);
+  if (deadline && parentDeadline && deadline >= parentDeadline) {
+    throw new Error('The subtask must finish before the parent task deadline.');
+  }
+}
+
 export function validateDeadline(value: Deadline, parent?: Deadline) {
   if (value.dueTime && !value.dueDate)
     throw new Error('Choose a due date before setting a time.');
-  if (
-    value.dueDate &&
-    (!/^\d{4}-\d{2}-\d{2}$/.test(value.dueDate) ||
-      Number.isNaN(Date.parse(value.dueDate)) ||
-      new Date(`${value.dueDate}T12:00:00Z`).toISOString().slice(0, 10) !==
-        value.dueDate)
-  )
+  if (value.dueDate && !isValidDateOnly(value.dueDate))
     throw new Error('Choose a valid due date.');
-  if (value.dueTime && !/^([01]\d|2[0-3]):[0-5]\d$/.test(value.dueTime))
+  if (value.dueTime && !isValidTime(value.dueTime))
     throw new Error('Choose a valid due time.');
-  if (
-    parent &&
-    deadlineKey(parent) &&
-    deadlineKey(value) &&
-    deadlineKey(value) >= deadlineKey(parent)
-  )
-    throw new Error('The subtask must finish before the parent task deadline.');
+  if (parent) validateParentDeadline(value, parent);
 }
 export function validateProject(input: ProjectInput) {
   requiredTitle(input.name);

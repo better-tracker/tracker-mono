@@ -1,16 +1,32 @@
+import {
+  getFilteredTasks,
+  getSubtaskSummary,
+} from '../data/workspace-selectors';
+import {
+  Actions,
+  Button,
+  ButtonLink,
+  CheckLabel,
+  Confirm,
+  ContextPanel,
+  Empty,
+  Eyebrow,
+  Field,
+  FormLayout,
+  Heading,
+  Hint,
+  Missing,
+  SectionTitle,
+  Status,
+  SummaryList,
+  Toolbar,
+} from '../components/ui';
+import { cn } from '../components/ui/classes';
 import { useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
-import {
-  Confirm,
-  Empty,
-  Field,
-  Heading,
-  Missing,
-  Status,
-} from '../components/UI';
 import { TaskRow } from '../components/TaskRow';
 import { TASK_PRIORITIES, TASK_STATUSES } from '../data/constants';
-import { dateLabel, deadlineKey } from '../data/dates';
+import { dateLabel, formatDeadline } from '../data/dates';
 import type { DemoSubtask, TaskStatus } from '../data/types';
 import { useWorkspace } from '../features/workspace-context';
 
@@ -27,30 +43,32 @@ export function Tasks() {
     else next.delete(key);
     setSearch(next, { replace: true });
   };
-  const tasks = workspace.tasks
-    .filter(
-      (task) =>
-        task.title.toLowerCase().includes(query.toLowerCase()) &&
-        (!project || task.projectId === project) &&
-        (!status || task.status === status) &&
-        (!priority || task.priority === priority),
-    )
-    .sort((a, b) =>
-      (deadlineKey(a) || '9999').localeCompare(deadlineKey(b) || '9999'),
-    );
+  const tasks = getFilteredTasks(workspace.tasks, {
+    query,
+    projectId: project,
+    status,
+    priority,
+  });
   return (
     <>
       <Heading
         title="TASKS."
         subtitle="YOUR NEXT ACTION / SMALLER STEPS. CLEARER WORK."
       />
-      <div className="toolbar">
+      <Toolbar>
         <p>One thing at a time.</p>
-        <Link className="button" to="/tasks/new">
-          + NEW TASK
-        </Link>
-      </div>
-      <div className="filters">
+        <ButtonLink to="/tasks/new">+ NEW TASK</ButtonLink>
+      </Toolbar>
+      <div
+        className={cn(
+          'filters grid grid-cols-[2fr_1.3fr_1fr_1fr] gap-6 mb-5',
+          'desktop:max-wide:grid-cols-[repeat(2,_minmax(0,_1fr))]',
+          'max-desktop:grid-cols-[repeat(2,_minmax(0,_1fr))] max-desktop:gap-[0_16px]',
+          'max-desktop:[&_.field:first-child]:col-[1_/_-1] max-desktop:[&_.field]:mb-6',
+          'max-desktop:[&_.eyebrow]:text-[11px] max-desktop:[&_select]:text-[16px]',
+          'max-desktop:[&_select]:pl-[10px]',
+        )}
+      >
         <Field label="Search tasks">
           <input
             type="search"
@@ -95,10 +113,10 @@ export function Tasks() {
           </select>
         </Field>
       </div>
-      <div className="section-title">
-        <h2 className="eyebrow">01 / YOUR TASKS</h2>
-        <span className="eyebrow">{tasks.length} TASKS</span>
-      </div>
+      <SectionTitle>
+        <Eyebrow as="h2">01 / YOUR TASKS</Eyebrow>
+        <Eyebrow as="span">{tasks.length} TASKS</Eyebrow>
+      </SectionTitle>
       {tasks.length ? (
         tasks.map((task) => <TaskRow key={task.id} task={task} showDate />)
       ) : (
@@ -109,11 +127,9 @@ export function Tasks() {
               : 'No tasks yet. A clear next action starts here.'}
           </p>
           {workspace.tasks.length ? (
-            <button onClick={() => setSearch({})}>Clear filters</button>
+            <Button onClick={() => setSearch({})}>Clear filters</Button>
           ) : (
-            <Link className="button" to="/tasks/new">
-              + NEW TASK
-            </Link>
+            <ButtonLink to="/tasks/new">+ NEW TASK</ButtonLink>
           )}
         </Empty>
       )}
@@ -130,41 +146,56 @@ export function TaskDetail() {
   const task = workspace.tasks.find((item) => item.id === id);
   if (!task) return <Missing />;
   const project = workspace.projects.find((item) => item.id === task.projectId);
-  const subtasks = workspace.subtasks.filter((item) => item.taskId === task.id);
+  const { subtasks, completed: completedSubtasks } = getSubtaskSummary(
+    workspace,
+    task.id,
+  );
   return (
     <>
       <Heading
         title={task.title.toUpperCase()}
         subtitle={`TASKS / ${project?.name} / ONE TASK. SMALL STEPS.`}
       />
-      <div className="toolbar">
-        <Link className="text-link" to="/tasks">
+      <Toolbar>
+        <Link
+          className="text-link underline underline-offset-[4px]"
+          to="/tasks"
+        >
           ← All tasks
         </Link>
-        <div className="actions">
-          <Link className="button" to={`/tasks/${task.id}/edit`}>
-            EDIT TASK
-          </Link>
-          <button onClick={() => setDeleteTask(true)}>DELETE TASK</button>
-        </div>
-      </div>
-      <div className="form-layout">
-        <section className="main-form">
+        <Actions>
+          <ButtonLink to={`/tasks/${task.id}/edit`}>EDIT TASK</ButtonLink>
+          <Button onClick={() => setDeleteTask(true)}>DELETE TASK</Button>
+        </Actions>
+      </Toolbar>
+      <FormLayout>
+        <section
+          className={cn(
+            'main-form min-w-0 pr-[50px] border-r-[1px] border-solid border-r-line [&_>_.section-title]:mb-[30px]',
+            'desktop:max-wide:pr-[30px]',
+            'max-desktop:border-0 max-desktop:p-0 max-desktop:[&_>_.section-title]:mb-[30px]',
+          )}
+        >
           <Status status={task.status} />
-          <p className="detail-description">
+          <p className="detail-description leading-[1.6] mt-6 mx-0 mb-10 whitespace-pre-wrap">
             {task.description || 'Give this task a clear path to done.'}
           </p>
-          <div className="section-title">
-            <h2 className="eyebrow">01 / SMALLER STEPS</h2>
-            <span className="eyebrow">
-              {subtasks.filter((item) => item.completed).length} OF{' '}
-              {subtasks.length} DONE
-            </span>
-          </div>
+          <SectionTitle>
+            <Eyebrow as="h2">01 / SMALLER STEPS</Eyebrow>
+            <Eyebrow as="span">
+              {completedSubtasks} OF {subtasks.length} DONE
+            </Eyebrow>
+          </SectionTitle>
           {subtasks.length ? (
             subtasks.map((subtask) => (
-              <article className="subtask-row" key={subtask.id}>
-                <label className="check-label">
+              <article
+                className={cn(
+                  'subtask-row border-b-[1px] border-solid border-b-line py-[22px] px-0 [&_>_p]:mt-3 [&_>_p]:mr-0',
+                  '[&_>_p]:mb-3 [&_>_p]:ml-9 [&_>_p]:leading-[1.5] [&_>_p]:whitespace-pre-wrap',
+                )}
+                key={subtask.id}
+              >
+                <CheckLabel>
                   <input
                     type="checkbox"
                     checked={subtask.completed}
@@ -180,53 +211,61 @@ export function TaskDetail() {
                       )
                     }
                   />
-                  <span className={subtask.completed ? 'completed-text' : ''}>
+                  <span className={subtask.completed ? 'line-through' : ''}>
                     {subtask.title}
                   </span>
-                </label>
+                </CheckLabel>
                 {subtask.notes && <p>{subtask.notes}</p>}
-                <div className="subtask-meta">
-                  <span className="hint">
+                <div
+                  className={cn(
+                    'subtask-meta flex items-center justify-between gap-[18px] mt-4 mr-0 mb-0 ml-9',
+                    '[&_.actions]:text-[14px]',
+                    'max-desktop:block max-desktop:[&_.actions]:mt-3',
+                  )}
+                >
+                  <Hint>
                     {subtask.assignee} / {subtask.priority}
                     {subtask.dueDate &&
                       ` / ${dateLabel(subtask.dueDate)} ${subtask.dueTime}`}
-                  </span>
-                  <div className="actions">
+                  </Hint>
+                  <Actions>
                     <Link to={`/tasks/${task.id}/subtasks/${subtask.id}/edit`}>
                       Edit ↗
                     </Link>
-                    <button
-                      className="text-button"
+                    <Button
+                      variant="text"
+                      className="text-[length:inherit]"
                       onClick={() => setDeleteSubtask(subtask)}
                     >
                       Delete
-                    </button>
-                  </div>
+                    </Button>
+                  </Actions>
                 </div>
               </article>
             ))
           ) : (
             <Empty>No smaller steps yet.</Empty>
           )}
-          <Link
-            className="button add-subtask-link"
+          <ButtonLink
+            className="add-subtask-link mt-[26px]"
             to={`/tasks/${task.id}/subtasks/new`}
           >
             + ADD SUBTASK
-          </Link>
+          </ButtonLink>
         </section>
-        <aside className="context-panel detail-context">
-          <h2 className="eyebrow">02 / TASK AT A GLANCE</h2>
+        <ContextPanel className="detail-context">
+          <Eyebrow as="h2">02 / TASK AT A GLANCE</Eyebrow>
           <Link to={`/projects/${task.projectId}`}>
             <h3>{project?.name} ↗</h3>
           </Link>
-          <dl className="summary-list">
+          <SummaryList>
             <div>
               <dt>DUE</dt>
               <dd>
-                {task.dueDate
-                  ? `${dateLabel(task.dueDate)} / ${task.dueTime || 'END OF DAY'}`
-                  : 'NO DEADLINE'}
+                {formatDeadline(task, {
+                  endOfDay: 'END OF DAY',
+                  noDeadline: 'NO DEADLINE',
+                })}
               </dd>
             </div>
             <div>
@@ -237,7 +276,7 @@ export function TaskDetail() {
               <dt>ASSIGNED TO</dt>
               <dd>{task.assignee}</dd>
             </div>
-          </dl>
+          </SummaryList>
           <Field label="Task status">
             <select
               value={task.status}
@@ -258,11 +297,11 @@ export function TaskDetail() {
               ))}
             </select>
           </Field>
-          <p className="hint">
+          <Hint as="p">
             Subtasks track the steps. You decide when the task is done.
-          </p>
-        </aside>
-      </div>
+          </Hint>
+        </ContextPanel>
+      </FormLayout>
       {deleteTask && (
         <Confirm
           error={error}

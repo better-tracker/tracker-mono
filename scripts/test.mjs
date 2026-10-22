@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const coverage = process.argv.includes('--coverage');
 const suites = [
+  { name: 'utils', path: 'packages/utils', pattern: 'tests/unit/**/*.test.ts', deferred: false },
   { name: 'contracts', path: 'packages/contracts', pattern: 'tests/*.test.mjs', deferred: false },
   { name: 'api', path: 'apps/api', pattern: 'tests/unit/**/*.test.ts', deferred: false },
   { name: 'api-client', path: 'packages/api-client', pattern: 'tests/unit/**/*.test.ts', deferred: true },
@@ -21,7 +22,7 @@ function run(args, command = 'pnpm') {
 
 run(['--test', 'scripts/tests/notify-discord.test.mjs'], process.execPath);
 
-run(['--filter', '@project-tracker/contracts', '--filter', '@project-tracker/api-client', 'run', 'build']);
+run(['--filter', '@project-tracker/contracts', '--filter', '@project-tracker/api-client', '--filter', '@project-tracker/utils', 'run', 'build']);
 
 for (const suite of suites) {
   const files = globSync(`${suite.path}/${suite.pattern}`, { cwd: root });

@@ -1,3 +1,4 @@
+import { isFiniteNumberBetween, isPositiveSafeInteger } from '@project-tracker/utils';
 import type { AppRedisClient } from './redis.js';
 import { DEFAULT_BLOOM_ERROR_RATE } from '../config/constants.js';
 
@@ -33,11 +34,11 @@ export function createBloomFilter(client: BloomClient) {
     ): Promise<void> {
       const key = keyFor(namespace);
 
-      if (!Number.isSafeInteger(capacity) || capacity <= 0) {
+      if (!isPositiveSafeInteger(capacity)) {
         throw new Error('Bloom filter capacity must be a positive safe integer');
       }
 
-      if (!Number.isFinite(errorRate) || errorRate <= 0 || errorRate >= 1) {
+      if (!isFiniteNumberBetween(errorRate, 0, 1)) {
         throw new Error('Bloom filter error rate must be between 0 and 1');
       }
 

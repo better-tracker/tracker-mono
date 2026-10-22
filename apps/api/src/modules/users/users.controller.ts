@@ -1,4 +1,5 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
+import { StatusCodes } from 'http-status-codes';
 import type {
   UserCreate,
   UserUpdate,
@@ -12,14 +13,14 @@ export function createUserController(service: UsersService = usersService) {
     _request: FastifyRequest,
     reply: FastifyReply,
   ) => {
-    return reply.code(200).send(await service.getUsers());
+    return reply.code(StatusCodes.OK).send(await service.getUsers());
   };
 
   const createUser = async (
     request: FastifyRequest<{ Body: UserCreate }>,
     reply: FastifyReply,
   ) => {
-    return reply.code(201).send(await service.createUser(request.body));
+    return reply.code(StatusCodes.CREATED).send(await service.createUser(request.body));
   };
 
   const getUser = async (
@@ -28,7 +29,7 @@ export function createUserController(service: UsersService = usersService) {
   ) => {
     const { id } = request.params;
 
-    return reply.code(200).send(await service.getUser(id));
+    return reply.code(StatusCodes.OK).send(await service.getUser(id));
   };
 
   const updateUser = async (
@@ -39,7 +40,7 @@ export function createUserController(service: UsersService = usersService) {
     reply: FastifyReply,
   ) => {
     const { id } = request.params;
-    return reply.code(200).send(await service.updateUser(id, request.body));
+    return reply.code(StatusCodes.OK).send(await service.updateUser(id, request.body));
   };
 
   const deleteUser = async (
@@ -47,7 +48,7 @@ export function createUserController(service: UsersService = usersService) {
     reply: FastifyReply,
   ) => {
     await service.deleteUser(request.params.id);
-    return reply.code(204).send();
+    return reply.code(StatusCodes.NO_CONTENT).send();
   };
 
   return { getUsers, createUser, getUser, updateUser, deleteUser };
