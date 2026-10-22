@@ -2,6 +2,29 @@ import { describe, expect, it } from 'vitest';
 import { buildApp } from '../../src/app.js';
 
 describe('Global error handler', () => {
+  it('returns a readable error for malformed JSON', async () => {
+    const app = buildApp();
+
+    try {
+      const response = await app.inject({
+        method: 'POST',
+        url: '/v1/users',
+        headers: { 'content-type': 'application/json' },
+        payload: '{"user_name":',
+      });
+
+      expect(response.statusCode).toBe(400);
+      expect(response.json()).toEqual({
+        error: {
+          code: 'REQUEST_ERROR',
+          message: 'Invalid JSON body',
+        },
+      });
+    } finally {
+      await app.close();
+    }
+  });
+
     it('returns a client error with its message', async () => {
         const app = buildApp();
 

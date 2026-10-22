@@ -8,7 +8,7 @@ import {
   useParams,
 } from 'react-router';
 import { Shell } from './components/Shell';
-import { Missing } from './components/UI';
+import { Missing } from './components/ui';
 import { createHybridDataSource } from './data/hybrid-source';
 import { hasSession } from './data/session';
 import type { FrontendDataSource } from './data/types';

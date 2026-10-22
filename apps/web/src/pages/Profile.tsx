@@ -1,11 +1,26 @@
+import { getErrorMessage } from '@project-tracker/utils';
+import { readAvatar } from '../data/avatar';
+import { useWorkspaceForm } from '../features/use-workspace-form';
+import {
+  Actions,
+  Button,
+  ButtonAnchor,
+  ButtonLink,
+  CheckLabel,
+  Dialog,
+  Eyebrow,
+  Feedback,
+  Field,
+  FormActions,
+  FormRow,
+  Heading,
+  SectionTitle,
+} from '../components/ui';
+import { cn } from '../components/ui/classes';
 import { useRef, useState } from 'react';
-import type { FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router';
-import { Dialog, Field, Heading } from '../components/UI';
+import { useNavigate } from 'react-router';
 import {
   ALLOWED_AVATAR_TYPES,
-  MAX_AVATAR_SIZE_BYTES,
-  MAX_AVATAR_SIZE_MB,
   MAX_PROFILE_BIO_LENGTH,
   MAX_PROFILE_NAME_LENGTH,
 } from '../data/constants';
@@ -19,7 +34,6 @@ export function Profile() {
   const [form, setForm] = useState<DemoProfile>(() => ({
     ...workspace.profile,
   }));
-  const [error, setError] = useState('');
   const [info, setInfo] = useState(false);
   const [reset, setReset] = useState(false);
   const navigate = useNavigate();
@@ -40,47 +54,24 @@ export function Profile() {
       'Asia/Tokyo',
     ]),
   ];
-  async function submit(event: FormEvent) {
-    event.preventDefault();
-    if (busy) return;
-    setError('');
-    try {
-      validateProfile(form);
-    } catch (value) {
-      setError(
-        value instanceof Error ? value.message : 'Check your profile details.',
-      );
-      return;
-    }
-    await run(
-      () => source.saveProfile(form),
-      'Your profile and preferences are saved.',
-    );
-  }
+  const { submit, error, setError } = useWorkspaceForm({
+    validate: () => validateProfile(form),
+    save: () => source.saveProfile(form),
+    message: 'Your profile and preferences are saved.',
+    validationMessage: 'Check your profile details.',
+  });
   async function avatar(selected?: File) {
     if (!selected) return;
-    if (
-      !ALLOWED_AVATAR_TYPES.some((type) => type === selected.type) ||
-      selected.size > MAX_AVATAR_SIZE_BYTES
-    ) {
-      setError(
-        `Choose a PNG, JPEG or WebP image smaller than ${MAX_AVATAR_SIZE_MB} MB.`,
-      );
-      return;
-    }
     try {
-      const bitmap = await createImageBitmap(selected);
-      bitmap.close();
-      const reader = new FileReader();
-      reader.onload = () => {
-        patch({ avatar: String(reader.result) });
-        setError('');
-      };
-      reader.onerror = () =>
-        setError('Unable to read that image. Please choose another.');
-      reader.readAsDataURL(selected);
-    } catch {
-      setError('Unable to open that image. Please choose another.');
+      patch({ avatar: await readAvatar(selected) });
+      setError('');
+    } catch (value) {
+      setError(
+        getErrorMessage(
+          value,
+          'Unable to open that image. Please choose another.',
+        ),
+      );
     }
   }
   return (
@@ -91,35 +82,61 @@ export function Profile() {
         mobileTitle="PROFILE."
         mobileSubtitle="ACCOUNT / YOUR DETAILS"
       />
-      <div className="profile-layout">
-        <aside className="profile-sidebar">
-          <div className="profile-identity">
-            <div className="avatar">
+      <div
+        className={cn(
+          'profile-layout grid grid-cols-[minmax(0,_396fr)_minmax(0,_924fr)] gap-29 pt-13',
+          'desktop:max-wide:gap-[55px]',
+          'max-desktop:block max-desktop:pt-[38px]',
+        )}
+      >
+        <aside className="profile-sidebar min-w-0">
+          <div
+            className={cn(
+              'profile-identity [&_h2]:text-[43px] [&_h2]:tracking-[-0.04em] [&_h2]:mt-[26px] [&_h2]:mx-0',
+              '[&_h2]:mb-[10px] [&_h2]:wrap-anywhere',
+              'max-desktop:flex max-desktop:gap-5 max-desktop:items-start max-desktop:[&_>_div:last-child]:flex-[1]',
+              'max-desktop:[&_>_div:last-child]:min-w-0 max-desktop:[&_h2]:text-[26px] max-desktop:[&_h2]:mt-[10px]',
+              'max-desktop:[&_h2]:mx-0 max-desktop:[&_h2]:mb-4 max-desktop:[&_.button]:flex',
+              'max-desktop:[&_.button]:min-h-12 max-desktop:[&_.button]:w-full max-desktop:[&_.button]:text-[11.5px]',
+              'max-desktop:[&_.button]:p-[10px]',
+            )}
+          >
+            <div
+              className={cn(
+                'avatar h-43 border-[1.5px] border-solid border-black relative flex items-center py-6 px-[30px]',
+                'overflow-hidden [&_>_span]:text-[112px] [&_>_span]:tracking-[-0.05em] [&_img]:w-full [&_img]:h-full',
+                '[&_img]:object-contain',
+                'max-desktop:w-[90px] max-desktop:h-[90px] max-desktop:shrink-[0] max-desktop:p-3',
+                'max-desktop:[&_>_span]:text-[46px]',
+              )}
+            >
               {form.avatar ? (
                 <img src={form.avatar} alt="Your avatar" />
               ) : (
                 <span>{initials}</span>
               )}
-              <button
+              <Button
                 type="button"
-                className="avatar-edit"
+                className="avatar-edit absolute right-5 bottom-3 p-0 min-h-6 text-[11px] border-0 bg-paper max-desktop:hidden"
                 onClick={() => file.current?.click()}
               >
                 EDIT AVATAR ↗
-              </button>
+              </Button>
             </div>
             <div>
               <h2>
                 {form.firstName} {form.lastName}
               </h2>
-              <p className="profile-email">{form.email}</p>
-              <button
+              <p className="profile-email text-[21px] wrap-anywhere max-desktop:hidden">
+                {form.email}
+              </p>
+              <Button
                 type="button"
-                className="mobile-only button"
+                className="mobile-only hidden max-desktop:block"
                 onClick={() => file.current?.click()}
               >
                 EDIT AVATAR ↗
-              </button>
+              </Button>
             </div>
           </div>
           <input
@@ -134,25 +151,46 @@ export function Profile() {
             }}
           />
           {form.avatar && (
-            <button
+            <Button
               type="button"
-              className="text-button"
+              variant="text"
+              className="text-[length:inherit]"
               onClick={() => patch({ avatar: null })}
             >
               Remove avatar
-            </button>
+            </Button>
           )}
-          <p className="eyebrow account-tag">PERSONAL ACCOUNT</p>
-          <nav className="profile-section-nav" aria-label="Profile sections">
-            <a href="#personal" className="button">
-              01 / PROFILE
-            </a>
+          <Eyebrow className="account-tag inline-block text-[12px]/[1.4] py-[7px] px-[10px] mt-6 max-desktop:hidden">
+            PERSONAL ACCOUNT
+          </Eyebrow>
+          <nav
+            className={cn(
+              'profile-section-nav border-t-[1px] border-solid border-t-black mt-11 pt-[26px] flex flex-col',
+              'gap-[22px] [&_a]:text-left [&_a]:justify-start [&_a]:text-[14px] [&_a]:font-semibold',
+              '[&_a]:tracking-[0.08em] [&_a]:py-[18px] [&_a]:px-5 [&_button]:text-left [&_button]:justify-start',
+              '[&_button]:text-[14px] [&_button]:font-semibold [&_button]:tracking-[0.08em] [&_button]:py-[18px]',
+              '[&_button]:px-5 [&_.text-button]:no-underline [&_.text-button]:pt-0',
+              'max-desktop:hidden',
+            )}
+            aria-label="Profile sections"
+          >
+            <ButtonAnchor href="#personal">01 / PROFILE</ButtonAnchor>
             <a href="#preferences">02 / PREFERENCES</a>
-            <button className="text-button" onClick={() => setInfo(true)}>
+            <Button
+              variant="text"
+              className="text-[length:inherit]"
+              onClick={() => setInfo(true)}
+            >
               PASSWORD & SECURITY ↗
-            </button>
+            </Button>
           </nav>
-          <div className="profile-note">
+          <div
+            className={cn(
+              'profile-note mt-17 [&_h3]:text-[38px] [&_h3]:tracking-[-0.04em] [&_h3]:mb-6 [&_p]:text-[20px]',
+              '[&_p]:leading-[1.4]',
+              'max-desktop:hidden',
+            )}
+          >
             <h3>MAKE IT YOURS.</h3>
             <p>
               Your details keep your work
@@ -161,12 +199,21 @@ export function Profile() {
             </p>
           </div>
         </aside>
-        <form className="profile-form" onSubmit={(event) => void submit(event)}>
-          <div id="personal" className="section-title">
-            <h2 className="eyebrow">01 / PERSONAL DETAILS</h2>
-            <span className="eyebrow">* REQUIRED</span>
-          </div>
-          <div className="form-row">
+        <form
+          className={cn(
+            'profile-form border-l-[1px] border-solid border-l-line pl-14 ml-[-56px] min-w-0',
+            '[&_>_.section-title:first-child]:mb-[38px] [&_.field]:mb-[38px]',
+            'max-desktop:border-0 max-desktop:p-0 max-desktop:mt-11 max-desktop:mx-0 max-desktop:mb-0',
+            'max-desktop:[&_>_.section-title:first-child]:mb-[30px]',
+            'max-desktop:[&_>_.section-title:first-child_>_span]:hidden max-desktop:[&_.field]:mb-6',
+          )}
+          onSubmit={(event) => void submit(event)}
+        >
+          <SectionTitle id="personal">
+            <Eyebrow as="h2">01 / PERSONAL DETAILS</Eyebrow>
+            <Eyebrow as="span">* REQUIRED</Eyebrow>
+          </SectionTitle>
+          <FormRow>
             <Field label="First name" required>
               <input
                 required
@@ -185,7 +232,7 @@ export function Profile() {
                 onChange={(event) => patch({ lastName: event.target.value })}
               />
             </Field>
-          </div>
+          </FormRow>
           <Field
             label="Email address"
             required
@@ -207,10 +254,16 @@ export function Profile() {
               onChange={(event) => patch({ bio: event.target.value })}
             />
           </Field>
-          <div className="section-title preference-heading" id="preferences">
-            <h2 className="eyebrow">02 / PREFERENCES</h2>
-          </div>
-          <div className="form-row">
+          <SectionTitle
+            className={cn(
+              'preference-heading border-b-[1px] border-solid border-b-black pt-3 px-0 pb-7 mb-8',
+              'max-desktop:pt-[2px] max-desktop:pb-[22px]',
+            )}
+            id="preferences"
+          >
+            <Eyebrow as="h2">02 / PREFERENCES</Eyebrow>
+          </SectionTitle>
+          <FormRow>
             <Field label="Timezone">
               <select
                 value={form.timezone}
@@ -237,9 +290,14 @@ export function Profile() {
                 <option>Sunday</option>
               </select>
             </Field>
-          </div>
-          <div className="notification-options">
-            <label className="check-label">
+          </FormRow>
+          <div
+            className={cn(
+              'notification-options flex flex-col gap-6 mt-[10px] mx-0 mb-10 [&_input:checked]:bg-transparent',
+              'max-desktop:gap-7 max-desktop:mt-[10px] max-desktop:text-[17px]',
+            )}
+          >
+            <CheckLabel>
               <input
                 type="checkbox"
                 checked={form.assignmentEmails}
@@ -247,12 +305,14 @@ export function Profile() {
                   patch({ assignmentEmails: event.target.checked })
                 }
               />
-              <span className="desktop-only">
+              <span className="desktop-only max-desktop:hidden">
                 Email me when a task is assigned to me
               </span>
-              <span className="mobile-only">Task assignment emails</span>
-            </label>
-            <label className="check-label">
+              <span className="mobile-only hidden max-desktop:block">
+                Task assignment emails
+              </span>
+            </CheckLabel>
+            <CheckLabel>
               <input
                 type="checkbox"
                 checked={form.dailySummary}
@@ -260,36 +320,44 @@ export function Profile() {
                   patch({ dailySummary: event.target.checked })
                 }
               />
-              <span className="desktop-only">
+              <span className="desktop-only max-desktop:hidden">
                 Send a daily deadline summary
               </span>
-              <span className="mobile-only">Daily deadline summary</span>
-            </label>
+              <span className="mobile-only hidden max-desktop:block">
+                Daily deadline summary
+              </span>
+            </CheckLabel>
           </div>
           {error && (
-            <p className="feedback error" role="alert">
+            <Feedback error role="alert">
               {error}
-            </p>
+            </Feedback>
           )}
-          <div className="form-actions">
-            <Link className="button cancel" to="/">
+          <FormActions>
+            <ButtonLink className="cancel" to="/">
               CANCEL
-            </Link>
-            <button disabled={busy} type="submit">
+            </ButtonLink>
+            <Button disabled={busy} type="submit">
               {busy ? 'SAVING…' : 'SAVE CHANGES →'}
-            </button>
-          </div>
+            </Button>
+          </FormActions>
         </form>
       </div>
-      <section className="demo-settings">
-        <span className="eyebrow">
+      <section
+        className={cn(
+          'demo-settings flex items-center justify-between border-t-[1px] border-solid border-t-line pt-6',
+          'mt-[38px] gap-6 [&_.eyebrow]:text-[11px] [&_.eyebrow]:max-w-150',
+          'max-desktop:block max-desktop:mt-4 max-desktop:[&_.actions]:mt-5 max-desktop:[&_.eyebrow]:text-[10px]',
+        )}
+      >
+        <Eyebrow as="span">
           BROWSER DEMO / Preferences are saved locally. No emails are sent.
-        </span>
-        <div className="actions">
-          <button onClick={() => setReset(true)} disabled={busy}>
+        </Eyebrow>
+        <Actions>
+          <Button onClick={() => setReset(true)} disabled={busy}>
             RESET DEMO
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
               try {
                 signOut();
@@ -302,8 +370,8 @@ export function Profile() {
             }}
           >
             SIGN OUT →
-          </button>
-        </div>
+          </Button>
+        </Actions>
       </section>
       {info && (
         <Dialog title="PASSWORD & SECURITY" onClose={() => setInfo(false)}>
@@ -312,7 +380,7 @@ export function Profile() {
             authentication will be available when the production account service
             is connected.
           </p>
-          <button onClick={() => setInfo(false)}>Close</button>
+          <Button onClick={() => setInfo(false)}>Close</Button>
         </Dialog>
       )}
       {reset && (
@@ -322,15 +390,15 @@ export function Profile() {
             profile changes with the original examples.
           </p>
           {saveError && (
-            <p className="feedback error" role="alert">
+            <Feedback error role="alert">
               {saveError}
-            </p>
+            </Feedback>
           )}
-          <div className="actions">
-            <button disabled={busy} onClick={() => setReset(false)}>
+          <Actions>
+            <Button disabled={busy} onClick={() => setReset(false)}>
               Cancel
-            </button>
-            <button
+            </Button>
+            <Button
               disabled={busy}
               onClick={() => {
                 void run(() => source.reset(), 'Demo reset.').then((ok) => {
@@ -342,8 +410,8 @@ export function Profile() {
               }}
             >
               Reset demo
-            </button>
-          </div>
+            </Button>
+          </Actions>
         </Dialog>
       )}
     </>

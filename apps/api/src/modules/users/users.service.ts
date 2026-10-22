@@ -1,5 +1,6 @@
 import { randomBytes, scrypt as scryptCallback } from 'node:crypto';
 import { promisify } from 'node:util';
+import { StatusCodes } from 'http-status-codes';
 import {
   createUser as insertUser,
   deleteUser as removeUser,
@@ -37,7 +38,7 @@ function mapDatabaseError(error: unknown): never {
     typeof error === 'object' && error !== null && 'code' in error &&
     (error.code === '23505')
   ) {
-    throw new UserServiceError('Username or email is already in use', 409);
+    throw new UserServiceError('Username or email is already in use', StatusCodes.CONFLICT);
   }
   throw error;
 }
@@ -62,14 +63,14 @@ export function createUsersService(repository: UserRepository) {
 
   async function getUser(id: string): Promise<UserResponse> {
     const user = await repository.getUserById(id);
-    if (!user) throw new UserServiceError('User not found', 404);
+    if (!user) throw new UserServiceError('User not found', StatusCodes.NOT_FOUND);
     return toUserResponse(user);
   }
 
   async function updateUser(id: string, input: UserUpdate): Promise<UserResponse> {
     try {
       const user = await repository.updateUser(id, input);
-      if (!user) throw new UserServiceError('User not found', 404);
+      if (!user) throw new UserServiceError('User not found', StatusCodes.NOT_FOUND);
       return toUserResponse(user);
     } catch (error) {
       return mapDatabaseError(error);
@@ -78,7 +79,7 @@ export function createUsersService(repository: UserRepository) {
 
   async function deleteUser(id: string) {
     const deleted = await repository.deleteUser(id);
-    if (!deleted) throw new UserServiceError('User not found', 404);
+    if (!deleted) throw new UserServiceError('User not found', StatusCodes.NOT_FOUND);
   }
 
   return { getUsers, createUser, getUser, updateUser, deleteUser };

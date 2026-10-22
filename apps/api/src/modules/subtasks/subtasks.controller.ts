@@ -1,4 +1,5 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
+import { StatusCodes } from 'http-status-codes';
 import type {
   SubtaskCreate,
   SubtaskUpdate,
@@ -34,7 +35,7 @@ export function createSubtasksController(
       reply: FastifyReply,
     ) => {
       const subtasks = await service.getSubtasks(request.params.projectId);
-      return reply.code(200).send(subtasks.map(formatSubtask));
+      return reply.code(StatusCodes.OK).send(subtasks.map(formatSubtask));
     },
 
     createSubtask: async (
@@ -49,7 +50,7 @@ export function createSubtasksController(
         request.body,
       );
 
-      return reply.code(201).send(formatSubtask(subtask));
+      return reply.code(StatusCodes.CREATED).send(formatSubtask(subtask));
     },
 
     getSubtask: async (
@@ -62,10 +63,10 @@ export function createSubtasksController(
       );
 
       if (!subtask) {
-        return reply.code(404).send({ message: 'Subtask not found' });
+        return reply.code(StatusCodes.NOT_FOUND).send({ message: 'Subtask not found' });
       }
 
-      return reply.code(200).send(formatSubtask(subtask));
+      return reply.code(StatusCodes.OK).send(formatSubtask(subtask));
     },
 
     updateSubtask: async (
@@ -82,10 +83,10 @@ export function createSubtasksController(
       );
 
       if (!subtask) {
-        return reply.code(404).send({ message: 'Subtask not found' });
+        return reply.code(StatusCodes.NOT_FOUND).send({ message: 'Subtask not found' });
       }
 
-      return reply.code(200).send(formatSubtask(subtask));
+      return reply.code(StatusCodes.OK).send(formatSubtask(subtask));
     },
 
     deleteSubtask: async (
@@ -98,10 +99,10 @@ export function createSubtasksController(
       );
 
       if (!deleted) {
-        return reply.code(404).send({ message: 'Subtask not found' });
+        return reply.code(StatusCodes.NOT_FOUND).send({ message: 'Subtask not found' });
       }
 
-      return reply.code(204).send();
+      return reply.code(StatusCodes.NO_CONTENT).send();
     },
   };
 }

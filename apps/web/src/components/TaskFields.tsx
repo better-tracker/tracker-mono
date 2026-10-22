@@ -1,4 +1,5 @@
-import { Field } from './UI';
+import { Field } from './ui';
+import { cn } from './ui/classes';
 import { TASK_PRIORITIES } from '../data/constants';
 import type { Deadline, Priority } from '../data/types';
 
@@ -33,7 +34,15 @@ export function PriorityField({
 }) {
   return (
     <Field label="Priority">
-      <span className={`priority-field priority-${value.toLowerCase()}`}>
+      <span
+        className={cn(
+          "relative block [&::before]:content-[''] [&::before]:absolute [&::before]:w-2 [&::before]:h-2",
+          '[&::before]:left-4 [&::before]:top-6 [&::before]:pointer-events-none [&::before]:bg-progress',
+          '[&_select]:pl-[34px]',
+          value === 'High' && '[&::before]:bg-urgent',
+          value === 'Low' && '[&::before]:bg-complete',
+        )}
+      >
         <select
           value={value}
           onChange={(event) => onChange(event.target.value as Priority)}

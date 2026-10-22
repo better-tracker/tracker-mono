@@ -1,0 +1,20 @@
+@theme {
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --color-paper: #fcfcfa;
+  --color-line: #e3e3df;
+  --color-urgent: #e0a36d;
+  --color-complete: #aeb884;
+  --color-progress: #bacdd1;
+  --color-deadline: #fed07b;
+  --color-hover: #f1f1ed;
+  --color-error: #e0a36d26;
+  --color-success: #aeb88426;
+  --color-overdue: #e0a36d1f;
+  --color-next: #fed07b1f;
+  --color-muted: #f4f4f0;
+
+  --breakpoint-*: initial;
+  --breakpoint-phone: 391px;
+  --breakpoint-desktop: 900px;
+  --breakpoint-wide: 1251px;
+}

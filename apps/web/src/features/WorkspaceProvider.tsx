@@ -1,3 +1,6 @@
+import { getErrorMessage } from '@project-tracker/utils';
+import { Actions, Button, Eyebrow } from '../components/ui';
+import { cn } from '../components/ui/classes';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { WorkspaceContext } from './workspace-context';
@@ -30,9 +33,7 @@ export function WorkspaceProvider({
         return true;
       } catch (value) {
         setError(
-          value instanceof Error
-            ? value.message
-            : 'Something went wrong. Please try again.',
+          getErrorMessage(value, 'Something went wrong. Please try again.'),
         );
         return false;
       } finally {
@@ -51,11 +52,7 @@ export function WorkspaceProvider({
       })
       .catch((value: unknown) => {
         if (active)
-          setError(
-            value instanceof Error
-              ? value.message
-              : 'Unable to load demo data.',
-          );
+          setError(getErrorMessage(value, 'Unable to load demo data.'));
       });
     return () => {
       active = false;
@@ -70,21 +67,27 @@ export function WorkspaceProvider({
   }, []);
   if (!workspace)
     return (
-      <main className="load-screen">
-        <p className="eyebrow">PROJECT TRACKER / 001</p>
+      <main
+        className={cn(
+          'load-screen max-w-225 my-[10vh] mx-auto p-10 [&_h1]:text-[64px] [&_h1]:my-[30px] [&_h1]:mx-0',
+          '[&_.actions]:mt-[30px]',
+          'max-desktop:my-[8vh] max-desktop:mx-auto max-desktop:p-8 max-desktop:[&_h1]:text-[48px]',
+        )}
+      >
+        <Eyebrow>PROJECT TRACKER / 001</Eyebrow>
         <h1>{error ? 'A SMALL SETBACK.' : 'MAKING ROOM.'}</h1>
         <p role={error ? 'alert' : 'status'}>
           {error || 'Loading your workspace…'}
         </p>
         {error && (
-          <div className="actions">
-            <button
+          <Actions>
+            <Button
               disabled={busy}
               onClick={() => void run(() => source.load(), '')}
             >
               Retry
-            </button>
-            <button
+            </Button>
+            <Button
               disabled={busy}
               onClick={() => {
                 if (
@@ -96,8 +99,8 @@ export function WorkspaceProvider({
               }}
             >
               Reset demo
-            </button>
-          </div>
+            </Button>
+          </Actions>
         )}
       </main>
     );

@@ -1,5 +1,6 @@
+import { getProjectTasks, getTaskSubtasks } from './workspace-selectors';
 import { seedWorkspace } from './seed';
-import { TASK_PRIORITIES, TASK_STATUSES } from './constants';
+import { readWorkspace } from './workspace-storage';
 import {
   validateDeadline,
   validateProfile,
@@ -10,107 +11,6 @@ import {
 import type { FrontendDataSource, Workspace } from './types';
 
 export const WORKSPACE_KEY = 'project-tracker.workspace.v1';
-
-function readWorkspace(raw: string): Workspace {
-  let value: unknown;
-  try {
-    value = JSON.parse(raw);
-  } catch {
-    throw new Error('Saved demo data is unreadable. Retry or reset the demo.');
-  }
-  const record = (v: unknown): v is Record<string, unknown> =>
-    typeof v === 'object' && v !== null;
-  const strings = (v: Record<string, unknown>, keys: string[]) =>
-    keys.every((key) => typeof v[key] === 'string');
-  if (
-    !record(value) ||
-    value.version !== 1 ||
-    !Array.isArray(value.projects) ||
-    !Array.isArray(value.tasks) ||
-    !Array.isArray(value.subtasks) ||
-    !record(value.profile)
-  )
-    throw new Error('Saved demo data is unreadable. Retry or reset the demo.');
-  if (
-    !value.projects.every(
-      (v: unknown) => record(v) && strings(v, ['id', 'name', 'description']),
-    ) ||
-    !value.tasks.every(
-      (v: unknown) =>
-        record(v) &&
-        strings(v, [
-          'id',
-          'projectId',
-          'title',
-          'description',
-          'assignee',
-          'dueDate',
-          'dueTime',
-        ]) &&
-        TASK_PRIORITIES.some((priority) => priority === String(v.priority)) &&
-        TASK_STATUSES.some((status) => status === String(v.status)) &&
-        (v.completedAt === null ||
-          (typeof v.completedAt === 'string' &&
-            !Number.isNaN(Date.parse(v.completedAt)))),
-    ) ||
-    !value.subtasks.every(
-      (v: unknown) =>
-        record(v) &&
-        strings(v, [
-          'id',
-          'taskId',
-          'title',
-          'notes',
-          'assignee',
-          'dueDate',
-          'dueTime',
-        ]) &&
-        TASK_PRIORITIES.some((priority) => priority === String(v.priority)) &&
-        typeof v.completed === 'boolean',
-    ) ||
-    !strings(value.profile, [
-      'firstName',
-      'lastName',
-      'email',
-      'bio',
-      'timezone',
-    ]) ||
-    !['Monday', 'Sunday'].includes(String(value.profile.weekStartsOn)) ||
-    typeof value.profile.assignmentEmails !== 'boolean' ||
-    typeof value.profile.dailySummary !== 'boolean' ||
-    !(value.profile.avatar === null || typeof value.profile.avatar === 'string')
-  )
-    throw new Error('Saved demo data is unreadable. Retry or reset the demo.');
-  const workspace = value as unknown as Workspace;
-  const ids = [
-    ...workspace.projects,
-    ...workspace.tasks,
-    ...workspace.subtasks,
-  ].map((v) => v.id);
-  if (
-    ids.some((id) => !/^[0-9a-f-]{36}$/i.test(id)) ||
-    new Set(ids).size !== ids.length
-  )
-    throw new Error('Saved demo IDs are invalid. Reset the demo to continue.');
-  workspace.projects.forEach(validateProject);
-  workspace.tasks.forEach((task) => {
-    validateTask(task);
-    if (!workspace.projects.some((project) => project.id === task.projectId))
-      throw new Error(
-        'A saved task has no project. Reset the demo to continue.',
-      );
-  });
-  workspace.subtasks.forEach((subtask) => {
-    const parent = workspace.tasks.find((task) => task.id === subtask.taskId);
-    if (!parent)
-      throw new Error(
-        'A saved subtask has no parent. Reset the demo to continue.',
-      );
-    validateSubtask(subtask, parent);
-  });
-  validateProfile(workspace.profile);
-  return workspace;
-}
 
 export function createLocalDataSource(
   storage: Pick<Storage, 'getItem' | 'setItem'>,
@@ -202,9 +102,7 @@ export function createLocalDataSource(
     deleteProject: (id) =>
       change((w) => {
         find(w.projects, id);
-        const taskIds = w.tasks
-          .filter((task) => task.projectId === id)
-          .map((task) => task.id);
+        const taskIds = getProjectTasks(w, id).map((task) => task.id);
         w.subtasks = w.subtasks.filter(
           (subtask) => !taskIds.includes(subtask.taskId),
         );
@@ -237,9 +135,9 @@ export function createLocalDataSource(
         validateTask(input);
         find(w.projects, input.projectId);
         const task = find(w.tasks, id);
-        w.subtasks
-          .filter((subtask) => subtask.taskId === id)
-          .forEach((subtask) => validateDeadline(subtask, input));
+        getTaskSubtasks(w, id).forEach((subtask) =>
+          validateDeadline(subtask, input),
+        );
         Object.assign(task, input, {
           title: input.title.trim(),
           completedAt:

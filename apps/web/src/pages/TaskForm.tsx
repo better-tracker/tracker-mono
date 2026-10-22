@@ -1,12 +1,30 @@
+import {
+  Button,
+  ButtonLink,
+  ContextBox,
+  ContextPanel,
+  Empty,
+  Eyebrow,
+  Feedback,
+  Field,
+  FormActions,
+  FormLayout,
+  FormRow,
+  Heading,
+  Hint,
+  Missing,
+  SectionTitle,
+  SummaryList,
+} from '../components/ui';
+import { cn } from '../components/ui/classes';
 import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
+import { useNavigate, useParams, useSearchParams } from 'react-router';
 import {
   Assignee,
   DeadlineFields,
   PriorityField,
 } from '../components/TaskFields';
-import { Empty, Field, Heading, Missing } from '../components/UI';
 import {
   MAX_SUBTASK_TITLE_LENGTH,
   MAX_TASK_DESCRIPTION_LENGTH,
@@ -94,17 +112,22 @@ export function TaskForm() {
       {!workspace.projects.length ? (
         <Empty>
           <p>Create a project before adding tasks.</p>
-          <Link className="button" to="/projects">
-            Go to projects →
-          </Link>
+          <ButtonLink to="/projects">Go to projects →</ButtonLink>
         </Empty>
       ) : (
-        <div className="form-layout">
-          <form className="main-form" onSubmit={(event) => void submit(event)}>
-            <div className="section-title">
-              <h2 className="eyebrow">01 / TASK DETAILS</h2>
-              <span className="eyebrow">* REQUIRED</span>
-            </div>
+        <FormLayout>
+          <form
+            className={cn(
+              'main-form min-w-0 pr-[50px] border-r-[1px] border-solid border-r-line [&_>_.section-title]:mb-[30px]',
+              'desktop:max-wide:pr-[30px]',
+              'max-desktop:border-0 max-desktop:p-0 max-desktop:[&_>_.section-title]:mb-[30px]',
+            )}
+            onSubmit={(event) => void submit(event)}
+          >
+            <SectionTitle>
+              <Eyebrow as="h2">01 / TASK DETAILS</Eyebrow>
+              <Eyebrow as="span">* REQUIRED</Eyebrow>
+            </SectionTitle>
             <Field label="Task title" required>
               <input
                 required
@@ -114,7 +137,7 @@ export function TaskForm() {
                 onChange={(event) => patch({ title: event.target.value })}
               />
             </Field>
-            <div className="form-row">
+            <FormRow>
               <Field label="Project" required>
                 <select
                   required
@@ -133,7 +156,7 @@ export function TaskForm() {
                 value={form.assignee}
                 onChange={(assignee) => patch({ assignee })}
               />
-            </div>
+            </FormRow>
             <Field label="Description">
               <textarea
                 maxLength={MAX_TASK_DESCRIPTION_LENGTH}
@@ -143,26 +166,35 @@ export function TaskForm() {
                 onChange={(event) => patch({ description: event.target.value })}
               />
             </Field>
-            <div className="form-row three">
+            <FormRow columns={3}>
               <PriorityField
                 value={form.priority}
                 onChange={(priority) => patch({ priority })}
               />
               <DeadlineFields value={form} onChange={patch} />
-            </div>
+            </FormRow>
             {!existing && (
-              <section className="draft-section">
-                <div className="section-title">
-                  <h2 className="eyebrow">
+              <section className="draft-section [&_>_.section-title]:mb-[14px] max-desktop:[&_>_.section-title]:mb-[18px]">
+                <SectionTitle>
+                  <Eyebrow as="h2">
                     SUBTASKS / {String(drafts.length).padStart(2, '0')} DRAFTS
-                  </h2>
-                  <span className="eyebrow">OPTIONAL</span>
-                </div>
+                  </Eyebrow>
+                  <Eyebrow as="span">OPTIONAL</Eyebrow>
+                </SectionTitle>
                 {drafts.map((draft, index) => (
-                  <div className="draft-row" key={draft.key}>
-                    <span className="eyebrow">
+                  <div
+                    className={cn(
+                      'draft-row flex items-center border-[1.5px] border-solid border-black mb-[6px] min-w-0 [&_>_span]:py-0',
+                      '[&_>_span]:px-5 [&_input]:border-0 [&_input]:text-[18px] [&_input]:pl-0 [&_button]:py-2',
+                      '[&_button]:px-5 [&_button]:min-w-13 [&_button]:border-0 [&_button]:text-[24px]',
+                      'max-desktop:mb-[6px] max-desktop:[&_>_span]:py-0 max-desktop:[&_>_span]:px-4',
+                      'max-desktop:[&_input]:text-[16px] max-desktop:[&_button]:py-2 max-desktop:[&_button]:px-3',
+                    )}
+                    key={draft.key}
+                  >
+                    <Eyebrow as="span">
                       {String(index + 1).padStart(2, '0')}
-                    </span>
+                    </Eyebrow>
                     <input
                       aria-label={`Draft subtask ${index + 1}`}
                       maxLength={MAX_SUBTASK_TITLE_LENGTH}
@@ -178,7 +210,7 @@ export function TaskForm() {
                         )
                       }
                     />
-                    <button
+                    <Button
                       type="button"
                       aria-label={`Remove draft subtask ${index + 1}`}
                       onClick={() =>
@@ -188,11 +220,17 @@ export function TaskForm() {
                       }
                     >
                       ×
-                    </button>
+                    </Button>
                   </div>
                 ))}
-                <div className="draft-add">
-                  <button
+                <div
+                  className={cn(
+                    'draft-add flex items-center gap-7 mt-[14px]',
+                    'max-desktop:block max-desktop:[&_button]:w-full max-desktop:[&_button]:mt-2',
+                    'max-desktop:[&_button]:mx-0 max-desktop:[&_button]:mb-4 max-desktop:[&_.hint]:text-[14px]',
+                  )}
+                >
+                  <Button
                     type="button"
                     onClick={() =>
                       setDrafts([
@@ -202,42 +240,46 @@ export function TaskForm() {
                     }
                   >
                     + ADD SUBTASK
-                  </button>
-                  <span className="hint">
-                    Subtasks will be created with this task.
-                  </span>
+                  </Button>
+                  <Hint>Subtasks will be created with this task.</Hint>
                 </div>
               </section>
             )}
             {error && (
-              <p className="feedback error" role="alert">
+              <Feedback error role="alert">
                 {error}
-              </p>
+              </Feedback>
             )}
-            <div className="form-actions">
-              <Link
-                className="button cancel"
+            <FormActions>
+              <ButtonLink
+                className="cancel"
                 to={existing ? `/tasks/${existing.id}` : '/tasks'}
               >
                 CANCEL
-              </Link>
-              <button disabled={busy} type="submit">
+              </ButtonLink>
+              <Button disabled={busy} type="submit">
                 {busy ? 'SAVING…' : existing ? 'SAVE TASK →' : 'CREATE TASK →'}
-              </button>
-            </div>
+              </Button>
+            </FormActions>
           </form>
-          <aside className="context-panel">
-            <h2 className="eyebrow">02 / TASK AT A GLANCE</h2>
-            <div className="context-box">
-              <p className="eyebrow">PROJECT</p>
+          <ContextPanel>
+            <Eyebrow as="h2">02 / TASK AT A GLANCE</Eyebrow>
+            <ContextBox>
+              <Eyebrow>PROJECT</Eyebrow>
               <h3>{project?.name}</h3>
               <p>{project?.description}</p>
-            </div>
-            <p className="eyebrow">THE NEXT STEP</p>
-            <h2 className="context-display">
+            </ContextBox>
+            <Eyebrow>THE NEXT STEP</Eyebrow>
+            <h2
+              className={cn(
+                'context-display tracking-[-0.06em] text-[43px] leading-[1.05] mt-2 mx-0 mb-10 wrap-anywhere',
+                '[&.large]:text-[60px] [&.large]:mt-[-8px]',
+                'desktop:max-wide:text-[36px]',
+              )}
+            >
               {form.title || 'A clear next action.'}
             </h2>
-            <dl className="summary-list">
+            <SummaryList>
               <div>
                 <dt>DUE</dt>
                 <dd>{due}</dd>
@@ -250,19 +292,19 @@ export function TaskForm() {
                 <dt>ASSIGNED TO</dt>
                 <dd>{form.assignee}</dd>
               </div>
-            </dl>
-            <div className="context-box">
-              <p className="eyebrow">SMALLER STEPS. CLEARER WORK.</p>
+            </SummaryList>
+            <ContextBox>
+              <Eyebrow>SMALLER STEPS. CLEARER WORK.</Eyebrow>
               <p>
                 Add subtasks to give this task
                 <br />a clear path to done.
               </p>
-            </div>
-            <p className="context-footnote">
+            </ContextBox>
+            <p className="context-footnote mt-10">
               Save once. Keep every step together.
             </p>
-          </aside>
-        </div>
+          </ContextPanel>
+        </FormLayout>
       )}
     </>
   );

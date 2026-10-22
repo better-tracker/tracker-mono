@@ -1,0 +1,120 @@
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    color: #000;
+    background: var(--color-paper);
+    font-synthesis: none;
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+  }
+  body {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+  }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+  }
+  button:disabled,
+  input:disabled,
+  select:disabled {
+    cursor: wait;
+    opacity: 0.55;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  input,
+  textarea,
+  select {
+    width: 100%;
+    min-width: 0;
+    border: 1.5px solid #000;
+    border-radius: 0;
+    background: var(--color-paper);
+    min-height: 56px;
+    padding: 15px 16px;
+    font-size: 19px;
+  }
+  textarea {
+    display: block;
+    resize: vertical;
+    line-height: 1.45;
+    height: 88px;
+    min-height: 88px;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #6a6a64;
+    opacity: 1;
+  }
+  input[type='checkbox'] {
+    appearance: none;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    min-height: 22px;
+    border: 1.5px solid #000;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+  }
+  input[type='checkbox']:checked {
+    background: var(--color-complete);
+  }
+  input[type='checkbox']:checked::after {
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 6px;
+    left: 4px;
+    top: 5px;
+    border-left: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    transform: rotate(-45deg);
+  }
+  :focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 4px;
+  }
+  main:focus {
+    outline: none;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+  h1,
+  h2,
+  h3 {
+    font-weight: 400;
+  }
+  h1 {
+    letter-spacing: -0.06em;
+  }
+  @media (max-width: 899px) {
+    textarea {
+      height: 90px;
+      min-height: 90px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
+import { buildUpdateAssignments } from '../update-assignments.js';
 import type { DatabaseConnection } from '../client.js';
-import { pool } from "../client.js";
+import { pool } from '../client.js';
 import { DEFAULT_PAGE_SIZE } from '../constants.js';
 
 export interface Project {
@@ -19,58 +20,71 @@ export interface UpdateProject {
   description?: string | null;
 }
 
-export async function createProject(project: CreateProject, database: DatabaseConnection = pool): Promise<Project> {
+export async function createProject(
+  project: CreateProject,
+  database: DatabaseConnection = pool,
+): Promise<Project> {
   const result = await database.query<Project>(
     `INSERT INTO projects (name, description)
      VALUES ($1, $2)
      RETURNING id, name, description, created_at`,
-    [project.name, project.description ?? null]
+    [project.name, project.description ?? null],
   );
   return result.rows[0];
 }
 
-export async function getProjectById(id: string, database: DatabaseConnection = pool): Promise<Project | null> {
+export async function getProjectById(
+  id: string,
+  database: DatabaseConnection = pool,
+): Promise<Project | null> {
   const result = await database.query<Project>(
     `SELECT id, name, description, created_at FROM projects WHERE id = $1`,
-    [id]
+    [id],
   );
   return result.rows[0] || null;
 }
 
-export async function listProjects(limit = DEFAULT_PAGE_SIZE, offset = 0, database: DatabaseConnection = pool): Promise<Project[]> {
+export async function listProjects(
+  limit = DEFAULT_PAGE_SIZE,
+  offset = 0,
+  database: DatabaseConnection = pool,
+): Promise<Project[]> {
   const result = await database.query<Project>(
     `SELECT id, name, description, created_at FROM projects ORDER BY created_at DESC, id DESC LIMIT $1 OFFSET $2`,
-    [limit, offset]
+    [limit, offset],
   );
   return result.rows;
 }
 
-export async function updateProject(id: string, updates: UpdateProject, database: DatabaseConnection = pool): Promise<Project | null> {
-    const fields: string[] = [];
-    const values: unknown[] = [];
+export async function updateProject(
+  id: string,
+  updates: UpdateProject,
+  database: DatabaseConnection = pool,
+): Promise<Project | null> {
+  const { fields, values } = buildUpdateAssignments(updates, {
+    name: 'name',
+    description: 'description',
+  });
 
-    if (updates.name !== undefined) {
-        fields.push(`name = $${fields.length + 1}`);
-        values.push(updates.name);
-    }
-    if (updates.description !== undefined) {
-        fields.push(`description = $${fields.length + 1}`);
-        values.push(updates.description);
-    }
+  if (fields.length === 0) {
+    return getProjectById(id, database);
+  }
 
-    if (fields.length === 0) {
-        return getProjectById(id, database);
-    }
+  values.push(id);
+  const result = await database.query<Project>(
+    `UPDATE projects SET ${fields.join(', ')} WHERE id = $${fields.length + 1} RETURNING id, name, description, created_at`,
+    values,
+  );
 
-    values.push(id);
-    const result = await database.query<Project>(`UPDATE projects SET ${fields.join(', ')} WHERE id = $${fields.length + 1} RETURNING id, name, description, created_at`, values);
-    
-    return result.rows[0] || null;
+  return result.rows[0] || null;
 }
 
-export async function deleteProject(id: string, database: DatabaseConnection = pool): Promise<boolean> {
-  const result = await database.query(`DELETE FROM projects WHERE id = $1`, [id]);
+export async function deleteProject(
+  id: string,
+  database: DatabaseConnection = pool,
+): Promise<boolean> {
+  const result = await database.query(`DELETE FROM projects WHERE id = $1`, [
+    id,
+  ]);
   return (result.rowCount ?? 0) > 0;
 }
-
-    
