@@ -3,6 +3,8 @@ import type { FormEvent } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router';
 import { DEMO_EMAIL, DEMO_PASSWORD, hasSession, signIn } from '../data/session';
 import { Dialog, Field } from '../components/UI';
+import LoginButton from '../components/LoginButton';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export function Login() {
   const [email, setEmail] = useState(DEMO_EMAIL);
@@ -28,6 +30,20 @@ export function Login() {
     } catch (value) {
       setError(value instanceof Error ? value.message : 'Unable to sign in.');
     }
+  }
+
+  const { isAuthenticated, isLoading } = useAuth0();
+
+
+
+  const from = (location.state as { from?: string } | null)?.from ?? '/';
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isAuthenticated || hasSession()) {
+    return <Navigate to={from} replace />;
   }
   return (
     <div className="app-shell login-shell">
@@ -134,6 +150,7 @@ export function Login() {
             <button className="sign-in" type="submit">
               SIGN IN →
             </button>
+            <LoginButton />
             <div className="login-new">
               <span>New to Project Tracker?</span>
               <button

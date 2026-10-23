@@ -10,7 +10,7 @@ import {
 import { Shell } from './components/Shell';
 import { Missing } from './components/UI';
 import { createHybridDataSource } from './data/hybrid-source';
-import { hasSession } from './data/session';
+// import { hasSession } from './data/session';
 import type { FrontendDataSource } from './data/types';
 import { WorkspaceProvider } from './features/WorkspaceProvider';
 import { Login } from './pages/Login';
@@ -25,24 +25,54 @@ import { ApiConnectionTest } from './components/ApiConnectionTest';
 import { ApiProjects } from './pages/ApiProjects';
 import { ApiUsers } from './pages/ApiUsers';
 import { createLocalDataSource } from './data/local-source';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect } from 'react';
 
-const source =
+export const source =
   import.meta.env.VITE_DATA_MODE === 'demo'
     ? createLocalDataSource(window.localStorage)
     : createHybridDataSource();
 
+// function Protected({ source }: { source: FrontendDataSource }) {
+//   const location = useLocation();
+//   return hasSession() ? (
+//     <WorkspaceProvider source={source}>
+//       <Outlet />
+//     </WorkspaceProvider>
+//   ) : (
+//     <Navigate
+//       to="/login"
+//       replace
+//       state={{ from: location.pathname + location.search }}
+//     />
+//   );
+// }
+
 function Protected({ source }: { source: FrontendDataSource }) {
-  const location = useLocation();
-  return hasSession() ? (
+  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      loginWithRedirect({
+        appState: {
+          returnTo: window.location.pathname,
+        },
+      });
+    }
+  }, [isLoading, isAuthenticated, loginWithRedirect]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <div>Redirecting to login...</div>;
+  }
+
+  return (
     <WorkspaceProvider source={source}>
       <Outlet />
     </WorkspaceProvider>
-  ) : (
-    <Navigate
-      to="/login"
-      replace
-      state={{ from: location.pathname + location.search }}
-    />
   );
 }
 
@@ -86,9 +116,5 @@ export function AppRoutes({ source }: { source: FrontendDataSource }) {
 }
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <AppRoutes source={source} />
-    </BrowserRouter>
-  );
+  return <AppRoutes source={source} />;
 }
