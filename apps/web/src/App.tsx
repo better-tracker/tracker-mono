@@ -25,6 +25,10 @@ import { ApiConnectionTest } from './components/ApiConnectionTest';
 import { ApiProjects } from './pages/ApiProjects';
 import { ApiUsers } from './pages/ApiUsers';
 import { createLocalDataSource } from './data/local-source';
+import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
+import { PageLoader } from './auth/PageLoader';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect, useState } from 'react';
 
 const source =
   import.meta.env.VITE_DATA_MODE === 'demo'
@@ -32,19 +36,61 @@ const source =
     : createHybridDataSource();
 
 function Protected({ source }: { source: FrontendDataSource }) {
+  const { isLoading, isAuthenticated } = useAuth0();
   const location = useLocation();
-  return hasSession() ? (
+
+  // TEST ONLY: artificially keep the loader visible for 2 seconds
+  const [testDelay, setTestDelay] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setTestDelay(false);
+    }, 2000);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (isLoading || testDelay) {
+    return (
+      <div className="page-layout">
+        <PageLoader />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{
+          from: location.pathname + location.search,
+        }}
+      />
+    );
+  }
+
+  return (
     <WorkspaceProvider source={source}>
       <Outlet />
     </WorkspaceProvider>
-  ) : (
-    <Navigate
-      to="/login"
-      replace
-      state={{ from: location.pathname + location.search }}
-    />
   );
 }
+
+// function Protected({ source }: { source: FrontendDataSource }) {
+//   const location = useLocation();
+//   return hasSession() ? (
+//     <WorkspaceProvider source={source}>
+//       <Outlet />
+//     </WorkspaceProvider>
+//   ) : (
+//     <Navigate
+//       to="/login"
+//       replace
+//       state={{ from: location.pathname + location.search }}
+//     />
+//   );
+// }
 
 function TaskEditor() {
   const { id } = useParams();
@@ -88,7 +134,9 @@ export function AppRoutes({ source }: { source: FrontendDataSource }) {
 export default function App() {
   return (
     <BrowserRouter>
-      <AppRoutes source={source} />
+      <Auth0ProviderWithNavigate>
+        <AppRoutes source={source} />
+      </Auth0ProviderWithNavigate>
     </BrowserRouter>
   );
 }

@@ -13,6 +13,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router';
 import { DEMO_EMAIL, DEMO_PASSWORD, hasSession, signIn } from '../data/session';
+import LoginButtonAuth0 from '../components/LoginButtonAuth0';
 
 export function Login() {
   const [email, setEmail] = useState(DEMO_EMAIL);
@@ -215,6 +216,7 @@ export function Login() {
             >
               SIGN IN →
             </Button>
+            <LoginButtonAuth0 />
             <div className="login-new flex justify-between items-center gap-5 text-[18px] max-desktop:text-[18px] max-phone:text-[16px]">
               <span>New to Project Tracker?</span>
               <Button

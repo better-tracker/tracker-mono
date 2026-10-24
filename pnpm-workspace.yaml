@@ -6,6 +6,7 @@ packages:
 autoInstallPeers: false
 
 allowBuilds:
+  browser-tabs-lock: set this to true or false
   # Optional native SSH accelerators are not used by local Docker tests.
   cpu-features: false
   esbuild: true

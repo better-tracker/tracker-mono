@@ -17,6 +17,7 @@
     "test:e2e:api": "VITE_DATA_MODE=api VITE_API_URL=http://127.0.0.1:3001 pnpm run build && playwright test --grep @api"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.28.2",
     "@project-tracker/api-client": "workspace:*",
     "@project-tracker/contracts": "workspace:*",
     "@project-tracker/utils": "workspace:*",
