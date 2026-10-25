@@ -34,6 +34,7 @@ const source =
     ? createLocalDataSource(window.localStorage)
     : createHybridDataSource();
 
+// rafactor to auth
 function Protected({ source }: { source: FrontendDataSource }) {
   const { isLoading, isAuthenticated, error } = useAuth0();
   const location = useLocation();

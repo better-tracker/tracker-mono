@@ -14,24 +14,32 @@ export const userRoutes = async (
 ) => {
   const { getUsers, createUser, getUser, updateUser, deleteUser } =
     createUserController(options.service);
-  app.get('/v1/users', getUsers);
+
+  app.get('/v1/users', {
+    preHandler: app.requireAuth(),
+    handler: getUsers,
+  });
 
   app.post('/v1/users', {
+    preHandler: app.requireAuth(),
     preValidation: validateBody(userCreateSchema),
     handler: createUser,
   });
 
   app.get('/v1/users/:id', {
+    preHandler: app.requireAuth(),
     preValidation: validateUserParams,
     handler: getUser,
   });
 
   app.put('/v1/users/:id', {
+    preHandler: app.requireAuth(),
     preValidation: [validateUserParams, validateBody(userUpdateSchema)],
     handler: updateUser,
   });
 
   app.delete('/v1/users/:id', {
+    preHandler: app.requireAuth(),
     preValidation: validateUserParams,
     handler: deleteUser,
   });
