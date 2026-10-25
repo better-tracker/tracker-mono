@@ -12,6 +12,18 @@ if (!databaseUrl) {
   throw new Error('DATABASE_URL is required');
 }
 
+const auth0Domain = process.env.AUTH0_DOMAIN;
+
+if (!auth0Domain) {
+  throw new Error('AUTH0_DOMAIN is not configured');
+}
+
+const auth0Audience = process.env.AUTH0_AUDIENCE;
+
+if (!auth0Audience) {
+  throw new Error('AUTH0_AUDIENCE is not configured');
+}
+
 const corsOrigin = process.env.CORS_ORIGIN ?? 'http://localhost:3000';
 
 const redisUrl = process.env.REDIS_URL || undefined;
@@ -32,4 +44,6 @@ export const env = {
   databaseUrl,
   corsOrigin,
   redisUrl,
+  auth0Audience,
+  auth0Domain,
 };

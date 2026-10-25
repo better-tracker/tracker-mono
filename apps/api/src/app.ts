@@ -15,10 +15,16 @@ import { createTasksService } from './modules/tasks/tasks.service.js';
 import { taskSubtaskRoutes } from './modules/task-subtasks/task-subtasks.routes.js';
 import { createTaskSubtasksService } from './modules/task-subtasks/task-subtasks.service.js';
 import { getErrorResponse, getErrorStatusCode } from './lib/http-errors.js';
+import fastifyAuth0Api from '@auth0/auth0-fastify-api';
 
 /** An injected database is caller-owned and remains open when this app closes. */
 export function buildApp(options: { database?: DatabaseConnection } = {}) {
   const app = Fastify({ logger: true });
+
+  app.register(fastifyAuth0Api, {
+    domain: env.auth0Domain,
+    audience: env.auth0Audience,
+  });
 
   const projectsService = options.database
     ? createProjectsService(options.database)

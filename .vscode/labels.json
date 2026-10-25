@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/web/src/auth/Auth0ProviderWithNavigate.tsx",
+    "colorName": "Green",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/web/src/auth/AuthenticationGuard.tsx",
+    "colorName": "Green",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/web/src/App.tsx",
+    "colorName": "Green",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/api/src/config/env.ts",
+    "colorName": "Green",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/api/src/app.ts",
+    "colorName": "Green",
+    "badgeType": "circle"
+  }
+]
