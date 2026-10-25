@@ -17,6 +17,7 @@ import { Link } from 'react-router';
 import { dateLabel, weekNumber } from '../data/dates';
 import { useWorkspace } from '../features/workspace-context';
 import { TaskRow } from '../components/TaskRow';
+import { AuthTest } from '../auth/AuthTest';
 
 export function Today() {
   const { workspace, source, run, busy, now } = useWorkspace();
@@ -271,6 +272,7 @@ export function Today() {
             )}
           </section>
         </aside>
+        <AuthTest />
       </div>
     </>
   );
