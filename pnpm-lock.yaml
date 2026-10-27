@@ -369,6 +369,9 @@ importers:
       '@project-tracker/contracts':
         specifier: workspace:*
         version: link:../contracts
+      zod:
+        specifier: ^4.6.5
+        version: 4.6.5
     devDependencies:
       '@types/node':
         specifier: 22.20.4
