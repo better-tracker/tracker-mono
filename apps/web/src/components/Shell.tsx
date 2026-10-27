@@ -16,7 +16,9 @@ export function Shell() {
     document.querySelector<HTMLElement>('main')?.focus();
   }, [location.pathname]);
   return (
-    <AppFrame>
+    <AppFrame
+      className={location.pathname === '/graph' ? 'graph-shell' : undefined}
+    >
       <a
         className="skip-link fixed z-[20] left-6 top-[-100px] p-4 bg-paper border-[2px] border-solid border-black [&:focus]:top-4"
         href="#content"
