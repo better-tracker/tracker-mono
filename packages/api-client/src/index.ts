@@ -7,6 +7,10 @@ import {
   projectResponseSchema,
   subtaskListResponseSchema,
   subtaskResponseSchema,
+  taskResponseSchema,
+  taskListResponseSchema,
+  taskSubtaskResponseSchema,
+  taskSubtaskListResponseSchema,
   type ProjectListResponse,
   type ProjectCreate,
   type ProjectUpdate,
@@ -14,10 +18,6 @@ import {
   type SubtaskCreate,
   type SubtaskResponse,
   type SubtaskUpdate,
-  taskResponseSchema,
-  taskListResponseSchema,
-  taskSubtaskResponseSchema,
-  taskSubtaskListResponseSchema,
   type TaskCreate,
   type TaskUpdate,
   type TaskListResponse,
@@ -27,18 +27,11 @@ import {
   type TaskSubtaskListResponse,
 } from '@project-tracker/contracts';
 
-import { request } from './http_helper.js';
+import { parseResponse, request } from './http_helper.js';
 
-/* Projects section
-    Contains: 
-    - getProjects - fetches a list of projects with optional pagination (jic)
-    - getProject - fetches a single project by id
-    - createProject - creates a new project
-    - updateProject - update an existing project
-    - deleteProject - delete a project by id
-*/
+/* Projects */
 
-// Get a list of projects with optional pagination
+// Get a list of projects with optional pagination.
 export const getProjects = async (
   baseUrl: string,
   limit = 40,
@@ -49,35 +42,40 @@ export const getProjects = async (
     offset: String(offset),
   });
 
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects?${params.toString()}`,
-  );
+  const path = `/v1/projects?${params.toString()}`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return projectListResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    projectListResponseSchema,
+    response,
+  );
 };
 
-// Get a single project by ID
+// Get a single project by ID.
 export const getProject = async (
   baseUrl: string,
   id: string,
 ) => {
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects/${encodeURIComponent(id)}`,
-  );
+  const path = `/v1/projects/${encodeURIComponent(id)}`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return projectResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    projectResponseSchema,
+    response,
+  );
 };
 
-// Create a new project
+// Create a new project.
 export const createProject = async (
   baseUrl: string,
   data: ProjectCreate,
 ) => {
+  const path = '/v1/projects';
   const response = await request<unknown>(
     baseUrl,
-    '/v1/projects',
+    path,
     {
       method: 'POST',
       headers: {
@@ -87,18 +85,23 @@ export const createProject = async (
     },
   );
 
-  return projectListItemSchema.parse(response);
+  return parseResponse(
+    'POST /v1/projects',
+    projectListItemSchema,
+    response,
+  );
 };
 
-// Update an existing project
+// Update an existing project.
 export const updateProject = async (
   baseUrl: string,
   id: string,
   data: ProjectUpdate,
 ) => {
+  const path = `/v1/projects/${encodeURIComponent(id)}`;
   const response = await request<unknown>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(id)}`,
+    path,
     {
       method: 'PUT',
       headers: {
@@ -108,35 +111,32 @@ export const updateProject = async (
     },
   );
 
-  return projectListItemSchema.parse(response);
+  return parseResponse(
+    `PUT ${path}`,
+    projectListItemSchema,
+    response,
+  );
 };
 
-// delete a project by ID
+// Delete a project by ID.
 export const deleteProject = async (
   baseUrl: string,
   id: string,
 ): Promise<void> => {
+  const path = `/v1/projects/${encodeURIComponent(id)}`;
+
   await request<void>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(id)}`,
+    path,
     {
       method: 'DELETE',
     },
   );
 };
 
-/* Subtasks section
-   Contains:
-   - getSubtasks - fetches a list of subtasks with optional pagination
-   - createSubtask - creates a new subtask
-   - getSubtask - fetches a single subtask by id
-   - updateSubtask - updates an existing subtask
-   - deleteSubtask - deletes a subtask by id
-   All within the context of a specific project identified by projectId
-*/
+/* Subtasks */
 
-
-// Get a list of subtasks for a specific project with optional pagination
+// Get a list of subtasks for a specific project.
 export const getSubtasks = async (
   baseUrl: string,
   projectId: string,
@@ -148,23 +148,27 @@ export const getSubtasks = async (
     offset: String(offset),
   });
 
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/subtasks?${params.toString()}`,
-  );
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/subtasks?${params.toString()}`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return subtaskListResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    subtaskListResponseSchema,
+    response,
+  );
 };
 
-// Create a new subtask for a specific project
+// Create a new subtask for a specific project.
 export const createSubtask = async (
   baseUrl: string,
   projectId: string,
   data: SubtaskCreate,
 ): Promise<SubtaskResponse> => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/subtasks`;
+
   const response = await request<unknown>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/subtasks`,
+    path,
     {
       method: 'POST',
       headers: {
@@ -174,33 +178,41 @@ export const createSubtask = async (
     },
   );
 
-  return subtaskResponseSchema.parse(response);
+  return parseResponse(
+    `POST ${path}`,
+    subtaskResponseSchema,
+    response,
+  );
 };
 
-// Get a single subtask by ID for a specific project
+// Get a single subtask by ID.
 export const getSubtask = async (
   baseUrl: string,
   projectId: string,
   id: string,
 ): Promise<SubtaskResponse> => {
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/subtasks/${encodeURIComponent(id)}`,
-  );
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/subtasks/${encodeURIComponent(id)}`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return subtaskResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    subtaskResponseSchema,
+    response,
+  );
 };
 
-// Update an existing subtask for a specific project
+// Update an existing subtask.
 export const updateSubtask = async (
   baseUrl: string,
   projectId: string,
   id: string,
   data: SubtaskUpdate,
 ): Promise<SubtaskResponse> => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/subtasks/${encodeURIComponent(id)}`;
+
   const response = await request<unknown>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/subtasks/${encodeURIComponent(id)}`,
+    path,
     {
       method: 'PUT',
       headers: {
@@ -210,37 +222,45 @@ export const updateSubtask = async (
     },
   );
 
-  return subtaskResponseSchema.parse(response);
+  return parseResponse(
+    `PUT ${path}`,
+    subtaskResponseSchema,
+    response,
+  );
 };
 
-// Delete a subtask by ID for a specific project
+// Delete a subtask by ID.
 export const deleteSubtask = async (
   baseUrl: string,
   projectId: string,
   id: string,
 ): Promise<void> => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/subtasks/${encodeURIComponent(id)}`;
+
   await request<void>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/subtasks/${encodeURIComponent(id)}`,
+    path,
     {
       method: 'DELETE',
     },
   );
 };
 
-/* Tasks section */
+/* Tasks */
 
-// List tasks belonging to a project.
+// Get a list of tasks belonging to a project.
 export const getTasks = async (
   baseUrl: string,
   projectId: string,
 ): Promise<TaskListResponse> => {
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks`,
-  );
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return taskListResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    taskListResponseSchema,
+    response,
+  );
 };
 
 // Get a single task.
@@ -249,12 +269,14 @@ export const getTask = async (
   projectId: string,
   taskId: string,
 ) => {
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`,
-  );
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return taskResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    taskResponseSchema,
+    response,
+  );
 };
 
 // Create a task.
@@ -263,17 +285,25 @@ export const createTask = async (
   projectId: string,
   data: TaskCreate,
 ) => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks`;
+
   const response = await request<unknown>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks`,
+    path,
     {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data),
     },
   );
 
-  return taskResponseSchema.parse(response);
+  return parseResponse(
+    `POST ${path}`,
+    taskResponseSchema,
+    response,
+  );
 };
 
 // Update a task.
@@ -283,17 +313,25 @@ export const updateTask = async (
   taskId: string,
   data: TaskUpdate,
 ) => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`;
+
   const response = await request<unknown>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`,
+    path,
     {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data),
     },
   );
 
-  return taskResponseSchema.parse(response);
+  return parseResponse(
+    `PUT ${path}`,
+    taskResponseSchema,
+    response,
+  );
 };
 
 // Delete a task.
@@ -302,42 +340,50 @@ export const deleteTask = async (
   projectId: string,
   taskId: string,
 ): Promise<void> => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`;
+
   await request<void>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}`,
-    { method: 'DELETE' },
+    path,
+    {
+      method: 'DELETE',
+    },
   );
 };
 
-/* Task Subtasks section */
+/* Task subtasks */
 
-// List subtasks belonging to a task.
+// Get task subtasks.
 export const getTaskSubtasks = async (
   baseUrl: string,
   projectId: string,
   taskId: string,
 ): Promise<TaskSubtaskListResponse> => {
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks`,
-  );
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return taskSubtaskListResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    taskSubtaskListResponseSchema,
+    response,
+  );
 };
 
-// Get one task subtask.
+// Get a single task subtask.
 export const getTaskSubtask = async (
   baseUrl: string,
   projectId: string,
   taskId: string,
   subtaskId: string,
 ): Promise<TaskSubtaskResponse> => {
-  const response = await request<unknown>(
-    baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`,
-  );
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`;
+  const response = await request<unknown>(baseUrl, path);
 
-  return taskSubtaskResponseSchema.parse(response);
+  return parseResponse(
+    `GET ${path}`,
+    taskSubtaskResponseSchema,
+    response,
+  );
 };
 
 // Create a task subtask.
@@ -347,17 +393,25 @@ export const createTaskSubtask = async (
   taskId: string,
   data: TaskSubtaskCreate,
 ): Promise<TaskSubtaskResponse> => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks`;
+
   const response = await request<unknown>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks`,
+    path,
     {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data),
     },
   );
 
-  return taskSubtaskResponseSchema.parse(response);
+  return parseResponse(
+    `POST ${path}`,
+    taskSubtaskResponseSchema,
+    response,
+  );
 };
 
 // Update a task subtask.
@@ -368,17 +422,25 @@ export const updateTaskSubtask = async (
   subtaskId: string,
   data: TaskSubtaskUpdate,
 ): Promise<TaskSubtaskResponse> => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`;
+
   const response = await request<unknown>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`,
+    path,
     {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data),
     },
   );
 
-  return taskSubtaskResponseSchema.parse(response);
+  return parseResponse(
+    `PUT ${path}`,
+    taskSubtaskResponseSchema,
+    response,
+  );
 };
 
 // Delete a task subtask.
@@ -388,9 +450,13 @@ export const deleteTaskSubtask = async (
   taskId: string,
   subtaskId: string,
 ): Promise<void> => {
+  const path = `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`;
+
   await request<void>(
     baseUrl,
-    `/v1/projects/${encodeURIComponent(projectId)}/tasks/${encodeURIComponent(taskId)}/subtasks/${encodeURIComponent(subtaskId)}`,
-    { method: 'DELETE' },
+    path,
+    {
+      method: 'DELETE',
+    },
   );
 };
