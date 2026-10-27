@@ -224,14 +224,16 @@ describe('deleteSubtask', () => {
     server.use(
       http.delete(
         `${baseUrl}/v1/projects/${projectId}/subtasks/${subtask.id}`,
-        () => HttpResponse.json(
-          {
-            error: {
-              message: 'Subtask not found',
+        () =>
+          HttpResponse.json(
+            {
+              error: {
+                code: 'NOT_FOUND',
+                message: 'Subtask not found',
+              },
             },
-          },
-          { status: 404 },
-        ),
+            { status: 404 },
+          ),
       ),
     );
 

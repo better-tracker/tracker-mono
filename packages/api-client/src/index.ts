@@ -1,6 +1,8 @@
 // Cross-platform API client; keep this package platform-independent.
 export * from './users.js';
 
+
+// The extra imports were added for linking front and backend
 import {
   projectListItemSchema,
   projectListResponseSchema,
@@ -245,6 +247,17 @@ export const deleteSubtask = async (
     },
   );
 };
+
+
+/*
+  Breaking up the code ****
+  *************************
+  *************************
+  *************************
+  *************************
+  *************************
+*/
+
 
 /* Tasks */
 

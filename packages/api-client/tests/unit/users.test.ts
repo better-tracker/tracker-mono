@@ -196,7 +196,12 @@ describe('deleteUser', () => {
     server.use(
       http.delete(`${baseUrl}/v1/users/${user.id}`, () =>
         HttpResponse.json(
-          { error: { message: 'User not found' } },
+          {
+            error: {
+              code: 'NOT_FOUND',
+              message: 'User not found',
+            },
+          },
           { status: 404 },
         ),
       ),
