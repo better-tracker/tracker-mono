@@ -15,6 +15,8 @@ export const userRoutes = async (
   const { getUsers, createUser, getUser, updateUser, deleteUser } =
     createUserController(options.service);
 
+  const auth0Sub = request.user.sub;
+
   app.get('/v1/users', {
     preHandler: app.requireAuth(),
     handler: getUsers,

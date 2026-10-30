@@ -11,6 +11,11 @@
   },
   {
     "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/web/src/App.tsx",
+    "colorName": "Yellow",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/web/src/App.tsx",
     "colorName": "Green",
     "badgeType": "circle"
   },
@@ -22,6 +27,26 @@
   {
     "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/api/src/app.ts",
     "colorName": "Green",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/web/src/auth/AuthTest.tsx",
+    "colorName": "Red",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/apps/web/src/auth/PageLoader.tsx",
+    "colorName": "Red",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/packages/contracts/src/users.ts",
+    "colorName": "Purple",
+    "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/packages/database/migrations/002_create_users.sql",
+    "colorName": "Purple",
     "badgeType": "circle"
   }
 ]
