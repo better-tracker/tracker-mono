@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { getErrorMessage } from '@project-tracker/utils';
 import { AppFrame, SiteHeader, SiteFooter } from '../components/ui/AppFrame';
 import {
@@ -12,10 +13,11 @@ import { cn } from '../components/ui/classes';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router';
-import { DEMO_EMAIL, DEMO_PASSWORD, hasSession, signIn } from '../data/session';
+import { DEMO_EMAIL, DEMO_PASSWORD, signIn } from '../data/session';
 import LoginButtonAuth0 from '../components/LoginButtonAuth0';
 
 export function Login() {
+  const { isAuthenticated } = useAuth0();
   const [email, setEmail] = useState(DEMO_EMAIL);
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
@@ -24,7 +26,7 @@ export function Login() {
   const [info, setInfo] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  if (hasSession()) return <Navigate to="/" replace />;
+  if (isAuthenticated) return <Navigate to="/" replace />;
   function submit(event: FormEvent) {
     event.preventDefault();
     try {

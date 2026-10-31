@@ -10,7 +10,6 @@ import {
 import { Shell } from './components/Shell';
 import { Missing } from './components/ui';
 import { createHybridDataSource } from './data/hybrid-source';
-import { hasSession } from './data/session';
 import type { FrontendDataSource } from './data/types';
 import { WorkspaceProvider } from './features/WorkspaceProvider';
 import { Login } from './pages/Login';
@@ -28,6 +27,7 @@ import { createLocalDataSource } from './data/local-source';
 import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
 import { PageLoader } from './auth/PageLoader';
 import { useAuth0 } from '@auth0/auth0-react';
+import { CurrentUserProvider } from './auth/CurrentUserProvider';
 
 const source =
   import.meta.env.VITE_DATA_MODE === 'demo'
@@ -36,10 +36,9 @@ const source =
 
 // rafactor to auth
 function Protected({ source }: { source: FrontendDataSource }) {
-  const { isLoading, isAuthenticated, error } = useAuth0();
+  const { isLoading, isAuthenticated, error, user } = useAuth0();
   const location = useLocation();
 
-  console.log({ isLoading, isAuthenticated, error });
 
   if (isLoading) {
     return (
@@ -47,6 +46,10 @@ function Protected({ source }: { source: FrontendDataSource }) {
         <PageLoader />
       </div>
     );
+  }
+
+  if (error) {
+    return <p role="alert">Unable to sign in. Please reload and try again.</p>;
   }
 
   if (!isAuthenticated) {
@@ -62,9 +65,11 @@ function Protected({ source }: { source: FrontendDataSource }) {
   }
 
   return (
-    <WorkspaceProvider source={source}>
-      <Outlet />
-    </WorkspaceProvider>
+    <CurrentUserProvider key={user?.sub}>
+      <WorkspaceProvider source={source}>
+        <Outlet />
+      </WorkspaceProvider>
+    </CurrentUserProvider>
   );
 }
 

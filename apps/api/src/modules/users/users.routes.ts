@@ -1,10 +1,6 @@
 import type { FastifyInstance } from 'fastify';
-import {
-  userParamsSchema,
-  userCreateSchema,
-  userUpdateSchema,
-} from '@project-tracker/contracts';
-import { validateBody, validateParams } from '../../lib/validation.js';
+import { userUpdateSchema } from '@project-tracker/contracts';
+import { validateBody } from '../../lib/validation.js';
 import { createUserController } from './users.controller.js';
 import type { UsersService } from './users.service.js';
 
@@ -12,39 +8,37 @@ export const userRoutes = async (
   app: FastifyInstance,
   options: { service?: UsersService },
 ) => {
-  const { getUsers, createUser, getUser, updateUser, deleteUser } =
+  const { ensureUser, getCurrentUser, updateCurrentUser, deleteCurrentUser } =
     createUserController(options.service);
 
-  const auth0Sub = request.user.sub;
-
-  app.get('/v1/users', {
+  app.post('/v1/users/me', {
     preHandler: app.requireAuth(),
-    handler: getUsers,
+    handler: ensureUser,
   });
 
-  app.post('/v1/users', {
+  app.get('/v1/users/me', {
     preHandler: app.requireAuth(),
-    preValidation: validateBody(userCreateSchema),
-    handler: createUser,
+    handler: getCurrentUser,
   });
 
-  app.get('/v1/users/:id', {
-    preHandler: app.requireAuth(),
-    preValidation: validateUserParams,
-    handler: getUser,
+  app.patch('/v1/users/me', {
+    preHandler: [
+      app.requireAuth(),
+      validateBody(
+        userUpdateSchema
+          .strict()
+          .refine(
+            (updates) =>
+              Object.values(updates).some((value) => value !== undefined),
+            { message: 'Provide at least one profile field to update' },
+          ),
+      ),
+    ],
+    handler: updateCurrentUser,
   });
 
-  app.put('/v1/users/:id', {
+  app.delete('/v1/users/me', {
     preHandler: app.requireAuth(),
-    preValidation: [validateUserParams, validateBody(userUpdateSchema)],
-    handler: updateUser,
-  });
-
-  app.delete('/v1/users/:id', {
-    preHandler: app.requireAuth(),
-    preValidation: validateUserParams,
-    handler: deleteUser,
+    handler: deleteCurrentUser,
   });
 };
-
-const validateUserParams = validateParams(userParamsSchema, 'Invalid user ID');

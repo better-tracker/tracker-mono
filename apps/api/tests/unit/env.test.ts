@@ -3,6 +3,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 describe('PORT configuration', () => {
   beforeEach(() => {
     vi.resetModules();
+    vi.stubEnv('AUTH0_DOMAIN', 'tenant.auth0.com');
+    vi.stubEnv('AUTH0_AUDIENCE', 'https://tracker.example.test');
     vi.stubEnv('REDIS_URL', undefined);
     vi.stubEnv(
       'DATABASE_URL',
@@ -50,5 +52,27 @@ describe('PORT configuration', () => {
     await expect(import('../../src/config/env.js')).rejects.toThrow(
       'PORT must be an integer between 1 and 65535',
     );
+  });
+});
+
+
+describe('Auth0 configuration', () => {
+  beforeEach(() => {
+    vi.resetModules();
+    vi.stubEnv('DATABASE_URL', 'postgresql://test:test@localhost:5432/test_db');
+    vi.stubEnv('AUTH0_DOMAIN', 'tenant.auth0.com');
+    vi.stubEnv('AUTH0_AUDIENCE', 'https://tracker.example.test');
+  });
+  afterEach(() => { vi.unstubAllEnvs(); });
+
+  it.each(['AUTH0_DOMAIN', 'AUTH0_AUDIENCE'])('requires %s', async (key) => {
+    vi.stubEnv(key, undefined);
+    await expect(import('../../src/config/env.js')).rejects.toThrow(`${key} is not configured`);
+  });
+
+  it('exposes the configured issuer domain and audience', async () => {
+    const { env } = await import('../../src/config/env.js');
+    expect(env.auth0Domain).toBe('tenant.auth0.com');
+    expect(env.auth0Audience).toBe('https://tracker.example.test');
   });
 });

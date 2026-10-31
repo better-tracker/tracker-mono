@@ -1,154 +1,173 @@
-import {
-  userListResponseSchema,
-  userResponseSchema,
-} from '@project-tracker/contracts';
-import type { UserCreate, UserUpdate } from '@project-tracker/contracts';
+import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { buildApp } from '../../src/app.js';
+import { userResponseSchema } from '@project-tracker/contracts';
+import type { UserRepository } from '@project-tracker/database';
+import { createUsersService } from '../../src/modules/users/users.service.js';
+import { userRoutes } from '../../src/modules/users/users.routes.js';
+import { getAuth0Profile } from '../../src/lib/auth0-profile.js';
+import { getErrorResponse, getErrorStatusCode } from '../../src/lib/http-errors.js';
 
-vi.mock('@project-tracker/database', () => {
-  const makeUser = (over: Record<string, unknown> = {}) => ({
-    id: globalThis.crypto.randomUUID(),
-    user_name: 'alice',
-    email: 'alice@example.com',
-    profile_pic: null,
-    password: 'stored-secret',
-    passwordHash: 'stored-secret-hash',
-    internalMetadata: 'not-public',
-    ...over,
-  });
-
+vi.mock('../../src/lib/auth0-profile.js', () => ({ getAuth0Profile: vi.fn() }));
+const subject = 'auth0|alice';
+const row = {
+  id: '33333333-3333-4333-8333-333333333333', auth0_user_id: subject,
+  user_name: 'Alice', email: 'alice@example.com', profile_pic: null,
+};
+const profile = { user_name: row.user_name, email: row.email, profile_pic: null };
+function makeRepository() {
   return {
-    getUsers: vi.fn(async () => [makeUser()]),
-    createUser: vi.fn(async (u: UserCreate) =>
-      makeUser({
-        user_name: u.user_name,
-        email: u.email,
-        profile_pic: u.profile_pic ?? null,
-      }),
-    ),
-    getUserById: vi.fn(async (id: string) => makeUser({ id })),
-    updateUser: vi.fn(async (id: string, u: UserUpdate) =>
-      makeUser({
-        id,
-        user_name: u.user_name,
-        email: u.email,
-        profile_pic: u.profile_pic ?? null,
-      }),
-    ),
-    deleteUser: vi.fn(async () => true),
-    getUserByEmailForAuth: vi.fn(),
-  };
+    getUsers: vi.fn().mockResolvedValue([row]),
+    createUser: vi.fn(),
+    getUserById: vi.fn().mockResolvedValue(row),
+    getUserByAuth0Id: vi.fn().mockResolvedValue(row),
+    getOrCreateUser: vi.fn().mockResolvedValue({ ...row, password: 'private' }),
+    updateUser: vi.fn().mockResolvedValue(row),
+    deleteUser: vi.fn().mockResolvedValue(true),
+  } satisfies UserRepository;
+}
+let repository: ReturnType<typeof makeRepository>;
+let service: ReturnType<typeof createUsersService>;
+beforeEach(() => {
+  vi.clearAllMocks();
+  repository = makeRepository();
+  service = createUsersService(repository);
+  vi.mocked(getAuth0Profile).mockResolvedValue(profile);
 });
 
-const userId = '33333333-3333-4333-8333-333333333333';
-const users = '/v1/users';
-const user = `${users}/${userId}`;
-const password = 'test-password-must-not-be-returned';
-const profilePictures = [
-  { label: 'omitted', fields: {}, expected: null },
-  { label: 'null', fields: { profile_pic: null }, expected: null },
-  {
-    label: 'provided',
-    fields: { profile_pic: 'https://example.com/avatar.png' },
-    expected: 'https://example.com/avatar.png',
-  },
-];
+describe('Auth0 user service', () => {
+  it('creates or retrieves by subject and returns only public fields', async () => {
+    expect(await service.ensureUser(subject, profile)).toEqual(row);
+    expect(repository.getOrCreateUser).toHaveBeenCalledWith({ ...profile, auth0_user_id: subject });
+    expect(repository.createUser).not.toHaveBeenCalled();
+  });
+  it('returns the same local identity on repeated login', async () => {
+    expect(await service.ensureUser(subject, profile)).toEqual(await service.ensureUser(subject, profile));
+  });
+  it('finds the current user by Auth0 subject', async () => {
+    expect(await service.getCurrentUser(subject)).toEqual(row);
+    expect(repository.getUserByAuth0Id).toHaveBeenCalledWith(subject);
+  });
+  it('updates the local UUID resolved from the subject', async () => {
+    await service.updateCurrentUser(subject, { user_name: 'Updated' });
+    expect(repository.updateUser).toHaveBeenCalledWith(row.id, { user_name: 'Updated' });
+  });
+  it('deletes the local UUID resolved from the subject', async () => {
+    await service.deleteCurrentUser(subject);
+    expect(repository.deleteUser).toHaveBeenCalledWith(row.id);
+  });
+  it.each(['get', 'update', 'delete'])('returns 404 for a missing current user on %s', async (operation) => {
+    repository.getUserByAuth0Id.mockResolvedValue(null);
+    const action = operation === 'get' ? service.getCurrentUser(subject)
+      : operation === 'update' ? service.updateCurrentUser(subject, { user_name: 'New' })
+        : service.deleteCurrentUser(subject);
+    await expect(action).rejects.toMatchObject({ statusCode: 404 });
+    expect(repository.updateUser).not.toHaveBeenCalled();
+    expect(repository.deleteUser).not.toHaveBeenCalled();
+  });
+  it('handles a user disappearing before update', async () => {
+    repository.updateUser.mockResolvedValue(null);
+    await expect(service.updateCurrentUser(subject, {})).rejects.toMatchObject({ statusCode: 404 });
+  });
+  it('handles a user disappearing before deletion', async () => {
+    repository.deleteUser.mockResolvedValue(false);
+    await expect(service.deleteCurrentUser(subject)).rejects.toMatchObject({ statusCode: 404 });
+  });
+  it.each(['ensure', 'update'])('maps unique conflicts during %s to 409', async (operation) => {
+    repository.getOrCreateUser.mockRejectedValue({ code: '23505' });
+    repository.updateUser.mockRejectedValue({ code: '23505' });
+    await expect(operation === 'ensure' ? service.ensureUser(subject, profile)
+      : service.updateCurrentUser(subject, {})).rejects.toMatchObject({ statusCode: 409 });
+  });
+  it('preserves unexpected database errors', async () => {
+    const error = new Error('database unavailable');
+    repository.getOrCreateUser.mockRejectedValue(error);
+    await expect(service.ensureUser(subject, profile)).rejects.toBe(error);
+  });
+});
 
-describe('user HTTP responses', () => {
+describe('current user routes and controller', () => {
   let app: FastifyInstance;
-
-  beforeEach(() => { app = buildApp(); });
+  beforeEach(async () => {
+    app = Fastify();
+    // Stub the SDK guard: route tests verify enforcement and identity forwarding,
+    // not Auth0 JWT signature verification.
+    app.decorate('requireAuth', () => async (request: import('fastify').FastifyRequest) => {
+      if (request.headers.authorization !== 'Bearer valid-token') {
+        throw Object.assign(new Error('Unauthorized'), { statusCode: 401 });
+      }
+      Object.assign(request, { user: { sub: subject } });
+    });
+    app.setErrorHandler((error, _request, reply) => {
+      const status = getErrorStatusCode(error);
+      return reply.code(status).send(getErrorResponse(error, status));
+    });
+    await app.register(userRoutes, { service });
+  });
   afterEach(async () => { await app.close(); });
+  const headers = { authorization: 'Bearer valid-token' };
 
-  it('returns a schema-valid user list without password fields', async () => {
-    const response = await app.inject({ method: 'GET', url: users });
-    const body = response.json<unknown>();
-
-    expect(response.statusCode).toBe(200);
-    expect(userListResponseSchema.safeParse(body).success).toBe(true);
-    expect(body).toEqual(userListResponseSchema.parse(body));
-    expect(Array.isArray(body)).toBe(true);
-    for (const item of body as unknown[]) {
-      expect(item).not.toHaveProperty('password');
-    }
-  });
-
-  it.each(profilePictures)('creates a user with a $label profile picture', async ({ fields, expected }) => {
-    const response = await app.inject({
-      method: 'POST',
-      url: users,
-      payload: { user_name: 'alice', email: 'alice@example.com', password, ...fields },
-    });
-    const body = response.json<unknown>();
-
-    expect(response.statusCode).toBe(201);
-    expect(userResponseSchema.safeParse(body).success).toBe(true);
-    expect(body).toEqual(userResponseSchema.parse(body));
-    expect(body).toMatchObject({
-      user_name: 'alice', email: 'alice@example.com', profile_pic: expected,
-    });
-    expect(body).not.toHaveProperty('password');
-    expect(response.body).not.toContain(password);
-  });
-
-  it('generates distinct valid IDs instead of echoing a client-supplied ID', async () => {
-    const ids: string[] = [];
-
-    for (const userName of ['alice', 'bob']) {
-      const response = await app.inject({
-        method: 'POST',
-        url: users,
-        payload: {
-          id: userId, user_name: userName, email: `${userName}@example.com`, password,
-        },
+  it.each(['POST', 'GET', 'PATCH', 'DELETE'] as const)('requires authentication for %s', async (method) => {
+    for (const authorization of [undefined, 'Bearer invalid-token']) {
+      const response = await app.inject({ method, url: '/v1/users/me', headers: authorization ? { authorization } : {},
+        ...(method === 'PATCH' ? { payload: { user_name: 'New' } } : {}),
       });
-
-      expect(response.statusCode).toBe(201);
-      const body = userResponseSchema.parse(response.json<unknown>());
-      expect(body.id).not.toBe(userId);
-      ids.push(body.id);
+      expect(response.statusCode).toBe(401);
     }
-
-    expect(ids[0]).not.toBe(ids[1]);
+    expect(getAuth0Profile).not.toHaveBeenCalled();
+    expect(repository.getUserByAuth0Id).not.toHaveBeenCalled();
+    expect(repository.getOrCreateUser).not.toHaveBeenCalled();
   });
-
-  it('returns a schema-valid user with the requested ID and no password field', async () => {
-    const response = await app.inject({ method: 'GET', url: user });
-    const body = response.json<unknown>();
-
-    expect(response.statusCode).toBe(200);
-    expect(userResponseSchema.safeParse(body).success).toBe(true);
-    expect(body).toEqual(userResponseSchema.parse(body));
-    expect(body).toMatchObject({ id: userId });
-    expect(body).not.toHaveProperty('password');
-  });
-
-  it.each(profilePictures)('updates a user with a $label profile picture', async ({ fields, expected }) => {
-    const response = await app.inject({
-      method: 'PUT',
-      url: user,
-      payload: {
-        user_name: 'updated', email: 'updated@example.com', password, ...fields,
-      },
+  it('POST uses the verified subject and server profile, ignoring body identity', async () => {
+    const response = await app.inject({ method: 'POST', url: '/v1/users/me', headers,
+      payload: { auth0_user_id: 'attacker', email: 'attacker@example.com' },
     });
-    const body = response.json<unknown>();
-
     expect(response.statusCode).toBe(200);
-    expect(userResponseSchema.safeParse(body).success).toBe(true);
-    expect(body).toEqual(userResponseSchema.parse(body));
-    expect(body).toMatchObject({
-      id: userId, user_name: 'updated', email: 'updated@example.com', profile_pic: expected,
-    });
-    expect(body).not.toHaveProperty('password');
-    expect(response.body).not.toContain(password);
+    expect(userResponseSchema.parse(response.json())).toEqual(row);
+    expect(getAuth0Profile).toHaveBeenCalledWith(headers.authorization, subject);
+    expect(repository.getOrCreateUser).toHaveBeenCalledWith({ ...profile, auth0_user_id: subject });
   });
-
-  it('deletes a user with a bodyless 204 response', async () => {
-    const response = await app.inject({ method: 'DELETE', url: user });
-
+  it('GET returns the current user without fetching Auth0 profile', async () => {
+    const response = await app.inject({ method: 'GET', url: '/v1/users/me', headers });
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toEqual(row);
+    expect(repository.getUserByAuth0Id).toHaveBeenCalledWith(subject);
+    expect(getAuth0Profile).not.toHaveBeenCalled();
+  });
+  it.each([{ user_name: 'New' }, { profile_pic: null }, { profile_pic: 'https://example.com/new.png' }])('PATCH accepts partial profile updates', async (payload) => {
+    const response = await app.inject({ method: 'PATCH', url: '/v1/users/me', headers, payload });
+    expect(response.statusCode).toBe(200);
+    expect(repository.updateUser).toHaveBeenCalledWith(row.id, payload);
+  });
+  it.each([{}, { email: 'other@example.com' }, { id: row.id }, { auth0_user_id: 'attacker' }, { user_name: '' }, { user_name: 'a'.repeat(26) }, { profile_pic: 42 }])('PATCH rejects invalid or forbidden fields', async (payload) => {
+    const response = await app.inject({ method: 'PATCH', url: '/v1/users/me', headers, payload });
+    expect(response.statusCode).toBe(400);
+    expect(repository.updateUser).not.toHaveBeenCalled();
+  });
+  it('DELETE returns a bodyless 204', async () => {
+    const response = await app.inject({ method: 'DELETE', url: '/v1/users/me', headers });
     expect(response.statusCode).toBe(204);
     expect(response.body).toBe('');
+    expect(repository.deleteUser).toHaveBeenCalledWith(row.id);
+  });
+  it('does not create a user if profile retrieval fails', async () => {
+    vi.mocked(getAuth0Profile).mockRejectedValueOnce(Object.assign(new Error('Profile failed'), { statusCode: 502 }));
+    const response = await app.inject({ method: 'POST', url: '/v1/users/me', headers });
+    expect(response.statusCode).toBe(502);
+    expect(repository.getOrCreateUser).not.toHaveBeenCalled();
+  });
+  it('returns 404 for an absent local user', async () => {
+    repository.getUserByAuth0Id.mockResolvedValue(null);
+    const response = await app.inject({ method: 'GET', url: '/v1/users/me', headers });
+    expect(response.statusCode).toBe(404);
+  });
+  it('does not expose database failure details', async () => {
+    repository.getUserByAuth0Id.mockRejectedValue(new Error('secret database detail'));
+    const response = await app.inject({ method: 'GET', url: '/v1/users/me', headers });
+    expect(response.statusCode).toBe(500);
+    expect(response.body).not.toContain('secret database detail');
+  });
+  it.each(['GET', 'PATCH', 'DELETE'] as const)('does not expose arbitrary-ID %s routes', async (method) => {
+    expect((await app.inject({ method, url: `/v1/users/${row.id}`, headers })).statusCode).toBe(404);
   });
 });

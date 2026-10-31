@@ -50,7 +50,7 @@ export function buildApp(options: { database?: DatabaseConnection } = {}) {
         callback(null, false);
       }
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   });
 
   app.setErrorHandler((error, request, reply) => {

@@ -48,5 +48,10 @@
     "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/packages/database/migrations/002_create_users.sql",
     "colorName": "Purple",
     "badgeType": "circle"
+  },
+  {
+    "path": "/Users/samuelchen/Desktop/Holberton/projects/tracker-mono/packages/database/src/repositories/usersRepo.ts",
+    "colorName": "Purple",
+    "badgeType": "circle"
   }
 ]

@@ -9,7 +9,7 @@ async function seed() {
     await createUser({
       user_name: "Lachlan",
       email: "lachlan@example.com",
-      passwordHash: "hashed_password_here",
+      auth0_user_id: "hashed_password_here",
     });
 
     const project = await createProject({

@@ -1,12 +1,9 @@
-/*
-The API service hashes passwords with salted scrypt before storing them here.
-The password column itself does not enforce the hash format.
-*/
-
 CREATE TABLE users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_name TEXT NOT NULL UNIQUE,
+    auth0_user_id TEXT NOT NULL UNIQUE,
+    user_name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
-    profile_pic TEXT
+    profile_pic TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

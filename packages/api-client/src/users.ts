@@ -86,3 +86,16 @@ export const deleteUser = async (
         }
     );
 };
+
+
+export const ensureUser = async (
+  baseUrl: string,
+  accessToken: string,
+): Promise<UserResponse> => {
+  const response = await request<unknown>(baseUrl, '/v1/users/me', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+
+  return userResponseSchema.parse(response);
+};

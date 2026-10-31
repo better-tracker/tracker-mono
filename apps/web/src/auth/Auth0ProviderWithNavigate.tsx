@@ -12,6 +12,7 @@ export const Auth0ProviderWithNavigate = ({
   const navigate = useNavigate();
 
   const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+  const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
   const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
   const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL ?? 'http://localhost:3000';
 
@@ -19,8 +20,8 @@ export const Auth0ProviderWithNavigate = ({
     navigate(appState?.returnTo || window.location.pathname);
   };
 
-  if (!(domain && clientId && redirectUri)) {
-    return null;
+  if (!(domain && clientId && audience && redirectUri)) {
+    return <p role="alert">Sign-in is not configured. Contact the app administrator.</p>;
   }
 
   return (
@@ -29,6 +30,8 @@ export const Auth0ProviderWithNavigate = ({
       clientId={clientId}
       authorizationParams={{
         redirect_uri: redirectUri,
+        audience,
+        scope: 'openid profile email',
       }}
       onRedirectCallback={onRedirectCallback}
     >
