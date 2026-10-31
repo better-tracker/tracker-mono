@@ -274,6 +274,8 @@ describe('network failures', () => {
 
     await expect(
       getProjects(baseUrl),
-    ).rejects.toThrow('Unable to connect to the API.');
+    ).rejects.toThrow(
+      'Unable to connect to the API while performing GET /v1/projects?limit=40&offset=0.',
+    );
   });
 });
