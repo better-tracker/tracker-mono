@@ -14,6 +14,7 @@ const baseUrl = 'http://localhost:3001';
 
 const user = {
   id: '770e8400-e29b-41d4-a716-446655440000',
+  auth0_user_id: 'auth0|lachlan',
   user_name: 'Lachlan',
   email: 'lachlan@example.com',
   profile_pic: null,
@@ -65,7 +66,6 @@ describe('createUser', () => {
         expect(body).toEqual({
           user_name: 'Lachlan',
           email: 'lachlan@example.com',
-          password: 'password123',
         });
 
         return HttpResponse.json(user, { status: 201 });
@@ -75,7 +75,6 @@ describe('createUser', () => {
     const result = await createUser(baseUrl, {
       user_name: 'Lachlan',
       email: 'lachlan@example.com',
-      password: 'password123',
     });
 
     expect(result).toEqual(user);
@@ -92,7 +91,6 @@ describe('createUser', () => {
       createUser(baseUrl, {
         user_name: 'Lachlan',
         email: 'lachlan@example.com',
-        password: 'password123',
       }),
     ).rejects.toThrow();
   });
@@ -147,7 +145,6 @@ describe('updateUser', () => {
 
         expect(body).toEqual({
           user_name: 'Updated Name',
-          email: 'lachlan@example.com',
           profile_pic: null,
         });
 
@@ -157,7 +154,6 @@ describe('updateUser', () => {
 
     const result = await updateUser(baseUrl, user.id, {
       user_name: 'Updated Name',
-      email: 'lachlan@example.com',
       profile_pic: null,
     });
 
@@ -174,7 +170,6 @@ describe('updateUser', () => {
     await expect(
       updateUser(baseUrl, user.id, {
         user_name: 'Updated Name',
-        email: 'lachlan@example.com',
       }),
     ).rejects.toThrow();
   });

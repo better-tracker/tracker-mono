@@ -215,16 +215,7 @@ describe('HTTP responses', () => {
       method: 'PUT', url: subtask, payload: { description: '  Updated subtask  ', completed: true },
       expected: { description: 'Updated subtask', completed: true }, status: 200,
     },
-    {
-      method: 'POST', url: '/v1/users',
-      payload: { user_name: '  alice  ', email: 'alice@example.com', password: 'test-password' },
-      expected: { user_name: 'alice' }, status: 201,
-    },
-    {
-      method: 'PUT', url: '/v1/users/33333333-3333-4333-8333-333333333333',
-      payload: { user_name: '  updated  ', email: 'updated@example.com' },
-      expected: { user_name: 'updated' }, status: 200,
-    },
+
   ] as const)('$method $url returns normalized text', async ({ expected, status, ...request }) => {
     const response = await app.inject(request);
 

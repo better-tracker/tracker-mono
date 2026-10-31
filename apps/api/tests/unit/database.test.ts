@@ -9,7 +9,7 @@ const id = '33333333-3333-4333-8333-333333333333';
 function database(userName: string) {
   return {
     query: vi.fn().mockResolvedValue({
-      rows: [{ id, user_name: userName, email: `${userName}@example.com`, profile_pic: null, password: 'private' }],
+      rows: [{ id, auth0_user_id: 'auth0|alice', user_name: userName, email: `${userName}@example.com`, profile_pic: null, password: 'private' }],
       rowCount: 1,
     }),
     end: vi.fn().mockResolvedValue(undefined),
@@ -17,6 +17,9 @@ function database(userName: string) {
 }
 function appWith(connection: ReturnType<typeof database>) {
   const app = buildApp({ database: connection });
+  app.addHook('onReady', async () => {
+    vi.spyOn(app.auth0Client!, 'verifyAccessToken').mockResolvedValue({ sub: 'auth0|alice' });
+  });
   apps.push(app);
   return app;
 }
@@ -37,12 +40,12 @@ describe('application database ownership', () => {
     await Promise.all([firstApp.ready(), secondApp.ready()]);
     expect(first.query).not.toHaveBeenCalled();
     expect(second.query).not.toHaveBeenCalled();
-    const responses = await Promise.all([firstApp, secondApp].map((app) => app.inject({ method: 'GET', url: '/v1/users' })));
-    expect(responses.map((response) => response.json()[0].user_name)).toEqual(['alice', 'bob']);
-    expect(responses[0].json()[0]).not.toHaveProperty('password');
+    const responses = await Promise.all([firstApp, secondApp].map((app) => app.inject({ method: 'GET', url: '/v1/users/me', headers: { authorization: 'Bearer test-token' } })));
+    expect(responses.map((response) => response.json().user_name)).toEqual(['alice', 'bob']);
+    expect(responses[0].json()).not.toHaveProperty('password');
     await firstApp.close();
     expect(first.end).not.toHaveBeenCalled();
-    expect((await secondApp.inject({ method: 'GET', url: '/v1/users' })).statusCode).toBe(200);
+    expect((await secondApp.inject({ method: 'GET', url: '/v1/users/me', headers: { authorization: 'Bearer test-token' } })).statusCode).toBe(200);
     await secondApp.close();
     expect(second.end).not.toHaveBeenCalled();
     expect(pool.query).not.toHaveBeenCalled();
@@ -70,13 +73,13 @@ describe('application database ownership', () => {
     expect(owned.end).toHaveBeenCalledOnce();
   });
 
-  it.each(['GET', 'PUT', 'DELETE'] as const)('keeps the existing missing-user 404 for %s', async (method) => {
+  it.each(['GET', 'PATCH', 'DELETE'] as const)('keeps the existing missing-user 404 for %s', async (method) => {
     const connection = database('alice');
     connection.query.mockResolvedValue({ rows: [], rowCount: 0 });
     const app = appWith(connection);
     const response = await app.inject({
-      method, url: `/v1/users/${id}`,
-      ...(method === 'PUT' ? { payload: { user_name: 'alice', email: 'alice@example.com' } } : {}),
+      method, url: '/v1/users/me', headers: { authorization: 'Bearer test-token' },
+      ...(method === 'PATCH' ? { payload: { user_name: 'alice' } } : {}),
     });
     expect(response.statusCode).toBe(404);
     expect(response.json()).toEqual({ error: { code: 'REQUEST_ERROR', message: 'User not found' } });
@@ -84,11 +87,11 @@ describe('application database ownership', () => {
 
   it('keeps duplicate-user errors at 409', async () => {
     const connection = database('alice');
-    connection.query.mockRejectedValue({ code: '23505' });
+    connection.query.mockReset().mockResolvedValueOnce({ rows: [{ id, auth0_user_id: 'auth0|alice', user_name: 'alice', email: 'alice@example.com', profile_pic: null }], rowCount: 1 }).mockRejectedValueOnce({ code: '23505' });
     const response = await appWith(connection).inject({
-      method: 'PUT', url: `/v1/users/${id}`, payload: { user_name: 'alice', email: 'alice@example.com' },
+      method: 'PATCH', url: '/v1/users/me', headers: { authorization: 'Bearer test-token' }, payload: { user_name: 'alice' },
     });
     expect(response.statusCode).toBe(409);
-    expect(response.json()).toEqual({ error: { code: 'REQUEST_ERROR', message: 'Username or email is already in use' } });
+    expect(response.json()).toEqual({ error: { code: 'REQUEST_ERROR', message: 'Username, email, or Auth0 user is already in use' } });
   });
 });

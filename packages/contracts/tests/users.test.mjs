@@ -5,8 +5,7 @@ import { userCreateSchema } from '@project-tracker/contracts';
 test('accepts valid user data', () => {
     const result = userCreateSchema.safeParse({
         user_name: 'zac',
-        email: 'zac@example.com',
-        password: 'test123'
+        email: 'zac@example.com'
     });
 
     assert.equal(result.success, true);
@@ -15,8 +14,7 @@ test('accepts valid user data', () => {
 test('rejects invalid user data', () => {
     const result = userCreateSchema.safeParse({
         user_name: '',
-        email: 'invalid-email',
-        password: ''
+        email: 'invalid-email'
     });
 
     assert.equal(result.success, false);

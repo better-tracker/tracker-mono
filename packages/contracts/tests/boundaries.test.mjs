@@ -6,7 +6,7 @@ const id = '11111111-1111-4111-8111-111111111111';
 const timestamp = '2026-10-08T00:00:00.000Z';
 const project = { id, name: 'Tracker', description: null, createdAt: timestamp };
 const subtask = { id, description: 'Build tests', completed: false, createdAt: timestamp, updatedAt: timestamp };
-const user = { id, user_name: 'alice', email: 'alice@example.com', profile_pic: null };
+const user = { id, auth0_user_id: 'auth0|alice', user_name: 'alice', email: 'alice@example.com', profile_pic: null };
 
 describe('text boundaries and normalization', () => {
   /** @type {Array<[string, import('zod').ZodType, number]>} */
@@ -132,13 +132,13 @@ describe('response IDs, timestamps and collections', () => {
 });
 
 describe('users and errors', () => {
-  const createUser = { user_name: 'alice', email: 'alice@example.com', password: 'test-password' };
+  const createUser = { user_name: 'alice', email: 'alice@example.com' };
 
   it('validates each required user creation field independently', () => {
-    for (const invalid of [{ user_name: ' ' }, { email: 'bad-email' }, { password: '' }]) {
+    for (const invalid of [{ user_name: ' ' }, { email: 'bad-email' }]) {
       assert.equal(contracts.userCreateSchema.safeParse({ ...createUser, ...invalid }).success, false);
     }
-    for (const field of ['user_name', 'email', 'password']) {
+    for (const field of ['user_name', 'email']) {
       /** @type {Record<string, unknown>} */
       const input = { ...createUser };
       delete input[field];
@@ -154,10 +154,11 @@ describe('users and errors', () => {
     assert.equal(contracts.userCreateSchema.safeParse({ ...createUser, profile_pic: 123 }).success, false);
   });
 
-  it('requires username/email on user updates without requiring a password', () => {
-    assert.equal(contracts.userUpdateSchema.safeParse({ user_name: 'alice', email: 'alice@example.com' }).success, true);
-    assert.equal(contracts.userUpdateSchema.safeParse({ user_name: 'alice' }).success, false);
-    assert.equal(contracts.userUpdateSchema.safeParse({ email: 'alice@example.com' }).success, false);
+  it('accepts partial local profile updates and excludes Auth0-owned email', () => {
+    assert.equal(contracts.userUpdateSchema.safeParse({ user_name: 'alice' }).success, true);
+    assert.equal(contracts.userUpdateSchema.safeParse({ profile_pic: null }).success, true);
+    assert.deepEqual(contracts.userUpdateSchema.parse({ email: 'alice@example.com' }), {});
+    assert.equal(contracts.userUpdateSchema.safeParse({ user_name: ' ' }).success, false);
   });
 
   it('requires the nullable profile-picture response field and excludes passwords', () => {
@@ -185,7 +186,7 @@ it('exports every shared runtime schema through the public package entry point',
     'projectUpdateSchema', 'projectSubtaskSchema', 'projectResponseSchema', 'projectListItemSchema',
     'projectListResponseSchema', 'subtaskIdSchema', 'subtaskDescriptionSchema', 'subtaskCreateSchema',
     'subtaskUpdateSchema', 'subtaskResponseSchema', 'subtaskListResponseSchema', 'userIdSchema',
-    'userNameSchema', 'userEmailSchema', 'userPasswordSchema', 'userProfilePicSchema',
+    'userNameSchema', 'userEmailSchema', 'auth0UserIdSchema', 'userProfilePicSchema',
     'userCreateSchema', 'userUpdateSchema', 'userResponseSchema', 'userListResponseSchema', 'errorResponseSchema',
   ]);
   for (const name of names) {

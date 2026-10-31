@@ -134,6 +134,15 @@ describe('current user routes and controller', () => {
     expect(repository.getUserByAuth0Id).toHaveBeenCalledWith(subject);
     expect(getAuth0Profile).not.toHaveBeenCalled();
   });
+  it('PATCH trims the name before persistence and in the response', async () => {
+    repository.updateUser.mockImplementation(async (_id, updates) => ({ ...row, ...updates }));
+    const response = await app.inject({ method: 'PATCH', url: '/v1/users/me', headers,
+      payload: { user_name: '  Updated Alice  ' },
+    });
+    expect(response.statusCode).toBe(200);
+    expect(repository.updateUser).toHaveBeenCalledWith(row.id, { user_name: 'Updated Alice' });
+    expect(response.json().user_name).toBe('Updated Alice');
+  });
   it.each([{ user_name: 'New' }, { profile_pic: null }, { profile_pic: 'https://example.com/new.png' }])('PATCH accepts partial profile updates', async (payload) => {
     const response = await app.inject({ method: 'PATCH', url: '/v1/users/me', headers, payload });
     expect(response.statusCode).toBe(200);

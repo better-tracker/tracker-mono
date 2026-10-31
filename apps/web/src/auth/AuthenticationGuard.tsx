@@ -6,16 +6,18 @@ interface AuthenticationGuardProps {
   component: ComponentType;
 }
 
-export const AuthenticationGuard = ({
-  component,
-}: AuthenticationGuardProps) => {
-  const Component = withAuthenticationRequired(component, {
-    onRedirecting: () => (
-      <div className="page-layout">
-        <PageLoader />
-      </div>
-    ),
-  });
-
+function GuardedComponent({ component: Component }: AuthenticationGuardProps) {
   return <Component />;
-};
+}
+
+const AuthenticatedComponent = withAuthenticationRequired(GuardedComponent, {
+  onRedirecting: () => (
+    <div className="page-layout">
+      <PageLoader />
+    </div>
+  ),
+});
+
+export function AuthenticationGuard(props: AuthenticationGuardProps) {
+  return <AuthenticatedComponent {...props} />;
+}

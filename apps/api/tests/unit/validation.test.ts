@@ -5,19 +5,18 @@ import { buildApp } from '../../src/app.js';
 
 const projectId = '11111111-1111-4111-8111-111111111111';
 const subtaskId = '22222222-2222-4222-8222-222222222222';
-const userId = '33333333-3333-4333-8333-333333333333';
 const projects = '/v1/projects';
 const project = `${projects}/${projectId}`;
 const subtasks = `${project}/subtasks`;
 const subtask = `${subtasks}/${subtaskId}`;
 const users = '/v1/users';
-const user = `${users}/${userId}`;
+const user = `${users}/me`;
 const password = 'test-password-must-not-appear-in-errors';
 
 type InvalidValue = { label: string; value: unknown };
 type InvalidField = { field: string; values: InvalidValue[] };
 type Endpoint = {
-  method: 'POST' | 'PUT';
+  method: 'POST' | 'PUT' | 'PATCH';
   url: string;
   payload: Record<string, unknown>;
   required: string[];
@@ -92,25 +91,8 @@ const endpoints: Endpoint[] = [
     required: ['description', 'completed'], invalidFields: subtaskFields,
   },
   {
-    method: 'POST', url: users,
-    payload: { user_name: 'alice', email: 'alice@example.com', password },
-    required: ['user_name', 'email', 'password'],
-    invalidFields: [
-      ...userFields,
-      {
-        field: 'password',
-        values: [
-          { label: 'null', value: null },
-          { label: 'number', value: 42 },
-          { label: 'boolean', value: false },
-          { label: 'empty text', value: '' },
-        ],
-      },
-    ],
-  },
-  {
-    method: 'PUT', url: user, payload: { user_name: 'updated', email: 'updated@example.com' },
-    required: ['user_name', 'email'], invalidFields: userFields,
+    method: 'PATCH', url: user, payload: { user_name: 'updated' },
+    required: [], invalidFields: userFields,
   },
 ];
 
@@ -121,6 +103,9 @@ describe('HTTP validation errors', () => {
   beforeEach(() => {
     query.mockReset().mockImplementation(() => { throw new Error('Validation must prevent database access'); });
     app = buildApp({ database: { query } });
+    app.addHook('onReady', async () => {
+      vi.spyOn(app.auth0Client!, 'verifyAccessToken').mockResolvedValue({ sub: 'auth0|alice' });
+    });
   });
   afterEach(async () => {
     await app.close();
@@ -128,7 +113,7 @@ describe('HTTP validation errors', () => {
   });
 
   async function expectSafeValidationError(request: InjectOptions) {
-    const response = await app.inject(request);
+    const response = await app.inject({ ...request, headers: { authorization: 'Bearer test-token', ...request.headers } });
     const body = response.json<unknown>();
 
     expect(response.statusCode).toBe(400);
@@ -187,7 +172,6 @@ describe('HTTP validation errors', () => {
 
   const invalidIdRoutes = [
     { label: 'project ID', url: `${projects}/not-a-uuid`, payload: { name: 'Updated project', description: null } },
-    { label: 'user ID', url: `${users}/not-a-uuid`, payload: { user_name: 'updated', email: 'updated@example.com', password } },
     { label: 'subtask ID', url: `${subtasks}/not-a-uuid`, payload: { description: 'Updated subtask', completed: true } },
     {
       label: 'nested project ID', url: `${projects}/not-a-uuid/subtasks/${subtaskId}`,

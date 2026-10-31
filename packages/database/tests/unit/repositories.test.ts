@@ -73,7 +73,7 @@ describe('injected repository connection', () => {
       expect(await update()).toEqual(row);
       expect(query).toHaveBeenCalledTimes(2);
       for (const [sql, values] of query.mock.calls) {
-        expect(sql).toMatch(/^SELECT /);
+        expect(sql).toMatch(/^\s*SELECT\s/);
         expect(values).toEqual([id]);
       }
     },
@@ -119,13 +119,13 @@ describe('injected repository connection', () => {
       {
         user_name: 'alice',
         email: 'a@example.com',
-        passwordHash: 'existing-hash',
+        auth0_user_id: 'auth0|alice',
       },
       database,
     );
     expect(query).toHaveBeenLastCalledWith(
-      expect.stringContaining('RETURNING id, user_name, email, profile_pic'),
-      ['alice', 'a@example.com', null, 'existing-hash'],
+      expect.stringMatching(/RETURNING\s+id,\s+auth0_user_id,\s+user_name,\s+email,\s+profile_pic/),
+      ['auth0|alice', 'alice', 'a@example.com', null],
     );
   });
 
@@ -165,11 +165,11 @@ describe('injected repository connection', () => {
     };
     await updateUser(id, updates, database);
     const [sql, values] = query.mock.lastCall!;
-    expect(sql).toContain('email = $1, profile_pic = $2, password = $3');
-    expect(sql).toContain('WHERE id = $4');
+    expect(sql).toContain('email = $1, profile_pic = $2');
+    expect(sql).toContain('WHERE id = $3');
     expect(sql).not.toContain('unexpected');
     expect(sql).not.toContain(email);
-    expect(values).toEqual([email, null, 'new-hash', id]);
+    expect(values).toEqual([email, null, id]);
   });
 
   it('keeps list pagination parameters and explicit public user projections', async () => {
@@ -185,7 +185,7 @@ describe('injected repository connection', () => {
     );
     await getUsers(database);
     expect(query).toHaveBeenLastCalledWith(
-      'SELECT id, user_name, email, profile_pic FROM users ORDER BY user_name',
+      expect.stringMatching(/SELECT\s+id,\s+auth0_user_id,\s+user_name,\s+email,\s+profile_pic\s+FROM users\s+ORDER BY user_name/),
     );
   });
 
@@ -195,7 +195,7 @@ describe('injected repository connection', () => {
     await users.createUser({
       user_name: 'alice',
       email: 'a@example.com',
-      passwordHash: 'existing-hash',
+      auth0_user_id: 'auth0|alice',
     });
     await users.getUserById(id);
     await users.updateUser(id, { profile_pic: null });

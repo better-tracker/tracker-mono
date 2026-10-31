@@ -69,13 +69,13 @@ describe('repositories with caller-owned PostgreSQL pools', () => {
 
   it('retains public user projections, partial updates, uniqueness errors, and absent rows', async () => {
     const users = createUserRepository(database!);
-    const user = await users.createUser({ user_name: 'alice', email: 'a@example.com', profile_pic: 'avatar.png', passwordHash: 'existing-hash' });
-    expect(Object.keys(user).sort()).toEqual(['email', 'id', 'profile_pic', 'user_name']);
+    const user = await users.createUser({ user_name: 'alice', email: 'a@example.com', profile_pic: 'avatar.png', auth0_user_id: 'auth0|alice' });
+    expect(Object.keys(user).sort()).toEqual(['auth0_user_id', 'email', 'id', 'profile_pic', 'user_name']);
     expect(await users.getUsers()).toEqual([user]);
     expect(await users.updateUser(user.id, { user_name: 'renamed' })).toMatchObject({ profile_pic: 'avatar.png', email: 'a@example.com' });
     expect(await users.updateUser(user.id, { profile_pic: null })).toMatchObject({ profile_pic: null });
     expect(await users.updateUser(user.id, {})).toEqual(await users.getUserById(user.id));
-    await expect(users.createUser({ user_name: 'renamed', email: 'other@example.com', passwordHash: 'existing-hash' })).rejects.toMatchObject({ code: '23505' });
+    await expect(users.createUser({ user_name: 'renamed', email: 'other@example.com', auth0_user_id: 'auth0|alice' })).rejects.toMatchObject({ code: '23505' });
     expect(await users.deleteUser(user.id)).toBe(true);
     expect(await users.getUserById(user.id)).toBeNull();
     expect(await users.updateUser(user.id, { email: 'missing@example.com' })).toBeNull();
